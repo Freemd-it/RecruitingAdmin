@@ -12,7 +12,7 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
 
 let EnhancedTableToolbar = props => {
-  const { numSelected, classes } = props;
+  const { numSelected, classes, title } = props;
   return (
     <Toolbar
       className={classNames(classes.root, {
@@ -26,7 +26,7 @@ let EnhancedTableToolbar = props => {
           </Typography>
         ) : (
           <Typography variant="h6" id="tableTitle">
-            지원서 관리
+            {title}
           </Typography>
         )}
       </div>

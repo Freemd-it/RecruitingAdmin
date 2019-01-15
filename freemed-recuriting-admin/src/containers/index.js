@@ -1,8 +1,8 @@
-import DashBoardViewerContainer from './dashboard/DashBoardViewerContainer';
-import InterviewManageContainer from './interview/InterviewManageContainer';
-import QuestionRegistContainer from './question/QuestionRegistContainer';
-import RecruitManageContainer from './recruit/RecruitManageContainer';
-import MainContainer from './main/MainContainer';
+import DashBoardViewerContainer from './Dashboard/DashBoardViewerContainer';
+import InterviewManageContainer from './Interview/InterviewManageContainer';
+import QuestionRegistContainer from './Question/QuestionRegistContainer';
+import RecruitManageContainer from './Recruit/RecruitManageContainer';
+import MainContainer from './Main/MainContainer';
 
 export {
   MainContainer,

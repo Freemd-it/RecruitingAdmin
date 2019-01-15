@@ -14,6 +14,8 @@ import CustomTooltip from '../../CustomTable/CustomTooltip/CustomTooltip'
 import CustomToolbar from '../../CustomTable/CustomToolbar/CustomToolbar'
 import CustomPagination from '../../CustomTable/CustomPagination/CustomPagination'
 
+import _ from 'lodash'
+
 const tableStyle = theme => ({
   root: {
     marginTop: theme.spacing.unit * 3,
@@ -34,28 +36,39 @@ const tableStyle = theme => ({
 class AnswerForQuestionTable extends Component {
   
   render() {
-    const { classes } = this.props;
-    const { rows, rowsPerPage, page, handleChangePage, handleChangeRowsPerPage } = this.props;
+    const { 
+      classes,
+      rows,
+      rowsPerPage,
+      page,
+      handleChangePage,
+      handleChangeRowsPerPage,
+      elements,
+    } = this.props;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
     return (
       <div>
         <Paper className={classes.root}>
-        <CustomToolbar numSelected={0} />
+        <CustomToolbar numSelected={0} title={"개인정보관리"} />
         <CustomTooltip />
           <div className={classes.tableWrapper}>
             <Table className={classes.table} id='table'>
               <TableHead className={classes.head}>
                 <TableRow scope="row">
-                  <TableCell align="left">id</TableCell>
-                  <TableCell align="left">name</TableCell>
-                  <TableCell align="left">gender</TableCell>
+                { elements &&
+                  _.map(elements, (value,index) => {
+                    return (
+                      <TableCell aline="left"> {value} </TableCell>
+                    )
+                  })
+                }
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
+                {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => {
                   return (
-                    <TableRow key={row.id}>
+                    <TableRow key={index}>
                       <TableCell component="th" scope="row"> {row.id} </TableCell>
                       <TableCell align="left">{row.name}</TableCell>
                       <TableCell align="left">{row.gender}</TableCell>

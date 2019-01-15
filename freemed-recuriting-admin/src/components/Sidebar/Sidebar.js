@@ -14,12 +14,6 @@ import { withStyles } from '@material-ui/core';
 
 import './Sidebar.css'
 
-const MyLink1 = props => <Link to="/dashboard" {...props} />
-const MyLink2 = props => <Link to="/recruit/info" {...props} />
-const MyLink3 = props => <Link to="/recruit/answer" {...props} />
-const MyLink4 = props => <Link to="/interview" {...props} />
-const MyLink5 = props => <Link to="/question" {...props} />
-
 const styles = theme => ({
   root: {
     width: '200px',
@@ -47,9 +41,9 @@ class Sidebar extends Component {
       <div>
         <div className='main-img'>
           <div className='main-word'>Freemed </div>
-          <img src='#' alt='freemed-logo'/>
+          <img src='../../images/logo.png'/>
         </div>
-        <ListItem button component={MyLink1}>
+        <ListItem button component={props => <Link to="/dashboard" {...props} />}>
           <ListItemIcon>
             <DashboardIcon />
           </ListItemIcon>
@@ -63,7 +57,9 @@ class Sidebar extends Component {
         </ListItem>
           <Collapse in={this.state.open} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItem button className={classes.nested} component={MyLink2}>
+              <ListItem button
+                className={classes.nested}
+                component={props => <Link to="/recruit/info" {...props} />}>
                 <ListItemIcon>
                   <StarBorder />
                 </ListItemIcon>
@@ -71,7 +67,9 @@ class Sidebar extends Component {
               </ListItem>
             </List>
             <List component="div" disablePadding>
-              <ListItem button className={classes.nested} component={MyLink3}>
+              <ListItem
+                button className={classes.nested}
+                component={props => <Link to="/recruit/answer" {...props} />}>
                 <ListItemIcon>
                   <StarBorder />
                 </ListItemIcon>
@@ -79,13 +77,15 @@ class Sidebar extends Component {
               </ListItem>
             </List>
           </Collapse>
-        <ListItem button component={MyLink4}>
+        <ListItem button
+          component={props => <Link to="/interview" {...props} />}>
           <ListItemIcon>
             <PeopleIcon />
           </ListItemIcon>
           <ListItemText primary="면접시간 관리" />
         </ListItem>
-        <ListItem button component={MyLink5}>
+        <ListItem button
+          component={props => <Link to="/question" {...props} />}>
           <ListItemIcon>
             <BarChartIcon />
           </ListItemIcon>

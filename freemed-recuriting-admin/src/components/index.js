@@ -1,6 +1,6 @@
 import Sidebar from './Sidebar/Sidebar';
 import CustomTable from './CustomTable/CustomTable';
-import MainTemplate from './main/MainTemplate';
+import MainTemplate from './Main/MainTemplate';
 import Contents from './Contents/Contents';
 import DashBoard from './DashBoard/DashBoard';
 import AnswerForQuestionTable from './Recruit/Answer/AnswerForQuestionTable'
