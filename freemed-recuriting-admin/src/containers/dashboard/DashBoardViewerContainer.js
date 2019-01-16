@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import DashBoard from '../../components/DashBoard/DashBoard'
+import DashBoard from '../../components/contents/dashboard/DashBoard'
 
 class DashBoardViewerContainer extends Component {
   render() {

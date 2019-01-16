@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -10,15 +10,9 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import CustomTooltip from '../CustomTable/CustomTooltip/CustomTooltip'
-import CustomToolbar from '../CustomTable/CustomToolbar/CustomToolbar'
-import CustomPagination from '../CustomTable/CustomPagination/CustomPagination'
-
-const user = {
-  id: '1',
-  name: 'dongsu',
-  gender: 'M',
-}
+import CustomTooltip from '../../customtable/CustomTooltip/CustomTooltip'
+import CustomToolbar from '../../customtable/CustomToolbar/CustomToolbar'
+import CustomPagination from '../../customtable/CustomPagination/CustomPagination'
 
 const tableStyle = theme => ({
   root: {
@@ -37,34 +31,17 @@ const tableStyle = theme => ({
 });
 
 
-class CustomPaginationActionsTable extends React.Component {
-  state = {
-    rows: [
-      user,
-    ].sort((a, b) => (a.calories < b.calories ? -1 : 1)),
-    page: 0,
-    rowsPerPage: 10,
-  };
-
-
-  handleChangePage = (event, page) => {
-    this.setState({ page });
-  };
-
-  handleChangeRowsPerPage = event => {
-    this.setState({ rowsPerPage: event.target.value });
-  };
-
+class AnswerForQuestionTable extends Component {
   
   render() {
     const { classes } = this.props;
-    const { rows, rowsPerPage, page } = this.state;
+    const { rows, rowsPerPage, page, handleChangePage, handleChangeRowsPerPage } = this.props;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
     return (
       <div>
         <Paper className={classes.root}>
-        <CustomToolbar numSelected={5} />
+        <CustomToolbar numSelected={0} title="질문답변관리"/>
         <CustomTooltip />
           <div className={classes.tableWrapper}>
             <Table className={classes.table} id='table'>
@@ -100,8 +77,8 @@ class CustomPaginationActionsTable extends React.Component {
                     rowsPerPage={rowsPerPage}
                     page={page}
                     SelectProps={{ native: true }}
-                    onChangePage={this.handleChangePage}
-                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                    onChangePage={handleChangePage}
+                    onChangeRowsPerPage={handleChangeRowsPerPage}
                     ActionsComponent={CustomPagination}
                   />
                 </TableRow>
@@ -115,8 +92,8 @@ class CustomPaginationActionsTable extends React.Component {
   }
 }
 
-CustomPaginationActionsTable.propTypes = {
+AnswerForQuestionTable.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(tableStyle)(CustomPaginationActionsTable);
+export default withStyles(tableStyle)(AnswerForQuestionTable);

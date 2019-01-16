@@ -11,6 +11,7 @@ import BarChartIcon from '@material-ui/icons/BarChart';
 import Collapse from '@material-ui/core/Collapse';
 import StarBorder from '@material-ui/icons/StarBorder';
 import { withStyles } from '@material-ui/core';
+import * as routes from '../../lib/service/routes'
 
 import './Sidebar.css'
 
@@ -40,14 +41,14 @@ class Sidebar extends Component {
     return (
       <div>
         <div className='main-img'>
-          <div className='main-word'>Freemed </div>
+          <a href ="/" className='main-word'>Freemed </a>
           <img src='../../images/logo.png'/>
         </div>
-        <ListItem button component={props => <Link to="/dashboard" {...props} />}>
+        <ListItem button component={props => <Link to={routes.MATCH_PATH_DASHBOARD} {...props} />}>
           <ListItemIcon>
             <DashboardIcon />
           </ListItemIcon>
-          <ListItemText primary="지원현황" />
+          <ListItemText primary="지원자 현황" />
         </ListItem>
         <ListItem button>
           <ListItemIcon>
@@ -59,7 +60,7 @@ class Sidebar extends Component {
             <List component="div" disablePadding>
               <ListItem button
                 className={classes.nested}
-                component={props => <Link to="/recruit/info" {...props} />}>
+                component={props => <Link to={routes.MATCH_PATH_RECRUIT_INFOMATION} {...props} />}>
                 <ListItemIcon>
                   <StarBorder />
                 </ListItemIcon>
@@ -69,7 +70,7 @@ class Sidebar extends Component {
             <List component="div" disablePadding>
               <ListItem
                 button className={classes.nested}
-                component={props => <Link to="/recruit/answer" {...props} />}>
+                component={props => <Link to={routes.MATCH_PATH_RECRUIT_ANSWER} {...props} />}>
                 <ListItemIcon>
                   <StarBorder />
                 </ListItemIcon>
@@ -78,18 +79,18 @@ class Sidebar extends Component {
             </List>
           </Collapse>
         <ListItem button
-          component={props => <Link to="/interview" {...props} />}>
+          component={props => <Link to={routes.MATCH_PATH_INTERVIEW} {...props} />}>
           <ListItemIcon>
             <PeopleIcon />
           </ListItemIcon>
           <ListItemText primary="면접시간 관리" />
         </ListItem>
         <ListItem button
-          component={props => <Link to="/question" {...props} />}>
+          component={props => <Link to={routes.MATCH_PATH_QUESTION} {...props} />}>
           <ListItemIcon>
             <BarChartIcon />
           </ListItemIcon>
-          <ListItemText primary="Reports" />
+          <ListItemText primary="본부질문 관리" />
         </ListItem>
     </div>
     )

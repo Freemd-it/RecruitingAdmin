@@ -5,6 +5,8 @@ export const MATCH_PATH_SIGNIN = '/signin'
 export const MATCH_PATH_DASHBOARD = '/dashboard'
 
 export const MATCH_PATH_RECRUIT = '/recruit'
+export const MATCH_PATH_RECRUIT_INFOMATION = '/recruit/info'
+export const MATCH_PATH_RECRUIT_ANSWER = '/recruit/answer'
 export const MATCH_PATH_RECRUIT_TYPE = '/recruit/:type'
 
 export const MATCH_PATH_INTERVIEW = '/interview'

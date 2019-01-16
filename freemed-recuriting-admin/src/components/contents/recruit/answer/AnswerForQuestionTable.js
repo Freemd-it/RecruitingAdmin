@@ -10,9 +10,9 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import CustomTooltip from '../../CustomTable/CustomTooltip/CustomTooltip'
-import CustomToolbar from '../../CustomTable/CustomToolbar/CustomToolbar'
-import CustomPagination from '../../CustomTable/CustomPagination/CustomPagination'
+import CustomTooltip from '../../customtable/CustomTooltip/CustomTooltip'
+import CustomToolbar from '../../customtable/CustomToolbar/CustomToolbar'
+import CustomPagination from '../../customtable/CustomPagination/CustomPagination'
 
 import _ from 'lodash'
 

@@ -10,9 +10,9 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import CustomTooltip from '../../CustomTable/CustomTooltip/CustomTooltip'
-import CustomToolbar from '../../CustomTable/CustomToolbar/CustomToolbar'
-import CustomPagination from '../../CustomTable/CustomPagination/CustomPagination'
+import CustomTooltip from '../customtable/CustomTooltip/CustomTooltip'
+import CustomToolbar from '../customtable/CustomToolbar/CustomToolbar'
+import CustomPagination from '../customtable/CustomPagination/CustomPagination'
 
 const tableStyle = theme => ({
   root: {
@@ -31,7 +31,7 @@ const tableStyle = theme => ({
 });
 
 
-class AnswerForQuestionTable extends Component {
+class QuestionTable extends Component {
   
   render() {
     const { classes } = this.props;
@@ -41,7 +41,7 @@ class AnswerForQuestionTable extends Component {
     return (
       <div>
         <Paper className={classes.root}>
-        <CustomToolbar numSelected={0} />
+        <CustomToolbar numSelected={0} title="본부질문 관리"/>
         <CustomTooltip />
           <div className={classes.tableWrapper}>
             <Table className={classes.table} id='table'>
@@ -92,8 +92,8 @@ class AnswerForQuestionTable extends Component {
   }
 }
 
-AnswerForQuestionTable.propTypes = {
+QuestionTable.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(tableStyle)(AnswerForQuestionTable);
+export default withStyles(tableStyle)(QuestionTable);

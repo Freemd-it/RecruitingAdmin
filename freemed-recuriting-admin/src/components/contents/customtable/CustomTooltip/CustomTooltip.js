@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
-import Modal from '../../Modal/Modal'
+import Modal from '../../question/Modal/Modal'
 
 import Tooltip from '@material-ui/core/Tooltip';
 import Fab from '@material-ui/core/Fab';

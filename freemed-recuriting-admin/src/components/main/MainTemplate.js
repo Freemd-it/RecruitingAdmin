@@ -1,5 +1,5 @@
 import React from 'react';
-import './MainTemplate.css';
+import './MainTemplate.scss';
 
 const MainTemplate = ({ contents, sidebar }) => (
   <div className="MainTemplate">
