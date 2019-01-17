@@ -14,6 +14,8 @@ import CustomTooltip from '../customtable/CustomTooltip/CustomTooltip'
 import CustomToolbar from '../customtable/CustomToolbar/CustomToolbar'
 import CustomPagination from '../customtable/CustomPagination/CustomPagination'
 
+import * as tableColumn from '../../../lib/service/tableColumn'
+
 const tableStyle = theme => ({
   root: {
     marginTop: theme.spacing.unit * 3,
@@ -46,10 +48,12 @@ class QuestionTable extends Component {
           <div className={classes.tableWrapper}>
             <Table className={classes.table} id='table'>
               <TableHead className={classes.head}>
-                <TableRow scope="row">
-                  <TableCell align="left">id</TableCell>
-                  <TableCell align="left">name</TableCell>
-                  <TableCell align="left">gender</TableCell>
+              <TableRow>
+                {
+                  tableColumn.interview.map((value, index) => {
+                    return <TableCell>{value}</TableCell>
+                  })
+                }
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -64,7 +68,7 @@ class QuestionTable extends Component {
                 })}
                 {emptyRows > 0 && (
                   <TableRow style={{ height: 48 * emptyRows }}>
-                    <TableCell colSpan={6} />
+                    <TableCell colSpan={tableColumn.interview.length} />
                   </TableRow>
                 )}
               </TableBody>

@@ -28,7 +28,7 @@ class RecruitManageContainer extends Component {
     return (
       <div>
         {
-          match.params.type === 'info' ||
+          match.params.type === 'info' &&
           <InformationTable
             page={page}
             rows={rows}
@@ -37,7 +37,7 @@ class RecruitManageContainer extends Component {
             handleChangeRowsPerPage={this.handleChangeRowsPerPage} />
         }
         {
-          match.params.type === 'answer' ||
+          match.params.type === 'answer' &&
           <AnswerForQuestionTable
             page={page}
             rows={rows}

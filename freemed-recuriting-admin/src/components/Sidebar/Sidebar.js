@@ -42,29 +42,29 @@ class Sidebar extends Component {
       <div>
         <div className='main-img'>
           <a href ="/" className='main-word'>Freemed </a>
-          <img src='../../images/logo.png'/>
+          <img src="../../static/images/logo.png" />
         </div>
         <ListItem button component={props => <Link to={routes.MATCH_PATH_DASHBOARD} {...props} />}>
           <ListItemIcon>
             <DashboardIcon />
           </ListItemIcon>
-          <ListItemText primary="지원자 현황" />
+          <ListItemText primary="지원자현황" />
         </ListItem>
         <ListItem button>
           <ListItemIcon>
             <BrokenImageIcon />
           </ListItemIcon>
-          <ListItemText primary="지원서 관리" onClick={this.handleClick}/>
+          <ListItemText primary="지원서관리" onClick={this.handleClick}/>
         </ListItem>
           <Collapse in={this.state.open} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button
                 className={classes.nested}
-                component={props => <Link to={routes.MATCH_PATH_RECRUIT_INFOMATION} {...props} />}>
+                component={props => <Link to={routes.MATCH_PATH_RECRUIT_INFORMATION} {...props} />}>
                 <ListItemIcon>
                   <StarBorder />
                 </ListItemIcon>
-                <ListItemText inset primary="신상정보 관리" />
+                <ListItemText inset primary="개인정보관리" />
               </ListItem>
             </List>
             <List component="div" disablePadding>
@@ -74,7 +74,7 @@ class Sidebar extends Component {
                 <ListItemIcon>
                   <StarBorder />
                 </ListItemIcon>
-                <ListItemText inset primary="질문답변 관리" />
+                <ListItemText inset primary="질문답변관리" />
               </ListItem>
             </List>
           </Collapse>

@@ -36,7 +36,6 @@ class RadarChart extends Component {
         <h3> 나이별 분포도 </h3>
         <Radar
           data={data}
-          width={200}
         />
       </div>
     );

@@ -13,6 +13,10 @@ import Paper from '@material-ui/core/Paper';
 import CustomTooltip from '../../customtable/CustomTooltip/CustomTooltip'
 import CustomToolbar from '../../customtable/CustomToolbar/CustomToolbar'
 import CustomPagination from '../../customtable/CustomPagination/CustomPagination'
+import * as tableColumn from '../../../../lib/service/tableColumn'
+
+import _ from 'lodash'
+
 
 const tableStyle = theme => ({
   root: {
@@ -31,31 +35,40 @@ const tableStyle = theme => ({
 });
 
 
-class AnswerForQuestionTable extends Component {
+class InformationTable extends Component {
   
   render() {
-    const { classes } = this.props;
-    const { rows, rowsPerPage, page, handleChangePage, handleChangeRowsPerPage } = this.props;
+    const { 
+      classes,
+      rows,
+      rowsPerPage,
+      page,
+      handleChangePage,
+      handleChangeRowsPerPage,
+      elements,
+    } = this.props;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
     return (
       <div>
         <Paper className={classes.root}>
-        <CustomToolbar numSelected={0} title="질문답변관리"/>
+        <CustomToolbar numSelected={0} title="개인정보관리" />
         <CustomTooltip />
           <div className={classes.tableWrapper}>
             <Table className={classes.table} id='table'>
               <TableHead className={classes.head}>
                 <TableRow scope="row">
-                  <TableCell align="left">id</TableCell>
-                  <TableCell align="left">name</TableCell>
-                  <TableCell align="left">gender</TableCell>
+                {
+                  tableColumn.information.map((value, index) => {
+                    return <TableCell>{value}</TableCell>
+                  })
+                }
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
+                {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => {
                   return (
-                    <TableRow key={row.id}>
+                    <TableRow key={index}>
                       <TableCell component="th" scope="row"> {row.id} </TableCell>
                       <TableCell align="left">{row.name}</TableCell>
                       <TableCell align="left">{row.gender}</TableCell>
@@ -64,7 +77,7 @@ class AnswerForQuestionTable extends Component {
                 })}
                 {emptyRows > 0 && (
                   <TableRow style={{ height: 48 * emptyRows }}>
-                    <TableCell colSpan={6} />
+                    <TableCell colSpan={tableColumn.answer.length} />
                   </TableRow>
                 )}
               </TableBody>
@@ -72,7 +85,7 @@ class AnswerForQuestionTable extends Component {
                 <TableRow>
                   <TablePagination
                     rowsPerPageOptions={[5, 10, 25]}
-                    colSpan={13}
+                    colSpan={tableColumn.answer.length}
                     count={rows.length}
                     rowsPerPage={rowsPerPage}
                     page={page}
@@ -92,8 +105,8 @@ class AnswerForQuestionTable extends Component {
   }
 }
 
-AnswerForQuestionTable.propTypes = {
+InformationTable.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(tableStyle)(AnswerForQuestionTable);
+export default withStyles(tableStyle)(InformationTable);

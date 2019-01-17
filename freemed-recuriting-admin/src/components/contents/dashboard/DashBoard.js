@@ -17,13 +17,14 @@ class DashBoard extends Component {
       <div className="chart-wrapper">
         <div className="chart-container">
           <RadarChart className='item'/>
-          <Piechart className='item'/>
-        </div>
-        <div className="chart-container">
           <Mixedchart className='item'/>
-          
         </div>
         <div className="chart-container">
+          <Piechart className='item'/>
+          <div className='item'/>
+        </div>
+        <div className="chart-container">
+        
         </div>
       </div>
       </Paper>

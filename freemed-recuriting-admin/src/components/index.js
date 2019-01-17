@@ -5,7 +5,7 @@ import LoginTemplate from './main/login/LoginTemplate';
 import Contents from './contents/Contents';
 import DashBoard from './contents/dashboard/DashBoard';
 import AnswerForQuestionTable from './contents/recruit/answer/AnswerForQuestionTable'
-import InformationTable from './contents/recruit/infomation/InfomationTable'
+import InformationTable from './contents/recruit/information/InformationTable'
 import QuestionTable from './contents/question/QuestionTable'
 import InterviewTimeTable from './contents/interview/InterviewTimeTable'
 

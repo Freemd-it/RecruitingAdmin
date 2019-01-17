@@ -13,8 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import CustomTooltip from '../../customtable/CustomTooltip/CustomTooltip'
 import CustomToolbar from '../../customtable/CustomToolbar/CustomToolbar'
 import CustomPagination from '../../customtable/CustomPagination/CustomPagination'
-
-import _ from 'lodash'
+import * as tableColumn from '../../../../lib/service/tableColumn'
 
 const tableStyle = theme => ({
   root: {
@@ -36,39 +35,30 @@ const tableStyle = theme => ({
 class AnswerForQuestionTable extends Component {
   
   render() {
-    const { 
-      classes,
-      rows,
-      rowsPerPage,
-      page,
-      handleChangePage,
-      handleChangeRowsPerPage,
-      elements,
-    } = this.props;
+    const { classes } = this.props;
+    const { rows, rowsPerPage, page, handleChangePage, handleChangeRowsPerPage } = this.props;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
     return (
       <div>
         <Paper className={classes.root}>
-        <CustomToolbar numSelected={0} title={"개인정보관리"} />
+        <CustomToolbar numSelected={0} title="질문답변관리"/>
         <CustomTooltip />
           <div className={classes.tableWrapper}>
             <Table className={classes.table} id='table'>
               <TableHead className={classes.head}>
                 <TableRow scope="row">
-                { elements &&
-                  _.map(elements, (value,index) => {
-                    return (
-                      <TableCell aline="left"> {value} </TableCell>
-                    )
+                {
+                  tableColumn.answer.map((value, index) => {
+                    return <TableCell>{value}</TableCell>
                   })
                 }
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => {
+                {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
                   return (
-                    <TableRow key={index}>
+                    <TableRow key={row.id}>
                       <TableCell component="th" scope="row"> {row.id} </TableCell>
                       <TableCell align="left">{row.name}</TableCell>
                       <TableCell align="left">{row.gender}</TableCell>
@@ -77,7 +67,7 @@ class AnswerForQuestionTable extends Component {
                 })}
                 {emptyRows > 0 && (
                   <TableRow style={{ height: 48 * emptyRows }}>
-                    <TableCell colSpan={6} />
+                    <TableCell colSpan={tableColumn.information.length} />
                   </TableRow>
                 )}
               </TableBody>
