@@ -14,6 +14,11 @@
   margin-top: 15px;
   padding: 20px
 }
+.chart-sub-container {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
 .item {
-  width: 40%;
+  width: 50%;
 }

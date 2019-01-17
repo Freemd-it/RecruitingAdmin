@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import DashBoard from '../../components/contents/dashboard/DashBoard'
 
 class DashBoardViewerContainer extends Component {
   render() {
     return (
-      <div>
+      <Fragment>
         <DashBoard />
-      </div>
+      </Fragment>
     )
   }
 }

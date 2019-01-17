@@ -3,13 +3,13 @@ import {Pie} from 'react-chartjs-2';
 
 const data = {
 	labels: [
-		'Red',
-		'Green',
-    'Yellow',
-    'Yellow',
-    'Yellow',
-    'Yellow',
-    'Yellow',
+		'서울대학교',
+		'고려대학교',
+    '연세대학교',
+    '중앙대학교',
+    '홍익대학교',
+    '가천대학교',
+    '숙명여자대학교',
 	],
 	datasets: [{
 		data: [300, 50, 100, 100, 100, 100, 100],
@@ -36,6 +36,8 @@ const data = {
 
 class PieChart extends Component {
   
+
+
   render() {
     return (
       <div className='pie-wrapper'>

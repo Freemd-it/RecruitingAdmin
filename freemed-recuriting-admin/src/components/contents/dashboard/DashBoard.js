@@ -16,15 +16,11 @@ class DashBoard extends Component {
       <CustomToolbar numSelected={0} title="지원자 현황" />
       <div className="chart-wrapper">
         <div className="chart-container">
-          <RadarChart className='item'/>
+          <div className="chart-sub-container">
+            <RadarChart className='item'/>
+            <Piechart className='item'/>
+          </div>
           <Mixedchart className='item'/>
-        </div>
-        <div className="chart-container">
-          <Piechart className='item'/>
-          <div className='item'/>
-        </div>
-        <div className="chart-container">
-        
         </div>
       </div>
       </Paper>

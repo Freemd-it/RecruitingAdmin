@@ -14,12 +14,16 @@ import { withStyles } from '@material-ui/core';
 import * as routes from '../../lib/service/routes'
 
 import './Sidebar.css'
+import logo from '../../static/images/logo.png'
+import slogan from '../../static/images/slogan.png'
+
 
 const styles = theme => ({
   root: {
     width: '200px',
     maxWidth: '200px',
     backgroundColor: theme.palette.background.paper,
+    border: '1px solid #cccccc'
   },
   nested: {
     paddingLeft: theme.spacing.unit * 4,
@@ -39,10 +43,10 @@ class Sidebar extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div>
+      <div className={classes.root}>
         <div className='main-img'>
-          <a href ="/" className='main-word'>Freemed </a>
-          <img src="../../static/images/logo.png" />
+          <img src={logo} />
+          <img src={slogan} />
         </div>
         <ListItem button component={props => <Link to={routes.MATCH_PATH_DASHBOARD} {...props} />}>
           <ListItemIcon>

@@ -30,7 +30,6 @@ const data = {
 };
 
 const options = {
-  // maintainAspectRatio: false,
   responsive: true,
   tooltips: {
     mode: 'label'

@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import CustomTooltip from '../customtable/CustomTooltip/CustomTooltip'
 import CustomToolbar from '../customtable/CustomToolbar/CustomToolbar'
 import CustomPagination from '../customtable/CustomPagination/CustomPagination'
+import * as tableColumn from '../../../lib/service/tableColumn'
 
 const tableStyle = theme => ({
   root: {
@@ -47,10 +48,12 @@ class QuestionTable extends Component {
             <Table className={classes.table} id='table'>
               <TableHead className={classes.head}>
                 <TableRow scope="row">
-                  <TableCell align="left">id</TableCell>
-                  <TableCell align="left">name</TableCell>
-                  <TableCell align="left">gender</TableCell>
-                </TableRow>
+                  {
+                    tableColumn.question.map((value, index) => {
+                      return <TableCell>{value}</TableCell>
+                    })
+                  }
+                  </TableRow>
               </TableHead>
               <TableBody>
                 {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
@@ -64,7 +67,7 @@ class QuestionTable extends Component {
                 })}
                 {emptyRows > 0 && (
                   <TableRow style={{ height: 48 * emptyRows }}>
-                    <TableCell colSpan={6} />
+                    <TableCell colSpan={tableColumn.question.length} />
                   </TableRow>
                 )}
               </TableBody>

@@ -77,7 +77,7 @@ class InformationTable extends Component {
                 })}
                 {emptyRows > 0 && (
                   <TableRow style={{ height: 48 * emptyRows }}>
-                    <TableCell colSpan={tableColumn.answer.length} />
+                    <TableCell colSpan={tableColumn.information.length} />
                   </TableRow>
                 )}
               </TableBody>
@@ -85,7 +85,7 @@ class InformationTable extends Component {
                 <TableRow>
                   <TablePagination
                     rowsPerPageOptions={[5, 10, 25]}
-                    colSpan={tableColumn.answer.length}
+                    colSpan={tableColumn.information.length}
                     count={rows.length}
                     rowsPerPage={rowsPerPage}
                     page={page}

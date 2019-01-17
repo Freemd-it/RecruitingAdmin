@@ -4,39 +4,39 @@ import { Radar } from 'react-chartjs-2';
 import './RadarChart.css'
 
 const data = {
-  labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
+  labels: ['1학년', '2학년', '3학년', '4학년', '직장인'],
   datasets: [
     {
-      label: 'My First dataset',
-      backgroundColor: 'rgba(179,181,198,0.2)',
-      borderColor: 'rgba(179,181,198,1)',
-      pointBackgroundColor: 'rgba(179,181,198,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(179,181,198,1)',
-      data: [65, 59, 90, 81, 56, 55, 40]
-    },
-    {
-      label: 'My Second dataset',
+      label: '학년별 인원 분포도',
       backgroundColor: 'rgba(255,99,132,0.2)',
       borderColor: 'rgba(255,99,132,1)',
       pointBackgroundColor: 'rgba(255,99,132,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(255,99,132,1)',
-      data: [28, 48, 40, 19, 96, 27, 100]
-    }
+      data: [13, 25, 16, 18, 3]
+    },
+    // {
+    //   label: 'My Second dataset',
+    //   backgroundColor: 'rgba(255,99,132,0.2)',
+    //   borderColor: 'rgba(255,99,132,1)',
+    //   pointBackgroundColor: 'rgba(255,99,132,1)',
+    //   pointBorderColor: '#fff',
+    //   pointHoverBackgroundColor: '#fff',
+    //   pointHoverBorderColor: 'rgba(255,99,132,1)',
+    //   data: [28, 48, 40, 19, 96]
+    // }
   ]
 };
 
 class RadarChart extends Component {
   render() {
     return (
-      <div className='rader-wrapper'>
+      <div>
         <h3> 나이별 분포도 </h3>
-        <Radar
-          data={data}
-        />
+        <div className='rader-wrapper'>
+          <Radar data={data} />
+        </div>
       </div>
     );
   }

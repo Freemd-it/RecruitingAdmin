@@ -37,7 +37,7 @@ class RecruitManageContainer extends Component {
             handleChangeRowsPerPage={this.handleChangeRowsPerPage} />
         }
         {
-          match.params.type === 'answer' &&
+          match.params.type === 'answers' &&
           <AnswerForQuestionTable
             page={page}
             rows={rows}

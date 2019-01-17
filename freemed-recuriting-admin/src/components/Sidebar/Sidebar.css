@@ -8,12 +8,16 @@
   color: white;
   padding: 20px;
 }
-
+.sidebar-wrapper {
+  /* border: 1px solid #cccccc; */
+}
 .main-img {
   display: flex;
-  width: 30px;
-  height: 30px;
-  margin: 30px;
+  flex-direction: column;
+  width: 150px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .main-word {
