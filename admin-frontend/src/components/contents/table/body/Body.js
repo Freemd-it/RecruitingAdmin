@@ -17,7 +17,7 @@ const Body = ({columns, data, onClick = () => {}}) => {
             if (typeof value === 'string') return <TableCell key={index}>{value}</TableCell>;
             else  return <TableCell key={index}>{value ? 'O' : ''}</TableCell>;
           });
-          return <TableRow key={key} onClick={onClick}>{ returnData }</TableRow>
+          return <TableRow hover key={key} onClick={onClick}>{ returnData }</TableRow>
         })
       }
     </TableBody>

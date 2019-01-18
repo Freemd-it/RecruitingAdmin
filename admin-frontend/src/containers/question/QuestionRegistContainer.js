@@ -1,25 +1,62 @@
 import React, { Component } from 'react'
-import { QuestionTable } from '../../components'
+import { Table, Modal } from '../../components'
+import Button from '@material-ui/core/Button';
 
-const user = {
-  id: '1',
-  name: 'dongsu',
-  gender: 'M',
-}
+const data = [{
+  department: 'IT',
+  team: '우리팀',
+  question: '안녕하세요?',
+  cardinality: '11',
+  writer: '이필주',
+  create: '2019-01-01',
+  is_question: true,
+}]
 
 class QuestionRegistContainer extends Component {
   state = {
-    rows: [user].sort((a, b) => (a.calories < b.calories ? -1 : 1)),
+    rows: [],
     page: 0,
     rowsPerPage: 10,
+    isAddModal: false,
+    isDetailModal: false,
   };
 
-  handleChangePage = (event, page) => {
-    this.setState({ page })
+  componentDidMount() {
+    this.setState({
+      rows: data
+    });
   }
 
-  handleChangeRowsPerPage = event => {
-    this.setState({ rowsPerPage: event.target.value })
+  onClick = value => {
+    this.onDetailModal(value);
+  }
+
+  onAddModal = value => {
+    this.setState(prevState => {
+      const data = {
+        isAddModal: !prevState.isAddModal
+      }
+      if (!prevState.isAddModal) {
+        data.value = value;
+      } else {
+        data.value = '';
+      }
+      return data;
+    });
+  }
+
+  onDetailModal = value => {
+    this.setState(prevState => {
+      const data = {
+        isDetailModal: !prevState.isDetailModal
+      }
+      if (!prevState.isDetailModal) {
+        data.value = <div>응디테일</div>
+      } else {
+        data.value = '';
+      }
+      return data;
+    });
   }
 
   render() {
@@ -27,14 +64,34 @@ class QuestionRegistContainer extends Component {
     const { page, rows, rowsPerPage} = this.state
     return (
       <div>
-        {
-          <QuestionTable
-            page={page}
-            rows={rows}
-            rowsPerPage={rowsPerPage}
-            handleChangePage={this.handleChangePage}
-            handleChangeRowsPerPage={this.handleChangeRowsPerPage} />
-        }
+        <Button 
+          variant="contained" 
+          color="primary"
+          onClick={e => this.onAddModal(<div>추가하기당</div>)}
+        >
+          질문 추가하기
+        </Button>
+        <Table
+          title={'본부질문 관리'}
+          columns={this.props.columns}
+          data={this.state.rows}
+          totalLength={1000}
+          onClick={this.onClick}
+        />
+
+        <Modal
+          title={"detailModal"}
+          contents={this.state.value}
+          open={this.state.isDetailModal}
+          onModal={this.onDetailModal}
+        />
+
+        <Modal
+          title={"addModal"}
+          contents={this.state.value}
+          open={this.state.isAddModal}
+          onModal={this.onAddModal}
+        />
       </div>
     )
   }

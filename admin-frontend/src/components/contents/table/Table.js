@@ -45,7 +45,7 @@ class Table extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { onClick, classes } = this.props;
     return (
       <div>
         <Paper className={classes.root}>
@@ -54,7 +54,7 @@ class Table extends Component {
           <div className={classes.tableWrapper}>
             <TableTemplate className={classes.table} id='table'>
               <Header columns={this.props.columns}/>
-              <Body columns={this.props.columns} data={this.props.data}/>
+              <Body columns={this.props.columns} data={this.props.data} onClick={onClick}/>
             </TableTemplate>
           </div>
         </Paper>

@@ -25,9 +25,11 @@ class Contents extends Component {
             path={ routes.MATCH_PATH_INTERVIEW }
             render={ (props) => { return <InterviewManageContainer {...props} rowsPerPage={rowsPerPage} columns={Columns.interview2}/> }} 
           />
-          <Route
-            path={routes.MATCH_PATH_QUESTION}
-            render={ (props) => { return <QuestionRegistContainer {...props} rowsPerPage={rowsPerPage} columns={Columns.interview2}/> }}
+          <Route 
+            path={routes.MATCH_PATH_QUESTION} 
+            render={() =>{
+              return <QuestionRegistContainer rowsPerPage={rowsPerPage} columns={Columns.question2}/>
+            }} 
           />
         </Switch>
       </div>

@@ -6,8 +6,8 @@ import Contents from './contents/Contents';
 import DashBoard from './contents/dashboard/DashBoard';
 import AnswerForQuestionTable from './contents/recruit/answer/AnswerForQuestionTable'
 import InformationTable from './contents/recruit/information/InformationTable'
-import QuestionTable from './contents/question/QuestionTable'
 import InterviewTimeTable from './contents/interview/InterviewTimeTable'
+import Modal from './modal/Modal';
 
 
 export {
@@ -18,7 +18,7 @@ export {
   Contents,
   DashBoard,
   AnswerForQuestionTable,
-  QuestionTable,
+  Modal,
   InformationTable,
   InterviewTimeTable,
 };
