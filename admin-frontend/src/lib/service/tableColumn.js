@@ -1,26 +1,86 @@
-export const information = [
-  '이름',
-  '성별',
-  '생년월일',
-  '전화번호',
-  'email',
-  'sns',
-  '주소',
-  '학력',
-  '경력',
-  '1지망',
-  '2지망',
-]
-export const answer = [
-  '이름',
-  '전화번호',
-  '1지망',
-  '2지망',
-  '단체공통1',
-  '단체공통2',
-  '본부공통',
-  '팀'
-]
+export const recruit = {
+  information: [
+    {
+      key: 'name',
+      value: '이름',
+    },
+    {
+      key: 'english_name',
+      value: '성별',
+    },
+    {
+      key: 'birth_date',
+      value: '생년월일',
+    },
+    {
+      key: 'phone_number',
+      value: '전화번호',
+    },
+    {
+      key: 'email',
+      value: 'email',
+    },
+    {
+      key: 'sns',
+      value: 'sns',
+    },
+    {
+      key: 'address',
+      value:'주소',
+    },
+    {
+      key: 'academic_career',
+      value:'학력',
+    },
+    {
+      key: 'special_info',
+      value: '경력',
+    },
+    {
+      key: 'department',
+      value:  '1지망',
+    },
+    {
+      key: 'secondary_department',
+      value: '2지망',
+    },
+  ],
+  answer: [
+    {
+      key: 'name',
+      value: '이름',
+    },
+    {
+      key: 'phone_number',
+      value: '전화번호',
+    },
+    {
+      key: 'department',
+      value: '1지망',
+    },
+    {
+      key: 'secondary_department',
+      value: '2지망',
+    },
+    {
+      key: 'common_first',
+      value:'단체공통1',
+    },
+    {
+      key: 'common_second',
+      value: '단체공통2',
+    },
+    {
+      key: 'common_department',
+      value: '본부공통',
+    },
+    {
+      key: 'common_team',
+      value: '팀'
+    },
+  ]
+}
+
 export const question = [
   '본부명',
   '팀명',

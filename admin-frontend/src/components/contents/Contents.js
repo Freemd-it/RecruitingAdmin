@@ -4,7 +4,7 @@ import {
   DashBoardViewerContainer, RecruitManageContainer, QuestionRegistContainer, InterviewManageContainer,
 } from '../../containers'
 
-import { interview2 } from '../../lib/service/tableColumn';
+import * as Columns from '../../lib/service/tableColumn';
 import * as routes from '../../lib/service/routes'
 import './Contents.css'
 
@@ -14,15 +14,21 @@ class Contents extends Component {
     return (
       <div className="contents-board-main">
         <Switch>
-          <Route path={routes.MATCH_PATH_DASHBOARD} component={DashBoardViewerContainer} />
-          <Route path={routes.MATCH_PATH_RECRUIT_TYPE} component={RecruitManageContainer} />
-          <Route 
-            path={routes.MATCH_PATH_INTERVIEW} 
-            render={() => {
-              return <InterviewManageContainer rowsPerPage={rowsPerPage} columns={interview2}/> 
-            }} 
+          <Route
+            path={routes.MATCH_PATH_DASHBOARD}
+            component={DashBoardViewerContainer}
           />
-          <Route path={routes.MATCH_PATH_QUESTION} component={QuestionRegistContainer} />
+          <Route
+            path={routes.MATCH_PATH_RECRUIT_TYPE}
+            render={ (props) => { return <RecruitManageContainer {...props} rowsPerPage={rowsPerPage} columns={Columns.recruit}/> }} />
+          <Route 
+            path={ routes.MATCH_PATH_INTERVIEW }
+            render={ (props) => { return <InterviewManageContainer {...props} rowsPerPage={rowsPerPage} columns={Columns.interview2}/> }} 
+          />
+          <Route
+            path={routes.MATCH_PATH_QUESTION}
+            render={ (props) => { return <QuestionRegistContainer {...props} rowsPerPage={rowsPerPage} columns={Columns.interview2}/> }}
+          />
         </Switch>
       </div>
     )

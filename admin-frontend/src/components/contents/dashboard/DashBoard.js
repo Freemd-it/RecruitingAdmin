@@ -3,7 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import Piechart from './charts/PieChart/PieChart'
 import RadarChart from './charts/RadarChart/RadarChart'
 import Mixedchart from './charts/MixedChart/MixedChart'
-import CustomToolbar from '../customtable/CustomToolbar/CustomToolbar'
+import Toolbar from '../table/toolbar/Toolbar'
 
 import './DashBoard.css'
 
@@ -13,7 +13,7 @@ class DashBoard extends Component {
     console.log('dashboard', chartData)
     return (
       <Paper>
-        <CustomToolbar numSelected={0} title="지원자 현황" />
+        <Toolbar title="지원자 현황" />
         <div className="chart-wrapper">
           <div className="chart-container">
             <div className="chart-sub-container">

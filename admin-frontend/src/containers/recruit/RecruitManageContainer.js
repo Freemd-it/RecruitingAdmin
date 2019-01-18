@@ -1,11 +1,88 @@
 import React, { Component } from 'react'
-import { AnswerForQuestionTable, InformationTable} from '../../components'
+import { Table} from '../../components'
 
-const user = {
-  id: '1',
+const user = [{
+  department: 'IT',
+  team: 'IT팀',
+  secondary_department: '무진',
+  secondary_team: '무진팀',
   name: 'dongsu',
-  gender: 'M',
-}
+  phone_number: '0690',
+  isDuplicatedInterview: true, // 이중면접
+  time: 0
+}, {
+  department: 'IT',
+  team: '',
+  secondary_department: '무진',
+  secondary_team: '',
+  name: 'dongsu',
+  phone_number: '0690',
+  isDuplicatedInterview: false, // 이중면접
+  time: 0
+}, {
+  department: 'IT',
+  team: '',
+  secondary_department: '무진',
+  secondary_team: '',
+  name: 'dongsu',
+  phone_number: '0690',
+  isDuplicatedInterview: false, // 이중면접
+  time: 0
+}, {
+  department: 'IT',
+  team: '',
+  secondary_department: '무진',
+  secondary_team: '',
+  name: 'dongsu',
+  phone_number: '0690',
+  isDuplicatedInterview: false, // 이중면접
+  time: 0
+}, {
+  department: 'IT',
+  team: '',
+  secondary_department: '무진',
+  secondary_team: '',
+  name: 'dongsu',
+  phone_number: '0690',
+  isDuplicatedInterview: false, // 이중면접
+  time: 0
+}, {
+  department: 'IT',
+  team: '',
+  secondary_department: '무진',
+  secondary_team: '',
+  name: 'dongsu',
+  phone_number: '0690',
+  isDuplicatedInterview: false, // 이중면접
+  time: 0
+}, {
+  department: 'IT',
+  team: '',
+  secondary_department: '무진',
+  secondary_team: '',
+  name: 'dongsu',
+  phone_number: '0690',
+  isDuplicatedInterview: false, // 이중면접
+  time: 0
+}, {
+  department: 'IT',
+  team: '',
+  secondary_department: '무진',
+  secondary_team: '',
+  name: 'dongsu',
+  phone_number: '0690',
+  isDuplicatedInterview: false, // 이중면접
+  time: 0
+}, {
+  department: 'IT',
+  team: '',
+  secondary_department: '무진',
+  secondary_team: '',
+  name: 'dongsu',
+  phone_number: '0690',
+  isDuplicatedInterview: false, // 이중면접
+  time: 0
+}];
 
 class RecruitManageContainer extends Component {
   state = {
@@ -29,21 +106,23 @@ class RecruitManageContainer extends Component {
       <div>
         {
           match.params.type === 'info' &&
-          <InformationTable
-            page={page}
-            rows={rows}
-            rowsPerPage={rowsPerPage}
-            handleChangePage={this.handleChangePage}
-            handleChangeRowsPerPage={this.handleChangeRowsPerPage} />
+          <Table
+            type={match.params.type}
+            title={'개인정보 관리'}
+            columns={this.props.columns['information']}
+            data={user}
+            totalLength={1000}
+          />
         }
         {
           match.params.type === 'answers' &&
-          <AnswerForQuestionTable
-            page={page}
-            rows={rows}
-            rowsPerPage={rowsPerPage}
-            handleChangePage={this.handleChangePage}
-            handleChangeRowsPerPage={this.handleChangeRowsPerPage} />
+          <Table
+            type={match.params.type}
+            title={'질문답변 관리'}
+            columns={this.props.columns['answer']}
+            data={user}
+            totalLength={1000}
+        />
         }
       </div>
     )

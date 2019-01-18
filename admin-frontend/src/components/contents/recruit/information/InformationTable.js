@@ -10,9 +10,9 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import CustomTooltip from '../../customtable/CustomTooltip/CustomTooltip'
-import CustomToolbar from '../../customtable/CustomToolbar/CustomToolbar'
-import CustomPagination from '../../customtable/CustomPagination/CustomPagination'
+import Tooltip from '../../table/tooltip/Tooltip'
+import Toolbar from '../../table/toolbar/Toolbar'
+import pagination from '../../table/pagination/Pagination'
 import * as tableColumn from '../../../../lib/service/tableColumn'
 
 // import _ from 'lodash'
@@ -51,18 +51,18 @@ class InformationTable extends Component {
     return (
       <div>
         <Paper className={classes.root}>
-        <CustomToolbar numSelected={0} title="개인정보관리" />
-        <CustomTooltip />
+        <Toolbar numSelected={0} title="개인정보관리" />
+        <Tooltip />
           <div className={classes.tableWrapper}>
             <Table className={classes.table} id='table'>
               <TableHead className={classes.head}>
-                <TableRow scope="row">
+                {/* <TableRow scope="row">
                 {
                   tableColumn.information.map((value, index) => {
                     return <TableCell>{value}</TableCell>
                   })
                 }
-                </TableRow>
+                </TableRow> */}
               </TableHead>
               <TableBody>
                 {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => {
@@ -76,7 +76,7 @@ class InformationTable extends Component {
                 })}
                 {emptyRows > 0 && (
                   <TableRow style={{ height: 48 * emptyRows }}>
-                    <TableCell colSpan={tableColumn.information.length} />
+                    <TableCell colSpan={10} />
                   </TableRow>
                 )}
               </TableBody>
@@ -84,14 +84,14 @@ class InformationTable extends Component {
                 <TableRow>
                   <TablePagination
                     rowsPerPageOptions={[5, 10, 25]}
-                    colSpan={tableColumn.information.length}
+                    colSpan={10}
                     count={rows.length}
                     rowsPerPage={rowsPerPage}
                     page={page}
                     SelectProps={{ native: true }}
                     onChangePage={handleChangePage}
                     onChangeRowsPerPage={handleChangeRowsPerPage}
-                    ActionsComponent={CustomPagination}
+                    ActionsComponent={pagination}
                   />
                 </TableRow>
               </TableFooter>

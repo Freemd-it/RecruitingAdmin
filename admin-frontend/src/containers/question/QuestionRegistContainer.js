@@ -28,7 +28,6 @@ class QuestionRegistContainer extends Component {
     return (
       <div>
         {
-          match.params.type === 'info' ||
           <QuestionTable
             page={page}
             rows={rows}

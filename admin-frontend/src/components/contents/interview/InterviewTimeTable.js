@@ -10,9 +10,9 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import CustomTooltip from '../customtable/CustomTooltip/CustomTooltip'
-import CustomToolbar from '../customtable/CustomToolbar/CustomToolbar'
-import CustomPagination from '../customtable/CustomPagination/CustomPagination'
+import Tooltip from '../table/tooltip/Tooltip'
+import Toolbar from '../table/toolbar/Toolbar'
+import pagination from '../table/pagination/Pagination'
 
 import * as tableColumn from '../../../lib/service/tableColumn'
 
@@ -43,8 +43,8 @@ class QuestionTable extends Component {
     return (
       <div>
         <Paper className={classes.root}>
-        <CustomToolbar numSelected={0} title="면접시간 관리"/>
-        <CustomTooltip />
+        <Toolbar title="면접시간 관리"/>
+        <Tooltip />
           <div className={classes.tableWrapper}>
             <Table className={classes.table} id='table'>
               <TableHead className={classes.head}>
@@ -110,7 +110,7 @@ class QuestionTable extends Component {
                     SelectProps={{ native: true }}
                     onChangePage={handleChangePage}
                     onChangeRowsPerPage={handleChangeRowsPerPage}
-                    ActionsComponent={CustomPagination}
+                    ActionsComponent={pagination}
                   />
                 </TableRow>
               </TableFooter>

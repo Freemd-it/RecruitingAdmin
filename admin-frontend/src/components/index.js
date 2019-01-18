@@ -1,5 +1,5 @@
 import Sidebar from './sidebar/Sidebar';
-import CustomTable from './contents/customtable/CustomTable';
+import Table from './contents/table/Table';
 import MainTemplate from './main/MainTemplate';
 import LoginTemplate from './main/login/LoginTemplate';
 import Contents from './contents/Contents';
@@ -12,7 +12,7 @@ import InterviewTimeTable from './contents/interview/InterviewTimeTable'
 
 export {
   Sidebar,
-  CustomTable,
+  Table,
   MainTemplate,
   LoginTemplate,
   Contents,

@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import Modal from '../../question/Modal/Modal'
 
-import Tooltip from '@material-ui/core/Tooltip';
+import BasicTooltip from '@material-ui/core/Tooltip';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 
@@ -17,7 +17,7 @@ const toolTipStyle = theme => ({
   },
 });
 
-class CustomTooltip extends React.Component {
+class Tooltip extends React.Component {
   state = {
     open: false,
   };
@@ -38,11 +38,11 @@ class CustomTooltip extends React.Component {
         <ReactHTMLTableToExcel className={classes.sizeSmall} table="table"
           filename="dashBoard" sheet="프리메드지원서" buttonText="엑셀"/>
   
-        <Tooltip title="Add" aria-label="Add" size="small" className="items" >
+        <BasicTooltip title="Add" aria-label="Add" size="small" className="items" >
           <Fab color="primary" className={classes.sizeSmall} onClick={this.handleOpen}>
             <AddIcon />
           </Fab>
-        </Tooltip>
+        </BasicTooltip>
         { open && <Modal open={this.state.open} onClose={this.handleClose}/>}
       </div>
     );
@@ -51,8 +51,8 @@ class CustomTooltip extends React.Component {
 
   
 
-CustomTooltip.propTypes = {
+Tooltip.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(toolTipStyle)(CustomTooltip);
+export default withStyles(toolTipStyle)(Tooltip);

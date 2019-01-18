@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
 
 let EnhancedTableToolbar = props => {
-  const { numSelected, classes, title } = props;
+  const { classes, title } = props;
   return (
     <Toolbar className={classes.root}>
       <div className={classes.title}>
@@ -22,7 +22,6 @@ let EnhancedTableToolbar = props => {
 
 EnhancedTableToolbar.propTypes = {
   classes: PropTypes.object.isRequired,
-  numSelected: PropTypes.number.isRequired,
 };
 
 const toolbarStyles = theme => ({

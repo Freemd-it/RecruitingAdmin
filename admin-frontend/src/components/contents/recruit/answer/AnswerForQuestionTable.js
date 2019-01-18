@@ -10,9 +10,9 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import CustomTooltip from '../../customtable/CustomTooltip/CustomTooltip'
-import CustomToolbar from '../../customtable/CustomToolbar/CustomToolbar'
-import CustomPagination from '../../customtable/CustomPagination/CustomPagination'
+import Tooltip from '../../table/tooltip/Tooltip'
+import Toolbar from '../../table/toolbar/Toolbar'
+import pagination from '../../table/pagination/Pagination'
 import * as tableColumn from '../../../../lib/service/tableColumn'
 
 const tableStyle = theme => ({
@@ -42,17 +42,17 @@ class AnswerForQuestionTable extends Component {
     return (
       <div>
         <Paper className={classes.root}>
-        <CustomToolbar numSelected={0} title="질문답변관리"/>
-        <CustomTooltip />
+        <Toolbar numSelected={0} title="질문답변관리"/>
+        <Tooltip />
           <div className={classes.tableWrapper}>
             <Table className={classes.table} id='table'>
               <TableHead className={classes.head}>
                 <TableRow scope="row">
-                {
+                {/* {
                   tableColumn.answer.map((value, index) => {
                     return <TableCell>{value}</TableCell>
                   })
-                }
+                } */}
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -67,7 +67,7 @@ class AnswerForQuestionTable extends Component {
                 })}
                 {emptyRows > 0 && (
                   <TableRow style={{ height: 48 * emptyRows }}>
-                    <TableCell colSpan={tableColumn.information.length} />
+                    <TableCell colSpan={10} />
                   </TableRow>
                 )}
               </TableBody>
@@ -82,7 +82,7 @@ class AnswerForQuestionTable extends Component {
                     SelectProps={{ native: true }}
                     onChangePage={handleChangePage}
                     onChangeRowsPerPage={handleChangeRowsPerPage}
-                    ActionsComponent={CustomPagination}
+                    ActionsComponent={pagination}
                   />
                 </TableRow>
               </TableFooter>
