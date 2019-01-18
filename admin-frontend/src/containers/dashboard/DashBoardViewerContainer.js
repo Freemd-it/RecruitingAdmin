@@ -1,18 +1,34 @@
 import React, { Component, Fragment } from 'react'
 import DashBoard from '../../components/contents/dashboard/DashBoard'
-import * as axiosTest from '../../lib/api/chart'
+import * as axios from '../../lib/api/chart'
 
 class DashBoardViewerContainer extends Component {
+  state = {
+    chartData: null,
+  }
 
-  async componentDidMount() {
-    console.log('123123123123231')
-    console.log('tttt', await axiosTest.test())
+  componentDidMount () {
+   this._getData()
+  }
+
+  _getData = async () => {
+    const chartData = await this._callApi()
+    this.setState({
+     chartData,
+   })
+  }
+
+  _callApi = () => {
+    return axios.getChartData()
+      .then(res => res.data)
+      .catch(err => err)
   }
 
   render() {
+    const { chartData } = this.state
     return (
       <Fragment>
-        <DashBoard />
+        <DashBoard chartData={chartData}/>
       </Fragment>
     )
   }

@@ -86,7 +86,14 @@ const plugins = [{
 }];
 
 class MixedChart extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: []
+    }
+  }
   render() {
+    const { data } = this.state
     return (
       <div className='mixed-wrapper'>
         <h3> 나이 성별 </h3>
