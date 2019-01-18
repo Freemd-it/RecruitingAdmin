@@ -14,7 +14,7 @@ class MainContainer extends Component {
   }
 
   render() {
-    const { onLogin, contents } = this.state
+    const { onLogin } = this.state
     if (onLogin) {
       return (
         <MainTemplate
