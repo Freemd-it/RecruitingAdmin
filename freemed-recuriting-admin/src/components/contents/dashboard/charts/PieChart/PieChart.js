@@ -35,9 +35,6 @@ const data = {
 };
 
 class PieChart extends Component {
-  
-
-
   render() {
     return (
       <div className='pie-wrapper'>
