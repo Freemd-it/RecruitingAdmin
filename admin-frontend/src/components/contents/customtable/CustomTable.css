@@ -1,0 +1,14 @@
+.wrapper-felx {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px;
+}
+
+.items {
+  margin: 10px;
+}
+
+.excel-button {
+  width: 50px;
+  height: 25px;
+}
