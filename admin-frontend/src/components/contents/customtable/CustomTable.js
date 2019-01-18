@@ -50,7 +50,7 @@ const Data = ({columns, data, onClick = () => {}}) => {
             }
             return <TableCell>{ text }</TableCell>;
           });
-          return <TableRow onClick={onClick}>{ returnData }</TableRow>
+          return <TableRow hover onClick={(e) => { onClick(userData) }}>{ returnData }</TableRow>
         })
       }
     </TableBody>
@@ -61,6 +61,7 @@ const tableStyle = theme => ({
   root: {
     marginTop: theme.spacing.unit * 3,
     width: '100%',
+    boxShadow: 'none',
   },
   head: {
     width: '100%',
@@ -98,9 +99,9 @@ class CustomTable extends Component {
         <CustomToolbar title={this.props.title}/>
         <CustomTooltip />
           <div className={classes.tableWrapper}>
-            <Table className={classes.table} id='table'>
+            <Table className={classes.table}>
               <Columns columns={this.props.columns}/>
-              <Data columns={this.props.columns} data={this.props.data}/>
+              <Data columns={this.props.columns} data={this.props.data} onClick={this.props.onClick}/>
             </Table>
           </div>
         </Paper>

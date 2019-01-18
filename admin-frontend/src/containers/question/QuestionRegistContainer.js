@@ -1,42 +1,44 @@
 import React, { Component } from 'react'
-import { QuestionTable } from '../../components'
+import { CustomTable } from '../../components'
 
-const user = {
-  id: '1',
-  name: 'dongsu',
-  gender: 'M',
-}
+const data = [{
+  department: 'IT',
+  team: '우리팀',
+  question: '안녕하세요?',
+  cardinality: '11',
+  writer: '이필주',
+  create: '2019-01-01',
+  is_question: true,
+}]
 
 class QuestionRegistContainer extends Component {
   state = {
-    rows: [user].sort((a, b) => (a.calories < b.calories ? -1 : 1)),
+    rows: [],
     page: 0,
     rowsPerPage: 10,
   };
 
-  handleChangePage = (event, page) => {
-    this.setState({ page })
+  componentDidMount() {
+    this.setState({
+      rows: data
+    });
   }
 
-  handleChangeRowsPerPage = event => {
-    this.setState({ rowsPerPage: event.target.value })
+  onClick = value => {
+    console.log(value);
   }
 
   render() {
     const { match } = this.props
     const { page, rows, rowsPerPage} = this.state
     return (
-      <div>
-        {
-          match.params.type === 'info' ||
-          <QuestionTable
-            page={page}
-            rows={rows}
-            rowsPerPage={rowsPerPage}
-            handleChangePage={this.handleChangePage}
-            handleChangeRowsPerPage={this.handleChangeRowsPerPage} />
-        }
-      </div>
+      <CustomTable
+        title={'안알랴줌'}
+        columns={this.props.columns}
+        data={this.state.rows}
+        totalLength={1000}
+        onClick={this.onClick}
+      />
     )
   }
 }

@@ -58,7 +58,7 @@ export const interview2 = [{
   key: 'phone_number',
   value: '전화번호4자리',
 }, {
-  key: 'isDuplicatedInterview',
+  key: 'can_multiple_interview',
   value: '이중면접여부',
 }, {
   key: 'firstTime',
@@ -73,3 +73,26 @@ export const interview2 = [{
   key: 'fourthTime',
   value: 'PM4:00-PM6:00',
 }];
+
+export const question2 = [{
+  key: 'department',
+  value: '본부',
+}, {
+  key: 'team',
+  value: '팀명',
+}, {
+  key: 'question',
+  value: '질문내용',
+}, {
+  key: 'cardinality',
+  value: '기수',
+}, {
+  key: 'writer',
+  value: '등록자',
+}, {
+  key: 'create',
+  value: '등록일자', 
+}, {
+  key: 'is_question',
+  value: '질문사용여부'
+}]

@@ -1,114 +1,18 @@
 import React, { Component } from 'react'
-import { InterviewTimeTable, CustomTable } from '../../components'
-const user = [{
+import { CustomTable } from '../../components'
+const data = [{
   department: 'IT',
   team: 'IT팀',
   secondary_department: '무진',
   secondary_team: '무진팀',
   name: 'dongsu',
   phone_number: '0690',
-  isDuplicatedInterview: true, // 이중면접
-  time: 0
-}, {
-  department: 'IT',
-  team: '',
-  secondary_department: '무진',
-  secondary_team: '',
-  name: 'dongsu',
-  phone_number: '0690',
-  isDuplicatedInterview: false, // 이중면접
-  time: 0
-}, {
-  department: 'IT',
-  team: '',
-  secondary_department: '무진',
-  secondary_team: '',
-  name: 'dongsu',
-  phone_number: '0690',
-  isDuplicatedInterview: false, // 이중면접
-  time: 0
-}, {
-  department: 'IT',
-  team: '',
-  secondary_department: '무진',
-  secondary_team: '',
-  name: 'dongsu',
-  phone_number: '0690',
-  isDuplicatedInterview: false, // 이중면접
-  time: 0
-}, {
-  department: 'IT',
-  team: '',
-  secondary_department: '무진',
-  secondary_team: '',
-  name: 'dongsu',
-  phone_number: '0690',
-  isDuplicatedInterview: false, // 이중면접
-  time: 0
-}, {
-  department: 'IT',
-  team: '',
-  secondary_department: '무진',
-  secondary_team: '',
-  name: 'dongsu',
-  phone_number: '0690',
-  isDuplicatedInterview: false, // 이중면접
-  time: 0
-}, {
-  department: 'IT',
-  team: '',
-  secondary_department: '무진',
-  secondary_team: '',
-  name: 'dongsu',
-  phone_number: '0690',
-  isDuplicatedInterview: false, // 이중면접
-  time: 0
-}, {
-  department: 'IT',
-  team: '',
-  secondary_department: '무진',
-  secondary_team: '',
-  name: 'dongsu',
-  phone_number: '0690',
-  isDuplicatedInterview: false, // 이중면접
-  time: 0
-}, {
-  department: 'IT',
-  team: '',
-  secondary_department: '무진',
-  secondary_team: '',
-  name: 'dongsu',
-  phone_number: '0690',
-  isDuplicatedInterview: false, // 이중면접
-  time: 0
-}, {
-  department: 'IT',
-  team: '',
-  secondary_department: '무진',
-  secondary_team: '',
-  name: 'dongsu',
-  phone_number: '0690',
-  isDuplicatedInterview: false, // 이중면접
-  time: 0
-}, {
-  department: 'IT',
-  team: '',
-  secondary_department: '무진',
-  secondary_team: '',
-  name: 'dongsu',
-  phone_number: '0690',
-  isDuplicatedInterview: false, // 이중면접
-  time: 0
-}, {
-  department: 'IT',
-  team: '',
-  secondary_department: '무진',
-  secondary_team: '',
-  name: 'dongsu',
-  phone_number: '0690',
-  isDuplicatedInterview: false, // 이중면접
-  time: 0
-}, ];
+  can_multiple_interview: true, // 이중면접
+  firstTime: true,
+  secondTime: false,
+  thirdTime: false,
+  fourthTime: false,
+}];
 
 class QuestionRegistContainer extends Component {
   
@@ -120,6 +24,7 @@ class QuestionRegistContainer extends Component {
 
   componentDidMount() {
     this.setState({
+      rows: data
     });
     /**
      * axios호출로 전체 데이터 갯수
@@ -133,7 +38,7 @@ class QuestionRegistContainer extends Component {
       <CustomTable
         title={'면접시간 관리'}
         columns={this.props.columns}
-        data={user}
+        data={this.state.rows}
         totalLength={1000}
       />
     )
