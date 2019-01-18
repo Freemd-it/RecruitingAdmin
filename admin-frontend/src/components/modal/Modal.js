@@ -3,21 +3,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
-
-function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
-
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
-
 const styles = theme => ({
   paper: {
     position: 'absolute',
@@ -30,15 +15,30 @@ const styles = theme => ({
 });
 
 class CustomModal extends React.Component {
-  
+  state = {
+    style: {
+      top: 0,
+      left: 0,
+    }
+  } 
+
+  componentDidMount() {
+    
+  }
+
   render() {
-    const { classes, open, onClose } = this.props;
+    const { classes, open, onModal, title, contents } = this.props;
     return (
       <Modal
-        aria-labelledby="simple-modal-title" aria-describedby="simple-modal-description"
-        open={open} onClose={onClose} >
-        <div style={getModalStyle()} className={classes.paper}>
-          <ModalWrapped />
+        open={open} 
+        onClose={onModal} 
+      >
+        <div 
+          style={this.state.style} 
+          className={classes.paper}
+        >
+          <div>{title}</div>
+          <div>{contents}</div>
         </div>
       </Modal>
     );

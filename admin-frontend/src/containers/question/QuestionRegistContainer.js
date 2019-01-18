@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { CustomTable } from '../../components'
+import { CustomTable, Modal } from '../../components'
+import Button from '@material-ui/core/Button';
 
 const data = [{
   department: 'IT',
@@ -16,6 +17,8 @@ class QuestionRegistContainer extends Component {
     rows: [],
     page: 0,
     rowsPerPage: 10,
+    isAddModal: false,
+    isDetailModal: false,
   };
 
   componentDidMount() {
@@ -25,20 +28,71 @@ class QuestionRegistContainer extends Component {
   }
 
   onClick = value => {
-    console.log(value);
+    this.onDetailModal(value);
+  }
+
+  onAddModal = value => {
+    this.setState(prevState => {
+      const data = {
+        isAddModal: !prevState.isAddModal
+      }
+      if (!prevState.isAddModal) {
+        data.value = value;
+      } else {
+        data.value = '';
+      }
+      return data;
+    });
+  }
+
+  onDetailModal = value => {
+    this.setState(prevState => {
+      const data = {
+        isDetailModal: !prevState.isDetailModal
+      }
+      if (!prevState.isDetailModal) {
+        data.value = <div>응디테일</div>
+      } else {
+        data.value = '';
+      }
+      return data;
+    });
   }
 
   render() {
     const { match } = this.props
     const { page, rows, rowsPerPage} = this.state
     return (
-      <CustomTable
-        title={'안알랴줌'}
-        columns={this.props.columns}
-        data={this.state.rows}
-        totalLength={1000}
-        onClick={this.onClick}
-      />
+      <div>
+        <Button 
+          variant="contained" 
+          color="primary"
+          onClick={e => this.onAddModal(<div>추가하기당</div>)}
+        >
+          질문 추가하기
+        </Button>
+        <CustomTable
+          title={'본부질문 관리'}
+          columns={this.props.columns}
+          data={this.state.rows}
+          totalLength={1000}
+          onClick={this.onClick}
+        />
+
+        <Modal
+          title={"detailModal"}
+          contents={this.state.value}
+          open={this.state.isDetailModal}
+          onModal={this.onDetailModal}
+        />
+
+        <Modal
+          title={"addModal"}
+          contents={this.state.value}
+          open={this.state.isAddModal}
+          onModal={this.onAddModal}
+        />
+      </div>
     )
   }
 }
