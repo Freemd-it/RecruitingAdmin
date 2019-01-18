@@ -58,13 +58,40 @@ class QuestionTable extends Component {
               </TableHead>
               <TableBody>
                 {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
+                  console.log(row);
+                  const data = [];
+                  for(let key in row) {
+                    let item;
+                    switch(key) {
+                      case 'departments':
+                        item = <TableCell component="th" scope="row"> {row.departments}</TableCell>;
+                        break;
+                      case 'isDuplicatedInterview':
+                        item = <TableCell align="left">{row[key] ? 'O' : 'X'}</TableCell>
+                        break;
+                      case 'otherDepartments':
+                        item = <TableCell align="left">{row[key] ? row[key] : 'X'}</TableCell>
+                        break;
+                      case 'firstTime':
+                      case 'secondTime':
+                      case 'thirdTime':
+                      case 'fourth':
+                        item = <TableCell align="left">{row[key] && 'O'}</TableCell>
+                        break;
+                      default:
+                        item = <TableCell align="left">{row[key]}</TableCell>
+                    }
+                    data.push(item);
+                  }
                   return (
-                    <TableRow key={row.id}>
-                      <TableCell component="th" scope="row"> {row.id} </TableCell>
-                      <TableCell align="left">{row.name}</TableCell>
-                      <TableCell align="left">{row.gender}</TableCell>
+                    <TableRow 
+                      hover
+                      key={row.id} 
+                      onClick={e => console.log(row.id)}
+                    >
+                    { data }
                     </TableRow>
-                  );
+                  )
                 })}
                 {emptyRows > 0 && (
                   <TableRow style={{ height: 48 * emptyRows }}>

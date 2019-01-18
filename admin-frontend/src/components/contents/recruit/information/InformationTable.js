@@ -15,7 +15,7 @@ import CustomToolbar from '../../customtable/CustomToolbar/CustomToolbar'
 import CustomPagination from '../../customtable/CustomPagination/CustomPagination'
 import * as tableColumn from '../../../../lib/service/tableColumn'
 
-import _ from 'lodash'
+// import _ from 'lodash'
 
 
 const tableStyle = theme => ({
@@ -45,7 +45,6 @@ class InformationTable extends Component {
       page,
       handleChangePage,
       handleChangeRowsPerPage,
-      elements,
     } = this.props;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 

@@ -41,3 +41,35 @@ export const interview = [
   'PM2:00-PM4:00',
   'PM4:00-PM6:00',
 ]
+
+export const interview2 = [{
+  key: 'department',
+  value: '본부명'
+}, {
+  key: 'team',
+  value: '팀명',
+}, {
+  key: 'secondary_department',
+  value: '본부명',
+}, {
+  key: 'secondary_team',
+  value: '팀명',
+}, {
+  key: 'phone_number',
+  value: '전화번호4자리',
+}, {
+  key: 'isDuplicatedInterview',
+  value: '이중면접여부',
+}, {
+  key: 'firstTime',
+  value: 'AM10:00-PM12:00',
+}, {
+  key: 'secondTime',
+  value: 'PM12:00-PM2:00',
+}, {
+  key: 'thirdTime',
+  value: 'PM2:00-PM4:00',
+}, {
+  key: 'fourthTime',
+  value: 'PM4:00-PM6:00',
+}];
