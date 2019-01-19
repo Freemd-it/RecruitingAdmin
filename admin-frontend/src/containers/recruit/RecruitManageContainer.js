@@ -48,8 +48,10 @@ class RecruitManageContainer extends Component {
       const data = {
         isDetailModal: !prevState.isDetailModal
       }
-      if (!prevState.isDetailModal) {
-        data.value = value
+      if (!prevState.isDetailModal && value) {
+        data.value = (
+          
+        )
       } else {
         data.value = '';
       }

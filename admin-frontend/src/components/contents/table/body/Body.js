@@ -10,13 +10,13 @@ const Body = ({columns, data, onClick = () => {}}) => {
   return (
     <TableBody>
       {
-        data.map((data, key) => {
+        data.map((item, key) => {
           const returnData = columns.map((column, index) => {
-            const value = data[column.key];
+            const value = item[column.key];
             if (typeof value === 'string') return <TableCell key={index}>{value}</TableCell>;
             else  return <TableCell key={index}>{value ? 'O' : ''}</TableCell>;
           });
-          return <TableRow hover key={key} onClick={e => onClick(data)}>{ returnData }</TableRow>
+          return <TableRow hover key={key} onClick={() => onClick(item)}>{ returnData }</TableRow>
         })
       }
     </TableBody>

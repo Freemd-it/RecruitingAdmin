@@ -1,0 +1,21 @@
+.QuestionRegistContainer {
+    &__input {
+        width: calc(50% - 4px);
+        height: 30px;
+
+        select {
+            padding-top: 0;
+            padding-bottom: 0;
+            height: 32px;
+        }
+    }
+
+    &__mr {
+        margin-right: 8px !important;
+    }
+
+    &__textBox {
+        width: 100%;
+        margin-top: 8px !important;
+    }
+}

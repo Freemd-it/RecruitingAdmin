@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { Route, Switch} from 'react-router-dom'
 import { 
-  DashBoardViewerContainer, RecruitManageContainer, QuestionRegistContainer, InterviewManageContainer,
+  DashBoardViewerContainer, 
+  RecruitManageContainer, 
+  QuestionRegistContainer, 
+  InterviewManageContainer,
 } from '../../containers'
 
 import * as Columns from '../../lib/service/tableColumn';
@@ -23,11 +26,11 @@ class Contents extends Component {
             render={(props) => { return <RecruitManageContainer {...props} rowsPerPage={rowsPerPage} columns={Columns.recruit}/> }} />
           <Route 
             path={ routes.MATCH_PATH_INTERVIEW }
-            render={(props) => { return <InterviewManageContainer {...props} rowsPerPage={rowsPerPage} columns={Columns.interview2}/> }} 
+            render={(props) => { return <InterviewManageContainer {...props} rowsPerPage={rowsPerPage} columns={Columns.interview}/> }} 
           />
           <Route 
             path={routes.MATCH_PATH_QUESTION} 
-            render={() =>{ return <QuestionRegistContainer rowsPerPage={rowsPerPage} columns={Columns.question2}/> }} 
+            render={() =>{ return <QuestionRegistContainer rowsPerPage={rowsPerPage} columns={Columns.question}/> }} 
           />
         </Switch>
       </div>
