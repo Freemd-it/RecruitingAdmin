@@ -1,10 +1,11 @@
 import React from 'react';
+import LoginForm from './loginform/LoginForm'
 import './LoginTemplate.scss';
 
-const LoginTemplate = ({ contents, sidebar }) => (
-  <div className="MainTemplate">
-    sefsefsef
-  </div>
+const LoginTemplate = ({onhandleLogin}) => (
+  <LoginForm
+    onhandleLogin={onhandleLogin}
+  />
 );
 
 export default LoginTemplate;
