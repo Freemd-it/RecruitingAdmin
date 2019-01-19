@@ -4,7 +4,7 @@ import './App.css'
 
 class App extends Component {
   state = {
-    onLogin: true
+    onLogin: false
   }
 
   onhandleLogin = (e) => {
@@ -16,6 +16,7 @@ class App extends Component {
 
   render() {
     const { onLogin } = this.state
+    console.log(onLogin)
     if (onLogin) {
       return (
         <MainTemplate
@@ -24,7 +25,7 @@ class App extends Component {
         />
       ) 
     }
-    return <LoginTemplate checkLoginState={this.onhandleLogin}/>
+    return <LoginTemplate onhandleLogin={this.onhandleLogin}/>
   }
 }
 export default App;

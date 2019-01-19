@@ -9,7 +9,7 @@ export const recruit = {
       value: '영문이름',
     },
     {
-      key: 'gender',
+      key: 'is_male',
       value: '성별',
     },
     {
