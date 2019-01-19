@@ -23,6 +23,9 @@
     &__footer {
         text-align: center;
         margin-top: 16px;
+        &__shadow {
+            box-shadow: none !important;
+        }
         &__confirm {
             box-shadow: none !important;
             margin-right: 16px !important;

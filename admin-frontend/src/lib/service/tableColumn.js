@@ -136,6 +136,6 @@ export const question = [{
   key: 'create',
   value: '등록일자', 
 }, {
-  key: 'is_question',
+  key: 'use_question',
   value: '질문사용여부'
 }]
