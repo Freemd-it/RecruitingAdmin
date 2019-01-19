@@ -1,14 +1,15 @@
 import React from 'react';
+import TextField from '@material-ui/core/TextField';
+import './DetailCell.scss'
 
-
-class DetailRow extends React.Component {
-
-  render() {
+const DetailCell = ({colName, colValue}) => {
     return (
-      <div>
-        <div> name </div>
-        <div> value </div>
-      </div>
+      <TextField
+        label={colName}
+        value={colValue}
+        variant="outlined"
+        InputProps={{ readOnly: true }}
+      />
     )
   }
-}
+export default DetailCell

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Table, Modal } from '../../components'
-
+import DetailBody from '../../components/modal/detailModal/DetailBody'
 const data = [{
   name: '이동수',
   is_male: '남',
@@ -50,7 +50,11 @@ class RecruitManageContainer extends Component {
       }
       if (!prevState.isDetailModal && value) {
         data.value = (
-          
+          <div>
+            <DetailBody
+              data={value}
+            />
+          </div>
         )
       } else {
         data.value = '';
@@ -87,8 +91,8 @@ class RecruitManageContainer extends Component {
           />
         }
          <Modal
-          title={"detailModal"}
-          contents={this.state.modalValue}
+          title={"상세보기"}
+          contents={this.state.value}
           open={this.state.isDetailModal}
           onModal={this.onDetailModal}
         />
