@@ -42,7 +42,27 @@ const data = [{
       content: '분당병원에서 접수 및 진료 프로세스를 관찰하고 비효율 혹은 병목이 일어나는 점을 분석하는 프로젝트를 맡았습니다.' +
         '팀 별로 개선 시나리오를 3가지 정도 만들어서 발표를 진행했고 이유 없이 반복되는 작업을 줄려서 효율성을 높이는 일을 하였습니다.'
     }
-  ]
+  ],
+  apply_info: { // 지원 관련 정보
+    department: "경영지원본부", // 부서
+    secondary_department: "IT", // 2지망
+    team: "재무팀", // 팀, 팀이 있는 부서에만 값이 부여됨
+    secondary_team: "", // 2지망 부서 중 팀이 있는 경우에만 부여됨
+    can_moved: "true", // 타 본부, 타 사업 이동 가능여부
+    can_multiple_interview: "false", // 여러 부서에 면접을 볼 수 있는지 가능여부
+    questions: [ // Array (document) // 질답 목록
+      {
+        q_id: "objectid", // question document의 id
+        answer: "string" // 그 질문에 대한 답
+      }
+    ],
+    portfolios: [ // 포트폴리오 정보
+      {
+        file_path: "string" // 포트폴리오 파일 경로
+      }
+    ],
+    interview_time: "Array(int32) (0: 14시~15시, 1: ...)" // 인터뷰 가능 시간
+  }
 }]
 
 class RecruitManageContainer extends Component {

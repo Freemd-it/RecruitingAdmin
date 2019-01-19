@@ -33,34 +33,8 @@ export const recruit = {
       value:'주소',
     },
     {
-      key: 'academic_career',
-      value:'학력',
-    },
-    {
-      key: 'special_info',
-      value: '경력',
-    },
-    {
       key: 'department',
       value:  '1지망',
-    },
-    {
-      key: 'secondary_department',
-      value: '2지망',
-    },
-  ],
-  answer: [
-    {
-      key: 'name',
-      value: '이름',
-    },
-    {
-      key: 'phone_number',
-      value: '전화번호',
-    },
-    {
-      key: 'department',
-      value: '1지망',
     },
     {
       key: 'secondary_department',
@@ -81,6 +55,24 @@ export const recruit = {
     {
       key: 'common_team',
       value: '팀'
+    },
+  ],
+  answer: [
+    {
+      key: 'name',
+      value: '이름',
+    },
+    {
+      key: 'phone_number',
+      value: '전화번호',
+    },
+    {
+      key: 'department',
+      value: '1지망',
+    },
+    {
+      key: 'secondary_department',
+      value: '2지망',
     },
   ]
 }
