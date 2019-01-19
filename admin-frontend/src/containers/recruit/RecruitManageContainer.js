@@ -101,7 +101,7 @@ class RecruitManageContainer extends Component {
 
   render() {
     const { match } = this.props
-    const { page, rows, rowsPerPage} = this.state
+    // const { page, rows, rowsPerPage} = this.state
     return (
       <div>
         {

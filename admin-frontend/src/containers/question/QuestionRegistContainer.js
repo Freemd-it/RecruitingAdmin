@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Table, Modal } from '../../components'
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import './QuestionRegistContainer.scss';
 
 const data = [{
   department: 'IT',
@@ -10,6 +13,14 @@ const data = [{
   writer: '이필주',
   create: '2019-01-01',
   is_question: true,
+}, {
+  department: 'IT',
+  team: '너네팀',
+  question: '안녕안하세요?',
+  cardinality: '0',
+  writer: '안알랴줌',
+  create: '2019-01-02',
+  is_question: false,
 }]
 
 class QuestionRegistContainer extends Component {
@@ -19,6 +30,7 @@ class QuestionRegistContainer extends Component {
     rowsPerPage: 10,
     isAddModal: false,
     isDetailModal: false,
+    value: '',
   };
 
   componentDidMount() {
@@ -46,22 +58,52 @@ class QuestionRegistContainer extends Component {
   }
 
   onDetailModal = value => {
-    this.setState(prevState => {
-      const data = {
-        isDetailModal: !prevState.isDetailModal
-      }
-      if (!prevState.isDetailModal) {
-        data.value = <div>응디테일</div>
-      } else {
-        data.value = '';
-      }
-      return data;
-    });
+      this.setState(prevState => {
+        const data = {
+          isDetailModal: !prevState.isDetailModal
+        }
+        if (!prevState.isDetailModal && value) {
+          data.value = (
+            <div>
+              <TextField
+                label="본부"
+                className={'QuestionRegistContainer__mr QuestionRegistContainer__input'}
+                value={value.department}
+                variant="outlined"
+                InputProps={{ readOnly: true }}
+              />
+              <TextField
+                select
+                label="팀"
+                className={'QuestionRegistContainer__input'}
+                value={value.team}
+                onChange={(e) => console.log(e.target.value)}
+                SelectProps={{ native: true }}
+                variant="outlined"
+              >
+                <option value={'1팀'}>1팀</option>
+                <option value={'2팀'}>2팀</option>
+                <option value={'3팀'}>3팀</option>
+                <option value={'4팀'}>4팀</option>
+              </TextField>
+              <TextField
+                label="질문"
+                className={'QuestionRegistContainer__textBox'}
+                placeholder="질문을 입력하여주세요."
+                multiline
+                variant="outlined"
+                rows="4"
+              />
+            </div>
+          )
+        } else {
+          data.value = '';
+        }
+        return data;
+      });
   }
 
   render() {
-    const { match } = this.props
-    const { page, rows, rowsPerPage} = this.state
     return (
       <div>
         <Button 
@@ -80,7 +122,7 @@ class QuestionRegistContainer extends Component {
         />
 
         <Modal
-          title={"detailModal"}
+          title={"본부질문 수정하기"}
           contents={this.state.value}
           open={this.state.isDetailModal}
           onModal={this.onDetailModal}
@@ -92,6 +134,7 @@ class QuestionRegistContainer extends Component {
           open={this.state.isAddModal}
           onModal={this.onAddModal}
         />
+
       </div>
     )
   }

@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
+import './Modal.scss';
 
 const styles = theme => ({
   paper: {
-    position: 'absolute',
     width: theme.spacing.unit * 50,
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
@@ -16,14 +16,9 @@ const styles = theme => ({
 
 class CustomModal extends React.Component {
   state = {
-    style: {
-      top: 0,
-      left: 0,
-    }
   } 
 
   componentDidMount() {
-    
   }
 
   render() {
@@ -31,13 +26,10 @@ class CustomModal extends React.Component {
     return (
       <Modal
         open={open} 
-        onClose={onModal} 
+        onClose={(e) => onModal()} 
       >
-        <div 
-          style={this.state.style} 
-          className={classes.paper}
-        >
-          <div>{title}</div>
+        <div className={`CustomModal ${classes.paper}`}>
+          <div className={`CustomModal__title`}>{title}</div>
           <div>{contents}</div>
         </div>
       </Modal>

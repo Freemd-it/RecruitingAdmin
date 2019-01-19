@@ -29,7 +29,7 @@ class InterviewManageContainer extends Component {
   }
 
   render() {
-    const { page, rows, rowsPerPage} = this.state
+    // const { page, rows, rowsPerPage} = this.state
     return (
       <Table
         title={'면접시간 관리'}

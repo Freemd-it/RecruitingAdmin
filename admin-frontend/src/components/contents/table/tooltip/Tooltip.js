@@ -17,7 +17,6 @@ class Tooltip extends React.Component {
 
   render () {
     const { classes} = this.props;
-    const { open } = this.state;
     return (
       <div className='wrapper-felx'>
         <ReactHTMLTableToExcel className={classes.sizeSmall} table="table"

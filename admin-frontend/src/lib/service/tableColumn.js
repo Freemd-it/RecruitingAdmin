@@ -81,28 +81,7 @@ export const recruit = {
   ]
 }
 
-export const question = [
-  '본부명',
-  '팀명',
-  '질문내용',
-  '기수',
-  '등록자',
-  '등록일자',
-  '질문사용여부'
-]
-export const interview = [
-  '팀명',
-  '이름',
-  '전화번호4자리',
-  '이중면접여부',
-  '타본부명',
-  'AM10:00-PM12:00',
-  'PM12:00-PM2:00',
-  'PM2:00-PM4:00',
-  'PM4:00-PM6:00',
-]
-
-export const interview2 = [{
+export const interview = [{
   key: 'department',
   value: '본부명'
 }, {
@@ -134,7 +113,7 @@ export const interview2 = [{
   value: 'PM4:00-PM6:00',
 }];
 
-export const question2 = [{
+export const question = [{
   key: 'department',
   value: '본부',
 }, {
