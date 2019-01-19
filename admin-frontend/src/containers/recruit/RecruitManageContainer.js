@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
-import { Table, Modal } from '../../components'
-import DetailBody from '../../components/recruitInfoDetailComponent/DetailBody'
+import { AnswerBody, Table, Modal, DetailBody } from '../../components'
 const data = [{
   name: '이동수',
+  english_name: 'dongsu',
   is_male: '남',
   birth_date: '1991-12-09',
+  phone_number: '010-1111-1111',
   email: '30032dongsu@moducampus.com',
   sns: 'hihih',
   address: '성남',
   department: 'IT',
+  secondary_department: '브본',
   team: '우리팀',
   question: '안녕하세요?',
   cardinality: '11',
@@ -76,11 +78,9 @@ class RecruitManageContainer extends Component {
       }
       if (!prevState.isDetailModal && value) {
         data.value = (
-          <div>
-            <DetailBody
+            <AnswerBody
               data={value}
             />
-          </div>
         )
       } else {
         data.value = '';
@@ -88,7 +88,24 @@ class RecruitManageContainer extends Component {
       return data;
     });
   }
-
+  onAnswerModal = value => {
+    this.setState(prevState => {
+      const data = {
+        isDetailModal: !prevState.isDetailModal
+      }
+      if (!prevState.isDetailModal && value) {
+        data.value = (
+            <AnswerBody
+              data={value}
+            />
+        )
+      } else {
+        data.value = '';
+      }
+      return data;
+    });
+  }
+  
   render() {
     const { match } = this.props
     // const { page, rows, rowsPerPage} = this.state

@@ -7,6 +7,10 @@ import DashBoard from './contents/dashboard/DashBoard';
 import Modal from './modal/Modal';
 import QuestionTextFieldComponent from './questionTextFieldComponent/QuestionTextFieldComponent';
 
+import DetailBody from './InfoDetail/detailBody/DetailBody'
+import AnswerBody from './answerDetail/detailBody/DetailBody'
+import DetailCell from './InfoDetail/detailCell/DetailCell'
+
 
 export {
   Sidebar,
@@ -16,5 +20,8 @@ export {
   Contents,
   DashBoard,
   Modal,
-  QuestionTextFieldComponent
+  QuestionTextFieldComponent,
+  DetailBody,
+  DetailCell,
+  AnswerBody
 };

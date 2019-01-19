@@ -44,19 +44,15 @@ const styles = theme => ({
 class SignIn extends Component {
 
   _getData = async () => {
-    const chartData = await this._callApi()
+    axios.getSignin()
+    .then(res => {
+      if(res.status === 200) {
+        this.props.onhandleLogin()
+      }
+    })
+    .catch(err => err)
   }
  
-  _callApi = () => {
-    return axios.getSignin()
-      .then(res => {
-        if(res.status === 200) {
-          this.props.onhandleLogin()
-        }
-      })
-      .catch(err => err)
-  }
-
   onLoginhandler = () => {
     this._getData()
   }
