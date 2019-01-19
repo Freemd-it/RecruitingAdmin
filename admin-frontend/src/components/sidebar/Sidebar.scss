@@ -1,3 +1,16 @@
+.Sidebar {
+  &__icon {
+    margin-right: 5px !important;
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+  &__menu {
+    padding: 0 !important;
+  }
+}
+
 .Container {
   display: flex;
   flex-direction: column;
@@ -9,8 +22,6 @@
   
   span {
     font-size: 10px;
-  }
-  div {
   }
 }
 

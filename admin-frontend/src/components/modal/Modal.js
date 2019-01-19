@@ -44,7 +44,7 @@ class CustomModal extends React.Component {
             {title != null ? title : ''}
             <CloseIcon className={`CustomModal__closeIcon`} onClick={() => onModal()}/>
           </div>
-          {contents}
+          <div className={`CustomModal__body`}>{ contents }</div>
           <div className={`CustomModal__footer`}>
             <Button 
               variant="contained" 
