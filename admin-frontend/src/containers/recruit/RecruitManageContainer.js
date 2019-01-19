@@ -2,6 +2,12 @@ import React, { Component } from 'react'
 import { Table, Modal } from '../../components'
 
 const data = [{
+  name: '이동수',
+  is_male: '남',
+  birth_date: '1991-12-09',
+  email: '30032dongsu@moducampus.com',
+  sns: 'hihih',
+  address: '성남',
   department: 'IT',
   team: '우리팀',
   question: '안녕하세요?',
@@ -38,7 +44,6 @@ class RecruitManageContainer extends Component {
   }
 
   onDetailModal = value => {
-    console.log('1111', value)
     this.setState(prevState => {
       const data = {
         isDetailModal: !prevState.isDetailModal

@@ -6,6 +6,10 @@ export const recruit = {
     },
     {
       key: 'english_name',
+      value: '영문이름',
+    },
+    {
+      key: 'gender',
       value: '성별',
     },
     {
