@@ -7,8 +7,8 @@ import './DetailBody.scss'
 import _ from 'lodash'
 import { Card, CardContent, Typography, Divider } from '@material-ui/core';
 import AccountIcon from '@material-ui/icons/SupervisorAccount';
-import ExternalActivityCell from '../../../containers/recruit/ExternalActivityCell';
-import AcademicCareerCell from '../../../containers/recruit/AcademicCareerCell';
+// import ExternalActivityCell from '../../../containers/recruit/ExternalActivityCell';
+// import AcademicCareerCell from '../../../containers/recruit/AcademicCareerCell';
 
 const styles = theme => ({
   container: {
@@ -90,8 +90,8 @@ const DetailBody = ({ classes, data }) => {
           </div>
         </CardContent>
       </Card>
-      <AcademicCareerCell data={data} />
-      <ExternalActivityCell data={data.external_activities} />
+      {/* <AcademicCareerCell data={data} /> */}
+      {/* <ExternalActivityCell data={data.external_activities} /> */}
     </div>
   )
 }
