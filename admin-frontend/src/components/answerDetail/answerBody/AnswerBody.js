@@ -1,14 +1,10 @@
 import React from 'react';
-import DetailCell from '../detailCell/DetailCell'
+import DetailCell from '../../infoDetail/detailCell/DetailCell'
 import AnswerDetail from '../answerDetail/AnswerDetail'
 import { withStyles } from '@material-ui/core/styles';
 
-import './DetailBody.scss'
+import './AnswerBody.scss'
 import _ from 'lodash'
-import { Card, CardContent, Typography, Divider } from '@material-ui/core';
-import AccountIcon from '@material-ui/icons/SupervisorAccount';
-// import ExternalActivityCell from '../../../containers/recruit/ExternalActivityCell';
-// import AcademicCareerCell from '../../../containers/recruit/AcademicCareerCell';
 
 const styles = theme => ({
   container: {
@@ -18,10 +14,6 @@ const styles = theme => ({
 });
 
 const DetailBody = ({ classes, data }) => {
-  const keyList = Object.keys(data)
-  const valueList = Object.values(data)
-  console.log(keyList)
-  console.log(valueList)
   return (
     <div className="Scrollable">
       <div className={classes.container}>
@@ -67,31 +59,6 @@ const DetailBody = ({ classes, data }) => {
           />
         </div>
       </div>
-      <Card>
-        <CardContent>
-          <Typography gutterBottom className='Title'>
-            <AccountIcon className='Icon' /> 기본 정보
-          </Typography>
-          <Divider className="Divider" />
-          <div className="DetailBody">
-            {
-              _.map(data, (value, index) => {
-                return (
-                  <DetailCell
-                    key={index.toString()}
-                    className="DetailCell"
-                    colName={index}
-                    colValue={value}
-                  />
-                )
-              })
-            }
-
-          </div>
-        </CardContent>
-      </Card>
-      {/* <AcademicCareerCell data={data} /> */}
-      {/* <ExternalActivityCell data={data.external_activities} /> */}
     </div>
   )
 }

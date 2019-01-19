@@ -1,8 +1,14 @@
 .RowContainer {
+  font-size: 10px;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
+  
+  input, div, label {
+    font-size: 14px;
+    padding: 5px;
+  }
 }
 .CellContainer {
   width: 100%;

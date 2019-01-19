@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Table, Modal, QuestionTextFieldComponent } from '../../components'
+import { Table, Modal, QuestionDetail } from '../../components'
 import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
 import './QuestionRegistContainer.scss';
@@ -113,7 +113,7 @@ class QuestionRegistContainer extends Component {
         <Modal
           title={'본부질문 수정하기'}
           contents={
-            <QuestionTextFieldComponent
+            <QuestionDetail
               registData={this.state.registData}
               onRegistData={this.onRegistData}
             />
@@ -125,7 +125,7 @@ class QuestionRegistContainer extends Component {
         <Modal
           title={'본부질문 추가하기'}
           contents={
-            <QuestionTextFieldComponent
+            <QuestionDetail
               registData={this.state.registData}
               onRegistData={this.onRegistData}
             />

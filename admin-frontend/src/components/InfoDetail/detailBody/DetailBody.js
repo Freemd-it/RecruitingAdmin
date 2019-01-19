@@ -13,15 +13,17 @@ const styles = theme => ({
 });
 
 const DetailBody = ({classes, data}) => {
+  console.log(data)
   return (
-    <div className={classes.container}>
+    <div className={`${classes.container} DetailBody`}>
       { 
-        _.map(data, (value, index) => {
+        _.map(data, (value, key) => {
           return (
-              <DetailCell
-                colName={index}
-                colValue={value}
-              />
+            <DetailCell
+              key={`${key}__DetailBody`}
+              colName={'1111'}
+              colValue={'1111'}
+            />
          )
         })
       }

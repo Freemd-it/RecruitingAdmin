@@ -7,8 +7,6 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   textField: {
     width: `100%`,
-    // marginLeft: theme.spacing.unit,
-    // marginRight: theme.spacing.unit,
   },
 });
 

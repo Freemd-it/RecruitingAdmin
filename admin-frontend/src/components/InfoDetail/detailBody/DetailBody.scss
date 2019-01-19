@@ -1,7 +1,10 @@
 .DetailBody {
-  // display: flex;
-  // justify-content: space-around;
-  // flex-direction: row;
+  input, div, label  {
+    font-size: 14px;
+    padding: 5px;
+  }
+  display: flex;
+  flex-direction: row;
 }
 .CellContainer {
   width: 100%;
