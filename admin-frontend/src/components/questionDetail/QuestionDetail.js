@@ -2,9 +2,9 @@ import React from 'react'
 import TextField from '@material-ui/core/TextField';
 import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import './QuestionTextFieldComponent.scss';
+import './QuestionDetail.scss';
 
-const QuestionTextFieldComponent = props => {
+const QuestionDetail = props => {
   const { 
     registData,
     onRegistData
@@ -13,7 +13,7 @@ const QuestionTextFieldComponent = props => {
     <div>
       <TextField
         label="본부"
-        className={'QuestionTextFieldComponent__mr QuestionTextFieldComponent__input'}
+        className={'QuestionDetail__mr QuestionDetail__input'}
         value={registData.department}
         variant="outlined"
         InputProps={{ readOnly: true }}
@@ -21,7 +21,7 @@ const QuestionTextFieldComponent = props => {
       <TextField
         select
         label="팀"
-        className={'QuestionTextFieldComponent__input'}
+        className={'QuestionDetail__input'}
         name={'team'}
         value={registData.team}
         onChange={onRegistData}
@@ -35,7 +35,7 @@ const QuestionTextFieldComponent = props => {
       </TextField>
       <TextField
         label="질문"
-        className={'QuestionTextFieldComponent__textBox'}
+        className={'QuestionDetail__textBox'}
         placeholder="질문을 입력하여주세요."
         name={'question'}
         multiline
@@ -74,4 +74,4 @@ const QuestionTextFieldComponent = props => {
   );
 }
 
-export default QuestionTextFieldComponent;
+export default QuestionDetail;

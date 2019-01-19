@@ -20,6 +20,10 @@
             color: gray;
         }
     }
+    &__body {
+        max-height: 60vh;
+        overflow-y: auto;
+    }
     &__footer {
         text-align: center;
         margin-top: 16px;

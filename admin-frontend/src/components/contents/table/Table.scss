@@ -14,10 +14,11 @@
 }
 
 .CustomTable {
+  box-shadow: none !important;
   thead {
     tr {
       th {
-        padding: 5px !important;
+        padding: 3px !important;
         font-size: 10px !important;
       }
     }
@@ -26,10 +27,9 @@
   tbody {
     tr {
       td {
-        padding: 5px !important;
+        padding: 3px !important;
         font-size: 10px !important;
       }
     }
   }
-  box-shadow: none !important;
 }

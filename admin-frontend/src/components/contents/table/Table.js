@@ -22,6 +22,8 @@ const tableStyle = theme => ({
     width: '100%',
   },
   table: {
+    borderTop: '1px solid rgba(224, 224, 224, 1)',
+    borderBottom: '1px solid rgba(224, 224, 224, 1)',
     minWidth: 500,
   },
   tableWrapper: {

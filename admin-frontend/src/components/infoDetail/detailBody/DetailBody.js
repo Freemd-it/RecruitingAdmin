@@ -15,7 +15,6 @@ const styles = theme => ({
 });
 
 const DetailBody = ({classes, data}) => {
-  console.log(data)
   return (
     <div className={`${classes.container} DetailBody`}>
       { 
