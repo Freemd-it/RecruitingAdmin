@@ -14,12 +14,11 @@ const styles = theme => ({
 });
 
 const DetailBody = ({classes, data}) => {
-  const keyList = Object.keys(data)
-  const valueList = Object.values(data)
-  console.log(keyList)
-  console.log(valueList)
   return (
     <div className={classes.container}>
+      <div className="RowContainer">
+        <span className="title"> 지원자 정보 </span>
+      </div>
       <div className="RowContainer">
         <DetailCell
           colName={"이름"}
@@ -29,36 +28,36 @@ const DetailBody = ({classes, data}) => {
           colName={"전화번호"}
           colValue={"00000"}
         /> 
-        <DetailCell
-          colName={'11'}
-          colValue={'11'}
-        /> 
       </div> 
       <div className="RowContainer">
-        <h6> 단체 공통질문 </h6>
+        <span className="title"> 단체 공통질문 </span>
+      </div>
+      <div className="RowContainer">
+        <div className="contents">
+          {data.question}
+        </div>
+      </div>
+      <div className="RowContainer">
+        <div className="contents">
+          {data.question}
+        </div>
+      </div>
+      <div className="RowContainer">
+        <span className="title"> 본부 공통질문 </span>
       </div>
       <div className="RowContainer">
         <AnswerDetail
-          colName={'시발'}
-          colValue={'시발'}
+          colName={'경영지원본부'}
+          colValue={data.question}
         />
       </div>
       <div className="RowContainer">
-        <h6> 본부 공통질문 </h6>
+        <span className="title"> 팀 질문 </span>
       </div>
       <div className="RowContainer">
         <AnswerDetail
-          colName={'11'}
-          colValue={'11'}
-        />
-      </div>
-      <div className="RowContainer">
-        <h6> 팀 질문 </h6>
-      </div>
-      <div className="RowContainer">
-        <AnswerDetail
-          colName={'11'}
-          colValue={'11'}
+          colName={'재무팀'}
+          colValue={data.question}
         />
       </div>
     </div>

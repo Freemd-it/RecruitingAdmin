@@ -15,18 +15,16 @@ import StarBorder from '@material-ui/icons/StarBorder';
 import { withStyles } from '@material-ui/core';
 import * as routes from '../../lib/service/routes'
 
-import './Sidebar.css'
+import './Sidebar.scss'
 import logo from '../../static/images/logo.png'
 import slogan from '../../static/images/slogan.png'
 
 
 const styles = theme => ({
   root: {
-    width: '200px',
-    maxWidth: '200px',
+    width: '150px',
+    maxWidth: '150px',
     backgroundColor: theme.palette.background.paper,
-    border: '1px solid #cccccc',
-    fontSize: '10px'
   },
   nested: {
     paddingLeft: theme.spacing.unit * 4,
@@ -46,7 +44,7 @@ class Sidebar extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.root}>
+      <div className={`${classes.root} Container`}>
         <div className='main-img'>
           <img src={logo} />
           <img src={slogan} />
@@ -90,14 +88,14 @@ class Sidebar extends Component {
           <ListItemIcon>
             <PeopleIcon />
           </ListItemIcon>
-          <ListItemText primary="면접시간 관리" />
+          <ListItemText primary="면리관리" />
         </ListItem>
         <ListItem button
           component={props => <Link to={routes.MATCH_PATH_QUESTION} {...props} />}>
           <ListItemIcon>
             <BarChartIcon />
           </ListItemIcon>
-          <ListItemText primary="본부질문 관리" />
+          <ListItemText primary="질문관리" />
         </ListItem>
     </div>
     )

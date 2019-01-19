@@ -14,7 +14,7 @@ const styles = theme => ({
 
 const DetailBody = ({classes, data}) => {
   return (
-    <div className={classes.container}>
+    <div className={`${classes.container} DetailBody`}>
       { 
         _.map(data, (value, index) => {
           return (

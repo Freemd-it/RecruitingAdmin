@@ -12,7 +12,7 @@ const data = [{
   department: 'IT',
   secondary_department: '브본',
   team: '우리팀',
-  question: '안녕하세요?',
+  question: '안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요?',
   cardinality: '11',
   writer: '이필주',
   create: '2019-01-01',
@@ -41,8 +41,12 @@ class RecruitManageContainer extends Component {
     this.setState({ rowsPerPage: event.target.value })
   }
 
-  onClick = value => {
+  onDetailClick = value => {
     this.onDetailModal(value);
+  }
+
+  onAnswerClick = value => {
+    this.onAnswerModal(value);
   }
 
   onDetailModal = value => {
@@ -52,7 +56,7 @@ class RecruitManageContainer extends Component {
       }
       if (!prevState.isDetailModal && value) {
         data.value = (
-            <AnswerBody
+            <DetailBody
               data={value}
             />
         )
@@ -93,7 +97,7 @@ class RecruitManageContainer extends Component {
             columns={this.props.columns['information']}
             data={this.state.rows}
             totalLength={1000}
-            onClick={this.onClick}
+            onClick={this.onDetailClick}
           />
         }
         {
@@ -104,7 +108,7 @@ class RecruitManageContainer extends Component {
             columns={this.props.columns['answer']}
             data={this.state.rows}
             totalLength={1000}
-            onClick={this.onClick}
+            onClick={this.onAnswerClick}
           />
         }
          <Modal
@@ -112,6 +116,13 @@ class RecruitManageContainer extends Component {
           contents={this.state.value}
           open={this.state.isDetailModal}
           onModal={this.onDetailModal}
+        />
+
+         <Modal
+          title={"상세보기"}
+          contents={this.state.value}
+          open={this.state.isDetailModal}
+          onModal={this.onAnswerModal}
         />
       </div>
     )

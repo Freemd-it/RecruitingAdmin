@@ -7,9 +7,9 @@ import DashBoard from './contents/dashboard/DashBoard';
 import Modal from './modal/Modal';
 import QuestionTextFieldComponent from './questionTextFieldComponent/QuestionTextFieldComponent';
 
-import DetailBody from './InfoDetail/detailBody/DetailBody'
+import DetailBody from './infoDetail/detailBody/DetailBody'
+import DetailCell from './infoDetail/detailCell/DetailCell'
 import AnswerBody from './answerDetail/detailBody/DetailBody'
-import DetailCell from './InfoDetail/detailCell/DetailCell'
 
 
 export {
