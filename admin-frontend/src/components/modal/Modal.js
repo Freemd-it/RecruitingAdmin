@@ -29,14 +29,8 @@ class CustomModal extends React.Component {
   render() {
     const { classes, open, onModal, title, contents } = this.props;
     return (
-      <Modal
-        open={open} 
-        onClose={onModal} 
-      >
-        <div 
-          style={this.state.style} 
-          className={classes.paper}
-        >
+      <Modal open={open} onClose={onModal}>
+        <div  style={this.state.style} className={classes.paper} >
           <div>{title}</div>
           <div>{contents}</div>
         </div>
