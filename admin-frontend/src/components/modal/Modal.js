@@ -31,7 +31,8 @@ class CustomModal extends React.Component {
       contents, 
       confirmMessage = '확인',
       cencleMessage = '취소',
-      confirmFun = () => { onModal() }
+      confirmFun = () => { onModal() },
+      isCancel = true 
     } = this.props;
     return (
       <Modal
@@ -40,13 +41,30 @@ class CustomModal extends React.Component {
       >
         <div className={`CustomModal ${classes.paper}`}>
           <div className={`CustomModal__title`}>
-            {title}
+            {title != null ? title : ''}
             <CloseIcon className={`CustomModal__closeIcon`} onClick={() => onModal()}/>
           </div>
           {contents}
           <div className={`CustomModal__footer`}>
-            <Button variant="contained" color="primary" className={`CustomModal__footer__confirm`} onClick={confirmFun}>{confirmMessage}</Button>
-            <Button variant="contained" color="primary" variant="outlined" onClick={() => {onModal()}}>{cencleMessage}</Button>
+            <Button 
+              variant="contained" 
+              color="primary" 
+              className={`${isCancel ? 'CustomModal__footer__confirm' : 'CustomModal__footer__shadow'}`} 
+              onClick={confirmFun}
+            >
+              {confirmMessage}
+            </Button>
+            {
+              isCancel && 
+              <Button 
+                variant="contained" 
+                color="primary" 
+                variant="outlined" 
+                onClick={() => {onModal()}}
+              >
+                {cencleMessage}
+              </Button>
+            }
           </div>
         </div>
       </Modal>

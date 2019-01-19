@@ -5,6 +5,8 @@ import { withStyles } from '@material-ui/core/styles';
 
 import './DetailBody.scss'
 import _ from 'lodash'
+// import ExternalActivityCell from '../../../containers/recruit/ExternalActivityCell';
+// import AcademicCareerCell from '../../../containers/recruit/AcademicCareerCell';
 
 const styles = theme => ({
   container: {
@@ -13,52 +15,55 @@ const styles = theme => ({
   },
 });
 
-const DetailBody = ({classes, data}) => {
+const DetailBody = ({ classes, data }) => {
+  const keyList = Object.keys(data)
+  const valueList = Object.values(data)
+  console.log(keyList)
+  console.log(valueList)
   return (
-    <div className={classes.container}>
-      <div className="RowContainer">
-        <span className="title"> 지원자 정보 </span>
-      </div>
-      <div className="RowContainer">
-        <DetailCell
-          colName={"이름"}
-          colValue={"동수"}
-        /> 
-        <DetailCell
-          colName={"전화번호"}
-          colValue={"00000"}
-        /> 
-      </div> 
-      <div className="RowContainer">
-        <span className="title"> 단체 공통질문 </span>
-      </div>
-      <div className="RowContainer">
-        <div className="contents">
-          {data.question}
+    <div className="Scrollable">
+      <div className={classes.container}>
+        <div className="RowContainer">
+          <DetailCell
+            colName={"이름"}
+            colValue={"동수"}
+          />
+          <DetailCell
+            colName={"전화번호"}
+            colValue={"00000"}
+          />
+          <DetailCell
+            colName={'11'}
+            colValue={'11'}
+          />
         </div>
-      </div>
-      <div className="RowContainer">
-        <div className="contents">
-          {data.question}
+        <div className="RowContainer">
+          <h6> 단체 공통질문 </h6>
         </div>
-      </div>
-      <div className="RowContainer">
-        <span className="title"> 본부 공통질문 </span>
-      </div>
-      <div className="RowContainer">
-        <AnswerDetail
-          colName={'경영지원본부'}
-          colValue={data.question}
-        />
-      </div>
-      <div className="RowContainer">
-        <span className="title"> 팀 질문 </span>
-      </div>
-      <div className="RowContainer">
-        <AnswerDetail
-          colName={'재무팀'}
-          colValue={data.question}
-        />
+        <div className="RowContainer">
+          <AnswerDetail
+            colName={'시발'}
+            colValue={'시발'}
+          />
+        </div>
+        <div className="RowContainer">
+          <h6> 본부 공통질문 </h6>
+        </div>
+        <div className="RowContainer">
+          <AnswerDetail
+            colName={'11'}
+            colValue={'11'}
+          />
+        </div>
+        <div className="RowContainer">
+          <h6> 팀 질문 </h6>
+        </div>
+        <div className="RowContainer">
+          <AnswerDetail
+            colName={'11'}
+            colValue={'11'}
+          />
+        </div>
       </div>
     </div>
   )

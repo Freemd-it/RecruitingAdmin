@@ -14,18 +14,50 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  font-size: 10px;
 }
-.title {
-  font-weight: 800;
-  padding: 5px;
-  font-size: 10px;
+
+.DetailBody {
+  padding: 20px;
 }
-.contents {
-  width: 100%;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
-  margin: 5px;
+
+.Icon {
+  margin-right: 0.3em;
+  font-size: 1.2em !important;
+}
+
+.Title {
+  color: rgba(0, 0, 0, 0.7);
+  display: inline-flex !important;
+  font-size: 1em;
+}
+
+.SubTitle {
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 1em;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.Scrollable {
+  overflow: scroll;
+  max-height: 600px;
   padding: 10px;
-  font-size: 10px;
+}
+
+.Divider {
+  margin: 6px 4px !important;
+}
+
+.Content {
+  font-size: 0.9em;
+  line-height: 1.5em;
+  padding-left: 0.3em;
+}
+
+.SubContent {
+  padding-left: 0.3em;
+}
+
+.Card {
+  margin-top: 10px;
 }
