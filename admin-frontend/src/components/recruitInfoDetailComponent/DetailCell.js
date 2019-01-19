@@ -9,7 +9,7 @@ const DetailCell = ({colName, colValue}) => {
       <TextField
         className="DetailCell"
         label={colName}
-        value={colValue}
+        value={colValue != null ? colValue.toString() : undefined}
         variant="outlined"
         InputProps={{ readOnly: true }}
       />

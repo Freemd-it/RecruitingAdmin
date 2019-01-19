@@ -1,7 +1,12 @@
 import React from 'react';
 import DetailCell from './DetailCell'
 import _ from 'lodash'
-import AcademicCareer from './academicCareer/AcademicCareer';
+import AcademicCareerCell from './AcademicCareerCell';
+import { Card, Typography, CardContent, Divider } from '@material-ui/core';
+import AccountIcon from '@material-ui/icons/SupervisorAccount';
+
+import './DetailBody.scss';
+import ExternalActivityCell from './ExternalActivityCell';
 
 const DetailBody = ({ data }) => {
   if (typeof onClick !== 'function') {
@@ -9,22 +14,32 @@ const DetailBody = ({ data }) => {
   }
 
   return (
-    <div>
-      <div className="DetailBody">
-        {
-          _.map(data, (value, index) => {
-            return (
-              <DetailCell
-                className="DetailCell"
-                colName={index}
-                colValue={value}
-              />
-            )
-          })
-        }
+    <div className="Scrollable">
+      <Card>
+        <CardContent>
+          <Typography gutterBottom className='Title'>
+            <AccountIcon className='Icon' /> 기본 정보
+          </Typography>
+          <Divider className="Divider" />
+          <div className="DetailBody">
+            {
+              _.map(data, (value, index) => {
+                return (
+                  <DetailCell
+                    key={index.toString()}
+                    className="DetailCell"
+                    colName={index}
+                    colValue={value}
+                  />
+                )
+              })
+            }
 
-      </div>
-      <AcademicCareer data={data}></AcademicCareer>
+          </div>
+        </CardContent>
+      </Card>
+      <AcademicCareerCell data={data} />
+      <ExternalActivityCell data={data.external_activities} />
     </div>
   )
 }
