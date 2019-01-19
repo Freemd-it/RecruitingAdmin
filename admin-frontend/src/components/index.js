@@ -9,7 +9,7 @@ import QuestionTextFieldComponent from './questionTextFieldComponent/QuestionTex
 
 import DetailBody from './infoDetail/detailBody/DetailBody'
 import DetailCell from './infoDetail/detailCell/DetailCell'
-import AnswerBody from './answerDetail/detailBody/DetailBody'
+import AnswerBody from './answerDetail/answerBody/AnswerBody'
 
 
 export {

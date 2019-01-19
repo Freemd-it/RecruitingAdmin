@@ -146,7 +146,7 @@ class RecruitManageContainer extends Component {
         />
 
          <Modal
-          title={"상세보기"}
+          title={"답변"}
           contents={this.state.value}
           open={this.state.isAnswerModal}
           onModal={this.onAnswerModal}

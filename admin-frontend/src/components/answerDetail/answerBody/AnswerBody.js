@@ -1,12 +1,10 @@
 import React from 'react';
-import DetailCell from '../detailCell/DetailCell'
+import DetailCell from '../../infoDetail/detailCell/DetailCell'
 import AnswerDetail from '../answerDetail/AnswerDetail'
 import { withStyles } from '@material-ui/core/styles';
 
-import './DetailBody.scss'
+import './AnswerBody.scss'
 import _ from 'lodash'
-// import ExternalActivityCell from '../../../containers/recruit/ExternalActivityCell';
-// import AcademicCareerCell from '../../../containers/recruit/AcademicCareerCell';
 
 const styles = theme => ({
   container: {
@@ -16,10 +14,6 @@ const styles = theme => ({
 });
 
 const DetailBody = ({ classes, data }) => {
-  const keyList = Object.keys(data)
-  const valueList = Object.values(data)
-  console.log(keyList)
-  console.log(valueList)
   return (
     <div className="Scrollable">
       <div className={classes.container}>
