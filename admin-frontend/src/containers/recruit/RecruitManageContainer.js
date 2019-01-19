@@ -15,6 +15,12 @@ const data = [{
   writer: '이필주',
   create: '2019-01-01',
   is_question: true,
+  school_name: '프리메드',
+  school_degree: '고등학교',
+  school_type: '인문계',
+  school_location: '서울',
+  entrance_date: new Date(2017, 3),
+  graduate_date: null,
 }]
 
 class RecruitManageContainer extends Component {
