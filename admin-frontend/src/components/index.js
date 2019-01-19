@@ -5,6 +5,7 @@ import LoginTemplate from './template/loginTemplate/LoginTemplate';
 import Contents from './contents/Contents';
 import DashBoard from './contents/dashboard/DashBoard';
 import Modal from './modal/Modal';
+import QuestionTextFieldComponent from './questionTextFieldComponent/QuestionTextFieldComponent';
 
 
 export {
@@ -15,4 +16,5 @@ export {
   Contents,
   DashBoard,
   Modal,
+  QuestionTextFieldComponent
 };

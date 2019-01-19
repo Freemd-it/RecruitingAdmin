@@ -9,4 +9,23 @@
         font-size: 16px;
         margin-bottom: 16px;
     }
+    &__closeIcon {
+        position: absolute;
+        top: -2px;
+        right: -2px;
+        width: 16px !important;
+        height: 16px !important;
+        cursor: pointer;
+        &:hover {
+            color: gray;
+        }
+    }
+    &__footer {
+        text-align: center;
+        margin-top: 16px;
+        &__confirm {
+            box-shadow: none !important;
+            margin-right: 16px !important;
+        }
+    }
 }
