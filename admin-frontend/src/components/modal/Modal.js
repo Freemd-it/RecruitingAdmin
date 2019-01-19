@@ -40,7 +40,7 @@ class CustomModal extends React.Component {
       >
         <div className={`CustomModal ${classes.paper}`}>
           <div className={`CustomModal__title`}>
-            {title}
+            {title != null ? title : ''}
             <CloseIcon className={`CustomModal__closeIcon`} onClick={() => onModal()}/>
           </div>
           {contents}
