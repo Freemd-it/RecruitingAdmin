@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { Table, Modal } from '../../components'
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
+import { Table, Modal, QuestionTextFieldComponent } from '../../components'
 import Button from '@material-ui/core/Button';
 import './QuestionRegistContainer.scss';
 
@@ -49,7 +47,13 @@ class QuestionRegistContainer extends Component {
         isAddModal: !prevState.isAddModal
       }
       if (!prevState.isAddModal) {
-        data.value = value;
+          data.value = (
+            <QuestionTextFieldComponent
+              value={{department: '안알랴줌 ㅋㅋㅋ'}}
+              onChangeTeam={e => console.log(e.target.value)}
+              onChangeQuestion={e => console.log(e.target.value)}
+            />
+          );
       } else {
         data.value = '';
       }
@@ -64,37 +68,11 @@ class QuestionRegistContainer extends Component {
         }
         if (!prevState.isDetailModal && value) {
           data.value = (
-            <div>
-              <TextField
-                label="본부"
-                className={'QuestionRegistContainer__mr QuestionRegistContainer__input'}
-                value={value.department}
-                variant="outlined"
-                InputProps={{ readOnly: true }}
-              />
-              <TextField
-                select
-                label="팀"
-                className={'QuestionRegistContainer__input'}
-                value={value.team}
-                onChange={(e) => console.log(e.target.value)}
-                SelectProps={{ native: true }}
-                variant="outlined"
-              >
-                <option value={'1팀'}>1팀</option>
-                <option value={'2팀'}>2팀</option>
-                <option value={'3팀'}>3팀</option>
-                <option value={'4팀'}>4팀</option>
-              </TextField>
-              <TextField
-                label="질문"
-                className={'QuestionRegistContainer__textBox'}
-                placeholder="질문을 입력하여주세요."
-                multiline
-                variant="outlined"
-                rows="4"
-              />
-            </div>
+            <QuestionTextFieldComponent
+              value={value}
+              onChangeTeam={e => console.log(e.target.value)}
+              onChangeQuestion={e => console.log(e.target.value)}
+            />
           )
         } else {
           data.value = '';
@@ -105,8 +83,9 @@ class QuestionRegistContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className={`QuestionRegisContainer__addBox`}>
         <Button 
+          className={`QuestionRegisContainer__addQuestion`}
           variant="contained" 
           color="primary"
           onClick={e => this.onAddModal(<div>추가하기당</div>)}
@@ -119,17 +98,18 @@ class QuestionRegistContainer extends Component {
           data={this.state.rows}
           totalLength={1000}
           onClick={this.onClick}
+          cursor={true}
         />
 
         <Modal
-          title={"본부질문 수정하기"}
+          title={'본부질문 수정하기'}
           contents={this.state.value}
           open={this.state.isDetailModal}
           onModal={this.onDetailModal}
         />
 
         <Modal
-          title={"addModal"}
+          title={'본부질문 추가하기'}
           contents={this.state.value}
           open={this.state.isAddModal}
           onModal={this.onAddModal}
