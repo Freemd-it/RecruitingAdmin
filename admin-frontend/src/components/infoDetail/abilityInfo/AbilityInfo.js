@@ -60,7 +60,7 @@ const AbilityInfo = (props) => {
         abilityInfo.map((elem, index) =>
           (
             <div key={`${elem.type}__${index}`}>
-              {index != 0 ? (<Divider className="Divider" />) : ''}
+              {index !== 0 ? (<Divider className="Divider" />) : ''}
               {componentByType(elem)}
             </div>
           )
