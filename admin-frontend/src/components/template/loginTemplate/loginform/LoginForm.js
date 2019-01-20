@@ -7,7 +7,7 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Paper from '@material-ui/core/Paper';
 import withStyles from '@material-ui/core/styles/withStyles';
-import logo from '../../../../static/images/logo.png'
+import logo from '../../../../static/images/logo_1.png'
 import * as axios from '../../../../lib/api/login'
 
 const styles = theme => ({

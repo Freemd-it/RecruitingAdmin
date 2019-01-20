@@ -12,10 +12,12 @@ class QuestionRegistContainer extends Component {
     isAddModal: false,
     isDetailModal: false,
     registData: {
-      department: 'IT',
-      team: '',
-      question: '',
-      useQuestion: false,
+      question: {
+        department: 'IT',
+        team: '',
+        question: '',
+        useQuestion: false,
+      }
     }
   };
 

@@ -16,15 +16,15 @@ import { withStyles } from '@material-ui/core';
 import * as routes from '../../lib/service/routes'
 
 import './Sidebar.scss'
-import logo from '../../static/images/logo.png'
-import slogan from '../../static/images/slogan.png'
+import logo from '../../static/images/logo_1.png'
+import slogan from '../../static/images/logo3@2x.png'
 
 
 const styles = theme => ({
   root: {
     width: '150px',
     maxWidth: '150px',
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: '#FF5858',
   },
   nested: {
     paddingLeft: theme.spacing.unit * 4,
@@ -47,15 +47,19 @@ class Sidebar extends Component {
       <div className={`${classes.root} Container`}>
         <div className='main-img'>
           <img src={logo} />
-          <img src={slogan} />
         </div>
-        <ListItem button component={props => <Link to={routes.MATCH_PATH_DASHBOARD} {...props} />}>
+
+      <div className="ItemContainer"> 
+        <ListItem button className={'Sidebar__item'}
+          component={props => <Link to={routes.MATCH_PATH_DASHBOARD} {...props} />}>
           <ListItemIcon className={'Sidebar__icon'}>
             <DashboardIcon/>
           </ListItemIcon>
           <ListItemText className={`Sidebar__menu`} primary="지원자현황" />
         </ListItem>
-        <ListItem button>
+      </div>
+      <div className="ItemContainer"> 
+        <ListItem button className={'Sidebar__item'}>
           <ListItemIcon className={'Sidebar__icon'}>
             <BrokenImageIcon />
           </ListItemIcon>
@@ -83,20 +87,30 @@ class Sidebar extends Component {
               </ListItem>
             </List>
           </Collapse>
-        <ListItem button
+      </div>
+      <div className="ItemContainer"> 
+        <ListItem button className={'Sidebar__item'}
           component={props => <Link to={routes.MATCH_PATH_INTERVIEW} {...props} />}>
           <ListItemIcon className={'Sidebar__icon'}>
             <PeopleIcon />
           </ListItemIcon>
           <ListItemText className={`Sidebar__menu`} primary="면리관리" />
         </ListItem>
-        <ListItem button
+      </div>
+      <div className="ItemContainer">
+        <ListItem button className={'Sidebar__item'}
           component={props => <Link to={routes.MATCH_PATH_QUESTION} {...props} />}>
           <ListItemIcon className={'Sidebar__icon'}>
             <BarChartIcon />
           </ListItemIcon>
           <ListItemText className={`Sidebar__menu`} primary="질문관리" />
         </ListItem>
+      </div>
+        <div className='main-img-footer'>
+          <div className='MainFooterConitainer'>
+            <img src={slogan} />
+          </div>
+        </div>
     </div>
     )
   }

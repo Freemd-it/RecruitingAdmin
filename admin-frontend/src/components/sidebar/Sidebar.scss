@@ -1,37 +1,61 @@
-.Sidebar {
-  &__icon {
-    margin-right: 5px !important;
-    svg {
-      width: 16px;
-      height: 16px;
-    }
-  }
-  &__menu {
-    padding: 0 !important;
-  }
-}
-
 .Container {
   display: flex;
   flex-direction: column;
   width: 180px;
   height: 1000px;
-  background-color: black;
-  color: white;
-  padding: 10px;
-  
+
   span {
-    font-size: 10px;
+    color: white;
+    font-size: 10px; 
+  }
+
+  .ItemContainer {
+    &:hover {
+      background-color: white;
+      span, svg {
+        color: #FF5858;
+      }
+    }
+  }
+  .Sidebar {
+    &:hover {
+      color: #FF5858 !important;
+    }
+    &__icon {
+      margin-right: 5px !important;
+      svg {
+        width: 16px;
+        height: 16px;
+        color: #FFF;
+      }
+    }
+    &__menu {
+      padding: 0 !important;
+     
+    }
+      
+    
   }
 }
+.main-img-footer {
 
+}
 .main-img {
   display: flex;
   flex-direction: column;
-  width: 80px;
   margin: 0 auto;
   margin-bottom: 10px;
   margin-top: 10px;
+}
+
+.MainFooterConitainer{
+  position: relative;
+  width: 100%;
+  img {
+    position: absolute;
+    bottom: 0;
+
+  }
 }
 
 .main-word {
