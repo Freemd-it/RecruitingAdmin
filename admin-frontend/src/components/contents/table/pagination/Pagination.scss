@@ -3,3 +3,11 @@
   display: flex;
   justify-content: center; 
 }
+
+.PageItem {
+  color: #FF5858 !important;
+  &__active {
+    background-color: #FF5858 !important;
+    border-color: #FF5858 !important;
+  }
+}

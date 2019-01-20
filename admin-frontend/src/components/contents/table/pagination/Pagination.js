@@ -14,21 +14,8 @@ const TablePagination = ({ totalPage, currentPage, onChangePage, className }) =>
     maxPage = Math.min(currentPage + 2, totalPage);
     minPage = Math.max(1, currentPage - 2);
   }
-
-  // if (totalPage <= 5) {
-  //   maxPage = totalPage;
-  // } else {
-  //   if (currentPage +2 <= totalPage) {
-  //     maxPage = currentPage +2; 
-  //     if (maxPage - 4 > 0) {
-  //       minPage = maxPage - 4; 
-  //     }
-  //   }
-  // }
-
   const pageItem = [0, 1, 2, 3, 4].map(item => {
     const pageNumber = minPage + item;
-    console.log(pageNumber, maxPage);
     if (pageNumber <= maxPage) {
       return (
         <PaginationItem 
@@ -36,7 +23,7 @@ const TablePagination = ({ totalPage, currentPage, onChangePage, className }) =>
           active={pageNumber === currentPage}
           onClick={(e) => {onChangePage(pageNumber)}}
         >
-          <PaginationLink>
+          <PaginationLink className={`${pageNumber === currentPage ? 'PageItem__active' : 'PageItem'}`}>
             { pageNumber }
           </PaginationLink>
         </PaginationItem>
@@ -48,12 +35,12 @@ const TablePagination = ({ totalPage, currentPage, onChangePage, className }) =>
     <div className={`PaginationBox ${className ? className : ''}`}>
       <Pagination aria-label="Page navigation example">
         <PaginationItem 
-          disabled={totalPage === 0} 
+          disabled={totalPage === 0 || currentPage === 1} 
           onClick={() => {
             onChangePage(Math.max(currentPage - 5, 1));
           }}
         >
-          <PaginationLink previous/>
+          <PaginationLink className={`${totalPage === 0 || currentPage === 1} ? PageItem : ''`} previous/>
         </PaginationItem>
         { pageItem.filter(Boolean) }
         <PaginationItem 
@@ -63,7 +50,7 @@ const TablePagination = ({ totalPage, currentPage, onChangePage, className }) =>
             onChangePage(Math.min(totalPage, currentPage + 5));
           }}
         >
-          <PaginationLink next/>
+          <PaginationLink className={`${totalPage === 0 || totalPage <= currentPage} ? PageItem : ''`} next/>
         </PaginationItem>
       </Pagination> 
     </div> 
