@@ -10,7 +10,7 @@ const QuestionDetail = props => {
     onRegistData
   } = props;
   return (
-    <div>
+    <div className={'QuestionDetail'}>
       <TextField
         label="본부"
         className={'QuestionDetail__mr QuestionDetail__input'}
@@ -40,7 +40,7 @@ const QuestionDetail = props => {
         name={'question'}
         multiline
         variant="outlined"
-        rows="4"
+        rows="10"
         onChange={onRegistData}
         value={registData.question}
       />

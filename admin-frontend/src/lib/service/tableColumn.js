@@ -126,6 +126,7 @@ export const question = [{
 }, {
   key: 'question',
   value: '질문내용',
+  width: '300px',
 }, {
   key: 'cardinality',
   value: '기수',

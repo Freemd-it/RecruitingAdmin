@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Table, Modal, QuestionDetail } from '../../components'
 import Button from '@material-ui/core/Button';
-import Switch from '@material-ui/core/Switch';
 import './QuestionRegistContainer.scss';
 
 class QuestionRegistContainer extends Component {
