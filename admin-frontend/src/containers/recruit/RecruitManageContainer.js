@@ -1,28 +1,26 @@
 import React, { Component } from 'react'
-import { AnswerBody, Table, Modal, DetailBody } from '../../components'
-const data = [{
-  name: '이동수',
-  english_name: 'dongsu',
-  is_male: '남',
-  birth_date: '1991-12-09',
-  phone_number: '010-1111-1111',
-  email: '30032dongsu@moducampus.com',
-  sns: 'hihih',
-  address: '성남',
-  department: 'IT',
-  secondary_department: '브본',
-  team: '우리팀',
-  question: '안녕하세요',
-  cardinality: '11',
-  writer: '이필주',
-  create: '2019-01-01',
-  is_question: true,
-  school_name: '프리메드',
-  school_degree: '고등학교',
-  school_type: '인문계',
-  school_location: '서울',
-  entrance_date: new Date(2017, 3),
-  graduate_date: null,
+import { AnswerBody, Table, Modal, InfoDetail } from '../../components'
+
+const data = [
+  {
+    basic_info: { // 기본 신상 정보에 대한 객체
+      name: "동수", // 지원자의 이름
+      english_name: "dongsu ", // 지원자의 영문 이름
+      is_male: "man", // 남 or 녀
+      birth_date: "2018-01-01", // 생년월일
+      phone_number: "11111", // 연락처
+      email: "30032ongsu@gmail.com", // 이메일 주소
+      sns: "X", // SNS 주소
+      address: "성남" // 거주지
+    },
+  // academic_career: { // 최종 학력
+  //   name: "string", // 학교명
+  //   location: "string", // 소재지
+  //   type: "int32 (0: 고등학교, 1: 대학교, 2: 대학원)", // 학교의 종류
+  //   major: "string or int32", // 전공
+  //   entrance_date: "date (optional)", // 입학년도
+  //   graduation_date: "date (optional)" // 졸업년도
+  // },
   external_activities: [
     {
       type: '인턴',
@@ -42,7 +40,27 @@ const data = [{
       content: '분당병원에서 접수 및 진료 프로세스를 관찰하고 비효율 혹은 병목이 일어나는 점을 분석하는 프로젝트를 맡았습니다.' +
         '팀 별로 개선 시나리오를 3가지 정도 만들어서 발표를 진행했고 이유 없이 반복되는 작업을 줄려서 효율성을 높이는 일을 하였습니다.'
     }
-  ]
+  ],
+  apply_info: { // 지원 관련 정보
+    department: "경영지원본부", // 부서
+    secondary_department: "IT", // 2지망
+    team: "재무팀", // 팀, 팀이 있는 부서에만 값이 부여됨
+    secondary_team: "", // 2지망 부서 중 팀이 있는 경우에만 부여됨
+    can_moved: "true", // 타 본부, 타 사업 이동 가능여부
+    can_multiple_interview: "false", // 여러 부서에 면접을 볼 수 있는지 가능여부
+    questions: [ // Array (document) // 질답 목록
+      {
+        q_id: "objectid", // question document의 id
+        answer: "string" // 그 질문에 대한 답
+      }
+    ],
+    portfolios: [ // 포트폴리오 정보
+      {
+        file_path: "string" // 포트폴리오 파일 경로
+      }
+    ],
+    interview_time: "Array(int32) (0: 14시~15시, 1: ...)" // 인터뷰 가능 시간
+  }
 }]
 
 class RecruitManageContainer extends Component {
@@ -83,7 +101,7 @@ class RecruitManageContainer extends Component {
       }
       if (!prevState.isDetailModal && value) {
         data.value = (
-            <DetailBody
+            <InfoDetail
               data={value}
             />
         )

@@ -14,7 +14,7 @@ const styles = theme => ({
 const DetailCell = ({classes, colName, colValue}) => {
     return (
         <TextField
-          className={classes.textField}
+          className={`${classes.textField} DetailCell` }
           label={colName}
           value={colValue}
           margin="normal"

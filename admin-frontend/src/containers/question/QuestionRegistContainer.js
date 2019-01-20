@@ -21,23 +21,27 @@ class QuestionRegistContainer extends Component {
   componentDidMount() {
     this.setState({ 
       rows: [{
-        id: 1,
-        department: 'IT',
-        team: '우리팀',
-        question: '안녕하세요?',
-        cardinality: '11',
-        writer: '이필주',
-        create: '2019-01-01',
-        use_question: true,
+        question: {
+          id: 1,
+          department: 'IT',
+          team: '우리팀',
+          question: '안녕하세요?',
+          cardinality: '11',
+          writer: '이필주',
+          create: '2019-01-01',
+          use_question: true,
+        }
       }, {
-        id: 2,
-        department: 'IT',
-        team: '너네팀',
-        question: '안녕안하세요?',
-        cardinality: '0',
-        writer: '안알랴줌',
-        create: '2019-01-02',
-        use_question: false,
+        quuestion: {
+          id: 2,
+          department: 'IT',
+          team: '너네팀',
+          question: '안녕안하세요?',
+          cardinality: '0',
+          writer: '안알랴줌',
+          create: '2019-01-02',
+          use_question: false,
+        }
       }]
     });
   }
