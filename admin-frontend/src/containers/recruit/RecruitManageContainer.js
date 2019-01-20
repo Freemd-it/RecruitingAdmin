@@ -50,6 +50,31 @@ const data = [
         '팀 별로 개선 시나리오를 3가지 정도 만들어서 발표를 진행했고 이유 없이 반복되는 작업을 줄려서 효율성을 높이는 일을 하였습니다.'
     }
   ],
+  ability_info: [
+    {
+      type: '공인영어',
+      title: 'OPIC',
+      grade: 0,
+      content: 'OPIC IH 받았습니다 ㅎㅎ'
+    },
+    {
+      type: '자격증',
+      title: '컴퓨터활용능력 1급',
+      date: new Date(2018, 3),
+      content: ''
+    },
+    {
+      type: '어학능력',
+      title: '중국어',
+      grade: 2,
+      content: 'HSK 5급 땄습니다.'
+    },
+    {
+      type: '기타내역',
+      title: '코딩 능력',
+      content: '네이버 개발자입니다.'
+    }
+  ],
   apply_info: { // 지원 관련 정보
     qnas: [ // Array (document) // 질답 목록
       {
