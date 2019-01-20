@@ -112,7 +112,6 @@ class SignIn extends Component {
             type="submit"
             fullWidth
             variant="contained"
-            color="white"
             className={classes.submit}
             onClick={this.onLoginhandler}
           >

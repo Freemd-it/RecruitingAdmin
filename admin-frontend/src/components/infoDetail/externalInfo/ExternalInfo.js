@@ -21,7 +21,7 @@ const ExternalInfo = (props) => {
           const endDateString = moment(end_date).format("Y년 M월") + ' 까지';
           return (
             <div key={index} className="Content">
-              {index != 0 ? (<Divider className="Divider" />) : ''}
+              {index !== 0 ? (<Divider className="Divider" />) : ''}
               <div className="SubTitle">
                 경력 {index}.
                 </div>

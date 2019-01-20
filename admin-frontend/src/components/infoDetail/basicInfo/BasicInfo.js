@@ -24,11 +24,6 @@ const BasicInfo = (props) => {
     secondary_department,
     team,
     secondary_team, 
-    question, 
-    cardinality,
-    writer,
-    create,
-    is_question
   } = props.data;
 
   const birthString = moment(birth_date).format("Y년 M월 D일");

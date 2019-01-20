@@ -22,7 +22,7 @@ const Body = ({columns, data, onClick = () => {}, cursor = false}) => {
           rows.push(_.map(item, (itemVal, itemKey) => {
             returnData = columns.map((column, index) => {
               const value = itemVal[column.key];
-              const style = {}
+              const style = {};
               if(columns.width) {
                 style.width = column.width
               }

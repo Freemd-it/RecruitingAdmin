@@ -167,6 +167,7 @@ class RecruitManageContainer extends Component {
             data={this.state.rows}
             totalLength={1000}
             onClick={this.onDetailClick}
+            cursor
           />
         }
         {

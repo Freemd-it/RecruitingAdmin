@@ -51,8 +51,8 @@ class CustomModal extends React.Component {
         <ModalHeader toggle={() =>{onModal()}}>{ title }</ModalHeader>
         <ModalBody className="CustomModal__body">{ contents }</ModalBody>
         <ModalFooter>
-          <Button className={'mr-2'} color="primary" onClick={confirmFun}>{ confirmMessage }</Button>
-          { isCancel && <Button color="secondary" onClick={() => onModal()}>{ cencleMessage }</Button> }
+          <Button className="CustomModal__body__confirm" color="danger" onClick={confirmFun}>{ confirmMessage }</Button>
+          { isCancel && <Button className="CustomModal__body__cencle" color="danger" outline onClick={() => onModal()}>{ cencleMessage }</Button> }
         </ModalFooter>
       </Modal>
     );

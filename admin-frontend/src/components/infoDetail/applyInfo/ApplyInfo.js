@@ -39,7 +39,7 @@ const ApplyInfo = (props) => {
           {qnas.map((qna, index) =>
             (
               <div key={qna.type}>
-                {index != 0 ? (<Divider className="Divider" />) : ''}
+                {index !== 0 ? (<Divider className="Divider" />) : ''}
                 <div className="SubTitle">{qna.type}</div>
                 {qna.data.map(elem => (
                   <div key={elem} className="SubContent">
@@ -56,35 +56,39 @@ const ApplyInfo = (props) => {
           )}
           <Divider className="Divider" />
           {portfolios.length > 0 ? <div className="SubTitle"> 포트폴리오 정보</div> : ''}
-          {portfolios.map(portfolio =>
-            (
-              <div className="SubContent">
-                <a href="#" key={portfolio}>{portfolio.file_path}</a>
+          {portfolios.map((portfolio, index) =>
+              <div className="SubContent" key={`${index}__portfolio`}>
+                <a href="/" onClick={e => e.preventDefault()}>{portfolio.file_path}</a>
               </div>
-            )
           )}
           <Divider className="Divider" />
           <div>
             <div className="SubTitle">인터뷰 가능 시간</div>
             {interview_times.map((dayInfo, index) => (
-              <div>
+              <div key={`${index}__dayInfo`}>
                 <div className="SubTitle">
                   {moment(dayInfo.date).format("M월 D일")}
                 </div>
                 <div>
                   {interviewTable[index].map((time, i) => (
-                    <div key={time} className={interview_times[index].time.includes(time) ? "InterviewCell Selected" : "InterviewCell"}>{time}</div>
+                    <div key={`${i}__${time}__interview`} className={interview_times[index].time.includes(time) ? "InterviewCell Selected" : "InterviewCell"}>{time}</div>
                   ))}
                 </div>
               </div>
             ))}
           </div>
-          <div>
-            <span className="SubTitle">본부 이동 가능여부</span> {can_moved ? 'O' : 'X'}
+
+          <div className="container">
+            <div className="row">
+              <div className="col-3 SubTitle"> 본부 이동 가능여부 </div>
+              <div className="SubTitle"> {can_moved ? 'O' : 'X'} </div>
+            </div>
+            <div className="row">
+              <div className="col-3 SubTitle">여러 부서 면접 가능여부</div>
+              <div className="SubTitle">{can_multiple_interview ? 'O' : 'X'}</div>
+            </div>
           </div>
-          <div>
-            <span className="SubTitle">여러 부서 면접 가능여부</span> {can_multiple_interview ? 'O' : 'X'}
-          </div>
+
         </div>)
       }>
     </InfoCard>

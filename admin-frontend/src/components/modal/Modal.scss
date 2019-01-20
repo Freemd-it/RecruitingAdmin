@@ -2,5 +2,18 @@
     &__body {
         max-height: 500px;
         overflow-y: auto;
+        * {
+            font-size: 14px;
+        }
+        &__confirm {
+            background-color: #FF5858 !important;
+            border-color: #FF5858 !important;
+        }
+        &__cencle {
+            &:hover {
+                background-color: #FF5858 !important;
+                border-color: #FF5858 !important;
+            }
+        }
     }
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import DetailBody from '../infoDetail/detailBody/DetailBody';
 import { withStyles } from '@material-ui/core/styles';
 
 import './InfoDetail.scss'
