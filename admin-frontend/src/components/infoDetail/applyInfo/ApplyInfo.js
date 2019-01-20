@@ -77,18 +77,13 @@ const ApplyInfo = (props) => {
               </div>
             ))}
           </div>
-
-          <div className="container">
-            <div className="row">
-              <div className="col-3 SubTitle"> 본부 이동 가능여부 </div>
-              <div className="SubTitle"> {can_moved ? 'O' : 'X'} </div>
-            </div>
-            <div className="row">
-              <div className="col-3 SubTitle">여러 부서 면접 가능여부</div>
-              <div className="SubTitle">{can_multiple_interview ? 'O' : 'X'}</div>
-            </div>
+          <Divider className="Divider" />
+          <div>
+            <span className="SubTitle">본부 이동 가능</span> {can_moved ? 'O' : 'X'}
           </div>
-
+          <div>
+            <span className="SubTitle">여러 부서 면접 가능</span> {can_multiple_interview ? 'O' : 'X'}
+          </div>
         </div>)
       }>
     </InfoCard>

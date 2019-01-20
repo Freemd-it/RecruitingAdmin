@@ -67,7 +67,8 @@ span.SubTitle {
 }
 
 .InterviewCell.Selected {
-  background-color: #303f92;
+  background-color: #FF5858 !important;
+  border-color: #FF5858 !important;
   color: whitesmoke;
   font-weight: 600;
 }
