@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TableTemplate from '@material-ui/core/Table';
-import Tooltip from './tooltip/Tooltip'
-import Toolbar from './toolbar/Toolbar'
-// import pagination from './pagination/Pagination'
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import Pagination from './pagination/Pagination'
 
 import Header from './header/Header'
 import Body from './body/Body'
@@ -31,37 +30,51 @@ const tableStyle = theme => ({
 class Table extends Component {
   state = {
     rows: this.props.data || [],
-    page: 0,
-    rowsPerPage: 10,
+    currentPage: 1,
+    totalPage: 0,
+    rowsPerPage: 15,
   };
 
-  handleChangePage = (event, page) => {
-    this.setState({ page });
-  };
-
-  handleChangeRowsPerPage = event => {
-    this.setState({ rowsPerPage: event.target.value });
+  onChangePage = (currentPage) => {
+    this.setState({ currentPage });
   };
 
   render() {
-    const { onClick, classes, cursor, titleNav } = this.props;
+    const { onClick, classes, cursor, titleNav, title } = this.props;
+    const { currentPage, rowsPerPage } = this.state;
     return (
       <div className={'CustomTable'}>
-        <Toolbar 
-          title={this.props.title} 
-          nav={
-            <>
-              { titleNav }
-              <Tooltip/>
-            </>
-          }
-        />
+        <div className={'CustomTable__titlebar'}>{ title }</div>
+        <div className={'CustomTable__navbar'}>
+          <div>검색들어갈자리</div>
+          <div>
+            { titleNav }
+            <ReactHTMLTableToExcel 
+              className={`btn btn-danger`} 
+              table="table"
+              filename="dashBoard" 
+              sheet="프리메드지원서" 
+              buttonText="엑셀로 내보내기"
+            />
+          </div>
+        </div>
         <div className={classes.tableWrapper}>
           <TableTemplate className={classes.table} id='table'>
             <Header columns={this.props.columns}/>
-            <Body cursor={cursor} columns={this.props.columns} data={this.props.data} onClick={onClick}/>
+            <Body 
+              cursor={cursor} 
+              columns={this.props.columns} 
+              data={[ ...this.props.data].splice((currentPage-1) * rowsPerPage ,rowsPerPage) } 
+              onClick={onClick}
+            />
           </TableTemplate>
         </div>
+
+        <Pagination
+          currentPage={this.state.currentPage}
+          totalPage={Math.ceil(this.props.data.length / this.state.rowsPerPage)}
+          onChangePage={this.onChangePage}
+        />
       </div>
       );
   }

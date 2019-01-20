@@ -8,14 +8,28 @@
   margin: 10px;
 }
 
-.excel-button {
-  width: 50px;
-  height: 25px;
-}
-
 .CustomTable {
+  margin-top: 10px;
   box-shadow: none !important;
   min-width: 700px;
+
+  &__titlebar {
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 24px;
+    margin-right: 8px;
+  }
+
+  &__navbar {
+    margin: 10px 8px 10px 24px;
+    display: flex;
+    justify-content: space-between;
+    button {
+      font-size: 14px;
+      padding: 9px 14px;
+    }
+  }
+
   thead {
     tr {
       th {

@@ -27,7 +27,7 @@ const Body = ({columns, data, onClick = () => {}, cursor = false}) => {
                 style.width = column.width
               }
               if(value !== undefined) {
-                if (typeof value == 'boolean') return <TableCell key={`${cnt++}_${itemVal}`}>{value ? '0': ''}</TableCell>;
+                if (typeof value === 'boolean') return <TableCell key={`${cnt++}_${itemVal}`}>{value ? 'O': ''}</TableCell>;
                 else if (value instanceof Date) return <TableCell key={`${cnt++})${itemVal}`}>{moment(value).format("Y년 M월 D일")}</TableCell>;
                 else return <TableCell key={`${cnt++}_${itemVal}`}>{value}</TableCell>;
               }
