@@ -23,7 +23,7 @@ const ExternalInfo = (props) => {
             <div key={index} className="Content">
               {index !== 0 ? (<Divider className="Divider" />) : ''}
               <div className="SubTitle">
-                경력 {index}.
+                경력 {index + 1}.
                 </div>
               <div className="SubContent">
                 {organizer} {type}

@@ -1,5 +1,4 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
 
 import './InfoDetail.scss'
 import _ from 'lodash'
@@ -9,17 +8,9 @@ import BasicInfo from './basicInfo/BasicInfo';
 import ApplyInfo from './applyInfo/ApplyInfo';
 import AbilityInfo from './abilityInfo/AbilityInfo';
 
-
-const styles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-});
-
 const InfoDetail = ({ classes, data }) => {
   return (
-    <div className={`${classes.container} DetailBody`}>
+    <div className="InfoDetail">
       {
         _.map(data, (value, key) => {
           switch (key) {
@@ -66,4 +57,4 @@ const InfoDetail = ({ classes, data }) => {
   )
 }
 
-export default withStyles(styles)(InfoDetail)
+export default InfoDetail;

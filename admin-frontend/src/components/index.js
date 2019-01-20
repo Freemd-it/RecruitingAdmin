@@ -6,11 +6,7 @@ import Contents from './contents/Contents';
 import DashBoard from './contents/dashboard/DashBoard';
 import Modal from './modal/Modal';
 import QuestionDetail from './questionDetail/QuestionDetail';
-
 import InfoDetail from './infoDetail/InfoDetail'
-import DetailBody from './infoDetail/detailBody/DetailBody'
-import DetailCell from './infoDetail/detailCell/DetailCell'
-
 
 export {
   Sidebar,
@@ -21,7 +17,5 @@ export {
   DashBoard,
   Modal,
   QuestionDetail,
-  DetailBody,
-  DetailCell,
   InfoDetail,
 };
