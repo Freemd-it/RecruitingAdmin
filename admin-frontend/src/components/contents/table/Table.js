@@ -14,10 +14,6 @@ import './Table.scss'
 
 
 const tableStyle = theme => ({
-  root: {
-    marginTop: theme.spacing.unit * 3,
-    width: '100%',
-  },
   head: {
     width: '100%',
   },
@@ -51,8 +47,7 @@ class Table extends Component {
   render() {
     const { onClick, classes, cursor, titleNav } = this.props;
     return (
-      <div>
-        <Paper className={`${classes.root} CustomTable`}>
+      <div className={'CustomTable'}>
         <Toolbar 
           title={this.props.title} 
           nav={
@@ -68,7 +63,6 @@ class Table extends Component {
             <Body cursor={cursor} columns={this.props.columns} data={this.props.data} onClick={onClick}/>
           </TableTemplate>
         </div>
-        </Paper>
       </div>
       );
   }

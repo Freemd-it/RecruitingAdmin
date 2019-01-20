@@ -38,7 +38,7 @@ const toolbarStyles = theme => ({
 let EnhancedTableToolbar = props => {
   const { classes, title, nav } = props;
   return (
-    <div>
+    <>
       <Toolbar className={classes.root}>
         <div className={classes.title}>
           <Typography variant="h6" id="tableTitle">
@@ -47,7 +47,7 @@ let EnhancedTableToolbar = props => {
         </div>
       </Toolbar>
       <div className={`ToolBar__nav`}>{ nav }</div>
-    </div>
+    </>
   );
 };
 
