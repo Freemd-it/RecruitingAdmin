@@ -8,6 +8,7 @@ import AcademicInfo from './academicInfo/AcademicInfo';
 import ExternalInfo from './externalInfo/ExternalInfo';
 import BasicInfo from './basicInfo/BasicInfo';
 import ApplyInfo from './applyInfo/ApplyInfo';
+import AbilityInfo from './abilityInfo/AbilityInfo';
 
 
 const styles = theme => ({
@@ -50,6 +51,13 @@ const InfoDetail = ({ classes, data }) => {
                   data={value}
                 />
               );
+            case 'ability_info':
+              return (
+                <AbilityInfo
+                  key={`${key}__DetailBody`}
+                  data={value}
+                />
+              )
             default:
               return '';
           }
