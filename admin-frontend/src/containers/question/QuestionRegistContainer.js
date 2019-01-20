@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Table, Modal, QuestionDetail } from '../../components'
-import Button from '@material-ui/core/Button';
+import { Button } from 'reactstrap';
 import './QuestionRegistContainer.scss';
 
 class QuestionRegistContainer extends Component {
@@ -96,17 +96,19 @@ class QuestionRegistContainer extends Component {
   render() {
     return (
       <div className={`QuestionRegisContainer__addBox`}>
-        <Button 
-          className={`QuestionRegisContainer__addQuestion`}
-          variant="contained" 
-          color="primary"
-          onClick={e => this.onAddModal(<div>추가하기당</div>)}
-        >
-          질문 추가하기
-        </Button>
-
         <Table
-          title={'본부질문 관리'}
+          title={'본부 질문 관리'}
+          titleNav={
+            <Button 
+              className={`QuestionRegisContainer__addBtn`}
+              color="dark"
+              outline
+              size={`sm`}
+              onClick={e => this.onAddModal(<div>추가하기당</div>)}
+            >
+              질문 추가하기
+            </Button>
+          }
           columns={this.props.columns}
           data={this.state.rows}
           totalLength={1000}

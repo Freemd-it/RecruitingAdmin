@@ -49,18 +49,25 @@ class Table extends Component {
   };
 
   render() {
-    const { onClick, classes, cursor } = this.props;
+    const { onClick, classes, cursor, titleNav } = this.props;
     return (
       <div>
         <Paper className={`${classes.root} CustomTable`}>
-        <Toolbar title={this.props.title}/>
-        <Tooltip />
-          <div className={classes.tableWrapper}>
-            <TableTemplate className={classes.table} id='table'>
-              <Header columns={this.props.columns}/>
-              <Body cursor={cursor} columns={this.props.columns} data={this.props.data} onClick={onClick}/>
-            </TableTemplate>
-          </div>
+        <Toolbar 
+          title={this.props.title} 
+          nav={
+            <>
+              { titleNav }
+              <Tooltip/>
+            </>
+          }
+        />
+        <div className={classes.tableWrapper}>
+          <TableTemplate className={classes.table} id='table'>
+            <Header columns={this.props.columns}/>
+            <Body cursor={cursor} columns={this.props.columns} data={this.props.data} onClick={onClick}/>
+          </TableTemplate>
+        </div>
         </Paper>
       </div>
       );

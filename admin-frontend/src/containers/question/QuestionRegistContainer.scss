@@ -1,4 +1,9 @@
 .QuestionRegisContainer {
+  &__addBtn {
+    font-size: 14px;
+    padding: 9px 20px;
+    margin-right: 20px;
+  }
   &__addBox {
     position: relative;
   }
