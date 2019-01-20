@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TableTemplate from '@material-ui/core/Table';
-import Paper from '@material-ui/core/Paper';
 import Tooltip from './tooltip/Tooltip'
 import Toolbar from './toolbar/Toolbar'
 // import pagination from './pagination/Pagination'

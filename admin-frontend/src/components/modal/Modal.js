@@ -31,7 +31,6 @@ class CustomModal extends React.Component {
 
   render() {
     const { 
-      classes, 
       open, 
       onModal, 
       title, 

@@ -13,23 +13,27 @@ import * as axios from '../../../../lib/api/login'
 
 const styles = theme => ({
   main: {
-    width: 'auto',
     display: 'block', // Fix IE 11 issue.
     marginLeft: theme.spacing.unit * 3,
     marginRight: theme.spacing.unit * 3,
     [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
-      width: 400,
       marginLeft: 'auto',
       marginRight: 'auto',
     },
+    position: 'relative',
+    width: '100%',
+    height: '100vh',
   },
   paper: {
-    marginTop: theme.spacing.unit * 8,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
-    backgroundColor: '#FF5858'
+    backgroundColor: '#FF5858',
+    left: '50%',
+    top: '50%',
+    position: 'absolute',
+    transform: 'translateX(-50%) translateY(-50%)',
   },
   avatar: {
     width: '100%',

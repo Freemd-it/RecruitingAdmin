@@ -7,7 +7,6 @@ class Tooltip extends React.Component {
   };
 
   render () {
-    const { classes} = this.props;
     return (
         <ReactHTMLTableToExcel 
           className={`btn btn-danger excel-btn`} 

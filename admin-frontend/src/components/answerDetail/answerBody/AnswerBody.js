@@ -3,7 +3,6 @@ import AnswerDetail from '../answerDetail/AnswerDetail'
 import { withStyles } from '@material-ui/core/styles';
 
 import './AnswerBody.scss'
-import _ from 'lodash'
 
 const styles = theme => ({
   container: {
