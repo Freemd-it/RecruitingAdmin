@@ -68,10 +68,11 @@ class QuestionRegistContainer extends Component {
           isDetailModal: !prevState.isDetailModal,
           registData: { ...prevState.registData }
         }
-        if (!prevState.isDetailModal && value) {
-          data.registData.useQuestion = value.use_question;
-          data.registData.team = value.team;
-          data.registData.question = value.team.question;
+        if (!prevState.isDetailModal && value && value.question) {
+          const { question } = value;
+          data.registData.useQuestion = question.use_question;
+          data.registData.team = question.team;
+          data.registData.question = question.team.question;
         } else {
           data.registData.useQuestion = '';
           data.registData.team = '';
