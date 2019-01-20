@@ -7,13 +7,14 @@ import '../InfoDetail.scss';
 import InfoCard from '../InfoCard';
 
 function componentByType(elem) {
+  const gradeStringList = ['상', '중', '하'];
   switch(elem.type) {
     case '공인영어':
       return (
         <div>
           <div className="SubTitle">{elem.type} ({elem.title}) </div>
-          <span className="SubTitle"> 본인 평가 </span> {elem.grade}
-          <div className="SubTitle">세부 내용</div>
+          <span className="SubTitle"> 본인 평가 </span> {gradeStringList[elem.grade]}
+          {elem.content ? <div className="SubTitle">세부 내용</div> : null}
           <div className="SubContent">{elem.content}</div>
         </div>
       );
@@ -22,7 +23,7 @@ function componentByType(elem) {
         <div>
           <div className="SubTitle">{elem.type} ({elem.title}) </div>
           <span className="SubTitle"> 취득일</span> {moment(elem.date).format("Y년 M월")}
-          <div className="SubTitle">세부 내용</div>
+          {elem.content ? <div className="SubTitle">세부 내용</div> : null}
           <div className="SubContent">{elem.content}</div>
         </div>
       );
@@ -30,8 +31,8 @@ function componentByType(elem) {
       return (
         <div>
           <div className="SubTitle">{elem.type} ({elem.title}) </div>
-          <span className="SubTitle"> 본인 평가 </span> {elem.grade}
-          <div className="SubTitle">세부 내용</div>
+          <span className="SubTitle"> 본인 평가 </span> {gradeStringList[elem.grade]}
+          {elem.content ? <div className="SubTitle">세부 내용</div> : null}
           <div className="SubContent">{elem.content}</div>
         </div>
       );
@@ -39,7 +40,7 @@ function componentByType(elem) {
       return (
         <div>
           <div className="SubTitle">{elem.type} ({elem.title}) </div>
-          <div className="SubTitle">세부 내용</div>
+          {elem.content ? <div className="SubTitle">세부 내용</div> : null}
           <div className="SubContent">{elem.content}</div>
         </div>
       );
@@ -59,7 +60,7 @@ const AbilityInfo = (props) => {
       content={
         abilityInfo.map((elem, index) =>
           (
-            <div key={`${elem.type}__${index}`}>
+            <div key={`${elem.type}__${index}`} className="Content">
               {index !== 0 ? (<Divider className="Divider" />) : ''}
               {componentByType(elem)}
             </div>

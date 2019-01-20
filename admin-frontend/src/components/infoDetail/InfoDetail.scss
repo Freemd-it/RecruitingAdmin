@@ -1,10 +1,4 @@
-.CellContainer {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-}
-
-.DetailBody {
+.InfoDetail {
   width: 100%;
   margin-right: 5px;
 }
@@ -47,7 +41,7 @@ span.SubTitle {
 
 .Content {
   font-size: 0.9em;
-  line-height: 1.5em;
+  line-height: 2em;
   padding-left: 0.3em;
 }
 
@@ -56,8 +50,8 @@ span.SubTitle {
 }
 
 .Card {
-  width: 100%;
-  margin: 10px 20px;
+  width: 96%;
+  margin: 15px auto;
 }
 
 .InterviewCell {
