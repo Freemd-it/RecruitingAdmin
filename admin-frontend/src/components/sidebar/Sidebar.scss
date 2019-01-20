@@ -1,25 +1,30 @@
 .Container {
   display: flex;
   flex-direction: column;
-  height: 1000px;
+  height: 100vh;
 
   span {
     color: white;
-    font-size: 10px; 
+    font-size: 1rem; 
   }
 
   .ItemContainer {
-    * {
-      font-size: 16px;
-    }
+    margin-top : 10px;
+    margin-bottom: 10px;
     &:hover {
       background-color: white;
       span, svg {
         color: #FF5858;
       }
     }
+    .ItemWrapper {
+      display: block;
+      width: 70%;
+      margin: 0 auto;
+    }
   }
   .Sidebar {
+    margin: 0 auto;
     &:hover {
       color: #FF5858 !important;
     }
@@ -32,11 +37,11 @@
       }
     }
     &__menu {
-      padding: 0 !important;
-     
-    }
       
-    
+    }
+    &__item {
+      padding-left: 20px;
+    }
   }
 }
 .main-img-footer {

@@ -6,10 +6,10 @@ import Contents from './contents/Contents';
 import DashBoard from './contents/dashboard/DashBoard';
 import Modal from './modal/Modal';
 import QuestionDetail from './questionDetail/QuestionDetail';
-
-import InfoDetail from './infoDetail/InfoDetail'
-import DetailBody from './infoDetail/detailBody/DetailBody'
-import DetailCell from './infoDetail/detailCell/DetailCell'
+import InterviewBody from './contents/table/interviewBody/InterviewBody';
+import InfoDetail from './infoDetail/InfoDetail';
+import DetailBody from './infoDetail/detailBody/DetailBody';
+import DetailCell from './infoDetail/detailCell/DetailCell';
 
 
 export {
@@ -24,4 +24,5 @@ export {
   DetailBody,
   DetailCell,
   InfoDetail,
+  InterviewBody
 };

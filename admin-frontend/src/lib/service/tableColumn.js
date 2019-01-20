@@ -40,43 +40,13 @@ export const recruit = {
       key: 'secondary_department',
       value: '2지망',
     },
-    {
-      key: 'common_first',
-      value:'단체공통1',
-    },
-    {
-      key: 'common_second',
-      value: '단체공통2',
-    },
-    {
-      key: 'common_department',
-      value: '본부공통',
-    },
-    {
-      key: 'common_team',
-      value: '팀'
-    },
   ],
 }
-export const recruit2 = {
-  information: {
-    name: '이름',
-    english_name: '영문이름',
-    is_male: '성별',
-    birth_date: '생년월일',
-    phone_number: '전화번호',
-    email: 'email',
-    sns: 'sns',
-    address: '주소',
-    department: '1지망',
-    secondary_department: '2지망',
-    common_first: '첫번째 공통질문',
-    common_second: '두번째 공통질문',
-    common_department: '본부 공통질문',
-    common_team: '팀 질문',
-  }
-} 
+
 export const interview = [{
+  key: 'name',
+  value: '이름',
+},{
   key: 'department',
   value: '본부명'
 }, {
@@ -94,18 +64,30 @@ export const interview = [{
 }, {
   key: 'can_multiple_interview',
   value: '이중면접여부',
-}, {
-  key: 'firstTime',
-  value: 'AM10:00-PM12:00',
-}, {
-  key: 'secondTime',
-  value: 'PM12:00-PM2:00',
-}, {
-  key: 'thirdTime',
-  value: 'PM2:00-PM4:00',
-}, {
-  key: 'fourthTime',
-  value: 'PM4:00-PM6:00',
+},{
+  key: 'saturday',
+  value: '토요일',
+},{
+  key: 'sta_firstTime',
+  value: '14:00 ~ 16:00',
+},{
+  key: 'sta_secondTime',
+  value: '16:00 ~ 18:00',
+},{
+  key: 'sunday',
+  value: '일요일',
+},{
+  key: 'sun_firstTime',
+  value: '10:00 ~ 12:00',
+},{
+  key: 'sun_secondTime',
+  value: '12:00 ~ 14:00',
+},{
+  key: 'sun_thirdTime',
+  value: '14:00 ~ 16:00',
+},{
+  key: 'sun_forthTime',
+  value: '16:00 ~ 18:00',
 }];
 
 export const question = [{
@@ -131,3 +113,22 @@ export const question = [{
   key: 'use_question',
   value: '질문사용여부'
 }]
+
+export const recruit2 = {
+  information: {
+    name: '이름',
+    english_name: '영문이름',
+    is_male: '성별',
+    birth_date: '생년월일',
+    phone_number: '전화번호',
+    email: 'email',
+    sns: 'sns',
+    address: '주소',
+    department: '1지망',
+    secondary_department: '2지망',
+    common_first: '첫번째 공통질문',
+    common_second: '두번째 공통질문',
+    common_department: '본부 공통질문',
+    common_team: '팀 질문',
+  }
+} 

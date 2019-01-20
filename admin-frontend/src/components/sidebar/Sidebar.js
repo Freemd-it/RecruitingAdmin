@@ -49,61 +49,47 @@ class Sidebar extends Component {
         </div>
 
       <div className="ItemContainer"> 
-        <ListItem button className={'Sidebar__item'}
-          component={props => <Link to={routes.MATCH_PATH_DASHBOARD} {...props} />}>
-          <ListItemIcon className={'Sidebar__icon'}>
-            <DashboardIcon/>
-          </ListItemIcon>
-          <ListItemText className={`Sidebar__menu`} primary="지원자현황" />
-        </ListItem>
+        <div className="ItemWrapper">
+          <ListItem button className={'Sidebar__item'}
+            component={props => <Link to={routes.MATCH_PATH_DASHBOARD} {...props} />}>
+            <ListItemIcon className={'Sidebar__icon'}>
+              <DashboardIcon/>
+            </ListItemIcon>
+            <ListItemText className={`Sidebar__menu`} primary="지원자현황" />
+          </ListItem>
+        </div>
       </div>
       <div className="ItemContainer"> 
-        <ListItem button className={'Sidebar__item'}>
-          <ListItemIcon className={'Sidebar__icon'}>
-            <BrokenImageIcon />
-          </ListItemIcon>
-          <ListItemText className={`Sidebar__menu`} primary="지원서관리" onClick={this.handleClick}/>
-        </ListItem>
-          <Collapse in={this.state.open} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItem button
-                className={classes.nested}
-                component={props => <Link to={routes.MATCH_PATH_RECRUIT_INFORMATION} {...props} />}>
-                <ListItemIcon className={'Sidebar__icon'}>
-                  <StarBorder />
-                </ListItemIcon>
-                <ListItemText className={`Sidebar__menu`} inset primary="개인정보관리" />
-              </ListItem>
-            </List>
-            <List component="div" disablePadding>
-              <ListItem
-                button className={classes.nested}
-                component={props => <Link to={routes.MATCH_PATH_RECRUIT_ANSWER} {...props} />}>
-                <ListItemIcon className={'Sidebar__icon'}>
-                  <StarBorder />
-                </ListItemIcon>
-                <ListItemText className={`Sidebar__menu`} inset primary="질문답변관리" />
-              </ListItem>
-            </List>
-          </Collapse>
+        <div className="ItemWrapper">
+          <ListItem button className={'Sidebar__item'} component={props => <Link to={routes.MATCH_PATH_RECRUIT_INFORMATION} {...props} />}>
+            <ListItemIcon className={'Sidebar__icon'}>
+              <PeopleIcon />
+            </ListItemIcon>
+            <ListItemText className={`Sidebar__menu`} primary="지원서관리" />
+          </ListItem>
+        </div>
       </div>
       <div className="ItemContainer"> 
-        <ListItem button className={'Sidebar__item'}
-          component={props => <Link to={routes.MATCH_PATH_INTERVIEW} {...props} />}>
-          <ListItemIcon className={'Sidebar__icon'}>
-            <PeopleIcon />
-          </ListItemIcon>
-          <ListItemText className={`Sidebar__menu`} primary="면리관리" />
-        </ListItem>
+        <div className="ItemWrapper">
+          <ListItem button className={'Sidebar__item'}
+            component={props => <Link to={routes.MATCH_PATH_INTERVIEW} {...props} />}>
+            <ListItemIcon className={'Sidebar__icon'}>
+              <PeopleIcon />
+            </ListItemIcon>
+            <ListItemText className={`Sidebar__menu`} primary="면접관리" />
+          </ListItem>
+        </div>
       </div>
       <div className="ItemContainer">
-        <ListItem button className={'Sidebar__item'}
-          component={props => <Link to={routes.MATCH_PATH_QUESTION} {...props} />}>
-          <ListItemIcon className={'Sidebar__icon'}>
-            <BarChartIcon />
-          </ListItemIcon>
-          <ListItemText className={`Sidebar__menu`} primary="질문관리" />
-        </ListItem>
+        <div className="ItemWrapper">
+          <ListItem button className={'Sidebar__item'}
+            component={props => <Link to={routes.MATCH_PATH_QUESTION} {...props} />}>
+            <ListItemIcon className={'Sidebar__icon'}>
+              <BarChartIcon />
+            </ListItemIcon>
+            <ListItemText className={`Sidebar__menu`} primary="질문관리" />
+          </ListItem>
+        </div>
       </div>
         <div className='main-img-footer'>
           <div className='MainFooterConitainer'>

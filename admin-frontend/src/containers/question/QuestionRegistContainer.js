@@ -85,7 +85,6 @@ class QuestionRegistContainer extends Component {
   onRegistData = e => {
     const name = e.target.name;
     const value = name !== 'useQuestion' ? e.target.value : e.target.value === 'true';
-    console.log(name, value);
     this.setState(prevState => {
       const registData = { ...prevState.registData };
       registData[name] = value;
@@ -115,7 +114,6 @@ class QuestionRegistContainer extends Component {
           onClick={this.onClick}
           cursor={true}
         />
-
         <Modal
           title={'본부질문 수정하기'}
           contents={
@@ -127,7 +125,6 @@ class QuestionRegistContainer extends Component {
           open={this.state.isDetailModal}
           onModal={this.onDetailModal}
         />
-
         <Modal
           title={'본부질문 추가하기'}
           contents={
@@ -139,7 +136,6 @@ class QuestionRegistContainer extends Component {
           open={this.state.isAddModal}
           onModal={this.onAddModal}
         />
-
       </div>
     )
   }

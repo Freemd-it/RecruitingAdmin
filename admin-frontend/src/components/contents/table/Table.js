@@ -8,6 +8,7 @@ import Toolbar from './toolbar/Toolbar'
 
 import Header from './header/Header'
 import Body from './body/Body'
+import InterviewBody from './interviewBody/InterviewBody'
 
 import './Table.scss'
 
@@ -44,7 +45,7 @@ class Table extends Component {
   };
 
   render() {
-    const { onClick, classes, cursor, titleNav } = this.props;
+    const { onClick, classes, cursor, titleNav, type } = this.props;
     return (
       <div className={'CustomTable'}>
         <Toolbar 
@@ -59,7 +60,11 @@ class Table extends Component {
         <div className={classes.tableWrapper}>
           <TableTemplate className={classes.table} id='table'>
             <Header columns={this.props.columns}/>
-            <Body cursor={cursor} columns={this.props.columns} data={this.props.data} onClick={onClick}/>
+            {
+              type !=='interview'
+              ? <Body cursor={cursor} columns={this.props.columns} data={this.props.data} onClick={onClick}/>
+              : <InterviewBody cursor={cursor} columns={this.props.columns} data={this.props.data} onClick={onClick}/>
+            }
           </TableTemplate>
         </div>
       </div>
