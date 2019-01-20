@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {
+  InputGroup,
+  InputGroupButtonDropdown,
+  Input,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+ } from 'reactstrap';
 import { withStyles } from '@material-ui/core/styles';
 import TableTemplate from '@material-ui/core/Table';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
@@ -33,11 +41,17 @@ class Table extends Component {
     currentPage: 1,
     totalPage: 0,
     rowsPerPage: 15,
+    isSearchTag: false,
   };
 
   onChangePage = (currentPage) => {
     this.setState({ currentPage });
   };
+
+  onSearchTag = () =>{
+    const isSearchTag = !this.state.isSearchTag;
+    this.setState({ isSearchTag });
+  }
 
   render() {
     const { onClick, classes, cursor, titleNav, title } = this.props;
@@ -46,7 +60,28 @@ class Table extends Component {
       <div className={'CustomTable'}>
         <div className={'CustomTable__titlebar'}>{ title }</div>
         <div className={'CustomTable__navbar'}>
-          <div>검색들어갈자리</div>
+          <div>
+            <InputGroup>
+              <InputGroupButtonDropdown 
+                addonType="prepend" 
+                isOpen={this.state.isSearchTag} 
+                toggle={this.onSearchTag}
+              >
+                <DropdownToggle className="CustomTable__searchTag" caret>
+                  검색선택
+                </DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem>본부</DropdownItem>
+                  <DropdownItem>팀</DropdownItem>
+                  <DropdownItem>나이</DropdownItem>
+                  <DropdownItem>기수</DropdownItem>
+                </DropdownMenu>
+              </InputGroupButtonDropdown>
+              <div>
+                <Input className="CustomTable__searchWord"/>
+              </div>
+            </InputGroup>
+          </div>
           <div>
             { titleNav }
             <ReactHTMLTableToExcel 
