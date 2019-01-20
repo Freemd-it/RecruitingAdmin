@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Table, Modal, QuestionDetail } from '../../components'
-import Button from '@material-ui/core/Button';
+import { Button } from 'reactstrap';
 import './QuestionRegistContainer.scss';
 
 class QuestionRegistContainer extends Component {
@@ -32,7 +32,7 @@ class QuestionRegistContainer extends Component {
           use_question: true,
         }
       }, {
-        quuestion: {
+        question: {
           id: 2,
           department: 'IT',
           team: '너네팀',
@@ -63,23 +63,23 @@ class QuestionRegistContainer extends Component {
   }
 
   onDetailModal = value => {
-      this.setState(prevState => {
-        const data = {
-          isDetailModal: !prevState.isDetailModal,
-          registData: { ...prevState.registData }
-        }
-        if (!prevState.isDetailModal && value && value.question) {
-          const { question } = value;
-          data.registData.useQuestion = question.use_question;
-          data.registData.team = question.team;
-          data.registData.question = question.team.question;
-        } else {
-          data.registData.useQuestion = '';
-          data.registData.team = '';
-          data.registData.question = '';
-        }
-        return data;
-      });
+    this.setState(prevState => {
+      const data = {
+        isDetailModal: !prevState.isDetailModal,
+        registData: { ...prevState.registData }
+      }
+      if (!prevState.isDetailModal && value && value.question) {
+        const { question } = value;
+        data.registData.useQuestion = question.use_question;
+        data.registData.team = question.team;
+        data.registData.question = question.team.question;
+      } else {
+        data.registData.useQuestion = '';
+        data.registData.team = '';
+        data.registData.question = '';
+      }
+      return data;
+    });
   }
 
   onRegistData = e => {
@@ -96,17 +96,19 @@ class QuestionRegistContainer extends Component {
   render() {
     return (
       <div className={`QuestionRegisContainer__addBox`}>
-        <Button 
-          className={`QuestionRegisContainer__addQuestion`}
-          variant="contained" 
-          color="primary"
-          onClick={e => this.onAddModal(<div>추가하기당</div>)}
-        >
-          질문 추가하기
-        </Button>
-
         <Table
-          title={'본부질문 관리'}
+          title={'본부 질문 관리'}
+          titleNav={
+            <Button 
+              className={`QuestionRegisContainer__addBtn`}
+              color="dark"
+              outline
+              size={`sm`}
+              onClick={e => this.onAddModal(<div>추가하기당</div>)}
+            >
+              질문 추가하기
+            </Button>
+          }
           columns={this.props.columns}
           data={this.state.rows}
           totalLength={1000}

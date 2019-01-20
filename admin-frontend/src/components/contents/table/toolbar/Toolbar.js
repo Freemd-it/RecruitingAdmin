@@ -5,23 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
-
-let EnhancedTableToolbar = props => {
-  const { classes, title } = props;
-  return (
-    <Toolbar className={classes.root}>
-      <div className={classes.title}>
-        <Typography variant="h6" id="tableTitle">
-          {title}
-        </Typography>
-      </div>
-    </Toolbar>
-  );
-};
-
-EnhancedTableToolbar.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+import './Toolbar.scss';
 
 const toolbarStyles = theme => ({
   root: {
@@ -44,8 +28,32 @@ const toolbarStyles = theme => ({
     color: theme.palette.text.secondary,
   },
   title: {
-    flex: '0 0 auto',
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: '100%',
   },
 });
+
+
+let EnhancedTableToolbar = props => {
+  const { classes, title, nav } = props;
+  return (
+    <>
+      <Toolbar className={classes.root}>
+        <div className={classes.title}>
+          <Typography variant="h6" id="tableTitle">
+            { title }
+          </Typography>
+        </div>
+      </Toolbar>
+      <div className={`ToolBar__nav`}>{ nav }</div>
+    </>
+  );
+};
+
+EnhancedTableToolbar.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
 
 export default withStyles(toolbarStyles)(EnhancedTableToolbar);

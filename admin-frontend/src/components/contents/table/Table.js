@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TableTemplate from '@material-ui/core/Table';
-import Paper from '@material-ui/core/Paper';
 import Tooltip from './tooltip/Tooltip'
 import Toolbar from './toolbar/Toolbar'
 // import pagination from './pagination/Pagination'
@@ -14,10 +13,6 @@ import './Table.scss'
 
 
 const tableStyle = theme => ({
-  root: {
-    marginTop: theme.spacing.unit * 3,
-    width: '100%',
-  },
   head: {
     width: '100%',
   },
@@ -49,19 +44,24 @@ class Table extends Component {
   };
 
   render() {
-    const { onClick, classes, cursor } = this.props;
+    const { onClick, classes, cursor, titleNav } = this.props;
     return (
-      <div>
-        <Paper className={`${classes.root} CustomTable`}>
-        <Toolbar title={this.props.title}/>
-        <Tooltip />
-          <div className={classes.tableWrapper}>
-            <TableTemplate className={classes.table} id='table'>
-              <Header columns={this.props.columns}/>
-              <Body cursor={cursor} columns={this.props.columns} data={this.props.data} onClick={onClick}/>
-            </TableTemplate>
-          </div>
-        </Paper>
+      <div className={'CustomTable'}>
+        <Toolbar 
+          title={this.props.title} 
+          nav={
+            <>
+              { titleNav }
+              <Tooltip/>
+            </>
+          }
+        />
+        <div className={classes.tableWrapper}>
+          <TableTemplate className={classes.table} id='table'>
+            <Header columns={this.props.columns}/>
+            <Body cursor={cursor} columns={this.props.columns} data={this.props.data} onClick={onClick}/>
+          </TableTemplate>
+        </div>
       </div>
       );
   }

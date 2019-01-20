@@ -57,12 +57,6 @@ span.SubTitle {
   width: 140px;
 }
 
-.Scrollable {
-  overflow: scroll;
-  max-height: 600px;
-  padding: 10px;
-}
-
 .Divider {
   margin: 6px 4px !important;
 }
@@ -91,6 +85,7 @@ span.SubTitle {
   border-radius: 3px;
   text-align: center;
   line-height: 50px;
+  padding: 0px !important;
 }
 
 .InterviewCell.Selected {

@@ -32,7 +32,7 @@ const Body = ({columns, data, onClick = () => {}, cursor = false}) => {
                 else return <TableCell key={`${cnt++}_${itemVal}`}>{value}</TableCell>;
               }
             });
-            return returnData 
+            return returnData;
           }))
           return <TableRow className={cursor ? 'tableBodyRow__cursor' : ''} hover key={`${index++}_rows`} onClick={(e) => { onClick(item) }}>{ rows }</TableRow>
         })

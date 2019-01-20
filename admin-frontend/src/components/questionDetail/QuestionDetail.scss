@@ -1,18 +1,20 @@
 .QuestionDetail {
-  padding-top: 10px;
-  div, span {
-    font-size: 12px !important;
-  }
-  &__input {
-    width: calc(50% - 4px);
-  }
-
-  &__mr {
-    margin-right: 8px !important;
-  }
-
-  &__textBox {
-    width: 100%;
-    margin-top: 8px !important;
+  &__radio {
+    cursor: pointer;
+    margin-right: 20px;
+    &:last-child {
+      margin-right: 0px;
+    }
+    input {
+      position: static;
+      margin: 0;
+      width: 16px;
+      height: 16px;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+    span {
+      margin-left: 10px;
+    }
   }
 }

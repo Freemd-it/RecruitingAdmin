@@ -1,9 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Button from '@material-ui/core/Button';
-import CloseIcon from '@material-ui/icons/Close';
+// import Modal from '@material-ui/core/Modal';
+// import Button from '@material-ui/core/Button';
+// import CloseIcon from '@material-ui/icons/Close';
+import { 
+  Modal, 
+  ModalHeader, 
+  ModalBody, 
+  ModalFooter, 
+  Button,
+} from 'reactstrap';
 import './Modal.scss';
 
 const styles = theme => ({
@@ -24,7 +31,6 @@ class CustomModal extends React.Component {
 
   render() {
     const { 
-      classes, 
       open, 
       onModal, 
       title, 
@@ -34,39 +40,20 @@ class CustomModal extends React.Component {
       confirmFun = () => { onModal() },
       isCancel = true 
     } = this.props;
+
     return (
       <Modal
-        open={open} 
-        onClose={(e) => onModal()} 
+        isOpen={open}
+        centered
+        size="lg"
+        toggle={() => {onModal()}}
       >
-        <div className={`CustomModal ${classes.paper}`}>
-          <div className={`CustomModal__title`}>
-            {title != null ? title : ''}
-            <CloseIcon className={`CustomModal__closeIcon`} onClick={() => onModal()}/>
-          </div>
-          <div className={`CustomModal__body`}>{ contents }</div>
-          <div className={`CustomModal__footer`}>
-            <Button 
-              variant="contained" 
-              color="primary" 
-              className={`${isCancel ? 'CustomModal__footer__confirm' : 'CustomModal__footer__shadow'}`} 
-              onClick={confirmFun}
-            >
-              {confirmMessage}
-            </Button>
-            {
-              isCancel && 
-              <Button 
-                variant="contained" 
-                color="primary" 
-                variant="outlined" 
-                onClick={() => {onModal()}}
-              >
-                {cencleMessage}
-              </Button>
-            }
-          </div>
-        </div>
+        <ModalHeader toggle={() =>{onModal()}}>{ title }</ModalHeader>
+        <ModalBody className="CustomModal__body">{ contents }</ModalBody>
+        <ModalFooter>
+          <Button className={'mr-2'} color="primary" onClick={confirmFun}>{ confirmMessage }</Button>
+          { isCancel && <Button color="secondary" onClick={() => onModal()}>{ cencleMessage }</Button> }
+        </ModalFooter>
       </Modal>
     );
   }
