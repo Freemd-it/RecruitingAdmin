@@ -1,28 +1,35 @@
 import React, { Component } from 'react'
-import { AnswerBody, Table, Modal, DetailBody } from '../../components'
-const data = [{
-  name: '이동수',
-  english_name: 'dongsu',
-  is_male: '남',
-  birth_date: '1991-12-09',
-  phone_number: '010-1111-1111',
-  email: '30032dongsu@moducampus.com',
-  sns: 'hihih',
-  address: '성남',
-  department: 'IT',
-  secondary_department: '브본',
-  team: '우리팀',
-  question: '안녕하세요?',
-  cardinality: '11',
-  writer: '이필주',
-  create: '2019-01-01',
-  is_question: true,
-  school_name: '프리메드',
-  school_degree: '고등학교',
-  school_type: '인문계',
-  school_location: '서울',
-  entrance_date: new Date(2017, 3),
-  graduate_date: null,
+import { Table, Modal } from '../../components'
+import InfoDetail from '../../components/infoDetail/InfoDetail';
+const data = [
+  {
+  basic_info: {
+    name: '이동수',
+    english_name: 'dongsu',
+    is_male: '남',
+    birth_date: new Date(1991, 10, 19),
+    phone_number: '010-1111-1111',
+    email: '30032dongsu@moducampus.com',
+    sns: 'hihih',
+    address: '성남',
+    department: 'IT',
+    secondary_department: '브본',
+    team: '우리팀',
+    secondary_team: '홍보기획팀',
+    question: '안녕하세요?',
+    cardinality: '11',
+    writer: '이필주',
+    create: '2019-01-01',
+    is_question: true
+  },
+  academic_info: {
+    school_name: '프리메드',
+    school_degree: '고등학교',
+    school_type: '인문계',
+    school_location: '서울',
+    entrance_date: new Date(2017, 3),
+    graduate_date: null,
+  },
   external_activities: [
     {
       type: '인턴',
@@ -42,7 +49,46 @@ const data = [{
       content: '분당병원에서 접수 및 진료 프로세스를 관찰하고 비효율 혹은 병목이 일어나는 점을 분석하는 프로젝트를 맡았습니다.' +
         '팀 별로 개선 시나리오를 3가지 정도 만들어서 발표를 진행했고 이유 없이 반복되는 작업을 줄려서 효율성을 높이는 일을 하였습니다.'
     }
-  ]
+  ],
+  apply_info: { // 지원 관련 정보
+    qnas: [ // Array (document) // 질답 목록
+      {
+        type: '공통 질문',
+        data: [
+          {
+            question: '프리메드가 추구하는 가장 큰 가치가 뭐라고 생각하십니까?',
+            answer: '안녕 내 사람 그대여~ 이젠 내가 지켜 줄게요~~~~ 못난 날 믿고 참고 기다려줘서 고마워요.'
+          }
+        ] 
+      },
+      {
+        type: '본부별 질문',
+        data: [
+          {
+            question: '경영지원본부에 어떤 일로 지원하게 되었습니까?',
+            answer: '인사 조직 쪽에 관심이 있어서 지원하였습니다.'
+          }
+        ] 
+      },
+    ],
+    portfolios: [ // 포트폴리오 정보
+      {
+        file_path: "portfolio.zip" // 포트폴리오 파일 경로
+      }
+    ],
+    interview_times: [
+      {
+        date: new Date(2019, 2, 23),
+        time: ['12:00 ~ 14:00', '14:00 ~ 16:00']
+      },
+      {
+        date: new Date(2019, 2, 24),
+        time: ['14:00 ~ 16:00']
+      }
+    ],
+    can_moved: true, // 타 본부, 타 사업 이동 가능여부
+    can_multiple_interview: false, // 여러 부서에 면접을 볼 수 있는지 가능여부
+  }
 }]
 
 class RecruitManageContainer extends Component {
@@ -51,6 +97,7 @@ class RecruitManageContainer extends Component {
     page: 0,
     rowsPerPage: 10,
     isDetailModal: false,
+    isAnswerModal: false,
   };
 
   componentDidMount() {
@@ -67,8 +114,12 @@ class RecruitManageContainer extends Component {
     this.setState({ rowsPerPage: event.target.value })
   }
 
-  onClick = value => {
+  onDetailClick = value => {
     this.onDetailModal(value);
+  }
+
+  onAnswerClick = value => {
+    this.onAnswerModal(value);
   }
 
   onDetailModal = value => {
@@ -78,9 +129,9 @@ class RecruitManageContainer extends Component {
       }
       if (!prevState.isDetailModal && value) {
         data.value = (
-            <AnswerBody
-              data={value}
-            />
+          <InfoDetail
+            data={value}
+          />
         )
       } else {
         data.value = '';
@@ -91,21 +142,17 @@ class RecruitManageContainer extends Component {
   onAnswerModal = value => {
     this.setState(prevState => {
       const data = {
-        isDetailModal: !prevState.isDetailModal
+        isAnswerModal: !prevState.isAnswerModal
       }
-      if (!prevState.isDetailModal && value) {
-        data.value = (
-            <AnswerBody
-              data={value}
-            />
-        )
+      if (!prevState.isAnswerModal && value) {
+        data.value = '';
       } else {
         data.value = '';
       }
       return data;
     });
   }
-  
+
   render() {
     const { match } = this.props
     // const { page, rows, rowsPerPage} = this.state
@@ -119,7 +166,7 @@ class RecruitManageContainer extends Component {
             columns={this.props.columns['information']}
             data={this.state.rows}
             totalLength={1000}
-            onClick={this.onClick}
+            onClick={this.onDetailClick}
           />
         }
         {
@@ -130,14 +177,21 @@ class RecruitManageContainer extends Component {
             columns={this.props.columns['answer']}
             data={this.state.rows}
             totalLength={1000}
-            onClick={this.onClick}
+            onClick={this.onAnswerClick}
           />
         }
-         <Modal
+        <Modal
           title={'상세정보'}
           contents={this.state.value}
           open={this.state.isDetailModal}
           onModal={this.onDetailModal}
+        />
+
+        <Modal
+          title={"답변"}
+          contents={this.state.value}
+          open={this.state.isAnswerModal}
+          onModal={this.onAnswerModal}
         />
       </div>
     )

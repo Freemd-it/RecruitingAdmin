@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 
-// import './DetailCell.scss'
+import './DetailCell.scss'
 
 const styles = theme => ({
   textField: {
@@ -11,24 +11,18 @@ const styles = theme => ({
   },
 });
 
-const InputProps = {
-  readOnly: true,
-  multiline: true,
-  rows: 5,
-}
-
-const AnswerDetail = ({classes, colName, colValue}) => {
+const DetailCell = ({classes, colName, colValue}) => {
     return (
         <TextField
-          className={classes.textField}
+          className={`${classes.textField} DetailCell` }
           label={colName}
           value={colValue}
           margin="normal"
           variant="outlined"
-          InputProps={InputProps}
+          InputProps={{ readOnly: true }}
         />
     )
   }
 
-  export default withStyles(styles)(AnswerDetail);
+  export default withStyles(styles)(DetailCell);
 

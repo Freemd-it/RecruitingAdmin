@@ -1,23 +1,37 @@
 .Sidebar {
+  &__icon {
+    margin-right: 5px !important;
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+  &__menu {
+    padding: 0 !important;
+  }
+}
+
+.Container {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 180px;
   height: 1000px;
-  font-size: 3rem;
   background-color: black;
   color: white;
-  padding: 20px;
+  padding: 10px;
+  
+  span {
+    font-size: 10px;
+  }
 }
-.sidebar-wrapper {
-  /* border: 1px solid #cccccc; */
-}
+
 .main-img {
   display: flex;
   flex-direction: column;
-  width: 150px;
+  width: 80px;
   margin: 0 auto;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .main-word {

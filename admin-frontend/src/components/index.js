@@ -5,11 +5,11 @@ import LoginTemplate from './template/loginTemplate/LoginTemplate';
 import Contents from './contents/Contents';
 import DashBoard from './contents/dashboard/DashBoard';
 import Modal from './modal/Modal';
-import QuestionTextFieldComponent from './questionTextFieldComponent/QuestionTextFieldComponent';
+import QuestionDetail from './questionDetail/QuestionDetail';
 
-import DetailBody from './InfoDetail/detailBody/DetailBody'
-import AnswerBody from './answerDetail/detailBody/DetailBody'
-import DetailCell from './InfoDetail/detailCell/DetailCell'
+import InfoDetail from './infoDetail/InfoDetail'
+import DetailBody from './infoDetail/detailBody/DetailBody'
+import DetailCell from './infoDetail/detailCell/DetailCell'
 
 
 export {
@@ -20,8 +20,8 @@ export {
   Contents,
   DashBoard,
   Modal,
-  QuestionTextFieldComponent,
+  QuestionDetail,
   DetailBody,
   DetailCell,
-  AnswerBody
+  InfoDetail,
 };

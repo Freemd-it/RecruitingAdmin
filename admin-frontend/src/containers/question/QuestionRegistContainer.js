@@ -1,25 +1,7 @@
 import React, { Component } from 'react'
-import { Table, Modal, QuestionTextFieldComponent } from '../../components'
+import { Table, Modal, QuestionDetail } from '../../components'
 import Button from '@material-ui/core/Button';
 import './QuestionRegistContainer.scss';
-
-const data = [{
-  department: 'IT',
-  team: '우리팀',
-  question: '안녕하세요?',
-  cardinality: '11',
-  writer: '이필주',
-  create: '2019-01-01',
-  is_question: true,
-}, {
-  department: 'IT',
-  team: '너네팀',
-  question: '안녕안하세요?',
-  cardinality: '0',
-  writer: '안알랴줌',
-  create: '2019-01-02',
-  is_question: false,
-}]
 
 class QuestionRegistContainer extends Component {
   state = {
@@ -28,12 +10,39 @@ class QuestionRegistContainer extends Component {
     rowsPerPage: 10,
     isAddModal: false,
     isDetailModal: false,
-    value: '',
+    registData: {
+      department: 'IT',
+      team: '',
+      question: '',
+      useQuestion: false,
+    }
   };
 
   componentDidMount() {
-    this.setState({
-      rows: data
+    this.setState({ 
+      rows: [{
+        question: {
+          id: 1,
+          department: 'IT',
+          team: '우리팀',
+          question: '안녕하세요?',
+          cardinality: '11',
+          writer: '이필주',
+          create: '2019-01-01',
+          use_question: true,
+        }
+      }, {
+        quuestion: {
+          id: 2,
+          department: 'IT',
+          team: '너네팀',
+          question: '안녕안하세요?',
+          cardinality: '0',
+          writer: '안알랴줌',
+          create: '2019-01-02',
+          use_question: false,
+        }
+      }]
     });
   }
 
@@ -47,15 +56,7 @@ class QuestionRegistContainer extends Component {
         isAddModal: !prevState.isAddModal
       }
       if (!prevState.isAddModal) {
-          data.value = (
-            <QuestionTextFieldComponent
-              value={{department: '안알랴줌 ㅋㅋㅋ'}}
-              onChangeTeam={e => console.log(e.target.value)}
-              onChangeQuestion={e => console.log(e.target.value)}
-            />
-          );
       } else {
-        data.value = '';
       }
       return data;
     });
@@ -64,21 +65,32 @@ class QuestionRegistContainer extends Component {
   onDetailModal = value => {
       this.setState(prevState => {
         const data = {
-          isDetailModal: !prevState.isDetailModal
+          isDetailModal: !prevState.isDetailModal,
+          registData: { ...prevState.registData }
         }
-        if (!prevState.isDetailModal && value) {
-          data.value = (
-            <QuestionTextFieldComponent
-              value={value}
-              onChangeTeam={e => console.log(e.target.value)}
-              onChangeQuestion={e => console.log(e.target.value)}
-            />
-          )
+        if (!prevState.isDetailModal && value && value.question) {
+          const { question } = value;
+          data.registData.useQuestion = question.use_question;
+          data.registData.team = question.team;
+          data.registData.question = question.team.question;
         } else {
-          data.value = '';
+          data.registData.useQuestion = '';
+          data.registData.team = '';
+          data.registData.question = '';
         }
         return data;
       });
+  }
+
+  onRegistData = e => {
+    const name = e.target.name;
+    const value = name !== 'useQuestion' ? e.target.value : e.target.value === 'true';
+    console.log(name, value);
+    this.setState(prevState => {
+      const registData = { ...prevState.registData };
+      registData[name] = value;
+      return { registData };
+    });
   }
 
   render() {
@@ -92,6 +104,7 @@ class QuestionRegistContainer extends Component {
         >
           질문 추가하기
         </Button>
+
         <Table
           title={'본부질문 관리'}
           columns={this.props.columns}
@@ -103,14 +116,24 @@ class QuestionRegistContainer extends Component {
 
         <Modal
           title={'본부질문 수정하기'}
-          contents={this.state.value}
+          contents={
+            <QuestionDetail
+              registData={this.state.registData}
+              onRegistData={this.onRegistData}
+            />
+          }
           open={this.state.isDetailModal}
           onModal={this.onDetailModal}
         />
 
         <Modal
           title={'본부질문 추가하기'}
-          contents={this.state.value}
+          contents={
+            <QuestionDetail
+              registData={this.state.registData}
+              onRegistData={this.onRegistData}
+            />
+          }
           open={this.state.isAddModal}
           onModal={this.onAddModal}
         />

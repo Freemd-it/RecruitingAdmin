@@ -10,7 +10,7 @@ import Toolbar from './toolbar/Toolbar'
 import Header from './header/Header'
 import Body from './body/Body'
 
-import './Table.css'
+import './Table.scss'
 
 
 const tableStyle = theme => ({
@@ -22,10 +22,14 @@ const tableStyle = theme => ({
     width: '100%',
   },
   table: {
+    borderTop: '1px solid rgba(224, 224, 224, 1)',
+    borderBottom: '1px solid rgba(224, 224, 224, 1)',
     minWidth: 500,
   },
   tableWrapper: {
     overflowX: 'auto',
+    marginLeft: '24px',
+    marginRight: '8px',
   },
 });
 
@@ -48,7 +52,7 @@ class Table extends Component {
     const { onClick, classes, cursor } = this.props;
     return (
       <div>
-        <Paper className={classes.root}>
+        <Paper className={`${classes.root} CustomTable`}>
         <Toolbar title={this.props.title}/>
         <Tooltip />
           <div className={classes.tableWrapper}>

@@ -7,7 +7,6 @@
         position: relative;
         font-weight: 500;
         font-size: 16px;
-        margin-bottom: 24px;
     }
     &__closeIcon {
         position: absolute;
@@ -20,9 +19,16 @@
             color: gray;
         }
     }
+    &__body {
+        max-height: 60vh;
+        overflow-y: auto;
+    }
     &__footer {
         text-align: center;
         margin-top: 16px;
+        &__shadow {
+            box-shadow: none !important;
+        }
         &__confirm {
             box-shadow: none !important;
             margin-right: 16px !important;

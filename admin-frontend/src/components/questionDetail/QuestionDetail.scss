@@ -1,13 +1,10 @@
-.QuestionTextFieldComponent {
+.QuestionDetail {
+  padding-top: 10px;
+  div, span {
+    font-size: 12px !important;
+  }
   &__input {
     width: calc(50% - 4px);
-    height: 30px;
-
-    select, input {
-      padding-top: 0;
-      padding-bottom: 0;
-      height: 35px;
-    }
   }
 
   &__mr {

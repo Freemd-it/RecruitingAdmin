@@ -15,18 +15,16 @@ import StarBorder from '@material-ui/icons/StarBorder';
 import { withStyles } from '@material-ui/core';
 import * as routes from '../../lib/service/routes'
 
-import './Sidebar.css'
+import './Sidebar.scss'
 import logo from '../../static/images/logo.png'
 import slogan from '../../static/images/slogan.png'
 
 
 const styles = theme => ({
   root: {
-    width: '200px',
-    maxWidth: '200px',
+    width: '150px',
+    maxWidth: '150px',
     backgroundColor: theme.palette.background.paper,
-    border: '1px solid #cccccc',
-    fontSize: '10px'
   },
   nested: {
     paddingLeft: theme.spacing.unit * 4,
@@ -46,58 +44,58 @@ class Sidebar extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.root}>
+      <div className={`${classes.root} Container`}>
         <div className='main-img'>
           <img src={logo} />
           <img src={slogan} />
         </div>
         <ListItem button component={props => <Link to={routes.MATCH_PATH_DASHBOARD} {...props} />}>
-          <ListItemIcon>
-            <DashboardIcon />
+          <ListItemIcon className={'Sidebar__icon'}>
+            <DashboardIcon/>
           </ListItemIcon>
-          <ListItemText primary="지원자현황" />
+          <ListItemText className={`Sidebar__menu`} primary="지원자현황" />
         </ListItem>
         <ListItem button>
-          <ListItemIcon>
+          <ListItemIcon className={'Sidebar__icon'}>
             <BrokenImageIcon />
           </ListItemIcon>
-          <ListItemText primary="지원서관리" onClick={this.handleClick}/>
+          <ListItemText className={`Sidebar__menu`} primary="지원서관리" onClick={this.handleClick}/>
         </ListItem>
           <Collapse in={this.state.open} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button
                 className={classes.nested}
                 component={props => <Link to={routes.MATCH_PATH_RECRUIT_INFORMATION} {...props} />}>
-                <ListItemIcon>
+                <ListItemIcon className={'Sidebar__icon'}>
                   <StarBorder />
                 </ListItemIcon>
-                <ListItemText inset primary="개인정보관리" />
+                <ListItemText className={`Sidebar__menu`} inset primary="개인정보관리" />
               </ListItem>
             </List>
             <List component="div" disablePadding>
               <ListItem
                 button className={classes.nested}
                 component={props => <Link to={routes.MATCH_PATH_RECRUIT_ANSWER} {...props} />}>
-                <ListItemIcon>
+                <ListItemIcon className={'Sidebar__icon'}>
                   <StarBorder />
                 </ListItemIcon>
-                <ListItemText inset primary="질문답변관리" />
+                <ListItemText className={`Sidebar__menu`} inset primary="질문답변관리" />
               </ListItem>
             </List>
           </Collapse>
         <ListItem button
           component={props => <Link to={routes.MATCH_PATH_INTERVIEW} {...props} />}>
-          <ListItemIcon>
+          <ListItemIcon className={'Sidebar__icon'}>
             <PeopleIcon />
           </ListItemIcon>
-          <ListItemText primary="면접시간 관리" />
+          <ListItemText className={`Sidebar__menu`} primary="면리관리" />
         </ListItem>
         <ListItem button
           component={props => <Link to={routes.MATCH_PATH_QUESTION} {...props} />}>
-          <ListItemIcon>
+          <ListItemIcon className={'Sidebar__icon'}>
             <BarChartIcon />
           </ListItemIcon>
-          <ListItemText primary="본부질문 관리" />
+          <ListItemText className={`Sidebar__menu`} primary="질문관리" />
         </ListItem>
     </div>
     )

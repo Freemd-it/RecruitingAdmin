@@ -9,6 +9,10 @@ const Header = ({ columns }) => {
       <TableRow>
         { 
           columns.map(column => {
+            const style = {}
+            if (column.width) {
+              style.width = column.width;
+            }            
             return (<TableCell key={column.key}>{column.value}</TableCell>);
           }) 
         }

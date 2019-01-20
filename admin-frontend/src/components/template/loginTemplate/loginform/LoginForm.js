@@ -56,6 +56,13 @@ class SignIn extends Component {
   onLoginhandler = () => {
     this._getData()
   }
+
+  onKeyPress = (e) => {
+    if(e.key === 'Enter'){
+      this.onLoginhandler();
+    }
+  }
+
   render () {
     const { classes } = this.props
     return (
@@ -71,7 +78,7 @@ class SignIn extends Component {
             </FormControl>
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="password">PW</InputLabel>
-              <Input name="password" type="password" id="password" autoComplete="current-password" />
+              <Input name="password" type="password" id="password" autoComplete="current-password" onKeyPress={this.onKeyPress}/>
             </FormControl>
             <Button
               type="submit"
