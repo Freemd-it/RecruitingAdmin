@@ -1,20 +1,95 @@
 
-.DetailBody {
-  padding: 0 !important;
-  display: flex;
-  flex-direction: row;
+// .DetailBody {
+//   padding: 0 !important;
+//   display: flex;
+//   flex-direction: row;
 
-  &__item {
-    display: block; 
-    width: 100%;
-  }
-  input, div, label  {
-    padding: 5px;
-  }
+//   &__item {
+//     display: block; 
+//     width: 100%;
+//   }
+//   input, div, label  {
+//     padding: 5px;
+//   }
   
-}
+// }
+
 .CellContainer {
   width: 100%;
   display: flex;
   flex-direction: row;
+}
+
+.DetailBody {
+  width: 100%;
+  margin-right: 5px;
+}
+
+.DetailBody .MuiCardContent-root-294{
+  padding-bottom: 10px !important;
+}
+
+.MuiCardContent-root-238 {
+  padding-bottom: 10px !important;
+}
+
+.Icon {
+  margin-right: 0.3em;
+  margin-top: 0.1em;
+  font-size: 1.2em !important;
+}
+
+.Title {
+  color: rgba(0, 0, 0, 0.7);
+  display: inline-flex !important;
+  font-size: 1em;
+}
+
+.SubTitle {
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 1em;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+span.SubTitle {
+  display: inline-block;
+  width: 140px;
+}
+
+.Divider {
+  margin: 6px 4px !important;
+}
+
+.Content {
+  font-size: 0.9em;
+  line-height: 1.5em;
+  padding-left: 0.3em;
+}
+
+.SubContent {
+  padding-left: 0.3em;
+}
+
+.Card {
+  width: 100%;
+  margin: 10px 20px;
+}
+
+.InterviewCell {
+  display: inline-block;
+  width: 150px;
+  height: 50px;
+  border: 1px solid gray;
+  margin: 5px 10px;
+  border-radius: 3px;
+  text-align: center;
+  line-height: 50px;
+  padding: 0px !important;
+}
+
+.InterviewCell.Selected {
+  background-color: #303f92;
+  color: whitesmoke;
+  font-weight: 600;
 }

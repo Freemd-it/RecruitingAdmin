@@ -1,26 +1,35 @@
 import React, { Component } from 'react'
-import { AnswerBody, Table, Modal, InfoDetail } from '../../components'
-
+import { Table, Modal } from '../../components'
+import InfoDetail from '../../components/infoDetail/InfoDetail';
 const data = [
   {
-    basic_info: { // 기본 신상 정보에 대한 객체
-      name: "동수", // 지원자의 이름
-      english_name: "dongsu ", // 지원자의 영문 이름
-      is_male: "man", // 남 or 녀
-      birth_date: "2018-01-01", // 생년월일
-      phone_number: "11111", // 연락처
-      email: "30032ongsu@gmail.com", // 이메일 주소
-      sns: "X", // SNS 주소
-      address: "성남" // 거주지
-    },
-  // academic_career: { // 최종 학력
-  //   name: "string", // 학교명
-  //   location: "string", // 소재지
-  //   type: "int32 (0: 고등학교, 1: 대학교, 2: 대학원)", // 학교의 종류
-  //   major: "string or int32", // 전공
-  //   entrance_date: "date (optional)", // 입학년도
-  //   graduation_date: "date (optional)" // 졸업년도
-  // },
+  basic_info: {
+    name: '이동수',
+    english_name: 'dongsu',
+    is_male: '남',
+    birth_date: new Date(1991, 10, 19),
+    phone_number: '010-1111-1111',
+    email: '30032dongsu@moducampus.com',
+    sns: 'hihih',
+    address: '성남',
+    department: 'IT',
+    secondary_department: '브본',
+    team: '우리팀',
+    secondary_team: '홍보기획팀',
+    question: '안녕하세요?',
+    cardinality: '11',
+    writer: '이필주',
+    create: '2019-01-01',
+    is_question: true
+  },
+  academic_info: {
+    school_name: '프리메드',
+    school_degree: '고등학교',
+    school_type: '인문계',
+    school_location: '서울',
+    entrance_date: new Date(2017, 3),
+    graduate_date: null,
+  },
   external_activities: [
     {
       type: '인턴',
@@ -42,24 +51,43 @@ const data = [
     }
   ],
   apply_info: { // 지원 관련 정보
-    department: "경영지원본부", // 부서
-    secondary_department: "IT", // 2지망
-    team: "재무팀", // 팀, 팀이 있는 부서에만 값이 부여됨
-    secondary_team: "", // 2지망 부서 중 팀이 있는 경우에만 부여됨
-    can_moved: "true", // 타 본부, 타 사업 이동 가능여부
-    can_multiple_interview: "false", // 여러 부서에 면접을 볼 수 있는지 가능여부
-    questions: [ // Array (document) // 질답 목록
+    qnas: [ // Array (document) // 질답 목록
       {
-        q_id: "objectid", // question document의 id
-        answer: "string" // 그 질문에 대한 답
-      }
+        type: '공통 질문',
+        data: [
+          {
+            question: '프리메드가 추구하는 가장 큰 가치가 뭐라고 생각하십니까?',
+            answer: '안녕 내 사람 그대여~ 이젠 내가 지켜 줄게요~~~~ 못난 날 믿고 참고 기다려줘서 고마워요.'
+          }
+        ] 
+      },
+      {
+        type: '본부별 질문',
+        data: [
+          {
+            question: '경영지원본부에 어떤 일로 지원하게 되었습니까?',
+            answer: '인사 조직 쪽에 관심이 있어서 지원하였습니다.'
+          }
+        ] 
+      },
     ],
     portfolios: [ // 포트폴리오 정보
       {
-        file_path: "string" // 포트폴리오 파일 경로
+        file_path: "portfolio.zip" // 포트폴리오 파일 경로
       }
     ],
-    interview_time: "Array(int32) (0: 14시~15시, 1: ...)" // 인터뷰 가능 시간
+    interview_times: [
+      {
+        date: new Date(2019, 2, 23),
+        time: ['12:00 ~ 14:00', '14:00 ~ 16:00']
+      },
+      {
+        date: new Date(2019, 2, 24),
+        time: ['14:00 ~ 16:00']
+      }
+    ],
+    can_moved: true, // 타 본부, 타 사업 이동 가능여부
+    can_multiple_interview: false, // 여러 부서에 면접을 볼 수 있는지 가능여부
   }
 }]
 
@@ -101,9 +129,9 @@ class RecruitManageContainer extends Component {
       }
       if (!prevState.isDetailModal && value) {
         data.value = (
-            <InfoDetail
-              data={value}
-            />
+          <InfoDetail
+            data={value}
+          />
         )
       } else {
         data.value = '';
@@ -117,18 +145,14 @@ class RecruitManageContainer extends Component {
         isAnswerModal: !prevState.isAnswerModal
       }
       if (!prevState.isAnswerModal && value) {
-        data.value = (
-            <AnswerBody
-              data={value}
-            />
-        )
+        data.value = '';
       } else {
         data.value = '';
       }
       return data;
     });
   }
-  
+
   render() {
     const { match } = this.props
     // const { page, rows, rowsPerPage} = this.state
@@ -156,14 +180,14 @@ class RecruitManageContainer extends Component {
             onClick={this.onAnswerClick}
           />
         }
-         <Modal
+        <Modal
           title={'상세정보'}
           contents={this.state.value}
           open={this.state.isDetailModal}
           onModal={this.onDetailModal}
         />
 
-         <Modal
+        <Modal
           title={"답변"}
           contents={this.state.value}
           open={this.state.isAnswerModal}

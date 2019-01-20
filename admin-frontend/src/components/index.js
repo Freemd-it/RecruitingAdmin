@@ -10,7 +10,6 @@ import QuestionDetail from './questionDetail/QuestionDetail';
 import InfoDetail from './infoDetail/InfoDetail'
 import DetailBody from './infoDetail/detailBody/DetailBody'
 import DetailCell from './infoDetail/detailCell/DetailCell'
-import AnswerBody from './answerDetail/answerBody/AnswerBody'
 
 
 export {
@@ -24,6 +23,5 @@ export {
   QuestionDetail,
   DetailBody,
   DetailCell,
-  AnswerBody,
   InfoDetail,
 };

@@ -1,13 +1,13 @@
 import React from 'react';
 import DetailBody from '../infoDetail/detailBody/DetailBody';
-import AnswerBody from '../answerDetail/answerBody/AnswerBody';
-import ExternalInfo from '../externalInfo/ExternalInfo';
-
-
 import { withStyles } from '@material-ui/core/styles';
 
 import './InfoDetail.scss'
 import _ from 'lodash'
+import AcademicInfo from './academicInfo/AcademicInfo';
+import ExternalInfo from './externalInfo/ExternalInfo';
+import BasicInfo from './basicInfo/BasicInfo';
+import ApplyInfo from './applyInfo/ApplyInfo';
 
 
 const styles = theme => ({
@@ -17,38 +17,41 @@ const styles = theme => ({
   },
 });
 
-const InfoDetail = ({classes, data}) => {
+const InfoDetail = ({ classes, data }) => {
   return (
     <div className={`${classes.container} DetailBody`}>
-      { 
+      {
         _.map(data, (value, key) => {
-          if(key === 'external_activities') {
-            return (
-              <div className="DetailBody__Item">
+          switch (key) {
+            case 'external_activities':
+              return (
                 <ExternalInfo
                   key={`${key}__DetailBody`}
                   data={value}
                 />
-              </div>
-            )
-          } else if (key === 'apply_info') {
-            return (
-              <div className="DetailBody__Item">
-                <AnswerBody
-                  key={`${key}__AnswerBody`}
-                  data={value}
-                />
-              </div>
-            )
-          } else if(key === 'basic_info') {
-            return (
-              <div className="DetailBody__Item"> 
-                <DetailBody
+              );
+            case 'apply_info':
+              return (
+                <ApplyInfo
                   key={`${key}__DetailBody`}
                   data={value}
                 />
-              </div>
-           )
+              );
+            case 'basic_info':
+              return (
+                <BasicInfo 
+                key={`${key}__DetailBody`}
+                data={value} />
+              );
+            case 'academic_info':
+              return (
+                <AcademicInfo
+                  key={`${key}__DetailBody`}
+                  data={value}
+                />
+              );
+            default:
+              return '';
           }
         })
       }
