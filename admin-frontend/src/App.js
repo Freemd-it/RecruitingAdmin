@@ -16,7 +16,6 @@ class App extends Component {
 
   render() {
     const { onLogin } = this.state
-    console.log(onLogin)
     if (onLogin) {
       return (
         <MainTemplate
