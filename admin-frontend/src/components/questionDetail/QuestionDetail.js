@@ -1,7 +1,8 @@
 import React from 'react'
-import TextField from '@material-ui/core/TextField';
-import Radio from '@material-ui/core/Radio';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import TextField from '@material-ui/core/TextField';
+// import Radio from '@material-ui/core/Radio';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { Col, FormGroup, Label, Input } from 'reactstrap';
 import './QuestionDetail.scss';
 
 const QuestionDetail = props => {
@@ -9,67 +10,59 @@ const QuestionDetail = props => {
     registData,
     onRegistData
   } = props;
+
   return (
-    <div className={'QuestionDetail'}>
-      <TextField
-        label="본부"
-        className={'QuestionDetail__mr QuestionDetail__input'}
-        value={registData.department}
-        variant="outlined"
-        InputProps={{ readOnly: true }}
-      />
-      <TextField
-        select
-        label="팀"
-        className={'QuestionDetail__input'}
-        name={'team'}
-        value={registData.team}
-        onChange={onRegistData}
-        SelectProps={{ native: true }}
-        variant="outlined"
-      >
-        <option value={'1팀'}>1팀</option>
-        <option value={'2팀'}>2팀</option>
-        <option value={'3팀'}>3팀</option>
-        <option value={'4팀'}>4팀</option>
-      </TextField>
-      <TextField
-        label="질문"
-        className={'QuestionDetail__textBox'}
-        placeholder="질문을 입력하여주세요."
-        name={'question'}
-        multiline
-        variant="outlined"
-        rows="10"
-        onChange={onRegistData}
-        value={registData.question}
-      />
-      <div>
-        <FormControlLabel
-          control={
-            <Radio
+    <div className={'container QuestionDetail'}>
+      <FormGroup row>
+        <Label for="exampleEmail" sm={2}>본부</Label>
+        <Col sm={10}>
+          <Input bsSize="sm" type="select" name="department" value={registData.department} onChange={onRegistData} readOnly disabled>
+            <option>{registData.department}</option>
+          </Input>
+        </Col>
+      </FormGroup>
+
+      <FormGroup row>
+        <Label for="exampleEmail" sm={2}>팀</Label>
+        <Col sm={10}>
+          <Input bsSize="sm" type="select" name="team" value={registData.team} onChange={onRegistData}>
+            <option>{registData.team}</option>
+          </Input>
+        </Col>
+      </FormGroup>
+
+      <FormGroup row>
+        <Label sm={2}>질문</Label>
+        <Col sm={10}>
+          <Input type="textarea" name="question" onChange={onRegistData} value={registData.question} />
+        </Col>
+      </FormGroup>
+
+      <FormGroup row>
+        <Col sm={2}>질문 사용 유무</Col>
+        <Col sm={10}>
+          <Label className="QuestionDetail__radio">
+            <Input 
+              type="radio" 
+              name="useQuestion" 
               checked={!registData.useQuestion}
               onChange={onRegistData}
-              value={false}
-              name="useQuestion"
-              aria-label="A"
+              value="false"
             />
-          }
-          label="사용안함"
-        />
-        <FormControlLabel
-          control={
-            <Radio
+            <span>사용 안함</span>
+          </Label>
+          <Label className="QuestionDetail__radio">
+            <Input 
+              type="radio" 
+              name="useQuestion" 
               checked={registData.useQuestion}
               onChange={onRegistData}
-              value={true}
-              name="useQuestion"
-              aria-label="A"
+              value="true"
             />
-          }
-          label="사용"
-        />
-      </div>
+            <span>사용</span>
+          </Label>
+        </Col>
+      </FormGroup>
     </div>
   );
 }

@@ -11,12 +11,10 @@ class QuestionRegistContainer extends Component {
     isAddModal: false,
     isDetailModal: false,
     registData: {
-      question: {
-        department: 'IT',
-        team: '',
-        question: '',
-        useQuestion: false,
-      }
+      department: 'IT',
+      team: '',
+      question: '',
+      useQuestion: false,
     }
   };
 
@@ -34,7 +32,7 @@ class QuestionRegistContainer extends Component {
           use_question: true,
         }
       }, {
-        quuestion: {
+        question: {
           id: 2,
           department: 'IT',
           team: '너네팀',
@@ -65,23 +63,23 @@ class QuestionRegistContainer extends Component {
   }
 
   onDetailModal = value => {
-      this.setState(prevState => {
-        const data = {
-          isDetailModal: !prevState.isDetailModal,
-          registData: { ...prevState.registData }
-        }
-        if (!prevState.isDetailModal && value && value.question) {
-          const { question } = value;
-          data.registData.useQuestion = question.use_question;
-          data.registData.team = question.team;
-          data.registData.question = question.team.question;
-        } else {
-          data.registData.useQuestion = '';
-          data.registData.team = '';
-          data.registData.question = '';
-        }
-        return data;
-      });
+    this.setState(prevState => {
+      const data = {
+        isDetailModal: !prevState.isDetailModal,
+        registData: { ...prevState.registData }
+      }
+      if (!prevState.isDetailModal && value && value.question) {
+        const { question } = value;
+        data.registData.useQuestion = question.use_question;
+        data.registData.team = question.team;
+        data.registData.question = question.team.question;
+      } else {
+        data.registData.useQuestion = '';
+        data.registData.team = '';
+        data.registData.question = '';
+      }
+      return data;
+    });
   }
 
   onRegistData = e => {
