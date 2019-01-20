@@ -57,26 +57,25 @@ export const recruit = {
       value: '팀'
     },
   ],
-  answer: [
-    {
-      key: 'name',
-      value: '이름',
-    },
-    {
-      key: 'phone_number',
-      value: '전화번호',
-    },
-    {
-      key: 'department',
-      value: '1지망',
-    },
-    {
-      key: 'secondary_department',
-      value: '2지망',
-    },
-  ]
 }
-
+export const recruit2 = {
+  information: {
+    name: '이름',
+    english_name: '영문이름',
+    is_male: '성별',
+    birth_date: '생년월일',
+    phone_number: '전화번호',
+    email: 'email',
+    sns: 'sns',
+    address: '주소',
+    department: '1지망',
+    secondary_department: '2지망',
+    common_first: '첫번째 공통질문',
+    common_second: '두번째 공통질문',
+    common_department: '본부 공통질문',
+    common_team: '팀 질문',
+  }
+} 
 export const interview = [{
   key: 'department',
   value: '본부명'

@@ -1,28 +1,26 @@
 import React, { Component } from 'react'
-import { AnswerBody, Table, Modal, DetailBody } from '../../components'
-const data = [{
-  name: '이동수',
-  english_name: 'dongsu',
-  is_male: '남',
-  birth_date: '1991-12-09',
-  phone_number: '010-1111-1111',
-  email: '30032dongsu@moducampus.com',
-  sns: 'hihih',
-  address: '성남',
-  department: 'IT',
-  secondary_department: '브본',
-  team: '우리팀',
-  question: '안녕하세요',
-  cardinality: '11',
-  writer: '이필주',
-  create: '2019-01-01',
-  is_question: true,
-  school_name: '프리메드',
-  school_degree: '고등학교',
-  school_type: '인문계',
-  school_location: '서울',
-  entrance_date: new Date(2017, 3),
-  graduate_date: null,
+import { AnswerBody, Table, Modal, InfoDetail } from '../../components'
+
+const data = [
+  {
+    basic_info: { // 기본 신상 정보에 대한 객체
+      name: "동수", // 지원자의 이름
+      english_name: "dongsu ", // 지원자의 영문 이름
+      is_male: "man", // 남 or 녀
+      birth_date: "2018-01-01", // 생년월일
+      phone_number: "11111", // 연락처
+      email: "30032ongsu@gmail.com", // 이메일 주소
+      sns: "X", // SNS 주소
+      address: "성남" // 거주지
+    },
+  // academic_career: { // 최종 학력
+  //   name: "string", // 학교명
+  //   location: "string", // 소재지
+  //   type: "int32 (0: 고등학교, 1: 대학교, 2: 대학원)", // 학교의 종류
+  //   major: "string or int32", // 전공
+  //   entrance_date: "date (optional)", // 입학년도
+  //   graduation_date: "date (optional)" // 졸업년도
+  // },
   external_activities: [
     {
       type: '인턴',
@@ -103,7 +101,7 @@ class RecruitManageContainer extends Component {
       }
       if (!prevState.isDetailModal && value) {
         data.value = (
-            <DetailBody
+            <InfoDetail
               data={value}
             />
         )
