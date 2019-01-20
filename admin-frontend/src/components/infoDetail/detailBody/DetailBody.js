@@ -16,6 +16,7 @@ const styles = theme => ({
 const DetailBody = ({ classes, data }) => {
   return (
     <div>
+      <div>개인정보</div>
     {
       _.map(data, (value, key) => {
         return (

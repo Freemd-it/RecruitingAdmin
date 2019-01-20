@@ -15,6 +15,7 @@ const styles = theme => ({
 const AnswerBody = ({ classes, data }) => {
   return (
     <div className="Scrollable">
+      <span> 질문답변 </span>
       <div className={classes.container}>
         <div className="RowWapper">
           <div className="RowContainer">
