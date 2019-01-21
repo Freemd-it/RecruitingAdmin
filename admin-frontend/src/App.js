@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { MainTemplate, Sidebar, Contents, LoginTemplate } from './components'
-import './App.css'
+import './App.scss'
 
 class App extends Component {
   state = {

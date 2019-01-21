@@ -38,7 +38,7 @@ class CustomModalFooter extends React.Component {
     if(modalType === 'recruit') {
       footerButtonGroup =(
         <div className="footer-container">
-          <Button className="item__pass" color="success"  outline onClick={() => {confirmFun()}}>합격</Button>
+          <Button className="item__pass" outline onClick={() => {confirmFun()}}>합격</Button>
           <Button className="item__drop" color="danger" outline onClick={() => {confirmFun()}}>불합격</Button>
           <Button className="item__postpone" color="warning" outline onClick={() => {confirmFun()}}>보류</Button>
           <Button className="item__cancel" color="secondary" outline onClick={confirmFun}>취소</Button>

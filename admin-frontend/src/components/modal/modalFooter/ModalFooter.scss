@@ -8,9 +8,14 @@
     width: 15%;
 
     &__pass {
-      border-color: green;
-      color: green;
+      border-color: navy;
+      color: navy;
       margin-right: 10px;
+      &:active, &:hover {
+        box-shadow: navy !important;
+        border-color: navy !important;
+        background-color: navy !important;
+      }
     }
     &__postpone {
       border-color: orange;

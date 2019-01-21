@@ -8,19 +8,52 @@
   margin: 10px;
 }
 
-.excel-button {
-  width: 50px;
-  height: 25px;
-}
-
 .CustomTable {
+  margin-top: 10px;
   box-shadow: none !important;
-  min-width: 700px;
+  min-width: 1200px;
+  max-height: 100vh;
+  overflow-x: hidden;
+
+  &__titlebar {
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 10px;
+    margin-right: 8px;
+  }
+
+  &__navbar {
+    margin: 10px 8px 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    
+    button {
+      font-size: 14px;
+    }
+  }
+
+  &__searchWord {
+    height: 100% !important;
+  }
+
+  &__searchTag {
+    background-color: #FF5858 !important;
+    border-color: #FF5858 !important;
+  }
+
   thead {
     tr {
       th {
-        padding: 3px !important;
-        font-size: 10px !important;
+        padding: 0px !important;
+        // padding-right: 2px !important;
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        text-align: center !important;
+        color: black;
+        border-right: 1px solid #cccccc;
+        &:last-child {
+          border-right: 0;
+        }
       }
     }
   }
@@ -28,8 +61,14 @@
   tbody {
     tr {
       td {
-        padding: 3px !important;
+        padding: 0px !important;
         font-size: 10px !important;
+        text-align: center !important;
+        border-right: 1px solid #cccccc;
+        color: #797979;
+        &:last-child {
+          border-right: 0;
+        }
       }
     }
   }

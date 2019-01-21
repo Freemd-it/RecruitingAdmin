@@ -22,7 +22,7 @@ import slogan from '../../static/images/logo3@2x.png'
 
 const styles = theme => ({
   root: {
-    minWidth: '250px',
+    minWidth: '200px',
     backgroundColor: '#FF5858',
   },
   nested: {
