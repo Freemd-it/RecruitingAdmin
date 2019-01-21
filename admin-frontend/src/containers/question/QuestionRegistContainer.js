@@ -176,8 +176,8 @@ class QuestionRegistContainer extends Component {
           title={'본부 질문 관리'}
           titleNav={
             <Button 
-              className={`QuestionRegisContainer__addBtn`}
-              color="dark"
+              className={`btn QuestionRegisContainer__addBtn`}
+              color="secondary"
               outline
               size={`sm`}
               onClick={e => this.onAddModal(<div>추가하기당</div>)}

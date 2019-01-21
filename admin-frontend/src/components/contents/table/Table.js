@@ -30,8 +30,8 @@ const tableStyle = theme => ({
   },
   tableWrapper: {
     overflowX: 'auto',
-    marginLeft: '10px',
-    marginRight: '10px',
+    marginLeft: '20px',
+    marginRight: '20px',
     borderLeft: '1px solid #cccccc',
     borderRight: '1px solid #cccccc',
   },
