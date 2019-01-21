@@ -9,6 +9,7 @@ import QuestionDetail from './questionDetail/QuestionDetail';
 import InfoDetail from './infoDetail/InfoDetail'
 
 export {
+  
   MainTemplate,
   LoginTemplate,
 
@@ -17,6 +18,7 @@ export {
   DashBoard,
   
   Modal,
+  Table,
   QuestionDetail,
   InfoDetail,
 };

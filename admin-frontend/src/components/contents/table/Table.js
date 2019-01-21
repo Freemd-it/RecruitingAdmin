@@ -87,7 +87,7 @@ class Table extends Component {
           <div>
             { titleNav }
             <ReactHTMLTableToExcel 
-              className={`btn btn-danger export`} 
+              className={`btn btn-danger export-excel`} 
               table="table"
               filename="dashBoard" 
               sheet="프리메드지원서" 
