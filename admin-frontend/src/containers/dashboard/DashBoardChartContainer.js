@@ -10,8 +10,6 @@ class DashBoardViewerContainer extends Component {
     }
   }
 
-  
-
   render() {
     const { pieData } = this.state
     return (

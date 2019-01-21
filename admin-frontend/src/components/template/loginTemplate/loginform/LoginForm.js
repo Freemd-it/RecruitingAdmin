@@ -63,7 +63,18 @@ const styles = theme => ({
   submit: {
     marginTop: theme.spacing.unit * 3,
     backgroundColor: 'white',
+    borderColor: 'white',
     color: '#FF5858',
+    '&:active': {
+      backgroundColor: '##FF5858',
+      color: 'white',
+      borderColor: 'white',
+    },
+    '&:focus': {
+      backgroundColor: '#FF5858',
+      color: 'white',
+      outline: 'none',
+    },
   },
 });
 

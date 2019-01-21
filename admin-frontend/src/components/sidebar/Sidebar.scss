@@ -1,25 +1,35 @@
 .Container {
   display: flex;
   flex-direction: column;
-  height: 1000px;
-
+  height: 100vh;
+  
+  a:hover {
+    text-decoration: none;
+  }
   span {
     color: white;
-    font-size: 10px; 
+    font-size: 0.7rem; 
   }
 
   .ItemContainer {
-    * {
-      font-size: 16px;
-    }
+    margin-top : 10px;
+    margin-bottom: 10px;
     &:hover {
       background-color: white;
       span, svg {
         color: #FF5858;
       }
     }
+    .ItemWrapper {
+      display: block;
+      width: 70%;
+      margin: 0 auto;
+    }
   }
   .Sidebar {
+    display: flex;
+    flex-flow: wrap column;
+    margin: 0 auto;
     &:hover {
       color: #FF5858 !important;
     }
@@ -32,11 +42,11 @@
       }
     }
     &__menu {
-      padding: 0 !important;
-     
-    }
       
-    
+    }
+    &__item {
+      padding-left: 20px;
+    }
   }
 }
 .main-img-footer {
@@ -62,7 +72,7 @@
 
 .main-word {
   height: 30px;
-  font-size: 20px;
+  font-size: 10px;
   padding: 5px;
   display: table-cell;
   vertical-align: middle;
@@ -73,3 +83,4 @@ img {
   width: 100%;
   height: 100%;
 }
+

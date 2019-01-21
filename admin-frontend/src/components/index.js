@@ -9,12 +9,13 @@ import QuestionDetail from './questionDetail/QuestionDetail';
 import InfoDetail from './infoDetail/InfoDetail'
 
 export {
-  Sidebar,
-  Table,
   MainTemplate,
   LoginTemplate,
+
+  Sidebar,
   Contents,
   DashBoard,
+  
   Modal,
   QuestionDetail,
   InfoDetail,
