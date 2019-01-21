@@ -1,0 +1,31 @@
+.footer-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  
+  .item {
+    font-size: 13px;
+    width: 15%;
+
+    &__pass {
+      border-color: green;
+      color: green;
+      margin-right: 10px;
+    }
+    &__postpone {
+      border-color: orange;
+      color: orange;
+      margin-right: 10px;
+    }
+    &__drop {
+      border-color: red;
+      color: red;
+      margin-right: 10px;
+    }
+    &__confirm {
+      background-color: #FF5858;
+      border-color: white;
+      margin-right: 10px;
+    }
+  }
+}

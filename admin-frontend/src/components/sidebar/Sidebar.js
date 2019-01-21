@@ -50,7 +50,7 @@ class Sidebar extends Component {
 
       <div className="ItemContainer"> 
         <div className="ItemWrapper">
-          <ListItem button className={'Sidebar__item'}
+          <ListItem className={'Sidebar__item'}
             component={props => <Link to={routes.MATCH_PATH_DASHBOARD} {...props} />}>
             <ListItemIcon className={'Sidebar__icon'}>
               <DashboardIcon/>
@@ -61,7 +61,7 @@ class Sidebar extends Component {
       </div>
       <div className="ItemContainer"> 
         <div className="ItemWrapper">
-          <ListItem button className={'Sidebar__item'} component={props => <Link to={routes.MATCH_PATH_RECRUIT_INFORMATION} {...props} />}>
+          <ListItem className={'Sidebar__item'} focused={false}component={props => <Link to={routes.MATCH_PATH_RECRUIT_INFORMATION} {...props} />}>
             <ListItemIcon className={'Sidebar__icon'}>
               <PeopleIcon />
             </ListItemIcon>
@@ -71,7 +71,7 @@ class Sidebar extends Component {
       </div>
       <div className="ItemContainer"> 
         <div className="ItemWrapper">
-          <ListItem button className={'Sidebar__item'}
+          <ListItem className={'Sidebar__item'}
             component={props => <Link to={routes.MATCH_PATH_INTERVIEW} {...props} />}>
             <ListItemIcon className={'Sidebar__icon'}>
               <PeopleIcon />
@@ -82,7 +82,7 @@ class Sidebar extends Component {
       </div>
       <div className="ItemContainer">
         <div className="ItemWrapper">
-          <ListItem button className={'Sidebar__item'}
+          <ListItem className={'Sidebar__item'}
             component={props => <Link to={routes.MATCH_PATH_QUESTION} {...props} />}>
             <ListItemIcon className={'Sidebar__icon'}>
               <BarChartIcon />

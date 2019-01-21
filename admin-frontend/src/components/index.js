@@ -10,19 +10,25 @@ import InterviewBody from './contents/table/interviewBody/InterviewBody';
 import InfoDetail from './infoDetail/InfoDetail';
 import DetailBody from './infoDetail/detailBody/DetailBody';
 import DetailCell from './infoDetail/detailCell/DetailCell';
-
+import ModalFotter from './modal/modalFooter/ModalFooter'
 
 export {
-  Sidebar,
-  Table,
   MainTemplate,
   LoginTemplate,
+
+  Sidebar,
   Contents,
   DashBoard,
+  
   Modal,
-  QuestionDetail,
+  ModalFotter,
+  
+  Table,
   DetailBody,
   DetailCell,
+
+  QuestionDetail,
   InfoDetail,
+
   InterviewBody
 };

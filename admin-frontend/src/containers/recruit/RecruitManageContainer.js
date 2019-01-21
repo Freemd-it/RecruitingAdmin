@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Table, Modal } from '../../components'
 import InfoDetail from '../../components/infoDetail/InfoDetail';
+import { Button } from 'reactstrap';
 const data = [
   {
     basic_info: {
@@ -119,8 +120,6 @@ const data = [
 class RecruitManageContainer extends Component {
   state = {
     rows: [],
-    page: 0,
-    rowsPerPage: 10,
     isDetailModal: false,
   };
 
@@ -142,10 +141,6 @@ class RecruitManageContainer extends Component {
     this.onDetailModal(value);
   }
 
-  onAnswerClick = value => {
-    this.onAnswerModal(value);
-  }
-
   onDetailModal = value => {
     this.setState(prevState => {
       const data = {
@@ -157,19 +152,6 @@ class RecruitManageContainer extends Component {
             data={value}
           />
         )
-      } else {
-        data.value = '';
-      }
-      return data;
-    });
-  }
-  onAnswerModal = value => {
-    this.setState(prevState => {
-      const data = {
-        isAnswerModal: !prevState.isAnswerModal
-      }
-      if (!prevState.isAnswerModal && value) {
-        data.value = '';
       } else {
         data.value = '';
       }
@@ -194,10 +176,12 @@ class RecruitManageContainer extends Component {
           />
         }
         <Modal
-          title={'상세정보'}
+          title={'지원서'}
           contents={this.state.value}
+          footer={this.state.footer}
           open={this.state.isDetailModal}
           onModal={this.onDetailModal}
+          modalType={'recruit'}
         />
       </div>
     )

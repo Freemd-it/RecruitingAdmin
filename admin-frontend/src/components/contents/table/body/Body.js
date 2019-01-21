@@ -14,9 +14,7 @@ const Body = ({columns, data, onClick = () => {}, cursor = false}) => {
   return (
     <TableBody>
       {
-        
         data.map((item, key) => {
-          console.log(data)
           let rows = []
           let cnt = 1
           let returnData = []

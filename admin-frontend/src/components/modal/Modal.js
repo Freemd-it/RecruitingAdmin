@@ -1,17 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-// import Modal from '@material-ui/core/Modal';
-// import Button from '@material-ui/core/Button';
-// import CloseIcon from '@material-ui/icons/Close';
-import { 
-  Modal, 
-  ModalHeader, 
-  ModalBody, 
-  ModalFooter, 
-  Button,
-} from 'reactstrap';
-import './Modal.scss';
+import ModalFooter from './modalFooter/ModalFooter';
+import { Modal, ModalHeader, ModalBody, Button } from 'reactstrap';
+import './Modal.scss'
 
 const styles = theme => ({
   paper: {
@@ -35,10 +27,8 @@ class CustomModal extends React.Component {
       onModal, 
       title, 
       contents, 
-      confirmMessage = '확인',
-      cencleMessage = '취소',
       confirmFun = () => { onModal() },
-      isCancel = true 
+      modalType,
     } = this.props;
 
     return (
@@ -50,10 +40,11 @@ class CustomModal extends React.Component {
       >
         <ModalHeader toggle={() =>{onModal()}}>{ title }</ModalHeader>
         <ModalBody className="CustomModal__body">{ contents }</ModalBody>
-        <ModalFooter>
-          <Button className="CustomModal__body__confirm" color="danger" onClick={confirmFun}>{ confirmMessage }</Button>
-          { isCancel && <Button className="CustomModal__body__cencle" color="danger" outline onClick={() => onModal()}>{ cencleMessage }</Button> }
-        </ModalFooter>
+        <ModalFooter
+          onModal={onModal}
+          confirmFurm={confirmFun}
+          modalType={modalType}
+        />
       </Modal>
     );
   }
