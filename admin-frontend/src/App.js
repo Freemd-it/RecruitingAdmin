@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { MainTemplate, Sidebar, Contents, LoginTemplate } from './components'
+import Sidebar from './views/domains/sidebar'
+import MainTemplate from './views/contexts/templates/mainTemplate'
+import Contents from './views/domains/contents'
+import Login from './views/domains/login'
+
 import './App.scss'
 
 class App extends Component {
@@ -24,7 +28,7 @@ class App extends Component {
         />
       ) 
     }
-    return <LoginTemplate onhandleLogin={this.onhandleLogin}/>
+    return <Login onhandleLogin={this.onhandleLogin}/>
   }
 }
 export default App;
