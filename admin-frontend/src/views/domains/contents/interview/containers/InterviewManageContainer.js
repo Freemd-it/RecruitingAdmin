@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Table from '../../../../contexts/table'
+import Table from 'views/contexts/table'
 const data = [
   {
     basic_info: {

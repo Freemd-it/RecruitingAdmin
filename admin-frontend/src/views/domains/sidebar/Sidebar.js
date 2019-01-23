@@ -13,11 +13,12 @@ import BarChartIcon from '@material-ui/icons/BarChart';
 import Collapse from '@material-ui/core/Collapse';
 import StarBorder from '@material-ui/icons/StarBorder';
 import { withStyles } from '@material-ui/core';
-import * as routes from '../../../lib/service/routes'
+import logo from 'static/images/logo_1.png'
+import slogan from 'static/images/logo3@2x.png'
 
+import * as routes from 'lib/service/routes'
 import './Sidebar.scss'
-import logo from '../../../static/images/logo_1.png'
-import slogan from '../../../static/images/logo3@2x.png'
+
 
 
 const styles = theme => ({

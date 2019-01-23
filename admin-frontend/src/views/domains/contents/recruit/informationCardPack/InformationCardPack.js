@@ -1,9 +1,9 @@
 import React from 'react';
-import AcademicInfo from '../../../../domains/contents/recruit/academicInfo';
-import ExternalInfo from '../../../../domains/contents/recruit/externalInfo';
-import BasicInfo from '../../../../domains/contents/recruit/basicInfo';
-import ApplyInfo from '../../../../domains/contents/recruit/applyInfo';
-import AbilityInfo from '../../../../domains/contents/recruit/abilityInfo';
+import AcademicInfo from 'views/domains/contents/recruit/informationCardPack/academicInfo';
+import ExternalInfo from 'views/domains/contents/recruit/informationCardPack/externalInfo';
+import BasicInfo from 'views/domains/contents/recruit/informationCardPack/basicInfo';
+import ApplyInfo from 'views/domains/contents/recruit/informationCardPack/applyInfo';
+import AbilityInfo from 'views/domains/contents/recruit/informationCardPack/abilityInfo';
 
 import './InformationCardPack.scss'
 import _ from 'lodash'

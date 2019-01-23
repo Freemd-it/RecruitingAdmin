@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Paper from '@material-ui/core/Paper';
 import Piechart from './charts/pieChart'
 import RadarChart from './charts/radarChart'
 import Mixedchart from './charts/mixedChart'

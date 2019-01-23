@@ -4,7 +4,7 @@ import { Divider } from '@material-ui/core';
 import BusinessIcon from '@material-ui/icons/BusinessCenter';
 
 // import '../InfoDetail.scss';
-import InformationCard from '../../../../contexts/modal/information/informationCard';
+import InformationCard from 'views/contexts/modal/informationCard';
 
 const ExternalInfo = (props) => {
 

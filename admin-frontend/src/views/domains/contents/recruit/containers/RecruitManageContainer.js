@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Table from '../../../../contexts/table'
-import Modal from '../../../../contexts/modal'
-import InfoDetail from '../../../../../views/contexts/modal/information/informationCardPack';
+import Table from 'views/contexts/table'
+import Modal from 'views/contexts/modal'
+import InfoDetail from 'views/domains/contents/recruit/informationCardPack';
 
 const data = [
   {

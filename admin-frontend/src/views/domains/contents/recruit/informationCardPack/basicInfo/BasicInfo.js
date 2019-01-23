@@ -3,7 +3,7 @@ import moment from 'moment';
 import AccountIcon from '@material-ui/icons/SupervisorAccount';
 
 // import '../InfoDetail.scss';
-import InformationCard from '../../../../contexts/modal/information/informationCard';
+import InformationCard from 'views/contexts/modal/informationCard';
 
 function getAge(birthday) {
   let ageDate = new Date(Date.now() - birthday.getTime());

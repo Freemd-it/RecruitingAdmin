@@ -5,8 +5,8 @@ import RecruitManageContainer from './recruit/containers/RecruitManageContainer'
 import QuestionRegistContainer from './question/containers/QuestionManageContainer'
 import InterviewManageContainer from './interview/containers/InterviewManageContainer'
 
-import * as Columns from '../../../lib/service/tableColumn';
-import * as routes from '../../../lib/service/routes'
+import * as Columns from 'lib/service/tableColumn';
+import * as routes from 'lib/service/routes'
 import './Contents.css'
 
 const rowsPerPage = 10;

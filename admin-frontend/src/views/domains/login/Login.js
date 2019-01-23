@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import Input from '@material-ui/core/Input';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
-import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import Paper from '@material-ui/core/Paper';
 import withStyles from '@material-ui/core/styles/withStyles';
 
-import logo from '../../../static/images/logo_1@2x.png'
-import * as axios from '../../../lib/api/login'
+import logo from 'static/images/logo_1@2x.png'
+import * as axios from 'lib/api/login'
 
 const styles = theme => ({
   main: {

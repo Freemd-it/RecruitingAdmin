@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { Divider } from '@material-ui/core';
 import StarIcon from '@material-ui/icons/Star';
-import InformationCard from '../../../../contexts/modal/information/informationCard';
+import InformationCard from 'views/contexts/modal/informationCard';
 
 // // import '../InfoDetail.scss';
 
