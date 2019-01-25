@@ -24,7 +24,6 @@ class DashBoard extends Component {
         radarData,
       },
     }
-    console.log('chartData', data)
     return (
         <div className="chart-wrapper">
           <div className="title"> 지원자 현황 </div>
