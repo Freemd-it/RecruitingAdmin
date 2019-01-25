@@ -1,0 +1,46 @@
+.chart-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height:100vh;
+  
+  .title {
+    width: 100%;
+    font-size: 20px;
+    text-align: left;
+    padding: 20px;
+  }
+
+  .chart-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #cccccc;
+    margin: 20px;
+    padding: 20px;
+    overflow-x: auto;
+
+    .chart-sub-container {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex: auto;
+      flex-wrap: wrap;
+
+      .item {
+        border: 1px solid #cccccc;
+        margin-top: 10px;
+        padding: 10px;
+        display: block;
+        width: 50%;
+
+      
+
+     
+        &:nth-child(2n) {
+          border-left: 0;
+        }
+      }
+    }
+  }
+}

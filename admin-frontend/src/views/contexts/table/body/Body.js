@@ -12,7 +12,6 @@ const Body = ({columns, data, rowsPerPage, onClick = () => {}, cursor = false}) 
   }
 
   const emptyRows = rowsPerPage - data.length;
-  console.log('ee', emptyRows)
   let index = 0
   return (
     <TableBody>

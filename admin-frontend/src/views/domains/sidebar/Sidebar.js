@@ -23,7 +23,7 @@ import './Sidebar.scss'
 
 const styles = theme => ({
   root: {
-    minWidth: '200px',
+    minWidth: '230px',
     backgroundColor: '#FF5858',
   },
   nested: {
@@ -48,7 +48,6 @@ class Sidebar extends Component {
         <div className='main-img'>
           <img src={logo} />
         </div>
-
       <div className="ItemContainer"> 
         <div className="ItemWrapper">
           <ListItem className={'Sidebar__item'}

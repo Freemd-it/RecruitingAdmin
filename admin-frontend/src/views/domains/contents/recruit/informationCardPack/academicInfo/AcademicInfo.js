@@ -3,7 +3,7 @@ import moment from 'moment';
 import SchoolIcon from '@material-ui/icons/School';
 
 // import '../InfoDetail.scss';
-import InformationCard from 'views/contexts/modal/informationCard';
+import InformationCard from 'views/contexts/modal/card';
 
 const AcademicInfo = (props) => {
   const {

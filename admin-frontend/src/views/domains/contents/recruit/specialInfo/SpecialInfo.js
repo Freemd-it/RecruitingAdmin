@@ -4,7 +4,7 @@ import { Divider } from '@material-ui/core';
 import StarIcon from '@material-ui/icons/Star';
 
 // import '../InfoDetail.scss';
-import InformationCard from 'views/contexts/modal/informationCard';
+import InformationCard from 'views/contexts/modal/card';
 
 const ExternalInfo = (props) => {
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Card, CardContent, Typography, Divider } from '@material-ui/core';
 
-// import './InfoDetail.scss';
+import './Card.scss';
 
-const InformationCard = (props) => {
+const CustomCard = (props) => {
   return (
     <Card className="Card">
       <CardContent>
@@ -17,4 +17,4 @@ const InformationCard = (props) => {
   )
 }
 
-export default InformationCard;
+export default CustomCard;
