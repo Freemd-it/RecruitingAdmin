@@ -28,7 +28,7 @@ class DashBoardViewerContainer extends Component {
     const { chartData } = this.state
     return (
       <Fragment>
-        <DashBoard chartData={chartData}/>
+        <DashBoard data={chartData}/>
       </Fragment>
     )
   }
