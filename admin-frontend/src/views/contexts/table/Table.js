@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {
   InputGroup,
@@ -59,61 +59,63 @@ class Table extends Component {
     const { onClick, classes, cursor, titleNav, title } = this.props;
     const { currentPage, rowsPerPage } = this.state;
     return (
-      <div className={'CustomTable'}>
+      <Fragment>
         <div className={'CustomTable__titlebar'}>{ title }</div>
-        <div className={'CustomTable__navbar'}>
-          <div>
-            <InputGroup>
-              <InputGroupButtonDropdown 
-                addonType="prepend" 
-                isOpen={this.state.isSearchTag} 
-                toggle={this.onSearchTag}
-              >
-                <DropdownToggle className="CustomTable__searchTag" caret>
-                  검색선택
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem>본부</DropdownItem>
-                  <DropdownItem>팀</DropdownItem>
-                  <DropdownItem>나이</DropdownItem>
-                  <DropdownItem>기수</DropdownItem>
-                </DropdownMenu>
-              </InputGroupButtonDropdown>
-              <div>
-                <Input className="CustomTable__searchWord"/>
-              </div>
-            </InputGroup>
+        <div className={'CustomTable'}> 
+          <div className={'CustomTable__navbar'}>
+            <div>
+              <InputGroup>
+                <InputGroupButtonDropdown 
+                  addonType="prepend" 
+                  isOpen={this.state.isSearchTag} 
+                  toggle={this.onSearchTag}
+                >
+                  <DropdownToggle className="CustomTable__searchTag" caret>
+                    검색선택
+                  </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem>본부</DropdownItem>
+                    <DropdownItem>팀</DropdownItem>
+                    <DropdownItem>나이</DropdownItem>
+                    <DropdownItem>기수</DropdownItem>
+                  </DropdownMenu>
+                </InputGroupButtonDropdown>
+                <div>
+                  <Input className="CustomTable__searchWord"/>
+                </div>
+              </InputGroup>
+            </div>
+            <div>
+              { titleNav }
+              <ReactHTMLTableToExcel 
+                className={`btn btn-danger export-excel`} 
+                table="table"
+                filename="dashBoard" 
+                sheet="프리메드지원서" 
+                buttonText="엑셀로 내보내기"
+              />
+            </div>
           </div>
-          <div>
-            { titleNav }
-            <ReactHTMLTableToExcel 
-              className={`btn btn-danger export-excel`} 
-              table="table"
-              filename="dashBoard" 
-              sheet="프리메드지원서" 
-              buttonText="엑셀로 내보내기"
-            />
+          <div className={classes.tableWrapper}>
+            <TableTemplate className={classes.table} id='table'>
+              <Header columns={this.props.columns}/>
+              <Body 
+                cursor={cursor} 
+                columns={this.props.columns} 
+                data={[ ...this.props.data].splice((currentPage-1) * rowsPerPage , rowsPerPage) } 
+                onClick={onClick}
+                rowsPerPage={rowsPerPage}
+              />
+            </TableTemplate>
           </div>
-        </div>
-        <div className={classes.tableWrapper}>
-          <TableTemplate className={classes.table} id='table'>
-            <Header columns={this.props.columns}/>
-            <Body 
-              cursor={cursor} 
-              columns={this.props.columns} 
-              data={[ ...this.props.data].splice((currentPage-1) * rowsPerPage , rowsPerPage) } 
-              onClick={onClick}
-              rowsPerPage={rowsPerPage}
-            />
-          </TableTemplate>
-        </div>
 
-        <Pagination
-          currentPage={this.state.currentPage}
-          totalPage={Math.ceil(this.props.data.length / rowsPerPage)}
-          onChangePage={this.onChangePage}
-        />
-      </div>
+          <Pagination
+            currentPage={this.state.currentPage}
+            totalPage={Math.ceil(this.props.data.length / rowsPerPage)}
+            onChangePage={this.onChangePage}
+          />
+        </div>
+      </Fragment>
       );
   }
 }

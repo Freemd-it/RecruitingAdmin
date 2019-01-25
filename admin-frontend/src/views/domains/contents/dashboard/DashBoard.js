@@ -152,6 +152,7 @@ class DashBoard extends Component {
                       return (
                         <div className="item" key={key}>
                           <Pie
+                            height={150}
                             data={data.pieData}
                             options={{
                               maintainAspectRatio: false,
@@ -175,7 +176,7 @@ class DashBoard extends Component {
                             className='bar'
                             data={data.barData}
                             options={data.options}
-                            height={`100`}
+                            height={150}
                             legend={{
                               position: 'bottom',
                               fullWidth: true,
@@ -187,7 +188,7 @@ class DashBoard extends Component {
                       return (
                         <div className="item" key={key}>
                             <Radar
-                              height={100}
+                              height={150}
                               data={data.radarData}
                               options={{
                                 title: {
@@ -195,6 +196,10 @@ class DashBoard extends Component {
                                   fontSize: 15,
                                   text: '학년별 분포',
                                 }
+                              }}
+                              legend={{
+                                position: 'bottom',
+                                fullWidth: true,
                               }}
                             />
                         </div>
