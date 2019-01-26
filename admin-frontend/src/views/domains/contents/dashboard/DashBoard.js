@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Radar, Pie, Bar } from 'react-chartjs-2';
-// import { barData, pieData, radarData} from 'lib/service/chart'
 import chartData from 'lib/service/chart'
 import { barOptions } from 'style/chart'
 

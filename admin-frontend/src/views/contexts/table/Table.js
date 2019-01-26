@@ -29,7 +29,8 @@ const tableStyle = theme => ({
     minWidth: 500,
   },
   tableWrapper: {
-    overflowX: 'auto',
+    height: '75vh',
+    overflowY: 'auto',
     marginLeft: '20px',
     marginRight: '20px',
     borderLeft: '1px solid #cccccc',
@@ -110,6 +111,7 @@ class Table extends Component {
           </div>
 
           <Pagination
+            className={"Cutomtable__pagination"}
             currentPage={this.state.currentPage}
             totalPage={Math.ceil(this.props.data.length / rowsPerPage)}
             onChangePage={this.onChangePage}
