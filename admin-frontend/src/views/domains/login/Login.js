@@ -80,14 +80,22 @@ const styles = theme => ({
 
 class SignIn extends Component {
 
+  state = {
+    isLoading: false,
+  }
+
   _getData = async () => {
-    axios.getSignin()
-    .then(res => {
-      if(res.status === 200) {
-        this.props.onhandleLogin()
-      }
-    })
-    .catch(err => err)
+    if (!this.state.isLoading) {
+      this.setState({ isLoading: true });
+      axios.getSignin()
+      .then(res => {
+        this.setState({ isLoading: false})
+        if(res.status === 200) {
+          this.props.onhandleLogin()
+        }
+      })
+      .catch(err => err)
+    }
   }
  
   onLoginhandler = () => {
@@ -120,8 +128,8 @@ class SignIn extends Component {
             </FormControl>
           </div>
           <Button
-            type="submit"
             fullWidth
+            type="submit"
             variant="contained"
             className={classes.submit}
             onClick={this.onLoginhandler}
