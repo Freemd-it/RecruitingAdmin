@@ -40,10 +40,11 @@ const UserSchema = new Schema({
     name: String, // 학교명
     location: String, // 소재지
     // 학교의 종류
-    degree: {
-      type : String,
-      enum : ['고등학교', '대학교', '대학원']
-    }, 
+    degree: String,
+    // degree: {
+    //   type : String,
+    //   enum : ['고등학교', '대학교', '대학원']
+    // }, 
     major: String, // 전공
     entrance_date: Date, // 입학년도
     graduation_date: Date // 졸업년도
@@ -77,15 +78,20 @@ const UserSchema = new Schema({
   ],
   apply_info: { // 지원 관련 정보
     // 부서
-    department: {
-      type: Schema.Types.ObjectId,
-      ref: "Department",
-      team: String
-    },
-    secondary_department: { 
-      type: Schema.Types.ObjectId,
-      ref: "Department",
-    },
+    department: String,
+    secondary_department: String, 
+    team: String,
+    secondary_team: String,
+
+    // department: {
+    //   type: Schema.Types.ObjectId,
+    //   ref: "Department",
+    //   team: String
+    // },
+    // secondary_department: { 
+    //   type: Schema.Types.ObjectId,
+    //   ref: "Department",
+    // },
     can_moved: Boolean, // 타 본부, 타 사업 이동 가능여부
     can_multiple_interview: Boolean, // 여러 부서에 면접을 볼 수 있는지 가능여부
     questions: [ // Array (document) // 질답 목록

@@ -132,9 +132,22 @@ const updateQuestion = async(req, res) => {
     }
 
     try {
-        const updatedQuestion = Question.findByIdAndUpdate(questionId, { $set: {question: question, used: used}}, {returnNewDocument: true}).find().exec();
-        console.log(updateQuestion);
-        res.status(201).json({message: "Successs"});
+        console.log("question: ",question);
+        console.log("used: ",used)
+        const updatedQuestion = await new Promise( ( resolve, reject ) => {
+            Question.findByIdAndUpdate( questionId, { $set: {question: question, used: used}}, {new: true}, ( error, obj ) => {
+                if( error ) {
+                    console.error( JSON.stringify( error ) );
+                    return reject( error );
+                }
+                resolve( obj );
+            });
+        });
+        if(!updatedQuestion){
+            res.status(400).json({error: "Can't find question"});
+            return;
+        }
+        res.status(201).json({message: "Successs", data: updatedQuestion});
     } catch (e) {
         console.log(e);
         res.status(500).json({error: e});
