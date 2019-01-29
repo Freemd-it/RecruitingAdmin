@@ -6,7 +6,7 @@ import AccountIcon from '@material-ui/icons/SupervisorAccount';
 import InformationCard from 'views/contexts/modal/card';
 
 function getAge(birthday) {
-  let ageDate = new Date(Date.now() - birthday.getTime());
+  let ageDate = new Date(Date.now() - Date(birthday.getTime()));
   return Math.abs(ageDate.getUTCFullYear() - 1970 + 1);
 }
 
@@ -30,7 +30,7 @@ const BasicInfo = (props) => {
   const inputData = [
     ['이름', `${name} (${english_name})`],
     ['성별', `${is_male ? '남' : '여'}`],
-    ['생년월일', `${birthString} (${getAge(birth_date)}세)`],
+    ['생년월일', `${birthString}`],
     ['전화번호', `${phone_number}`],
     ['이메일', `${email}`],
     ['SNS 주소', `${sns}`],

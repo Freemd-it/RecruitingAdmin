@@ -130,7 +130,6 @@ class InterviewManageContainer extends Component {
   }
 
   render() {
-    // const { page, rows, rowsPerPage} = this.state
     return (
       <Table
         type={'interview'}

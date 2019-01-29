@@ -22,7 +22,7 @@ class Contents extends Component {
             component={ DashBoardViewerContainer } />
           <Route
             path={routes.MATCH_PATH_RECRUIT_TYPE}
-            render={(props) => { return <RecruitManageContainer {...props} columns={Columns.recruit}/> }} />
+            render={(props) => { return <RecruitManageContainer {...props} columns={Columns.information}/> }} />
           <Route 
             path={routes.MATCH_PATH_INTERVIEW}
             render={(props) => { return <InterviewManageContainer {...props} columns={Columns.interview}/> }} />

@@ -8,21 +8,34 @@ import _ from 'lodash'
 
 import './Body.scss';
 
-const Body = ({rows, rowsPerPage, onClick, cursor = false, type}) => {
+const Body = ({rows, rowsPerPage, onDetailClick, cursor = false, type}) => {
   const emptyRows = rowsPerPage - rows.length;
   
+  const unionArray = (data, type) => {
+      let result = {};
+      _.forEach(data, (value, key) => {
+          if (key === 'basic_info') {
+            result = value
+          }
+        })
+        return result
+      }
+  
   const bodyRows = (
-    _.map(rows, (item, index) => (
-      <TableRow
+    _.map(rows, (item, index) => {
+      console.log('item', item)
+      const rowData = item
+      if(type === 'information') item = unionArray(item, type)
+      return (<TableRow
         columns={Columns[type]}
         className={cursor ? 'tableBodyRow__cursor' : ''}
         key={rows.id}
-        onModalHandler={(e) => { onClick(item) }}
+        onModalHandler={(e) => { onDetailClick(rowData) }}
         item={item}
+        rowData={rowData}
       />)
-    )
+    })
   )
-
   return (
     <TableBody>
       {bodyRows}

@@ -1,6 +1,4 @@
-export const recruit = {
-  information: [
-    {
+export const information = [{
       key: 'name',
       value: '이름',
     },
@@ -40,8 +38,7 @@ export const recruit = {
       key: 'secondary_department',
       value: '2지망',
     },
-  ],
-}
+  ]
 
 export const interview = [{
   key: 'name',

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import QuestionTable from '../questionTable/QuestionTable'
+import Table from 'views/contexts/table'
 import QuestionDetail from '../questionModal/QuestionModal'
 import Modal from 'views/contexts/modal'
 import { Button } from 'reactstrap';
@@ -79,7 +80,7 @@ class QuestionRegistContainer extends Component {
     });
   }
 
-  onClick = value => {
+  onDetailClick = value => {
     this.onDetailModal(value);
   }
 
@@ -141,12 +142,12 @@ class QuestionRegistContainer extends Component {
 
     return (
       <div className={`QuestionRegisContainer__addBox`}>
-        <QuestionTable
+        <Table
           type={'question'}
           title={'본부 질문 관리'}
           questionAddBtn={questionAddBtn}
           rows={this.state.rows}
-          onClick={this.onClick}
+          onDetailClick={this.onDetailClick}
         />
         <Modal
           title={'본부질문 수정하기'}

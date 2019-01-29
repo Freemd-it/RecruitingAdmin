@@ -16,11 +16,6 @@ const styles = theme => ({
 });
 
 class CustomModal extends React.Component {
-  state = {
-  } 
-  componentDidMount() {
-  }
-
   render() {
     const { 
       open, 
@@ -30,7 +25,7 @@ class CustomModal extends React.Component {
       confirmFun = () => { onModal() },
       modalType,
     } = this.props;
-
+    console.log('contents', contents)
     return (
       <Modal
         isOpen={open}

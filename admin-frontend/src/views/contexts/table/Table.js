@@ -44,7 +44,7 @@ class Table extends Component {
   };
 
   render() {
-    const { onClick, questionAddBtn, title, rows, type } = this.props;
+    const { onDetailClick, questionAddBtn, title, rows, type } = this.props;
     const { currentPage, rowsPerPage } = this.state;
     const columns = Columns[type]
     return (
@@ -55,7 +55,7 @@ class Table extends Component {
           <Body 
             type={type}
             rows={[ ...rows].splice((currentPage-1) * rowsPerPage , rowsPerPage) } 
-            onClick={onClick}
+            onDetailClick={onDetailClick}
             rowsPerPage={rowsPerPage}
           />
         </TableContentTemplate>
