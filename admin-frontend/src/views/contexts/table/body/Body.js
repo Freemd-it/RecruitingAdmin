@@ -8,31 +8,28 @@ import _ from 'lodash'
 
 import './Body.scss';
 
-const Body = ({rows, rowsPerPage, onDetailClick, cursor = false, type}) => {
+const Body = ({rows, rowsPerPage, onClickRow, columns, cursor = false, type}) => {
   const emptyRows = rowsPerPage - rows.length;
   
   const unionArray = (data, type) => {
-      let result = {};
-      _.forEach(data, (value, key) => {
-          if (key === 'basic_info') {
-            result = value
-          }
-        })
-        return result
-      }
+    let result = {};
+    _.forEach(data, (value, key) => {
+        if (key === 'basic_info') {
+          result = value
+        }
+      })
+    return result
+  }
   
   const bodyRows = (
     _.map(rows, (item, index) => {
-      console.log('item', item)
-      const rowData = item
       if(type === 'information') item = unionArray(item, type)
       return (<TableRow
-        columns={Columns[type]}
+        columns={columns}
         className={cursor ? 'tableBodyRow__cursor' : ''}
-        key={rows.id}
-        onModalHandler={(e) => { onDetailClick(rowData) }}
+        key={index}
         item={item}
-        rowData={rowData}
+        onClick={() => { onClickRow(index) }}
       />)
     })
   )
@@ -42,7 +39,7 @@ const Body = ({rows, rowsPerPage, onDetailClick, cursor = false, type}) => {
       {
         emptyRows > 0 && (
         <EmptyRow style={{height: `${48 * emptyRows}px`}}>
-          <TableCell  align="center" colSpan={Columns[type].length} />
+          <TableCell  align="center" colSpan={columns.length} />
         </EmptyRow>)
       }
     </TableBody>

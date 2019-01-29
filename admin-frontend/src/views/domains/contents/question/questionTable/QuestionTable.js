@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import TableContentTemplate from 'views/contexts/table/tableTemplate'
+import TableContentTemplate from 'views/contexts/templates/tableTemplate'
 import Navigation from 'views/contexts/table/navigation'
 import Header from 'views/contexts/table/header'
 import QuestionBody from './questionBody/QuestionBody'

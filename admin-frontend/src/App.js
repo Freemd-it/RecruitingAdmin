@@ -22,10 +22,7 @@ class App extends Component {
     const { onLogin } = this.state
     if (onLogin) {
       return (
-        <MainTemplate
-          sidebar={<Sidebar/>}
-          contents={<Contents/>}
-        />
+        <MainTemplate sidebar={<Sidebar/>} contents={<Contents/>} />
       ) 
     }
     return <Login onhandleLogin={this.onhandleLogin}/>

@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import QuestionTable from '../questionTable/QuestionTable'
 import Table from 'views/contexts/table'
 import QuestionDetail from '../questionModal/QuestionModal'
 import Modal from 'views/contexts/modal'
 import { Button } from 'reactstrap';
+
+import { ModalCommonFooter } from 'views/domains/contents/commons/ModalFooter'
+
 import * as axios from 'lib/api/question'
 import './QuestionManageContainer.scss';
 
@@ -80,8 +82,13 @@ class QuestionRegistContainer extends Component {
     });
   }
 
-  onDetailClick = value => {
-    this.onDetailModal(value);
+  onEditModal = () => {
+    this.setState(prevState => {
+      const data = {
+        isDetailModal: !prevState.isDetailModal,
+      }
+      return data;
+    });
   }
 
   onAddModal = () => {
@@ -93,23 +100,15 @@ class QuestionRegistContainer extends Component {
     });
   }
 
-  onDetailModal = value => {
+  onClickToShowModal = (index) => {
+    const registData = this.state.rows[index]
     this.setState(prevState => {
       const data = {
+        registData,
         isDetailModal: !prevState.isDetailModal,
-        registData: { ...prevState.registData }
       }
-      if (!prevState.isDetailModal && value) {
-        data.used = value.used;
-        data.registData.team = value.team;
-        data.registData.question = value.question;
-      } else {
-        data.registData.useQuestion = '';
-        data.registData.team = '';
-        data.registData.question = '';
-      }
-      return data;
-    });
+      return data
+    })
   }
 
   onRegistData = (e) => {
@@ -122,6 +121,12 @@ class QuestionRegistContainer extends Component {
     });
   }
 
+  onClickModalToConfirm = () => {
+    this.setState({isDetailModal: false})
+  }
+
+  onClickModalToClose = () => this.setState({isDetailModal: false})
+  
   render() {
     const questionAddBtn = (
       <Button 
@@ -140,26 +145,44 @@ class QuestionRegistContainer extends Component {
       />
     )
 
+    const AddModalFooter = (
+      <ModalCommonFooter
+        onConfirmModal={this.onClickModalToConfirm}
+        onCancelModal={this.onClickModalToClose}
+        />
+    )
+    const DetailModalFooter = (
+      <ModalCommonFooter
+        onConfirmModal={this.onClickModalToConfirm}
+        onCancelModal={this.onClickModalToClose}
+      />
+    )
+
     return (
       <div className={`QuestionRegisContainer__addBox`}>
         <Table
           type={'question'}
-          title={'본부 질문 관리'}
-          questionAddBtn={questionAddBtn}
+          title={'질문 관리'}
           rows={this.state.rows}
-          onDetailClick={this.onDetailClick}
+          questionAddBtn={questionAddBtn}
+          onClickRow={this.onClickToShowModal}
+          cursor
         />
         <Modal
+          open={this.state.isDetailModal}
+          onClose={this.onEditModal}
+
           title={'본부질문 수정하기'}
           contents={questionDetail}
-          open={this.state.isDetailModal}
-          onModal={this.onDetailModal}
+          footer={DetailModalFooter}
         />
         <Modal
+          open={this.state.isAddModal}
+          onClose={this.onAddModal}
+
           title={'본부질문 추가하기'}
           contents={questionDetail}
-          open={this.state.isAddModal}
-          onModal={this.onAddModal}
+          footer={AddModalFooter}
         />
       </div>
     )

@@ -10,7 +10,6 @@ import _ from 'lodash'
 
 
 const InfoDetail = ({ classes, data }) => {
-  console.log('InfoDetail', data)
   return (
     <div className="InfoDetail">
       {

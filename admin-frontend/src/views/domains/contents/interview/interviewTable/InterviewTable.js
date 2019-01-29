@@ -53,7 +53,7 @@ class QuestionTable extends Component {
             <Navigation questionAddBtn={questionAddBtn}/>
           </div>
           <div className={classes.tableWrapper}>
-            <TableTemplate className={classes.table} id='table'>
+            <TableTemplate>
               <Header columns={this.props.columns}/>
               <InterviewBody 
                 cursor={cursor} 

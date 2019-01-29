@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import Table from 'views/contexts/table'
+
+import { ModalRecruitFooter } from 'views/domains/contents/commons/ModalFooter'
+
 import Modal from 'views/contexts/modal'
-import InfoDetail from 'views/domains/contents/recruit/informationCardPack';
+
+import InfoDetail from 'views/domains/contents/recruit/informationCardPack'
+
 
 const data = [
   {
@@ -137,34 +142,36 @@ class RecruitManageContainer extends Component {
     this.setState({ rowsPerPage: event.target.value })
   }
 
-  onDetailClick = value => {
-    this.onDetailModal(value);
-  }
+  onClickRowToShowModal = (index) => {
+    const selectedRow = this.state.rows[index]
 
-  onDetailModal = value => {
-    console.log('onDetailModal', value)
-    
-    this.setState(prevState => {
-      const data = {
-        isDetailModal: !prevState.isDetailModal
-      }
-
-      if (!prevState.isDetailModal && value) {
-        data.value = (
-          <InfoDetail
-            data={value}
-          />
-        )
-      } else {
-        data.value = '';
-      }
-      console.log('tttt', data)
-      return data;
-    });
+    this.setState({
+      selectedRow,
+      isDetailModal: true,
+    })
   }
+  
+  onClickModalToClose = () => this.setState({ isDetailModal: false })
 
   render() {
     const { match } = this.props
+
+    const ModalContent = (
+      <InfoDetail
+        data={this.state.selectedRow}
+      />
+    )
+
+    // LOL_ prefix지워서 이름 리플레이스 해서 쓰세용 > 3 < 
+    const ModalFooter = (
+      <ModalRecruitFooter
+        LOL_합격버튼함수={() => {}}
+        LOL_불합격버튼함수={() => {}}
+        LOL_보류버튼함수={() => {}}
+        LOL_취소버튼함수={() => {}}
+      />
+    )
+
     return (
       <div>
         {
@@ -172,20 +179,19 @@ class RecruitManageContainer extends Component {
           <Table
             type={'information'}
             title={'개인정보 관리'}
-            columns={this.props.columns['information']}
             rows={this.state.rows}
-            totalLength={1000}
-            onDetailClick={this.onDetailClick}
+            onClickRow={this.onClickRowToShowModal}
             cursor
           />
         }
         <Modal
-          title={'지원서'}
-          contents={this.state.value}
-          footer={this.state.footer}
-          open={this.state.isDetailModal}
-          onModal={this.onDetailModal}
           modalType={'recruit'}
+          open={this.state.isDetailModal}
+          onClose={this.onClickModalToClose}
+
+          title={'지원서'}
+          contents={ModalContent}
+          footer={ModalFooter}
         />
       </div>
     )

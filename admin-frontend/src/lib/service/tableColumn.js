@@ -45,13 +45,13 @@ export const interview = [{
   value: '이름',
 },{
   key: 'department',
-  value: '본부명'
+  value: '1지망 본부'
 }, {
   key: 'team',
   value: '팀명',
 }, {
   key: 'secondary_department',
-  value: '본부명',
+  value: '2지망 본부명',
 }, {
   key: 'secondary_team',
   value: '팀명',

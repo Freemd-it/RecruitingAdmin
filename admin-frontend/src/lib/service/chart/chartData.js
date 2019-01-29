@@ -3,9 +3,9 @@ import chartGrade from './chartGrade'
 import chartUniv from './chartUniversity'
 
 const pieData = {
-  labels: chartUniv.slice(0,10),
+  labels: [],
 	datasets: [{
-		data: [1,1,1,1,1,1,1,1,1,1],
+		data: [],
 		backgroundColor: chartColor.slice(0,10),
 		hoverBackgroundColor: chartColor.slice(0,10),
 	}]
@@ -30,8 +30,8 @@ const radarData = {
 const barData = {
   datasets: [{
       type: 'bar',
-      label: '여성',
-      data: [1,1,1,1,1,1,1,1,1,1,1],
+      label: '남성',
+      data: [],
       fill: true,
       borderColor: '#FF5858',
       backgroundColor: '#FF5858',
@@ -42,8 +42,8 @@ const barData = {
       yAxisID: 'y-axis-2'
     },{
       type: 'bar',
-      label: '남성',
-      data: [1,1,1,1,1,1,1,1,1,1,1],
+      label: '여성',
+      data: [],
       fill: false,
       backgroundColor: '#000093',
       borderColor: '#000093',

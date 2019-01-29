@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { withStyles } from '@material-ui/core/styles';
-import Footer from './footer';
+import ModalFooter from './footer';
+
 
 import './Modal.scss'
 
@@ -19,27 +20,25 @@ class CustomModal extends React.Component {
   render() {
     const { 
       open, 
-      onModal, 
+      onClose, 
       title, 
-      contents, 
-      confirmFun = () => { onModal() },
-      modalType,
+      contents,
+      footer,
     } = this.props;
-    console.log('contents', contents)
     return (
       <Modal
         isOpen={open}
         centered
         size="lg"
-        toggle={() => {onModal()}}>
+        toggle={onClose}>
         
-        <ModalHeader toggle={() =>{onModal()}}>{ title }</ModalHeader>
-        <ModalBody className="CustomModal__body">{ contents }</ModalBody>
-        <Footer
-          onModal={onModal}
-          confirmFurm={confirmFun}
-          modalType={modalType}
-        />
+        <ModalHeader toggle={onClose}>{title}</ModalHeader>
+        <ModalBody className="CustomModal__body">
+          {contents}
+        </ModalBody>
+        <div className="modal-footer">
+          {footer}
+        </div>
       </Modal>
     );
   }

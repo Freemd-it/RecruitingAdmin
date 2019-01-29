@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import TableContentTemplate from 'views/contexts/table/tableTemplate'
+import TableContentTemplate from 'views/contexts/templates/tableTemplate'
 import Navigation from 'views/contexts/table/navigation'
 import Header from 'views/contexts/table/header'
-// import QuestionBody from './questionBody/QuestionBody'
 import Body from 'views/contexts/table/body'
 import Pagination from 'views/contexts/table/pagination'
 import * as Columns from 'lib/service/tableColumn'
@@ -44,18 +43,19 @@ class Table extends Component {
   };
 
   render() {
-    const { onDetailClick, questionAddBtn, title, rows, type } = this.props;
+    const { onClickRow, questionAddBtn, title, rows, type } = this.props;
     const { currentPage, rowsPerPage } = this.state;
     const columns = Columns[type]
     return (
       <>
-        <div className={'CustomTable__titlebar'}>{title}</div>
+        <div className={'titlebar'}>{title}</div>
         <TableContentTemplate navigation={<Navigation className={'CustomTable__navbar'} questionAddBtn={questionAddBtn} />}>
           <Header columns={columns}/>
-          <Body 
+          <Body
             type={type}
+            columns={columns}
             rows={[ ...rows].splice((currentPage-1) * rowsPerPage , rowsPerPage) } 
-            onDetailClick={onDetailClick}
+            onClickRow={onClickRow}
             rowsPerPage={rowsPerPage}
           />
         </TableContentTemplate>
