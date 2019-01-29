@@ -101,16 +101,16 @@ export const question = [{
   value: '질문내용',
   width: '300px',
 }, {
-  key: 'cardinality',
+  key: 'batch',
   value: '기수',
 }, {
-  key: 'writer',
+  key: 'register',
   value: '등록자',
 }, {
-  key: 'create',
+  key: 'registedDate',
   value: '등록일자', 
 }, {
-  key: 'use_question',
+  key: 'used',
   value: '질문사용여부'
 }]
 

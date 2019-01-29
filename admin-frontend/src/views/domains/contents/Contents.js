@@ -13,7 +13,6 @@ class Contents extends Component {
   render() {
     return (
       <div className="contents-board-main">
-        
         <Switch>
           <Route
             exact path='/'
@@ -29,7 +28,7 @@ class Contents extends Component {
             render={(props) => { return <InterviewManageContainer {...props} columns={Columns.interview}/> }} />
           <Route 
             path={routes.MATCH_PATH_QUESTION} 
-            render={() =>{ return <QuestionRegistContainer columns={Columns.question}/> }} />
+            render={(props) => { return <QuestionRegistContainer {...props} columns={Columns.question} />}} />
         </Switch>
       </div>
     )

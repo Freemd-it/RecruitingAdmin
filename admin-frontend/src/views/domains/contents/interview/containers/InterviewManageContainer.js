@@ -133,11 +133,10 @@ class InterviewManageContainer extends Component {
     // const { page, rows, rowsPerPage} = this.state
     return (
       <Table
-        title={'면접시간 관리'}
-        columns={this.props.columns}
-        data={this.state.rows}
-        totalLength={1000}
-        type='interview'
+        type={'interview'}
+        title={'면접시간관리'}
+        rows={this.state.rows}
+        onClick={this.onClick}
       />
     )
   }

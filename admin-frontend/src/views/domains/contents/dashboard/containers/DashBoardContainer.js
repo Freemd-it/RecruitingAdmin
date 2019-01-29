@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import DashBoard from '../DashBoard'
-import * as axios from '../../../../../lib/api/chart'
+import * as axios from 'lib/api/chart'
 
 class DashBoardViewerContainer extends Component {
   state = {

@@ -6,11 +6,10 @@ import TableCell from '@material-ui/core/TableCell';
 import * as Columns from 'lib/service/tableColumn'
 import _ from 'lodash'
 
-import './Body.scss';
+import './QuestionBody.scss';
 
-const Body = ({rows, rowsPerPage, onClick, cursor = false, type}) => {
+const QuestionBody = ({rows, rowsPerPage, onClick, cursor = false, type}) => {
   const emptyRows = rowsPerPage - rows.length;
-  
   const bodyRows = (
     _.map(rows, (item, index) => (
       <TableRow
@@ -19,10 +18,8 @@ const Body = ({rows, rowsPerPage, onClick, cursor = false, type}) => {
         key={rows.id}
         onModalHandler={(e) => { onClick(item) }}
         item={item}
-      />)
+      />))
     )
-  )
-
   return (
     <TableBody>
       {bodyRows}
@@ -36,4 +33,4 @@ const Body = ({rows, rowsPerPage, onClick, cursor = false, type}) => {
   )
 }   
 
-export default Body
+export default QuestionBody

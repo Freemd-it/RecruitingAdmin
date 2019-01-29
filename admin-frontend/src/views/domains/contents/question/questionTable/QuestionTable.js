@@ -4,12 +4,12 @@ import { withStyles } from '@material-ui/core/styles';
 import TableContentTemplate from 'views/contexts/table/tableTemplate'
 import Navigation from 'views/contexts/table/navigation'
 import Header from 'views/contexts/table/header'
-// import QuestionBody from './questionBody/QuestionBody'
+import QuestionBody from './questionBody/QuestionBody'
 import Body from 'views/contexts/table/body'
 import Pagination from 'views/contexts/table/pagination'
 import * as Columns from 'lib/service/tableColumn'
 
-import './Table.scss'
+import './QuestionTable.scss'
 
 
 const tableStyle = theme => ({
@@ -31,7 +31,7 @@ const tableStyle = theme => ({
   },
 });
 
-class Table extends Component {
+class QuestionTable extends Component {
   state = {
     currentPage: 1,
     totalPage: 0,
@@ -70,8 +70,8 @@ class Table extends Component {
   }
 }
 
-Table.propTypes = {
+QuestionTable.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(tableStyle)(Table);
+export default withStyles(tableStyle)(QuestionTable);

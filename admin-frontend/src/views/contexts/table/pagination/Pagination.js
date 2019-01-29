@@ -43,12 +43,10 @@ const TablePagination = ({ totalPage, currentPage, onChangePage, className }) =>
           <PaginationLink className={`${totalPage === 0 || currentPage === 1} ? PageItem : ''`} previous/>
         </PaginationItem>
         { pageItem.filter(Boolean) }
+        
         <PaginationItem 
           disabled={totalPage === 0 || totalPage <= currentPage}
-          onClick={() => {
-            console.log('totalPage', totalPage);
-            onChangePage(Math.min(totalPage, currentPage + 5));
-          }}
+          onClick={() => { onChangePage(Math.min(totalPage, currentPage + 5)) }}
         >
           <PaginationLink className={`${totalPage === 0 || totalPage <= currentPage} ? PageItem : ''`} next/>
         </PaginationItem>
