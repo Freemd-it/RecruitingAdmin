@@ -6,6 +6,7 @@ const userCtrl = require('../controllers/User.Ctrl');
 const questionCtrl = require('../controllers/Question.Ctrl');
 const stat = require('../cronjob/calStatistics');
 const statCtrl = require('../controllers/Statistics.Ctrl');
+const scheduleCtrl = require('../controllers/Schedule.Ctrl');
 
 router.use(Authorizer);
 
@@ -20,6 +21,8 @@ router.get('/question', questionCtrl.getQuestionList);
 router.get('/question/:questionId', questionCtrl.getQuestion);
 router.post('/question', questionCtrl.registQuestion);
 router.put('/question', questionCtrl.updateQuestion);
+
+router.get('/schedule', scheduleCtrl.getScheduleList);
 
 router.get('/statistics', statCtrl.getStat);
 router.get('/test/stat', (req, res) => {
