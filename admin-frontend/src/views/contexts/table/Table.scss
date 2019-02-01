@@ -1,9 +1,20 @@
-.titlebar {
-  font-size: 20px;
-  font-weight: 700;
-  padding: 20px 20px 0 20px;
+.Table {
+  box-shadow: none !important;
+  margin: 20px;
+  min-width: 1200px;
+  width: 100%;
+  max-height: 100vh;
+  overflow-x: hidden;
+
+  &__titlebar {
+    font-size: 17px;
+    font-weight: 700;
+    padding: 20px 20px 0 20px;
+  }
+
+  &__pagination {
+    bottom: 0;
+  }
 }
 
-.__pagination {
-  bottom: 0;
-}
+

@@ -1,4 +1,7 @@
 .CustomModal {
+    display: flex;
+    justify-content: space-around;
+
     &__body {
         max-height: 500px;
         overflow-y: auto;
@@ -15,5 +18,15 @@
                 border-color: #FF5858 !important;
             }
         }
+    }
+
+    &__footer {
+      display: flex;
+      justify-content: flex-end;
+      border-top: 1px solid #cccccc;
+
+      button {
+        margin: 10px 10px 10px 0;
+      }
     }
 }

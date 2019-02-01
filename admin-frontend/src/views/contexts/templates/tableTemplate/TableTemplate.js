@@ -6,7 +6,7 @@ const CustomTableTemplate = ({title, navigation, children, type, classes}) => {
   return (
     <div className={'CustomTable'}> 
       <div className={'CustomTable__wrapper'}>
-        <div className={'CustomTable__navbar'}> {navigation} </div>
+          {navigation}
           <TableTemplate className={'CustomTable__contents'} id='table'>
             {children}
           </TableTemplate>

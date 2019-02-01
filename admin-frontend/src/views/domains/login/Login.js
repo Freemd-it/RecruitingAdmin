@@ -11,6 +11,12 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import logo from 'static/images/logo_1@2x.png'
 import * as axios from 'lib/api/login'
 
+const data = {
+  username: '이동수',
+  department: '브랜드마케팅',
+  team: '',
+}
+
 const styles = theme => ({
   main: {
     display: 'block', // Fix IE 11 issue.
@@ -78,7 +84,7 @@ const styles = theme => ({
   },
 });
 
-class SignIn extends Component {
+class Login extends Component {
 
   state = {
     isLoading: false,
@@ -89,16 +95,18 @@ class SignIn extends Component {
       this.setState({ isLoading: true });
       axios.getSignin()
       .then(res => {
-        this.setState({ isLoading: false})
         if(res.status === 200) {
           this.props.onhandleLogin()
         }
+       
+        this.setState({ isLoading: false})
       })
       .catch(err => err)
     }
   }
  
   onLoginhandler = () => {
+    localStorage.setItem('user_session', JSON.stringify(data));
     this._getData()
   }
 
@@ -142,8 +150,8 @@ class SignIn extends Component {
   }
 }
 
-SignIn.propTypes = {
+Login.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SignIn);
+export default withStyles(styles)(Login);

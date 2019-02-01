@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Table from 'views/contexts/table'
-
+import _ from 'lodash'
 import { ModalRecruitFooter } from 'views/domains/contents/commons/ModalFooter'
 
 import Modal from 'views/contexts/modal'
@@ -155,6 +155,7 @@ class RecruitManageContainer extends Component {
 
   render() {
     const { match } = this.props
+    const { rows } = this.state
 
     const ModalContent = (
       <InfoDetail
@@ -162,6 +163,15 @@ class RecruitManageContainer extends Component {
       />
     )
 
+    let tableData =[]
+    _.forEach(rows, (v,k) => {
+      _.forEach(v, (_v, _k) => {
+        if(_k === 'basic_info') {
+          tableData.push(_v)
+        }
+      })
+    })
+    
     // LOL_ prefix지워서 이름 리플레이스 해서 쓰세용 > 3 < 
     const ModalFooter = (
       <ModalRecruitFooter
@@ -179,7 +189,7 @@ class RecruitManageContainer extends Component {
           <Table
             type={'information'}
             title={'개인정보 관리'}
-            rows={this.state.rows}
+            rows={tableData}
             onClickRow={this.onClickRowToShowModal}
             cursor
           />
