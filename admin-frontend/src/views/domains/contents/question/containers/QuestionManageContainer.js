@@ -6,7 +6,8 @@ import { Button } from 'reactstrap';
 
 import { ModalCommonFooter } from 'views/domains/contents/commons/ModalFooter'
 
-import * as axios from 'lib/api/question'
+import * as axios from 'lib/api/question';
+import * as testAxios from 'lib/api/test';
 import './QuestionManageContainer.scss';
 
 import _ from 'lodash'
@@ -87,6 +88,12 @@ class QuestionRegistContainer extends Component {
   }
 
   componentDidMount() {
+    testAxios.postTest().then(res => {
+      const { data } = res;
+      console.log(data);
+    }).catch(e => {
+      console.error(e);
+    })
     this.setState({ 
       rows: mocData,
     });
