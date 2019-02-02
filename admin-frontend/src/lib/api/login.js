@@ -1,5 +1,8 @@
 import axios from '../defaultAxios'
 
-export const getSignin = () => axios.get('https://jsonplaceholder.typicode.com/posts');
+export const getSignin = (body) => 
+  axios.post('/api/signin', { body })
+    .then(res => res)
+    .catch(err => err)
 
 

@@ -1,32 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
-import { withStyles } from '@material-ui/core/styles';
-import ModalFooter from './footer';
-
 
 import './Modal.scss'
 
-const styles = theme => ({
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing.unit * 4,
-    outline: 'none',
-  },
-});
-
 class CustomModal extends React.Component {
   render() {
-    const { 
-      open, 
-      onClose, 
-      title, 
-      contents,
-      footer,
-    } = this.props;
+    const { open, onClose, title, contents, footer } = this.props;
     return (
       <Modal
+        className="CustomModal"
         isOpen={open}
         centered
         size="lg"
@@ -36,7 +18,7 @@ class CustomModal extends React.Component {
         <ModalBody className="CustomModal__body">
           {contents}
         </ModalBody>
-        <div className="modal-footer">
+        <div className="CustomModal__footer">
           {footer}
         </div>
       </Modal>
@@ -44,10 +26,4 @@ class CustomModal extends React.Component {
   }
 }
 
-CustomModal.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-const ModalWrapped = withStyles(styles)(CustomModal);
-
-export default ModalWrapped;
+export default CustomModal;

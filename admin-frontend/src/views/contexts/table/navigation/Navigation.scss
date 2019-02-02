@@ -1,0 +1,21 @@
+.Navigation {
+  margin: 10px 20px 20px 20px;
+  display: flex;
+  justify-content: flex-end;
+  
+  button {
+    font-size: 12px;
+  }
+  .export-excel {
+    background-color: #FF5858;
+  }
+  &__divide {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.tt {
+
+}

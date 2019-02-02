@@ -7,7 +7,7 @@ const ExcelExportButton = () => {
     table="table"
     filename="dashBoard" 
     sheet="프리메드지원서" 
-    buttonText="엑셀로 내보내기"/>
+    buttonText="엑셀 추출"/>
   )
 }
 

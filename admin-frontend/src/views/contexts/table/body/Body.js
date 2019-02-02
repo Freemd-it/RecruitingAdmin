@@ -11,23 +11,12 @@ import './Body.scss';
 const Body = ({rows, rowsPerPage, onClickRow, columns, cursor = false, type}) => {
   const emptyRows = rowsPerPage - rows.length;
   
-  const unionArray = (data, type) => {
-    let result = {};
-    _.forEach(data, (value, key) => {
-        if (key === 'basic_info') {
-          result = value
-        }
-      })
-    return result
-  }
-  
   const bodyRows = (
     _.map(rows, (item, index) => {
-      if(type === 'information') item = unionArray(item, type)
       return (<TableRow
         columns={columns}
         className={cursor ? 'tableBodyRow__cursor' : ''}
-        key={index}
+        key={item._id}
         item={item}
         onClick={() => { onClickRow(index) }}
       />)

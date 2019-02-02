@@ -6,80 +6,28 @@ import { Button } from 'reactstrap';
 
 import { ModalCommonFooter } from 'views/domains/contents/commons/ModalFooter'
 
-import * as axios from 'lib/api/question'
+import * as axios from 'lib/api/question';
 import './QuestionManageContainer.scss';
 
-const mocData =  [
-  {
-      "registedDate": "2019-01-25T21:35:10.479Z",
-      "_id": "5c4b82396b23e2bdbf3747ac",
-      "classify": 101,
-      "department": "",
-      "team": "",
-      "batch": 20,
-      "register": "대표",
-      "question": 'asedfasefaesfasef',
-      "used": false,
-      "__v": 0
-  },
-  {
-      "registedDate": "2019-01-25T21:35:10.479Z",
-      "_id": "5c4b82626b23e2bdbf3747ad",
-      "classify": 102,
-      "department": "it",
-      "team": "",
-      "batch": 20,
-      "register": "대표",
-      "question": 'asedfasefaesfasef',
-      "used": false,
-      "__v": 0
-  },
-  {
-      "registedDate": "2019-01-25T21:35:10.479Z",
-      "_id": "5c4b82776b23e2bdbf3747ae",
-      "classify": 103,
-      "department": "it",
-      "team": "emr",
-      "batch": 20,
-      "register": "대표",
-      "used": true,
-      "__v": 0,
-      "question": "이거슨 수정후의 질문"
-  }
-]
 
 class QuestionRegistContainer extends Component {
   state = {
     rows: [],
     isAddModal: false,
     isDetailModal: false,
-    registData: {
+    keyword: '검색선택',
+    query: '',
+    registedData: {
+      id: '',
       department: 'IT',
       team: '',
       question: '',
-      useQuestion: false,
+      used: false,
     }
   };
 
-  _getData = async () => {
-    const chartData = await this._callApi()
-    this.setState({
-     chartData,
-   })
-  }
-
-  _callApi = () => {
-    return axios.getQuestionList()
-      .then(res => {
-        console.log(res)
-      })
-      .catch(err => err)
-  }
-
   componentDidMount() {
-    this.setState({ 
-      rows: mocData,
-    });
+    axios.getQuestionList({}, this)
   }
 
   onEditModal = () => {
@@ -93,7 +41,14 @@ class QuestionRegistContainer extends Component {
 
   onAddModal = () => {
     this.setState(prevState => {
+      const registedData = {
+        department: 'IT',
+        team: '',
+        question: '',
+        used: false
+      }
       const data = {
+        registedData, 
         isAddModal: !prevState.isAddModal
       }
       return data;
@@ -101,59 +56,89 @@ class QuestionRegistContainer extends Component {
   }
 
   onClickToShowModal = (index) => {
-    const registData = this.state.rows[index]
+    const registedData = this.state.rows[index]
     this.setState(prevState => {
       const data = {
-        registData,
+        registedData,
         isDetailModal: !prevState.isDetailModal,
       }
       return data
     })
   }
 
-  onRegistData = (e) => {
+  onRegistedData = (e) => {
     const name = e.target.name;
-    const value = name !== 'useQuestion' ? e.target.value : e.target.value === 'true';
+    const value = (name !== 'used' ? e.target.value : e.target.value === 'true');
     this.setState(prevState => {
-      const registData = { ...prevState.registData };
-      registData[name] = value;
-      return { registData };
+      const registedData = { ...prevState.registedData };
+      registedData[name] = value;
+      return { registedData };
     });
   }
 
-  onClickModalToConfirm = () => {
-    this.setState({isDetailModal: false})
+  onClickModalToAddConfirm = async () => {
+    axios.setQuestionInfomation(this.state.registedData, this)
   }
 
-  onClickModalToClose = () => this.setState({isDetailModal: false})
+  onClickModalToUpdateConfirm = async () => {
+    axios.modifyQuestionInfomation(this.state.registedData, this)
+  }
+
+  onClickModalToClose = () => this.setState({isDetailModal: false, isAddModal: false,})
   
-  render() {
+  onChangeKeyword = async (e) => {
+    this.setState({
+      keyword: e.target.name
+    })
+  }
+  
+  onChangeFilterQuery = async (e) => {
+    if(e.key === 'Enter') {
+      const options = {
+        type: this.state.keyword,
+        q: e.target.value
+      }
+      const res = await axios.getQuestionList(options)
+      if(res.status === 200) {
+        this.setState({
+          rows: res.data,
+        })
+      }
+      
+    } else {
+      this.setState({
+        query: e.target.value
+      })
+    }
+  }
+
+  render() {  
     const questionAddBtn = (
       <Button 
         className={`btn QuestionRegisContainer__addBtn`}
         color="secondary"
         outline
         size={`sm`}
-        onClick={this.onAddModal}> 질문 추가하기
+        onClick={this.onAddModal}> 질문 추가
       </Button>
     )
 
     const questionDetail = (
       <QuestionDetail
-        registData={this.state.registData}
-        onRegistData={this.onRegistData}
+        registedData={this.state.registedData}
+        onRegistedData={this.onRegistedData}
       />
     )
 
     const AddModalFooter = (
       <ModalCommonFooter
-        onConfirmModal={this.onClickModalToConfirm}
+        onConfirmModal={this.onClickModalToAddConfirm}
         onCancelModal={this.onClickModalToClose}
-        />
+      />
     )
-    const DetailModalFooter = (
+    const UpdateModalFooter = (
       <ModalCommonFooter
-        onConfirmModal={this.onClickModalToConfirm}
+        onConfirmModal={this.onClickModalToUpdateConfirm}
         onCancelModal={this.onClickModalToClose}
       />
     )
@@ -166,20 +151,26 @@ class QuestionRegistContainer extends Component {
           rows={this.state.rows}
           questionAddBtn={questionAddBtn}
           onClickRow={this.onClickToShowModal}
+          onSearchTag={this.onSearchTag}
+          onChangeKeyword={this.onChangeKeyword}
+          onChangeFilterQuery={this.onChangeFilterQuery}
+          keyword={this.state.keyword}
           cursor
         />
+
         <Modal
           open={this.state.isDetailModal}
           onClose={this.onEditModal}
 
           title={'본부질문 수정하기'}
           contents={questionDetail}
-          footer={DetailModalFooter}
+          footer={UpdateModalFooter}
         />
+
         <Modal
           open={this.state.isAddModal}
           onClose={this.onAddModal}
-
+          
           title={'본부질문 추가하기'}
           contents={questionDetail}
           footer={AddModalFooter}
