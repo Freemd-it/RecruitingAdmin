@@ -1,0 +1,18 @@
+.Header {
+  background-color: white;
+
+  tr {
+    th {
+      padding: 0px !important;
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      text-align: center !important;
+      color: #FF5858;
+      border-right: 1px solid #cccccc;
+      &:last-child {
+        border-right: 0;
+      }
+    }
+  }
+
+}

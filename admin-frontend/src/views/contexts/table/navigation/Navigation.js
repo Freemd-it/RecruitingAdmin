@@ -5,11 +5,16 @@ import './Navigation.scss'
 
 class Navigation extends Component {
   render() {
-    const { questionAddBtn } = this.props
+    const { questionAddBtn, onClickSearchTag, onChangeKeyword, keyword, onChangeFilterQuery } = this.props
     return (
       <div className="Navigation">
         <div className="Navigation__divide">
-          <Filter />
+          <Filter
+            onClickSearchTag={onClickSearchTag}
+            onChangeKeyword={onChangeKeyword}
+            onChangeFilterQuery={onChangeFilterQuery}
+            keyword={keyword}
+          />
         </div>
         <div className="Navigation__divide">
             {questionAddBtn}

@@ -1,3 +1,4 @@
+
 export const information = [{
     key: 'name',
     value: '이름',
@@ -102,22 +103,3 @@ export const question = [{
   key: 'used',
   value: '질문사용여부'
 }]
-
-export const recruit2 = {
-  information: {
-    name: '이름',
-    english_name: '영문이름',
-    is_male: '성별',
-    birth_date: '생년월일',
-    phone_number: '전화번호',
-    email: 'email',
-    sns: 'sns',
-    address: '주소',
-    department: '1지망',
-    secondary_department: '2지망',
-    common_first: '첫번째 공통질문',
-    common_second: '두번째 공통질문',
-    common_department: '본부 공통질문',
-    common_team: '팀 질문',
-  }
-} 

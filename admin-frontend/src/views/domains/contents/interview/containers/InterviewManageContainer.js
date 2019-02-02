@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Table from 'views/contexts/table'
+import * as axios from 'lib/api/question'
 import _ from 'lodash'
 
 const data = {
@@ -90,6 +91,8 @@ class InterviewManageContainer extends Component {
     rows: [], 
     page: 0,
     rowsPerPage: this.props.rowsPerPage,
+    keyword: '검색선택',
+    query: '',
   };
 
   componentDidMount() {
@@ -100,6 +103,33 @@ class InterviewManageContainer extends Component {
 
   onClickToShowModal = (index) => {
     alert('힝-! 속았지? 아무것도 없지롱')
+  }
+
+  onChangeKeyword = async (e) => {
+    this.setState({
+      keyword: e.target.name
+    })
+  }
+  
+  onChangeFilterQuery = async (e) => {
+    if(e.key === 'Enter') {
+      const options = {
+        type: this.state.keyword,
+        q: e.target.value
+      }
+
+      const res = await axios.getQuestionList(options)
+      if(res.status === 200) {
+        this.setState({
+          rows: res.data,
+        })
+      }
+      
+    } else {
+      this.setState({
+        query: e.target.value
+      })
+    }
   }
 
   render() {
@@ -132,6 +162,11 @@ class InterviewManageContainer extends Component {
         title={'면접시간관리'}
         rows={tableData}
         onClickRow={this.onClickToShowModal}
+        onSearchTag={this.onSearchTag}
+        onChangeKeyword={this.onChangeKeyword}
+        onChangeFilterQuery={this.onChangeFilterQuery}
+        keyword={this.state.keyword}
+        cursor
       />
     )
   }

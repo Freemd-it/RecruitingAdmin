@@ -13,7 +13,6 @@ class Table extends Component {
     currentPage: 1,
     totalPage: 0,
     rowsPerPage: 25,
-    keyword: '검색선택'
   };
 
   onChangePage = (currentPage) => {
@@ -21,13 +20,21 @@ class Table extends Component {
   };
 
   render() {
-    const { onClickRow, questionAddBtn, title, rows, type } = this.props;
+    const { onClickRow, questionAddBtn, title, rows, type, onSearchTag, onChangeKeyword, keyword, onChangeFilterQuery } = this.props;
     const { currentPage, rowsPerPage } = this.state;
     const columns = Columns[type]
     return (
       <>
         <div className={'Table__titlebar'}>{title}</div>
-        <TableContentTemplate navigation={<Navigation questionAddBtn={questionAddBtn} />}>
+        <TableContentTemplate navigation={
+          <Navigation
+            questionAddBtn={questionAddBtn}
+            onClickSearchTag={onSearchTag}
+            onChangeKeyword={onChangeKeyword}
+            onChangeFilterQuery={onChangeFilterQuery}
+            keyword={keyword}
+            />
+          }>
           <Header columns={columns}/>
           <Body
             type={type}

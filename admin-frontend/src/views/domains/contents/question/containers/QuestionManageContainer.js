@@ -9,59 +9,14 @@ import { ModalCommonFooter } from 'views/domains/contents/commons/ModalFooter'
 import * as axios from 'lib/api/question'
 import './QuestionManageContainer.scss';
 
-import _ from 'lodash'
-
-const mocData =  [{
-    "registedDate": "2019-01-25T21:35:10.479Z",
-    "_id": "5c4b82396b23e2bdbf3747ac",
-    "classify": 101,
-    "department": "",
-    "team": "",
-    "batch": 20,
-    "register": "대표",
-    "used": true,
-    "__v": 0,
-    "question": "질문수정해서들어가라 얍얍얍 22"
-},{
-    "registedDate": "2019-01-25T21:35:10.479Z",
-    "_id": "5c4b82626b23e2bdbf3747ad",
-    "classify": 102,
-    "department": "it",
-    "team": "",
-    "batch": 20,
-    "register": "대표",
-    "used": true,
-    "__v": 0,
-    "question": "질문수정해서들어가라 2"
-},{
-    "registedDate": "2019-01-25T21:35:10.479Z",
-    "_id": "5c4b82776b23e2bdbf3747ae",
-    "classify": 103,
-    "department": "it",
-    "team": "emr",
-    "batch": 20,
-    "register": "대표",
-    "used": true,
-    "__v": 0,
-    "question": "이거슨 수정후의 질문"
-},{
-    "registedDate": "2019-01-27T12:29:20.977Z",
-    "_id": "5c4df868755926c9b2ee12eb",
-    "classify": 103,
-    "department": "it",
-    "team": "emr",
-    "batch": 20,
-    "register": "대표",
-    "used": true,
-    "question": "질문수정해서들어가라 얍얍얍 22",
-    "__v": 0
-}]
 
 class QuestionRegistContainer extends Component {
   state = {
     rows: [],
     isAddModal: false,
     isDetailModal: false,
+    keyword: '검색선택',
+    query: '',
     registedData: {
       id: '',
       department: 'IT',
@@ -71,25 +26,8 @@ class QuestionRegistContainer extends Component {
     }
   };
 
-  _getData = async () => {
-    const chartData = await this._callApi()
-    this.setState({
-     chartData,
-   })
-  }
-
-  _callApi = () => {
-    return axios.getQuestionList()
-      .then(res => {
-        console.log(res)
-      })
-      .catch(err => err)
-  }
-
   componentDidMount() {
-    this.setState({ 
-      rows: mocData,
-    });
+    axios.getQuestionList({}, this)
   }
 
   onEditModal = () => {
@@ -139,17 +77,41 @@ class QuestionRegistContainer extends Component {
   }
 
   onClickModalToAddConfirm = async () => {
-    await axios.setQuestionInfomation(this.state.registedData)
-    this.setState({isDetailModal: false})
+    axios.setQuestionInfomation(this.state.registedData, this)
   }
 
   onClickModalToUpdateConfirm = async () => {
-    await axios.modifyQuestionInfomation(this.state.registedData)
-    this.setState({isDetailModal: false})
+    axios.modifyQuestionInfomation(this.state.registedData, this)
   }
 
   onClickModalToClose = () => this.setState({isDetailModal: false, isAddModal: false,})
   
+  onChangeKeyword = async (e) => {
+    this.setState({
+      keyword: e.target.name
+    })
+  }
+  
+  onChangeFilterQuery = async (e) => {
+    if(e.key === 'Enter') {
+      const options = {
+        type: this.state.keyword,
+        q: e.target.value
+      }
+      const res = await axios.getQuestionList(options)
+      if(res.status === 200) {
+        this.setState({
+          rows: res.data,
+        })
+      }
+      
+    } else {
+      this.setState({
+        query: e.target.value
+      })
+    }
+  }
+
   render() {  
     const questionAddBtn = (
       <Button 
@@ -189,6 +151,10 @@ class QuestionRegistContainer extends Component {
           rows={this.state.rows}
           questionAddBtn={questionAddBtn}
           onClickRow={this.onClickToShowModal}
+          onSearchTag={this.onSearchTag}
+          onChangeKeyword={this.onChangeKeyword}
+          onChangeFilterQuery={this.onChangeFilterQuery}
+          keyword={this.state.keyword}
           cursor
         />
 

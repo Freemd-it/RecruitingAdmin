@@ -2,11 +2,10 @@ import React, { Component } from 'react'
 import Table from 'views/contexts/table'
 import _ from 'lodash'
 import { ModalRecruitFooter } from 'views/domains/contents/commons/ModalFooter'
-
+import * as axios from 'lib/api/question'
 import Modal from 'views/contexts/modal'
 
 import InfoDetail from 'views/domains/contents/recruit/informationCardPack'
-
 
 const data = [
   {
@@ -125,13 +124,13 @@ class RecruitManageContainer extends Component {
   state = {
     rows: [],
     isDetailModal: false,
-    data: null,
+    selectedRow: null,
+    keyword: '검색선택',
+    query: '',
   };
 
   componentDidMount() {
-    this.setState({
-      rows: data
-    });
+    axios.getQuestionList({}, this)
   }
 
   handleChangePage = (event, page) => {
@@ -153,13 +152,40 @@ class RecruitManageContainer extends Component {
   
   onClickModalToClose = () => this.setState({ isDetailModal: false })
 
+  onChangeKeyword = async (e) => {
+    this.setState({
+      keyword: e.target.name
+    })
+  }
+
+  onChangeFilterQuery = async (e) => {
+    if(e.key === 'Enter') {
+      const options = {
+        type: this.state.keyword,
+        q: e.target.value
+      }
+
+      const res = await axios.getQuestionList(options)
+      if(res.status === 200) {
+        this.setState({
+          rows: res.data,
+        })
+      }
+      
+    } else {
+      this.setState({
+        query: e.target.value
+      })
+    }
+  }
+
   render() {
     const { match } = this.props
     const { rows } = this.state
 
     const ModalContent = (
       <InfoDetail
-        data={this.state.selectedRow}
+        selectedRow={this.state.selectedRow}
       />
     )
 
@@ -191,6 +217,10 @@ class RecruitManageContainer extends Component {
             title={'개인정보 관리'}
             rows={tableData}
             onClickRow={this.onClickRowToShowModal}
+            onSearchTag={this.onSearchTag}
+            onChangeKeyword={this.onChangeKeyword}
+            onChangeFilterQuery={this.onChangeFilterQuery}
+            keyword={this.state.keyword}
             cursor
           />
         }
