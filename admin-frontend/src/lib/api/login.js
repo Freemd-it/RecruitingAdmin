@@ -1,7 +1,7 @@
-import axios from '../defaultAxios'
+import axiosCreate from '../defaultAxios'
 
 export const getSignin = (body) => 
-  axios.post('/api/signin', { body })
+  axiosCreate().post('/api/signin', body)
     .then(res => res)
     .catch(err => err)
 

@@ -1,6 +1,4 @@
 import axios from '../defaultAxios'
-import axiosTest from 'axios'
-
 
 export const getChartData= (ctx) => 
   axios.get(`/api/statistics`)
