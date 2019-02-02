@@ -77,7 +77,26 @@ class QuestionRegistContainer extends Component {
   }
 
   onClickModalToAddConfirm = async () => {
-    axios.setQuestionInfomation(this.state.registedData, this)
+    const result = await axios.setQuestionInfomation(this.state.registedData, this)
+    console.log('11111', this.state.registedData)
+    if(result.status === 201) {
+      this.setState((prevState) => {
+        const prevData = prevState.rows
+        const { department, question, registedDate, register, team, used } = this.state.registedData
+        prevData.push({
+          id: prevState.rows.length,
+          department,
+          question,
+          registedDate,
+          register,
+          team,
+          used,
+        })
+        return prevData
+      })
+    } else {
+      alert('질문 추가하기 오류 났어욥')
+    }
   }
 
   onClickModalToUpdateConfirm = async () => {

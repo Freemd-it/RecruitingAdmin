@@ -1,23 +1,23 @@
-import axios from '../defaultAxios'
+import axiosCreate from '../defaultAxios'
 import queryString from 'query-string'
 
 
 export const getQuestionList = ({type='', q='', ...rest}, ctx) => 
-  axios.get(`/api/questions?${queryString.stringify({...rest, type, q})}`)
+  axiosCreate().get(`/api/question?${queryString.stringify({...rest, type, q})}`)
     .then(res => ctx.setState({ rows: res.data.data}))
     .catch(err => err)
 
 export const getQuestionDetail= (id, ctx) => 
-  axios.get(`/api/questions/${id}`)
+  axiosCreate().get(`/api/question/${id}`)
     .then(res => ctx.setState({ rows: res.data.data}))
     .catch(err => err)
 
 export const setQuestionInfomation = (data, ctx) =>
-  axios.post('/api/questions', data)
-    .then(res => ctx.setState({ rows: res.data.data}))
+  axiosCreate().post('/api/question', data)
+    .then(res => res) 
     .catch(err => err)
 
 export const modifyQuestionInfomation = ({_id, ...rest}, ctx) => 
-  axios.put(`/api/questions/${_id}`, rest)
+  axiosCreate().put(`/api/question/${_id}`, rest)
     .then(res => ctx.setState({ rows: res.data.data}))
     .catch(err => err)

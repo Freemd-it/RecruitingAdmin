@@ -15,6 +15,7 @@ const data = {
   username: '이동수',
   department: '브랜드마케팅',
   team: '',
+  permission: 301,
 }
 
 const styles = theme => ({
@@ -88,19 +89,20 @@ const styles = theme => ({
 class Login extends Component {
   state = {
     isLoading: false,
-    email: '',
-    password: '',
+    email: null,
+    password: null,
   }
 
-  onLoginhandler = () => {
-    const result = axios.getSignin({
-      email: this.setState.email,
-      password: this.setState.password,
+  onLoginhandler = async () => {
+    const res = await axios.getSignin({
+      email: this.state.email,
+      password: this.state.password,
     })
 
-    if (result.status === 200) {
+    if (res.status === 200) {
       localStorage.setItem('user_session', JSON.stringify(data));
-      this.onLoginhandler()
+      localStorage.setItem('token', JSON.stringify(res.data.token));
+      this.props.onhandleLogin()
     } else {
       // 에러 모달 띄우기 존나 귀찮다.. alert으로 하자
       alert('아이디 혹은 비밀번호를 확인해 주세요.')
@@ -108,13 +110,15 @@ class Login extends Component {
   }
 
   onKeyPress = (e) => {
-    if(e.key === 'Enter') {
+    if (e.key === 'Enter') {
       this.onLoginhandler()
-    } else {
-      this.setState({
-        [e.target.name]: e.target.value
-      })
     }
+  }
+
+  onChangeInputHandler = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    })
   }
 
   render () {
@@ -128,12 +132,12 @@ class Login extends Component {
           </div>
           <div className={`${classes.form} FormContainer`}>
             <FormControl margin="normal" required fullWidth className={`${classes.text} BaseLine` }>
-              <InputLabel  className={classes.textTitle} focused={false}>ID</InputLabel>
-              <Input id="email" name="id" autoComplete="id" focused={false} className={classes.text} />
+              <InputLabel  className={classes.textTitle}>ID</InputLabel>
+              <Input id="email" name="email" autoComplete="id" onChange={this.onChangeInputHandler} className={classes.text} />
             </FormControl>
             <FormControl margin="normal" required fullWidth className={classes.text}>
-              <InputLabel htmlFor="password" className={classes.textTitle} focused={false}>PW</InputLabel >
-              <Input name="password" type="password" id="password" focused={false} onKeyPress={this.onKeyPress} className={classes.text}/>
+              <InputLabel htmlFor="password" className={classes.textTitle}>PW</InputLabel >
+              <Input name="password" type="password" id="password" onChange={this.onChangeInputHandler} onKeyPress={this.onKeyPress} className={classes.text}/>
             </FormControl>
           </div>
           <Button fullWidth type="submit" variant="contained" className={classes.submit} onClick={this.onLoginhandler}>
