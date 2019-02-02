@@ -6,7 +6,7 @@ import { Button } from 'reactstrap';
 
 import { ModalCommonFooter } from 'views/domains/contents/commons/ModalFooter'
 
-import * as axios from 'lib/api/question'
+import * as axios from 'lib/api/question';
 import './QuestionManageContainer.scss';
 
 

@@ -84,35 +84,36 @@ const styles = theme => ({
   },
 });
 
-class Login extends Component {
 
+class Login extends Component {
   state = {
     isLoading: false,
+    email: '',
+    password: '',
   }
 
-  _getData = async () => {
-    if (!this.state.isLoading) {
-      this.setState({ isLoading: true });
-      axios.getSignin()
-      .then(res => {
-        if(res.status === 200) {
-          this.props.onhandleLogin()
-        }
-       
-        this.setState({ isLoading: false})
-      })
-      .catch(err => err)
-    }
-  }
- 
   onLoginhandler = () => {
-    localStorage.setItem('user_session', JSON.stringify(data));
-    this._getData()
+    const result = axios.getSignin({
+      email: this.setState.email,
+      password: this.setState.password,
+    })
+
+    if (result.status === 200) {
+      localStorage.setItem('user_session', JSON.stringify(data));
+      this.onLoginhandler()
+    } else {
+      // 에러 모달 띄우기 존나 귀찮다.. alert으로 하자
+      alert('아이디 혹은 비밀번호를 확인해 주세요.')
+    }
   }
 
   onKeyPress = (e) => {
-    if(e.key === 'Enter'){
-      this.onLoginhandler();
+    if(e.key === 'Enter') {
+      this.onLoginhandler()
+    } else {
+      this.setState({
+        [e.target.name]: e.target.value
+      })
     }
   }
 
@@ -135,23 +136,15 @@ class Login extends Component {
               <Input name="password" type="password" id="password" focused={false} onKeyPress={this.onKeyPress} className={classes.text}/>
             </FormControl>
           </div>
-          <Button
-            fullWidth
-            type="submit"
-            variant="contained"
-            className={classes.submit}
-            onClick={this.onLoginhandler}
-          >
-          로그인
+          <Button fullWidth type="submit" variant="contained" className={classes.submit} onClick={this.onLoginhandler}>
+            로그인
           </Button>
         </Paper>
       </main>
     );
   }
 }
-
 Login.propTypes = {
   classes: PropTypes.object.isRequired,
 };
-
 export default withStyles(styles)(Login);
