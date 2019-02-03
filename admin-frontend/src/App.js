@@ -8,29 +8,40 @@ import * as axios from 'lib/api/context';
 import empty from 'is-empty'
 
 import './App.scss'
+import { Promise } from 'q';
 
-function getHealthCheck() {
-  const token = localStorage.getItem('token')
-  const userSession = localStorage.getItem('user_session')
+const getHealthCheck = (ctx) => {
+  return Promise(async (resolve, reject) => {
+    const token = localStorage.getItem('token')
+    const userSession = localStorage.getItem('user_session')
 
-  if(empty(userSession) || empty(token)) {
-    return false
-  } else {
-    const result = axios.getHealthCheck(token)
-    if (result.status === 200) {
-      this.setState({
-        onLogin: true,
-      })
+    if(empty(userSession) || empty(token)) {
+      return false
+    } else {
+      const result = await axios.getHealthCheck(token)
+      if (result.status === 200) {
+        ctx.setState({
+          onLogin: true,
+        })
+      }
     }
-  } 
+    ctx.setState({
+      waitCheckFlag: true,
+    }) 
+  })
 }
 class App extends Component {
-  state = {
-    onLogin: false,
+  constructor (props) {
+    super(props)
+    this.state = {
+      onLogin: false,
+      waitCheckFlag: false,
+    }
+    
   }
 
-  componentDidMount() {
-    getHealthCheck()
+  async componentDidMount() {
+    await getHealthCheck(this)
   }
 
   onhandleLogin = (e) => {
@@ -41,13 +52,17 @@ class App extends Component {
   }
 
   render() {
-    const { onLogin } = this.state
-    if (onLogin) {
-      return (
-        <MainTemplate sidebar={<Sidebar/>} contents={<Contents/>} />
-      ) 
+    const { onLogin, waitCheckFlag } = this.state
+    if(waitCheckFlag) {
+      if (onLogin) {
+        return (
+          <MainTemplate sidebar={<Sidebar/>} contents={<Contents/>} />
+        ) 
+      }
+        return <Login onhandleLogin={this.onhandleLogin}/>
+    } else {
+      return null
     }
-    return <Login onhandleLogin={this.onhandleLogin}/>
   }
 }
 export default App;
