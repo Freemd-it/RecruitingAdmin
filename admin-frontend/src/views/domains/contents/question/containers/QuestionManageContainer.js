@@ -41,25 +41,25 @@ class QuestionRegistContainer extends Component {
 
   onAddModal = () => {
     this.setState(prevState => {
-      const registedData = {
-        department: 'IT',
-        team: '',
-        question: '',
-        used: false
-      }
       const data = {
-        registedData, 
-        isAddModal: !prevState.isAddModal
+        registedData: {
+          ...prevState.registedData,
+          id: prevState.rows.length,
+        },
+        isAddModal: !prevState.isAddModal,
       }
       return data;
     });
   }
 
   onClickToShowModal = (index) => {
-    const registedData = this.state.rows[index]
+    const rowsData = this.state.rows[index]
     this.setState(prevState => {
       const data = {
-        registedData,
+        registedData: {
+          ...rowsData,
+          id: index,
+        },
         isDetailModal: !prevState.isDetailModal,
       }
       return data
@@ -78,21 +78,16 @@ class QuestionRegistContainer extends Component {
 
   onClickModalToAddConfirm = async () => {
     const result = await axios.setQuestionInfomation(this.state.registedData, this)
-    console.log('11111', this.state.registedData)
     if(result.status === 201) {
       this.setState((prevState) => {
-        const prevData = prevState.rows
-        const { department, question, registedDate, register, team, used } = this.state.registedData
-        prevData.push({
-          id: prevState.rows.length,
-          department,
-          question,
-          registedDate,
-          register,
-          team,
-          used,
-        })
-        return prevData
+        const rowsData = prevState.rows
+        const { registedData }= this.state.registedData
+        rowsData.push(registedData)
+        const newData = {
+          rowsData,
+          isAddModal: !prevState.isAddModal,
+        }
+        return newData
       })
     } else {
       alert('질문 추가하기 오류 났어욥')
@@ -100,7 +95,23 @@ class QuestionRegistContainer extends Component {
   }
 
   onClickModalToUpdateConfirm = async () => {
-    axios.modifyQuestionInfomation(this.state.registedData, this)
+    const { registedData } = this.state
+    const result = {
+      status: 201,
+    }
+    console.log('access?', registedData,)
+    // axios.modifyQuestionInfomation(registedData, this)
+    if(result.status === 201) {
+      this.setState((prevState) => {
+        const rowsData = this.state.rows
+        rowsData[registedData.id] = registedData
+        const newData = {
+          rowsData,
+          isDetailModal: !prevState.isDetailModal,
+        }
+        return newData
+      })
+    }
   }
 
   onClickModalToClose = () => this.setState({isDetailModal: false, isAddModal: false,})

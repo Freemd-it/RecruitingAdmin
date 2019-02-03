@@ -5,9 +5,9 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 class TableRows extends Component {
   render() {
-    const {item, key, columns, onClick } = this.props
+    const {item, index, columns, onClick } = this.props
     return (
-      <TableRow key={key} onClick={onClick} hover>
+      <TableRow key={`${index}_rows`} onClick={onClick} hover>
         {
           <TableCell padding="checkbox">
             <Checkbox
@@ -19,11 +19,11 @@ class TableRows extends Component {
             const value = item[column.key]
             if (value !== undefined) {
               if (typeof value === 'boolean') {
-                return <TableCell align="center" key={column.key}>{value ? 'O': ''}</TableCell>
+                return <TableCell align="center" key={index}>{value ? 'O': ''}</TableCell>
               }
-              return <TableCell align="center" key={column.key}>{value}</TableCell>;
+              return <TableCell align="center" key={index}>{value}</TableCell>;
             } else {
-              return <TableCell align="center" key={column.key}>미기입</TableCell>;
+              return <TableCell align="center" key={index}>미기입</TableCell>;
             }
           })
         }

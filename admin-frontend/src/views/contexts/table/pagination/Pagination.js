@@ -14,15 +14,14 @@ const TablePagination = ({ totalPage, currentPage, onChangePage, className }) =>
     maxPage = Math.min(currentPage + 2, totalPage);
     minPage = Math.max(1, currentPage - 2);
   }
-  const pageItem = [0, 1, 2, 3, 4].map(item => {
+  const pageItem = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => {
     const pageNumber = minPage + item;
     if (pageNumber <= maxPage) {
       return (
         <PaginationItem 
           key={`pageNumber__${pageNumber}`} 
           active={pageNumber === currentPage}
-          onClick={(e) => {onChangePage(pageNumber)}}
-        >
+          onClick={(e) => {onChangePage(pageNumber)}}>
           <PaginationLink className={`${pageNumber === currentPage ? 'PageItem__active' : 'PageItem'}`}>
             { pageNumber }
           </PaginationLink>

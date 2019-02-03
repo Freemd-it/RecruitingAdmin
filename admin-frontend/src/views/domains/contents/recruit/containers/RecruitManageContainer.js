@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import Table from 'views/contexts/table'
-import _ from 'lodash'
-import { ModalRecruitFooter } from 'views/domains/contents/commons/ModalFooter'
 import * as axios from 'lib/api/question'
 import Modal from 'views/contexts/modal'
-
+import { ModalRecruitFooter } from 'views/domains/contents/commons/ModalFooter'
 import InfoDetail from 'views/domains/contents/recruit/informationCardPack'
+
+import _ from 'lodash'
 
 const data = [
   {

@@ -3,12 +3,34 @@ import Sidebar from './views/domains/sidebar'
 import MainTemplate from './views/contexts/templates/mainTemplate'
 import Contents from './views/domains/contents'
 import Login from './views/domains/login'
+import * as axios from 'lib/api/context';
+
+import empty from 'is-empty'
 
 import './App.scss'
 
+function getHealthCheck() {
+  const token = localStorage.getItem('token')
+  const userSession = localStorage.getItem('user_session')
+
+  if(empty(userSession) || empty(token)) {
+    return false
+  } else {
+    const result = axios.getHealthCheck(token)
+    if (result.status === 200) {
+      this.setState({
+        onLogin: true,
+      })
+    }
+  } 
+}
 class App extends Component {
   state = {
-    onLogin: false
+    onLogin: false,
+  }
+
+  componentDidMount() {
+    getHealthCheck()
   }
 
   onhandleLogin = (e) => {
