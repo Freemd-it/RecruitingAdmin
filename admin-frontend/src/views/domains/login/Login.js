@@ -131,6 +131,7 @@ class Login extends Component {
               <img src={logo} />
           </div>
           <div className={`${classes.form} FormContainer`}>
+            <form>
             <FormControl margin="normal" required fullWidth className={`${classes.text} BaseLine` }>
               <InputLabel  className={classes.textTitle}>ID</InputLabel>
               <Input id="email" name="email" autoComplete="id" onChange={this.onChangeInputHandler} className={classes.text} />
@@ -139,6 +140,7 @@ class Login extends Component {
               <InputLabel htmlFor="password" className={classes.textTitle}>PW</InputLabel >
               <Input name="password" type="password" id="password" onChange={this.onChangeInputHandler} onKeyPress={this.onKeyPress} className={classes.text}/>
             </FormControl>
+            </form>
           </div>
           <Button fullWidth type="submit" variant="contained" className={classes.submit} onClick={this.onLoginhandler}>
             로그인

@@ -1,6 +1,6 @@
 import chartColor from './chartColor'
 import chartGrade from './chartGrade'
-import chartUniv from './chartUniversity'
+// import chartUniv from './chartUniversity'
 
 const pieData = {
   labels: [],

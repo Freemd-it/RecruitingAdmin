@@ -28,17 +28,17 @@ class DashBoard extends Component {
       </div>
     )
 
-    const barChart = (
-      <div className="item" key={3}>
-        <Bar
-          className='bar'
-          data={bar.data}
-          options={bar.options}
-          height={150}
-          legend={bar.legend}
-        />
-      </div>
-    );
+    // const barChart = (
+    //   <div className="item" key={3}>
+    //     <Bar
+    //       className='bar'
+    //       data={bar.data}
+    //       options={bar.options}
+    //       height={150}
+    //       legend={bar.legend}
+    //     />
+    //   </div>
+    // );
 
     return (
         <div className="chart-wrapper">

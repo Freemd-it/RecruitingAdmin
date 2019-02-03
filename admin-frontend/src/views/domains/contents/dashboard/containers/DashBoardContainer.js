@@ -51,21 +51,10 @@ class DashBoardViewerContainer extends Component {
   }
 
   componentDidMount () {
-   this._getData()
+    axios.getChartData(this)
   }
 
-  _getData = async () => {
-    const chartData = await this._callApi()
-  //   this.setState({
-  //    chartData,
-  //  })
-  }
-
-  _callApi = () => {
-    return axios.getChartData()
-      .then(res => res.data)
-      .catch(err => err)
-  }
+  
 
   render() {
     const { pieData, radarData, barData } = chartDefaultData

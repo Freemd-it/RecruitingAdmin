@@ -61,7 +61,7 @@ class Sidebar extends Component {
       </div>
       <div className="ItemContainer"> 
         <div className="ItemWrapper">
-          <ListItem className={'Sidebar__item'} focused={false}component={props => <Link to={routes.MATCH_PATH_RECRUIT_INFORMATION} {...props} />}>
+          <ListItem className={'Sidebar__item'} focused="false" component={props => <Link to={routes.MATCH_PATH_RECRUIT_INFORMATION} {...props} />}>
             <ListItemIcon className={'Sidebar__icon'}>
               <PeopleIcon />
             </ListItemIcon>

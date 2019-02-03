@@ -5,10 +5,10 @@ import AccountIcon from '@material-ui/icons/SupervisorAccount';
 // import '../InfoDetail.scss';
 import InformationCard from 'views/contexts/modal/card';
 
-function getAge(birthday) {
-  let ageDate = new Date(Date.now() - Date(birthday.getTime()));
-  return Math.abs(ageDate.getUTCFullYear() - 1970 + 1);
-}
+// function getAge(birthday) {
+//   let ageDate = new Date(Date.now() - Date(birthday.getTime()));
+//   return Math.abs(ageDate.getUTCFullYear() - 1970 + 1);
+// }
 
 const BasicInfo = (props) => {
   const {

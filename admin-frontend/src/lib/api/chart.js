@@ -1,7 +1,7 @@
-import axios from '../defaultAxios'
+import axiosCreate from '../defaultAxios';
 
 export const getChartData= (ctx) => 
-  axios.get(`/api/statistics`)
+  axiosCreate().get(`/api/statistics`)
     .then(res => ctx.setState({ rows: res.data.data}))
     .catch(err => err)
 

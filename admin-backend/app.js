@@ -30,18 +30,6 @@ mongoose.connect(mongoURI, {
   console.error(e);
 });
 
-// view engine setup
-// var whitelist = ['http://localhost:3000', 'chrome-extension']
-// var corsOptions = {
-//   origin: function (origin, callback) {
-//     console.log('dfdf', origin)
-//     if (whitelist.indexOf(origin) !== -1) {
-//       callback(null, true)
-//     } else {
-//       callback(new Error('Not allowed by CORS'))
-//     }
-//   }
-// }
 const corsOptions = {
   origin: '*',
   optionsSuccessStatus: 200 
@@ -58,11 +46,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(cors(corsOptions))
-app.use((req, res, next) => {
-  console.log(res.header);
-  console.log(req.header);
-  next();
-});
+
 app.post('/api/signin', sign.signin);
 app.post('/api/signup', sign.signup);
 app.use('/api', indexRouter);
