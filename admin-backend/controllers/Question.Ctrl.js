@@ -6,12 +6,13 @@ const getQuestionList = async(req, res) => {
                                         .find()
                                         .exec();
         res.status(200).json({
-            data: questionList
+            message: "Successful get question list",
+            result: questionList,
         });
     } catch(e) {
-        console.log(e);
         res.status(500).json({
-            error: e
+            message: JSON.stringify(e),
+            result: null,
         });
     }
 }
@@ -23,11 +24,13 @@ const getQuestion = async(req, res) => {
                                         .findById(req.params.questionId)
                                         .exec();
         res.status(200).json({
-            data: question
+            message: "Successful get question detail",
+            result: question,
         });
     } catch(e) {
         res.status(500).json({
-            error: e
+            message: JSON.stringify(e),
+            result: null,
         });
     }
 }
@@ -44,7 +47,8 @@ const registQuestion = async(req, res) => {
         //본부, 팀 미지정 -> 공통질문
         if(register.permission > 301){
             res.status(401).json({
-                error: "Have not permission"
+                message: "Have not permission",
+                result: null,
             });
         }
         //본부 지정 안되어있으면 대표계정인지 체크
@@ -53,25 +57,29 @@ const registQuestion = async(req, res) => {
         //팀 미지정 -> 본부질문
         if(register.permission > 302){
             res.status(401).json({
-                error: "Have not permission"
+                message: "Have not permission",
+                result: null,
             });
         }
         //팀 지정 안되어있으면 본부장계정 or 대표계정인지 체크
         if((register.permission === 302) &&(department !== register.department)){
             res.status(401).json({
-                error: "Have not permission"
+                message: "Have not permission",
+                result: null,
             });
         }
         //본부장 계정일시 자신의 본부인지 체크
     }
     if((register.permission === 302) &&(department !== register.department)){
         res.status(401).json({
-            error: "Have not permission"
+            message: "Have not permission",
+            result: null,
         });
     }
     if((register.permission === 303) &&(team !== register.team)){
         res.status(401).json({
-            error: "Have not permission"
+            message: "Have not permission",
+            result: null,
         });
     }
 
@@ -86,9 +94,10 @@ const registQuestion = async(req, res) => {
     
     try {
         await insertQuestion.save();
-        res.status(201).json({message : "Success"});
+        //TODO
+        res.status(201).json({message : "Success", result: null,});
     } catch (e) {
-        res.status(500).json({error: e});
+        res.status(500).json({message: JSON.stringify(e), result: null});
     }
 }
 
@@ -100,7 +109,8 @@ const updateQuestion = async(req, res) => {
         //본부, 팀 미지정 -> 공통질문
         if(register.permission > 301){
             res.status(401).json({
-                error: "Have not permission"
+                message: "Have not permission",
+                result: null,
             });
         }
         //본부 지정 안되어있으면 대표계정인지 체크
@@ -109,25 +119,29 @@ const updateQuestion = async(req, res) => {
         //팀 미지정 -> 본부질문
         if(register.permission > 302){
             res.status(401).json({
-                error: "Have not permission"
+                message: "Have not permission",
+                result: null,
             });
         }
         //팀 지정 안되어있으면 본부장계정 or 대표계정인지 체크
         if((register.permission === 302) &&(department !== register.department)){
             res.status(401).json({
-                error: "Have not permission"
+                message: "Have not permission",
+                result: null,
             });
         }
         //본부장 계정일시 자신의 본부인지 체크
     }
     if((register.permission === 302) &&(department !== register.department)){
         res.status(401).json({
-            error: "Have not permission"
+            message: "Have not permission",
+            result: null,
         });
     }
     if((register.permission === 303) &&(team !== register.team)){
         res.status(401).json({
-            error: "Have not permission"
+            message: "Have not permission",
+            result: null,
         });
     }
 
@@ -144,13 +158,13 @@ const updateQuestion = async(req, res) => {
             });
         });
         if(!updatedQuestion){
-            res.status(400).json({error: "Can't find question"});
+            res.status(400).json({message: "Can't find question", result: null,});
             return;
         }
-        res.status(201).json({message: "Successs", data: updatedQuestion});
+        res.status(201).json({message: "Successs", result: updatedQuestion});
     } catch (e) {
         console.log(e);
-        res.status(500).json({error: e});
+        res.status(500).json({message: JSON.stringify(e), result: null});
     }
 }
 

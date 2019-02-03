@@ -62,10 +62,10 @@ const getScheduleUserList = async(req, res) => {
                                 .exec();
         console.log(userList);
         const resUserList = userList.map(user => userScheduleInfo(user));
-        res.status(200).json({data: resUserList});
+        res.status(200).json({message: "Successful get schedule list", result: resUserList});
     } catch(e) {
         console.log(e);
-        res.status(500).json({error : e});
+        res.status(500).json({message : JSON.stringify(e), result: null,});
     }
 }
 

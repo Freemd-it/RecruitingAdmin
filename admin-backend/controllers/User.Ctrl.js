@@ -36,10 +36,10 @@ const getUserList = async(req, res) => {
                                 .exec();
         console.log(userList);
         const resUserList = userList.map(user => userDefulatInfo(user));
-        res.status(200).json({data: resUserList});
+        res.status(200).json({message: "Successful get user list", result: resUserList});
     } catch(e) {
         console.log(e);
-        res.status(500).json({error : e});
+        res.status(500).json({message : JSON.stringify(e), result: null});
     }
 }
 
@@ -50,10 +50,10 @@ const getUser = async(req, res) => {
         const user = await User
                             .findById(id)
                             .exec();
-        res.status(200).json({data: user});
+        res.status(200).json({message: "Successful get user detail", result: user});
     } catch(e) {
         console.log(e);
-        res.status(500).json({error: e});
+        res.status(500).json({message: JSON.stringify(e), result: null});
     }
 }
 
