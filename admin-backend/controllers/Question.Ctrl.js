@@ -1,4 +1,5 @@
 const Question = require('../models/QuestionModel');
+const Code = require('../modules/Status.Code');
 
 const getQuestionList = async(req, res) => {
     try {
@@ -45,7 +46,7 @@ const registQuestion = async(req, res) => {
 
     if(department) {
         //본부, 팀 미지정 -> 공통질문
-        if(register.permission > 301){
+        if(register.permission > Code.Permission.get('FullAccess')){
             res.status(401).json({
                 message: "Have not permission",
                 result: null,
@@ -55,14 +56,14 @@ const registQuestion = async(req, res) => {
     }
     if(team) {
         //팀 미지정 -> 본부질문
-        if(register.permission > 302){
+        if(register.permission > Code.Permission.get('DepartmentAccess')){
             res.status(401).json({
                 message: "Have not permission",
                 result: null,
             });
         }
         //팀 지정 안되어있으면 본부장계정 or 대표계정인지 체크
-        if((register.permission === 302) &&(department !== register.department)){
+        if((register.permission === Code.Permission.get('DepartmentAccess')) &&(department !== register.department)){
             res.status(401).json({
                 message: "Have not permission",
                 result: null,
@@ -70,13 +71,13 @@ const registQuestion = async(req, res) => {
         }
         //본부장 계정일시 자신의 본부인지 체크
     }
-    if((register.permission === 302) &&(department !== register.department)){
+    if((register.permission === Code.Permission.get('DepartmentAccess')) &&(department !== register.department)){
         res.status(401).json({
             message: "Have not permission",
             result: null,
         });
     }
-    if((register.permission === 303) &&(team !== register.team)){
+    if((register.permission === Code.Permission.get('TeamAccess')) &&(team !== register.team)){
         res.status(401).json({
             message: "Have not permission",
             result: null,
@@ -107,7 +108,7 @@ const updateQuestion = async(req, res) => {
     console.log(questionId);
     if(department) {
         //본부, 팀 미지정 -> 공통질문
-        if(register.permission > 301){
+        if(register.permission > Code.Permission.get('FullAccess')){
             res.status(401).json({
                 message: "Have not permission",
                 result: null,
@@ -117,14 +118,14 @@ const updateQuestion = async(req, res) => {
     }
     if(team) {
         //팀 미지정 -> 본부질문
-        if(register.permission > 302){
+        if(register.permission > Code.Permission.get('DepartmentAccess')){
             res.status(401).json({
                 message: "Have not permission",
                 result: null,
             });
         }
         //팀 지정 안되어있으면 본부장계정 or 대표계정인지 체크
-        if((register.permission === 302) &&(department !== register.department)){
+        if((register.permission === Code.Permission.get('DepartmentAccess')) &&(department !== register.department)){
             res.status(401).json({
                 message: "Have not permission",
                 result: null,
@@ -132,13 +133,13 @@ const updateQuestion = async(req, res) => {
         }
         //본부장 계정일시 자신의 본부인지 체크
     }
-    if((register.permission === 302) &&(department !== register.department)){
+    if((register.permission === Code.Permission.get('DepartmentAccess')) &&(department !== register.department)){
         res.status(401).json({
             message: "Have not permission",
             result: null,
         });
     }
-    if((register.permission === 303) &&(team !== register.team)){
+    if((register.permission === Code.Permission.get('TeamAccess')) &&(team !== register.team)){
         res.status(401).json({
             message: "Have not permission",
             result: null,
