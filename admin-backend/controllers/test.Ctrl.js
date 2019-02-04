@@ -21,6 +21,7 @@ const makeUser = async(req, res) => {
     const {user_name, email, password, english_name, is_male, phone_number, sns, address} = req.body;
     const {academic_name, location, degree, major} = req.body;
     const {department, secondary_department, team, secondary_team, can_moved, can_multiple_interview} = req.body;
+    const {interview_date, interview_week, interview_time} = req.body;
 
     const user = new User({
         basic_info : {
@@ -49,6 +50,11 @@ const makeUser = async(req, res) => {
             secondary_team: secondary_team,
             can_moved: can_moved,
             can_multiple_interview: can_multiple_interview,
+        },
+        interview_info: {
+            interview_date: interview_date,
+            interview_week: interview_week,
+            interview_time: interview_time,
         }
     });
     try {

@@ -8,6 +8,7 @@
     "axios": "^0.18.0",
     "bootstrap": "^4.2.1",
     "chart.js": "^2.7.3",
+    "cors": "^2.8.5",
     "http-proxy-middleware": "^0.19.1",
     "is-empty": "^1.2.0",
     "lodash": "^4.17.11",
