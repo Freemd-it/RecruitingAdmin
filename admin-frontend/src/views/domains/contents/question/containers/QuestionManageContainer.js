@@ -3,18 +3,17 @@ import Table from 'views/contexts/table'
 import QuestionDetail from '../questionModal/QuestionModal'
 import Modal from 'views/contexts/modal'
 import { Button } from 'reactstrap';
-
+import { addPermissionCheck, updatePermissionCheck} from 'modules/permission'
 import { ModalCommonFooter } from 'views/domains/contents/commons/ModalFooter'
 
 import * as axios from 'lib/api/question';
 import './QuestionManageContainer.scss';
 
-
 class QuestionRegistContainer extends Component {
   state = {
     rows: [],
     isAddModal: false,
-    isDetailModal: false,
+    isUpdateModal: false,
     keyword: '검색선택',
     query: '',
     registedData: {
@@ -27,61 +26,82 @@ class QuestionRegistContainer extends Component {
   };
 
   componentDidMount() {
-    axios.getQuestionList({}, this)
+    const { department } = JSON.parse(localStorage.getItem('user_session'))
+    axios.getQuestionList({type: department}, this)
   }
 
-  onEditModal = () => {
+  onCloseModal = () => {
     this.setState(prevState => {
       const data = {
-        isDetailModal: !prevState.isDetailModal,
+        isUpdateModal: false,
+        isAddModal: false,
       }
       return data;
     });
   }
 
-  onAddModal = () => {
-    this.setState(prevState => {
-      const data = {
-        registedData: {
-          ...prevState.registedData,
-          id: prevState.rows.length,
-        },
-        isAddModal: !prevState.isAddModal,
-      }
-      return data;
-    });
+  onClickToAddModal = (index) => {
+    const { rows } = this.state
+    if(addPermissionCheck(rows)) {
+      const { department, team } = JSON.parse(localStorage.getItem('user_session'))
+      this.setState(prevState => {
+        const data = {
+          registedData: {
+            department,
+            team,
+            question: '질문을 작성해주세요 :)',
+            used: false,
+            id: rows.length,
+          },
+          isAddModal: true,
+        }
+        return data
+      })
+    } else {
+      alert('당신은 권한이 없어요\n상관에게 문의하세요 :(')
+    }
+    
   }
 
-  onClickToShowModal = (index) => {
-    const rowsData = this.state.rows[index]
-    this.setState(prevState => {
-      const data = {
-        registedData: {
-          ...rowsData,
-          id: index,
-        },
-        isDetailModal: !prevState.isDetailModal,
-      }
-      return data
-    })
+  onClickToUpdateModal = (index) => {
+    if(updatePermissionCheck()) {
+      const rowData = this.state.rows[index]
+      this.setState(prevState => {
+        const data = {
+          registedData: {
+            ...rowData,
+            id: index,
+          },
+          isUpdateModal: true,
+        }
+        return data
+      })
+    } else {
+      alert('수정할 수 있는 권한이 없는 질문입니다 :(')
+    }
   }
 
   onRegistedData = (e) => {
+    const { department } = JSON.parse(localStorage.getItem('user_session'))
     const name = e.target.name;
     const value = (name !== 'used' ? e.target.value : e.target.value === 'true');
+    console.log(name, value)
     this.setState(prevState => {
-      const registedData = { ...prevState.registedData };
+      const registedData = { ...prevState.registedData};
       registedData[name] = value;
+      registedData['department'] = department
       return { registedData };
     });
   }
 
   onClickModalToAddConfirm = async () => {
-    const result = await axios.setQuestionInfomation(this.state.registedData, this)
+    const { registedData } = this.state
+    const result = await axios.setQuestionInfomation(registedData, this)
+    
     if(result.status === 201) {
       this.setState((prevState) => {
         const rowsData = prevState.rows
-        const { registedData }= this.state.registedData
+        const { registedData } = this.state
         rowsData.push(registedData)
         const newData = {
           rowsData,
@@ -99,7 +119,6 @@ class QuestionRegistContainer extends Component {
     const result = {
       status: 201,
     }
-    console.log('access?', registedData,)
     // axios.modifyQuestionInfomation(registedData, this)
     if(result.status === 201) {
       this.setState((prevState) => {
@@ -107,14 +126,14 @@ class QuestionRegistContainer extends Component {
         rowsData[registedData.id] = registedData
         const newData = {
           rowsData,
-          isDetailModal: !prevState.isDetailModal,
+          isUpdateModal: !prevState.isUpdateModal,
         }
         return newData
       })
     }
   }
 
-  onClickModalToClose = () => this.setState({isDetailModal: false, isAddModal: false,})
+  onClickModalToClose = () => this.setState({isUpdateModal: false, isAddModal: false,})
   
   onChangeKeyword = async (e) => {
     this.setState({
@@ -149,7 +168,7 @@ class QuestionRegistContainer extends Component {
         color="secondary"
         outline
         size={`sm`}
-        onClick={this.onAddModal}> 질문 추가
+        onClick={this.onClickToAddModal}> 질문 추가
       </Button>
     )
 
@@ -180,7 +199,7 @@ class QuestionRegistContainer extends Component {
           title={'질문 관리'}
           rows={this.state.rows}
           questionAddBtn={questionAddBtn}
-          onClickRow={this.onClickToShowModal}
+          onClickRow={this.onClickToUpdateModal}
           onSearchTag={this.onSearchTag}
           onChangeKeyword={this.onChangeKeyword}
           onChangeFilterQuery={this.onChangeFilterQuery}
@@ -189,8 +208,8 @@ class QuestionRegistContainer extends Component {
         />
 
         <Modal
-          open={this.state.isDetailModal}
-          onClose={this.onEditModal}
+          open={this.state.isUpdateModal}
+          onClose={this.onCloseModal}
 
           title={'본부질문 수정하기'}
           contents={questionDetail}
@@ -199,7 +218,7 @@ class QuestionRegistContainer extends Component {
 
         <Modal
           open={this.state.isAddModal}
-          onClose={this.onAddModal}
+          onClose={this.onCloseModal}
           
           title={'본부질문 추가하기'}
           contents={questionDetail}

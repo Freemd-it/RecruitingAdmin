@@ -12,10 +12,11 @@ export const getQuestionDetail= (id, ctx) =>
     .then(res => ctx.setState({ rows: res.data.data}))
     .catch(err => err)
 
-export const setQuestionInfomation = (data, ctx) =>
-  axiosCreate().post('/api/question', data)
+export const setQuestionInfomation = (data, ctx) => {
+  return axiosCreate().post('/api/question', data)
     .then(res => res) 
     .catch(err => err)
+}
 
 export const modifyQuestionInfomation = ({_id, ...rest}, ctx) => 
   axiosCreate().put(`/api/question/${_id}`, rest)

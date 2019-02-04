@@ -5,32 +5,31 @@ import _ from 'lodash'
 import organization from 'lib/service/organization';
 
 const QuestionModal = props => {
-  const { 
-    registedData,
-    onRegistedData
-  } = props;
-
-  const userSession = JSON.parse(localStorage.getItem('user_session'))
+  const { department, team } = JSON.parse(localStorage.getItem('user_session'))
+  const { registedData, onRegistedData } = props;
   const teamList = (
-    _.map(organization[userSession.department], (v, key) => {
+    _.map(organization[department], (v, key) => {
         return <option> {v} </option>
       })
     )
+    
   return (
     <div className={'container QuestionDetail'} key={registedData._id}>
       <FormGroup row>
-        <Label for="exampleEmail" sm={2}>본부</Label>
+        <Label sm={2}>본부</Label>
         <Col sm={10}>
           <Input bsSize="sm" type="select" name="department" value={registedData.department} onChange={onRegistedData} readOnly disabled>
-            <option>{userSession.department}</option>
+            <option> 본부 선택 </option>
+            <option>{department}</option>
           </Input>
         </Col>
       </FormGroup>
 
       <FormGroup row>
-        <Label for="exampleEmail" sm={2}>팀</Label>
+        <Label sm={2}>팀</Label>
         <Col sm={10}>
-          <Input type="select" name="selectMulti" id="exampleSelectMulti">
+          <Input type="select" name="team" id="exampleSelectMulti" value={registedData.team} onChange={onRegistedData}>
+            <option> 팀 선택 </option>
             {teamList}
           </Input>
         </Col>

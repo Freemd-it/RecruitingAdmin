@@ -9,23 +9,26 @@ import empty from 'is-empty'
 
 import './App.scss'
 
-const getHealthCheck = async (ctx) => {
-  const token = localStorage.getItem('token')
-  const userSession = localStorage.getItem('user_session')
+const getHealthCheck = (ctx) => {
+  return new Promise(async (resolve) => {
+    const token = localStorage.getItem('token')
+    const userSession = localStorage.getItem('user_session')
 
-  if(empty(userSession) || empty(token)) {
-    return false
-  } else {
-    const result = await axios.getHealthCheck(token)
-    if (result.status === 200) {
-      ctx.setState({
-        onLogin: true,
-      })
+    if(empty(userSession) || empty(token)) {
+      return false
+    } else {
+      const result = await axios.getHealthCheck(token)
+      if (result.status === 200) {
+        ctx.setState({
+          onLogin: true,
+        })
+      }
     }
-  }
-  ctx.setState({
-    waitCheckFlag: true,
-  }) 
+    ctx.setState({
+      waitCheckFlag: true,
+    })
+    resolve(true)
+  })
 }
 class App extends Component {
   constructor (props) {
@@ -34,11 +37,10 @@ class App extends Component {
       onLogin: false,
       waitCheckFlag: false,
     }
-    
   }
 
-  componentDidMount() {
-    getHealthCheck(this)
+  async componentDidMount() {
+    await getHealthCheck(this)
   }
 
   onhandleLogin = (e) => {
@@ -48,18 +50,18 @@ class App extends Component {
     });
   }
 
-  render() {
+  render () {
     const { onLogin, waitCheckFlag } = this.state
-    if(waitCheckFlag) {
+    // if(waitCheckFlag) {
       if (onLogin) {
         return (
           <MainTemplate sidebar={<Sidebar/>} contents={<Contents/>} />
         ) 
       }
-        return <Login onhandleLogin={this.onhandleLogin}/>
-    } else {
-      return null
-    }
+      return <Login onhandleLogin={this.onhandleLogin}/>
+    // } else {
+      // return null
+    // }
   }
 }
 export default App;

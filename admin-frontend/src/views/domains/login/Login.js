@@ -13,7 +13,7 @@ import * as axios from 'lib/api/login'
 
 const data = {
   username: '이동수',
-  department: '브랜드마케팅',
+  department: '대표',
   team: '',
   permission: 301,
 }

@@ -80,7 +80,8 @@ export const interview = [
   value: '16:00 ~ 18:00',
 }];
 
-export const question = [{
+export const question = [
+{
   key: 'department',
   value: '본부',
 }, {
