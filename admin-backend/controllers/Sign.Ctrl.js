@@ -5,6 +5,7 @@ const bcrypter = require('../modules/Bcrypter');
 
 
 const signin = async (req, res) => {
+    console.log(req.body);
   const { email, password } = req.body;
   try {
       const admin = await Admin
@@ -12,13 +13,15 @@ const signin = async (req, res) => {
           .exec();
       if (!admin) {
           res.status(400).json({
-              error: "Signin fail"
+              message: "Signin fail",
+              result: null,
           });
           return;
       }
       if (!(await bcrypter.compare(password, admin.hash))) {
           res.status(400).json({
-              error: "Signin fail"
+              message: "Signin fail",
+              result: null,
           });
           return;
       }
@@ -32,18 +35,21 @@ const signin = async (req, res) => {
       jwt.sign(payload, key, { expiresIn: '12h' },(err, token) => {
           if (err) {
               res.status(500).json({
-                  error: err,
+                  message: JSON.stringify(err),
+                  result: null,
               });
               
           } else {
               res.status(200).json({
-                  token : token,
+                  message: "Successful sign in & Get JWT",
+                  result : token,
               })
           }
       })
   } catch (e) {
       res.status(500).json({
-          error: e
+          message: JSON.stringify(e),
+          result: null,
       });
   }
 }
@@ -54,9 +60,10 @@ const signup = async (req, res) => {
         const hash = await bcrypter.hash(password);
         const admin = new Admin({ permission, department, team, name, email, hash });
         await admin.save();
-        res.status(201).json({ message : "Success"});
+        //TODO
+        res.status(201).json({ message : "Success", result: null});
     } catch (e) {
-        res.status(500).json({ error: e });
+        res.status(500).json({ message: JSON.stringify(e) , result: null,});
     }
 }
 
