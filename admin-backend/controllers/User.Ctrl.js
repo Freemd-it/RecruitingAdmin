@@ -14,7 +14,7 @@ const userDefulatInfo = (userObj) => {
     }
     return {
         _id: userObj._id,
-        name: userObj.basic_info.name,
+        name: userObj.basic_info.user_name,
         english: userObj.basic_info.english,
         is_male: userObj.basic_info.is_male,
         birth_date: moment(userObj.basic_info.birth_date).format('YYYY-MM-DD'),
@@ -23,7 +23,9 @@ const userDefulatInfo = (userObj) => {
         sns: userObj.basic_info.sns,
         address: userObj.basic_info.address,
         first: userObj.basic_info.department + ' ' + userObj.basic_info.team,
-        second: userObj.basic_info.secondary_department + ' ' + userObj.basic_info.secondary_team
+        second: userObj.basic_info.secondary_department + ' ' + userObj.basic_info.secondary_team,
+        can_moved: userObj.basic_info.can_moved,
+        can_multiple_interview: userObj.basic_info.can_multiple_interview,
     }
 }
 
@@ -57,8 +59,25 @@ const getUser = async(req, res) => {
     }
 }
 
+const getTest = async(req, res) => {
+    const name = '김연태';
+    const test = true;
+    try {
+        const userList = User
+                            .find({"basic_info.user_name": name})
+                            .select("basic_info")
+                            .sort({_id: -1})
+                            .exec();
+        res.status(200).json({result: userList});
+    } catch(e) {
+        console.log(e);
+        res.status(500).json({message : JSON.stringify(e), result: null});
+    }
+}
+
 
 module.exports = {
     getUserList : getUserList,
     getUser : getUser,
+    test: getTest,
 }
