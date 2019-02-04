@@ -14,7 +14,7 @@ const userDefulatInfo = (userObj) => {
     }
     return {
         _id: userObj._id,
-        name: userObj.basic_info.name,
+        name: userObj.basic_info.user_name,
         english: userObj.basic_info.english,
         is_male: userObj.basic_info.is_male,
         birth_date: moment(userObj.basic_info.birth_date).format('YYYY-MM-DD'),
