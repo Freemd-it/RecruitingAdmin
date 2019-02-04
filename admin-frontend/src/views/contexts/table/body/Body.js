@@ -17,7 +17,7 @@ const Body = ({rows, rowsPerPage, onClickRow, columns, cursor = false, type}) =>
         className={cursor ? 'tableBodyRow__cursor' : ''}
         key={index}
         item={item}
-        onClick={() => { onClickRow(index) }}
+        onClick={(e) => { onClickRow(index,e) }}
       />)
     })
   )

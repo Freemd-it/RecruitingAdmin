@@ -1,4 +1,3 @@
-
 export const information = [{
     key: 'name',
     value: '이름',
@@ -24,10 +23,10 @@ export const information = [{
     key: 'address',
     value:'주소',
   },{
-    key: 'department',
+    key: 'first',
     value:  '1지망',
   },{
-    key: 'secondary_department',
+    key: 'second',
     value: '2지망',
   },
 ]

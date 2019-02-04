@@ -85,7 +85,6 @@ class QuestionRegistContainer extends Component {
     const { department } = JSON.parse(localStorage.getItem('user_session'))
     const name = e.target.name;
     const value = (name !== 'used' ? e.target.value : e.target.value === 'true');
-    console.log(name, value)
     this.setState(prevState => {
       const registedData = { ...prevState.registedData};
       registedData[name] = value;

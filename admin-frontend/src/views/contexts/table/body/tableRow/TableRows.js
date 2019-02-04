@@ -7,7 +7,7 @@ class TableRows extends Component {
   render() {
     const {item, index, columns, onClick } = this.props
     return (
-      <TableRow key={`${index}_rows`} onClick={onClick} hover>
+      <TableRow key={`${index}_${item.id}`} id={item.id} onClick={onClick} hover>
         {
           <TableCell padding="checkbox">
             <Checkbox

@@ -2,18 +2,19 @@ import React from 'react';
 import AcademicInfo from 'views/domains/contents/recruit/informationCardPack/academicInfo';
 import ExternalInfo from 'views/domains/contents/recruit/informationCardPack/externalInfo';
 import BasicInfo from 'views/domains/contents/recruit/informationCardPack/basicInfo';
-import ApplyInfo from 'views/domains/contents/recruit/informationCardPack/applyInfo';
+import InterviewInfo from 'views/domains/contents/recruit/informationCardPack/applyInfo';
 import AbilityInfo from 'views/domains/contents/recruit/informationCardPack/abilityInfo';
+import QuestionInfo from 'views/domains/contents/recruit/informationCardPack/questionInfo';
 
 import './InformationCardPack.scss'
 import _ from 'lodash'
 
 
-const InfoDetail = ({ classes, data }) => {
+const InfoDetail = ({ classes, selectedRow }) => {
   return (
     <div className="InfoDetail">
       {
-        _.map(data, (value, key) => {
+        _.map(selectedRow, (value, key) => {
           switch (key) {
             case 'external_activities':
               return (
@@ -22,12 +23,18 @@ const InfoDetail = ({ classes, data }) => {
                   data={value}
                 />
               );
-            case 'apply_info':
+            case 'interview_info':
               return (
-                <ApplyInfo
+                <InterviewInfo
                   key={`${key}__DetailBody`}
                   data={value}
                 />
+              );
+            case 'question_info':
+              return (
+                <QuestionInfo 
+                  key={`${key}__DetailBody`}
+                  data={value} />
               );
             case 'basic_info':
               return (
@@ -35,14 +42,14 @@ const InfoDetail = ({ classes, data }) => {
                 key={`${key}__DetailBody`}
                 data={value} />
               );
-            case 'academic_info':
+            case 'academic_career':
               return (
                 <AcademicInfo
                   key={`${key}__DetailBody`}
                   data={value}
                 />
               );
-            case 'ability_info':
+            case 'special_info':
               return (
                 <AbilityInfo
                   key={`${key}__DetailBody`}
