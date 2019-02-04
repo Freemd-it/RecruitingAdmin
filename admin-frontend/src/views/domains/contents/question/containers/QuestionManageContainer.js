@@ -7,6 +7,8 @@ import { addPermissionCheck, updatePermissionCheck} from 'modules/permission'
 import { ModalCommonFooter } from 'views/domains/contents/commons/ModalFooter'
 
 import * as axios from 'lib/api/question';
+import moment from 'moment'
+
 import './QuestionManageContainer.scss';
 
 class QuestionRegistContainer extends Component {
@@ -22,6 +24,7 @@ class QuestionRegistContainer extends Component {
       team: '',
       question: '',
       used: false,
+      register: '',
     }
   };
 
@@ -85,6 +88,7 @@ class QuestionRegistContainer extends Component {
     const { department } = JSON.parse(localStorage.getItem('user_session'))
     const name = e.target.name;
     const value = (name !== 'used' ? e.target.value : e.target.value === 'true');
+    
     this.setState(prevState => {
       const registedData = { ...prevState.registedData};
       registedData[name] = value;
@@ -99,9 +103,16 @@ class QuestionRegistContainer extends Component {
     
     if(result.status === 201) {
       this.setState((prevState) => {
-        const rowsData = prevState.rows
+        const { username } = JSON.parse(localStorage.getItem('user_session'))
         const { registedData } = this.state
+        
+        const rowsData = prevState.rows
+        
+        registedData['batch'] = 20
+        registedData['registedDate'] = moment().format('YYYY-MM-DD HH:mm:ss')
+        registedData['register'] = username
         rowsData.push(registedData)
+        
         const newData = {
           rowsData,
           isAddModal: !prevState.isAddModal,
