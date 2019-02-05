@@ -7,7 +7,7 @@ class TableRows extends Component {
   render() {
     const {item, index, columns, onClick } = this.props
     return (
-      <TableRow key={`${index}_rows`} onClick={onClick} hover>
+      <TableRow key={`${index}_${item.id}`} id={item.id} onClick={onClick} hover>
         {
           <TableCell padding="checkbox">
             <Checkbox
@@ -19,7 +19,8 @@ class TableRows extends Component {
             const value = item[column.key]
             if (value !== undefined) {
               if (typeof value === 'boolean') {
-                return <TableCell align="center" key={index}>{value ? 'O': ''}</TableCell>
+                if(column.key === 'is_male') return <TableCell align="center" key={index}>{value ? '남': '여'}</TableCell>
+                else return <TableCell align="center" key={index}>{value ? 'O': ''}</TableCell>
               }
               return <TableCell align="center" key={index}>{value}</TableCell>;
             } else {

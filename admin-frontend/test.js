@@ -63,4 +63,3 @@ const tttt = function deactivateResponse(data) {
 }
 
 const mm = tttt(mocData)
-console.log(tttt(mocData))

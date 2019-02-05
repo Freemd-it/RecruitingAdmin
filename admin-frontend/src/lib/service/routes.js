@@ -12,5 +12,5 @@ export const MATCH_PATH_RECRUIT_TYPE = '/contents/recruit/:type'
 export const MATCH_PATH_INTERVIEW = '/contents/interview'
 
 export const MATCH_PATH_QUESTION = '/contents/questions'
-
+export const MATCH_PATH_DOCUMENT = '/contents/documents'
 

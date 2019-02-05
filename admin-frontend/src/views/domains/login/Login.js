@@ -101,7 +101,7 @@ class Login extends Component {
 
     if (res.status === 200) {
       localStorage.setItem('user_session', JSON.stringify(data));
-      localStorage.setItem('token', JSON.stringify(res.data.token));
+      localStorage.setItem('token', JSON.stringify(res.data.result));
       this.props.onhandleLogin()
     } else {
       // 에러 모달 띄우기 존나 귀찮다.. alert으로 하자

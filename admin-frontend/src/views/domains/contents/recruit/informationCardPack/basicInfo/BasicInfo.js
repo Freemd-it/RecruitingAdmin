@@ -12,7 +12,7 @@ import InformationCard from 'views/contexts/modal/card';
 
 const BasicInfo = (props) => {
   const {
-    name,
+    user_name,
     english_name,
     is_male,
     birth_date,
@@ -28,15 +28,15 @@ const BasicInfo = (props) => {
 
   const birthString = moment(birth_date).format("Y년 M월 D일");
   const inputData = [
-    ['이름', `${name} (${english_name})`],
+    ['이름', `${user_name} (${english_name})`],
     ['성별', `${is_male ? '남' : '여'}`],
     ['생년월일', `${birthString}`],
     ['전화번호', `${phone_number}`],
     ['이메일', `${email}`],
     ['SNS 주소', `${sns}`],
     ['주소', `${address}`],
-    ['지원 부서 (1지망)', `${department} ${team ? team +' 팀': ''}`],
-    ['지원 부서 (2지망)', `${secondary_department} ${secondary_team ? secondary_team + ' 팀': ''}`]
+    ['지원 부서 (1지망)', `${department} ${team === '없음' ? '' : team + '팀'}`],
+    ['지원 부서 (2지망)', `${secondary_department} ${secondary_team === '없음' ? '' : secondary_team +'팀'}`]
   ]
   return (
     <InformationCard
