@@ -1,5 +1,7 @@
 const User = require('../models/UserModel');
+const urlencode = require('urlencode');
 const moment = require('moment');
+const iconv = require('iconv-lite');
 
 const userDefulatInfo = (userObj) => {
 
@@ -26,14 +28,20 @@ const userDefulatInfo = (userObj) => {
         second: userObj.basic_info.secondary_department + ' ' + userObj.basic_info.secondary_team,
         can_moved: userObj.basic_info.can_moved,
         can_multiple_interview: userObj.basic_info.can_multiple_interview,
+        support_status: userObj.support_status,
     }
+}
+
+const matchSearchIndexandSchemaKey = (searchIndex) => {
+
 }
 
 const getUserList = async(req, res) => {
     try {
         const userList = await User
+//                                .find({"support_status": {$gt: 200}})
                                 .find()
-                                .select("basic_info")
+                                .select("basic_info support_status")
                                 .sort({_id: -1})
                                 .exec();
         console.log(userList);
@@ -63,11 +71,40 @@ const getTest = async(req, res) => {
     const name = '김연태';
     const test = true;
     try {
-        const userList = User
+        const userList = await User
                             .find({"basic_info.user_name": name})
+//                            .find()
                             .select("basic_info")
                             .sort({_id: -1})
                             .exec();
+        res.status(200).json({result: userList});
+    } catch(e) {
+        console.log(e);
+        res.status(500).json({message : JSON.stringify(e), result: null});
+    }
+}
+
+const searchUserList = async(req, res) => {
+    const searchIndex = req.params.type;
+    const searchKeyword = new RegExp(req.params.q);
+
+    console.log(req.params.type);
+    console.log(req.params.q);
+    console.log(decodeURIComponent(req.params.q));
+    console.log(iconv.decode(req.params.q, 'EUC-KR').toString());
+    console.log(searchKeyword);
+    const test = '김';
+    const test2 = new RegExp(test);
+    let searchKey;
+    if(searchIndex === 'name') searchKey = 'basic_info.user_name';
+    try {
+        const userList = await User
+                            .find({"basic_info.user_name": test2})
+//                            .find()
+                            .select("basic_info")
+                            .sort({_id: -1})
+                            .exec();
+
         res.status(200).json({result: userList});
     } catch(e) {
         console.log(e);
@@ -80,4 +117,5 @@ module.exports = {
     getUserList : getUserList,
     getUser : getUser,
     test: getTest,
+    searchUserList : searchUserList,
 }
