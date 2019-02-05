@@ -78,3 +78,938 @@
 2019-02-06 07:36:29: Something is already running on port 3000.
 2019-02-06 07:36:33: Something is already running on port 3000.
 2019-02-06 07:36:36: Something is already running on port 3000.
+2019-02-05 22:45:24: [HPM] Proxy created: /api  ->  http://localhost:3001
+2019-02-05 22:45:24: Starting the development server...
+2019-02-05 22:45:24: 
+2019-02-05 22:46:02: Compiled with warnings.
+2019-02-05 22:46:02: 
+2019-02-05 22:46:02: ./src/views/domains/contents/question/containers/QuestionManageContainer.js
+2019-02-05 22:46:02:   Line 12:    '_' is defined but never used             no-unused-vars
+2019-02-05 22:46:02:   Line 169:  'res' is assigned a value but never used  no-unused-vars
+2019-02-05 22:46:02: 
+2019-02-05 22:46:02: ./src/views/domains/login/Login.js
+2019-02-05 22:46:02:   Line 131:  img elements must have an alt prop, either with meaningful text, or an empty string for decorative images  jsx-a11y/alt-text
+2019-02-05 22:46:02: 
+2019-02-05 22:46:02: ./src/views/contexts/table/pagination/Pagination.js
+2019-02-05 22:46:02:   Line 17:  Expected to return a value at the end of arrow function  array-callback-return
+2019-02-05 22:46:02: 
+2019-02-05 22:46:02: ./src/views/domains/contents/dashboard/DashBoard.js
+2019-02-05 22:46:02:   Line 2:  'Bar' is defined but never used           no-unused-vars
+2019-02-05 22:46:02:   Line 7:  'bar' is assigned a value but never used  no-unused-vars
+2019-02-05 22:46:02: 
+2019-02-05 22:46:02: ./src/views/domains/contents/recruit/informationCardPack/questionInfo/QuestionInfo.js
+2019-02-05 22:46:02:   Line 2:  'moment' is defined but never used  no-unused-vars
+2019-02-05 22:46:02: 
+2019-02-05 22:46:02: ./src/views/domains/contents/recruit/informationCardPack/applyInfo/ApplyInfo.js
+2019-02-05 22:46:02:   Line 3:  'Divider' is defined but never used  no-unused-vars
+2019-02-05 22:46:02: 
+2019-02-05 22:46:02: ./src/App.js
+2019-02-05 22:46:02:   Line 54:  'waitCheckFlag' is assigned a value but never used  no-unused-vars
+2019-02-05 22:46:02: 
+2019-02-05 22:46:02: ./src/views/domains/contents/question/questionModal/QuestionModal.js
+2019-02-05 22:46:02:   Line 8:  'team' is assigned a value but never used  no-unused-vars
+2019-02-05 22:46:02: 
+2019-02-05 22:46:02: Search for the keywords to learn more about each warning.
+2019-02-05 22:46:02: To ignore, add // eslint-disable-next-line to the line before.
+2019-02-05 22:46:02: 
+2019-02-05 22:48:08: Compiling...
+2019-02-05 22:48:12: Compiled with warnings.
+2019-02-05 22:48:12: 
+2019-02-05 22:48:12: ./src/views/domains/contents/question/containers/QuestionManageContainer.js
+2019-02-05 22:48:12:   Line 12:    '_' is defined but never used             no-unused-vars
+2019-02-05 22:48:12:   Line 169:  'res' is assigned a value but never used  no-unused-vars
+2019-02-05 22:48:12: 
+2019-02-05 22:48:12: ./src/views/domains/login/Login.js
+2019-02-05 22:48:12:   Line 131:  img elements must have an alt prop, either with meaningful text, or an empty string for decorative images  jsx-a11y/alt-text
+2019-02-05 22:48:12: 
+2019-02-05 22:48:12: ./src/views/contexts/table/pagination/Pagination.js
+2019-02-05 22:48:12:   Line 17:  Expected to return a value at the end of arrow function  array-callback-return
+2019-02-05 22:48:12: 
+2019-02-05 22:48:12: ./src/views/domains/contents/dashboard/DashBoard.js
+2019-02-05 22:48:12:   Line 2:  'Bar' is defined but never used           no-unused-vars
+2019-02-05 22:48:12:   Line 7:  'bar' is assigned a value but never used  no-unused-vars
+2019-02-05 22:48:12: 
+2019-02-05 22:48:12: ./src/views/domains/contents/recruit/informationCardPack/questionInfo/QuestionInfo.js
+2019-02-05 22:48:12:   Line 2:  'moment' is defined but never used  no-unused-vars
+2019-02-05 22:48:12: 
+2019-02-05 22:48:12: ./src/views/domains/contents/recruit/informationCardPack/applyInfo/ApplyInfo.js
+2019-02-05 22:48:12:   Line 3:  'Divider' is defined but never used  no-unused-vars
+2019-02-05 22:48:12: 
+2019-02-05 22:48:12: ./src/App.js
+2019-02-05 22:48:12:   Line 54:  'waitCheckFlag' is assigned a value but never used  no-unused-vars
+2019-02-05 22:48:12: 
+2019-02-05 22:48:12: ./src/views/domains/contents/question/questionModal/QuestionModal.js
+2019-02-05 22:48:12:   Line 8:  'team' is assigned a value but never used  no-unused-vars
+2019-02-05 22:48:12: 
+2019-02-05 22:48:12: Search for the keywords to learn more about each warning.
+2019-02-05 22:48:12: To ignore, add // eslint-disable-next-line to the line before.
+2019-02-05 22:48:12: 
+2019-02-05 22:48:33: [HPM] Proxy created: /api  ->  http://localhost:3001
+2019-02-05 22:48:33: Starting the development server...
+2019-02-05 22:48:33: 
+2019-02-05 22:48:52: Compiled with warnings.
+2019-02-05 22:48:52: 
+2019-02-05 22:48:52: ./src/views/domains/contents/question/containers/QuestionManageContainer.js
+2019-02-05 22:48:52:   Line 12:    '_' is defined but never used             no-unused-vars
+2019-02-05 22:48:52:   Line 169:  'res' is assigned a value but never used  no-unused-vars
+2019-02-05 22:48:52: 
+2019-02-05 22:48:52: ./src/views/domains/login/Login.js
+2019-02-05 22:48:52:   Line 131:  img elements must have an alt prop, either with meaningful text, or an empty string for decorative images  jsx-a11y/alt-text
+2019-02-05 22:48:52: 
+2019-02-05 22:48:52: ./src/views/contexts/table/pagination/Pagination.js
+2019-02-05 22:48:52:   Line 17:  Expected to return a value at the end of arrow function  array-callback-return
+2019-02-05 22:48:52: 
+2019-02-05 22:48:52: ./src/views/domains/contents/dashboard/DashBoard.js
+2019-02-05 22:48:52:   Line 2:  'Bar' is defined but never used           no-unused-vars
+2019-02-05 22:48:52:   Line 7:  'bar' is assigned a value but never used  no-unused-vars
+2019-02-05 22:48:52: 
+2019-02-05 22:48:52: ./src/views/domains/contents/recruit/informationCardPack/questionInfo/QuestionInfo.js
+2019-02-05 22:48:52:   Line 2:  'moment' is defined but never used  no-unused-vars
+2019-02-05 22:48:52: 
+2019-02-05 22:48:52: ./src/views/domains/contents/recruit/informationCardPack/applyInfo/ApplyInfo.js
+2019-02-05 22:48:52:   Line 3:  'Divider' is defined but never used  no-unused-vars
+2019-02-05 22:48:52: 
+2019-02-05 22:48:52: ./src/App.js
+2019-02-05 22:48:52:   Line 54:  'waitCheckFlag' is assigned a value but never used  no-unused-vars
+2019-02-05 22:48:52: 
+2019-02-05 22:48:52: ./src/views/domains/contents/question/questionModal/QuestionModal.js
+2019-02-05 22:48:52:   Line 8:  'team' is assigned a value but never used  no-unused-vars
+2019-02-05 22:48:52: 
+2019-02-05 22:48:52: Search for the keywords to learn more about each warning.
+2019-02-05 22:48:52: To ignore, add // eslint-disable-next-line to the line before.
+2019-02-05 22:48:52: 
+2019-02-05 22:54:29: Attempting to bind to HOST environment variable: recruiting.freemedical.org
+2019-02-05 22:54:29: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:54:29: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:54:29: 
+2019-02-05 22:54:30: Could not find an open port at recruiting.freemedical.org.
+2019-02-05 22:54:30: Network error message: listen EADDRNOTAVAIL: address not available 69.172.201.153
+2019-02-05 22:54:30: 
+2019-02-05 22:54:31: Attempting to bind to HOST environment variable: recruiting.freemedical.org
+2019-02-05 22:54:31: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:54:31: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:54:31: 
+2019-02-05 22:54:31: Could not find an open port at recruiting.freemedical.org.
+2019-02-05 22:54:31: Network error message: listen EADDRNOTAVAIL: address not available 69.172.201.153
+2019-02-05 22:54:31: 
+2019-02-05 22:54:33: Attempting to bind to HOST environment variable: recruiting.freemedical.org
+2019-02-05 22:54:33: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:54:33: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:54:33: 
+2019-02-05 22:54:33: Could not find an open port at recruiting.freemedical.org.
+2019-02-05 22:54:33: Network error message: listen EADDRNOTAVAIL: address not available 69.172.201.153
+2019-02-05 22:54:33: 
+2019-02-05 22:54:35: Attempting to bind to HOST environment variable: recruiting.freemedical.org
+2019-02-05 22:54:35: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:54:35: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:54:35: 
+2019-02-05 22:54:35: Could not find an open port at recruiting.freemedical.org.
+2019-02-05 22:54:35: Network error message: listen EADDRNOTAVAIL: address not available 69.172.201.153
+2019-02-05 22:54:35: 
+2019-02-05 22:54:37: Attempting to bind to HOST environment variable: recruiting.freemedical.org
+2019-02-05 22:54:37: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:54:37: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:54:37: 
+2019-02-05 22:54:37: Could not find an open port at recruiting.freemedical.org.
+2019-02-05 22:54:37: Network error message: listen EADDRNOTAVAIL: address not available 69.172.201.153
+2019-02-05 22:54:37: 
+2019-02-05 22:54:39: Attempting to bind to HOST environment variable: recruiting.freemedical.org
+2019-02-05 22:54:39: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:54:39: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:54:39: 
+2019-02-05 22:54:39: Could not find an open port at recruiting.freemedical.org.
+2019-02-05 22:54:39: Network error message: listen EADDRNOTAVAIL: address not available 69.172.201.153
+2019-02-05 22:54:39: 
+2019-02-05 22:54:40: Attempting to bind to HOST environment variable: recruiting.freemedical.org
+2019-02-05 22:54:40: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:54:40: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:54:40: 
+2019-02-05 22:54:40: Could not find an open port at recruiting.freemedical.org.
+2019-02-05 22:54:40: Network error message: listen EADDRNOTAVAIL: address not available 69.172.201.153
+2019-02-05 22:54:40: 
+2019-02-05 22:54:42: Attempting to bind to HOST environment variable: recruiting.freemedical.org
+2019-02-05 22:54:42: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:54:42: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:54:42: 
+2019-02-05 22:54:42: Could not find an open port at recruiting.freemedical.org.
+2019-02-05 22:54:42: Network error message: listen EADDRNOTAVAIL: address not available 69.172.201.153
+2019-02-05 22:54:42: 
+2019-02-05 22:54:44: Attempting to bind to HOST environment variable: recruiting.freemedical.org
+2019-02-05 22:54:44: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:54:44: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:54:44: 
+2019-02-05 22:54:44: Could not find an open port at recruiting.freemedical.org.
+2019-02-05 22:54:44: Network error message: listen EADDRNOTAVAIL: address not available 69.172.201.153
+2019-02-05 22:54:44: 
+2019-02-05 22:54:45: Attempting to bind to HOST environment variable: recruiting.freemedical.org
+2019-02-05 22:54:45: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:54:45: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:54:46: 
+2019-02-05 22:54:46: Could not find an open port at recruiting.freemedical.org.
+2019-02-05 22:54:46: Network error message: listen EADDRNOTAVAIL: address not available 69.172.201.153
+2019-02-05 22:54:46: 
+2019-02-05 22:54:47: Attempting to bind to HOST environment variable: recruiting.freemedical.org
+2019-02-05 22:54:47: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:54:47: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:54:47: 
+2019-02-05 22:54:47: Could not find an open port at recruiting.freemedical.org.
+2019-02-05 22:54:47: Network error message: listen EADDRNOTAVAIL: address not available 69.172.201.153
+2019-02-05 22:54:47: 
+2019-02-05 22:54:49: Attempting to bind to HOST environment variable: recruiting.freemedical.org
+2019-02-05 22:54:49: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:54:49: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:54:49: 
+2019-02-05 22:54:49: Could not find an open port at recruiting.freemedical.org.
+2019-02-05 22:54:49: Network error message: listen EADDRNOTAVAIL: address not available 69.172.201.153
+2019-02-05 22:54:49: 
+2019-02-05 22:54:51: Attempting to bind to HOST environment variable: recruiting.freemedical.org
+2019-02-05 22:54:51: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:54:51: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:54:51: 
+2019-02-05 22:54:51: Could not find an open port at recruiting.freemedical.org.
+2019-02-05 22:54:51: Network error message: listen EADDRNOTAVAIL: address not available 69.172.201.153
+2019-02-05 22:54:51: 
+2019-02-05 22:54:52: Attempting to bind to HOST environment variable: recruiting.freemedical.org
+2019-02-05 22:54:52: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:54:52: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:54:52: 
+2019-02-05 22:54:52: Could not find an open port at recruiting.freemedical.org.
+2019-02-05 22:54:52: Network error message: listen EADDRNOTAVAIL: address not available 69.172.201.153
+2019-02-05 22:54:52: 
+2019-02-05 22:55:32: Attempting to bind to HOST environment variable: 172.31.25.32
+2019-02-05 22:55:32: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:55:32: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:55:32: 
+2019-02-05 22:55:33: [HPM] Proxy created: /api  ->  http://localhost:3001
+2019-02-05 22:55:33: Starting the development server...
+2019-02-05 22:55:33: 
+2019-02-05 22:55:51: Compiled with warnings.
+2019-02-05 22:55:51: 
+2019-02-05 22:55:51: ./src/views/domains/contents/question/containers/QuestionManageContainer.js
+2019-02-05 22:55:51:   Line 12:    '_' is defined but never used             no-unused-vars
+2019-02-05 22:55:51:   Line 169:  'res' is assigned a value but never used  no-unused-vars
+2019-02-05 22:55:51: 
+2019-02-05 22:55:51: ./src/views/domains/login/Login.js
+2019-02-05 22:55:51:   Line 131:  img elements must have an alt prop, either with meaningful text, or an empty string for decorative images  jsx-a11y/alt-text
+2019-02-05 22:55:51: 
+2019-02-05 22:55:51: ./src/views/contexts/table/pagination/Pagination.js
+2019-02-05 22:55:51:   Line 17:  Expected to return a value at the end of arrow function  array-callback-return
+2019-02-05 22:55:51: 
+2019-02-05 22:55:51: ./src/views/domains/contents/dashboard/DashBoard.js
+2019-02-05 22:55:51:   Line 2:  'Bar' is defined but never used           no-unused-vars
+2019-02-05 22:55:51:   Line 7:  'bar' is assigned a value but never used  no-unused-vars
+2019-02-05 22:55:51: 
+2019-02-05 22:55:51: ./src/views/domains/contents/recruit/informationCardPack/questionInfo/QuestionInfo.js
+2019-02-05 22:55:51:   Line 2:  'moment' is defined but never used  no-unused-vars
+2019-02-05 22:55:51: 
+2019-02-05 22:55:51: ./src/views/domains/contents/recruit/informationCardPack/applyInfo/ApplyInfo.js
+2019-02-05 22:55:51:   Line 3:  'Divider' is defined but never used  no-unused-vars
+2019-02-05 22:55:51: 
+2019-02-05 22:55:51: ./src/App.js
+2019-02-05 22:55:51:   Line 54:  'waitCheckFlag' is assigned a value but never used  no-unused-vars
+2019-02-05 22:55:51: 
+2019-02-05 22:55:51: ./src/views/domains/contents/question/questionModal/QuestionModal.js
+2019-02-05 22:55:51:   Line 8:  'team' is assigned a value but never used  no-unused-vars
+2019-02-05 22:55:51: 
+2019-02-05 22:55:51: Search for the keywords to learn more about each warning.
+2019-02-05 22:55:51: To ignore, add // eslint-disable-next-line to the line before.
+2019-02-05 22:55:51: 
+2019-02-05 22:57:13: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:57:13: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:57:13: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:57:13: 
+2019-02-05 22:57:13: Could not find an open port at 13.209.65.66.
+2019-02-05 22:57:13: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:57:13: 
+2019-02-05 22:57:15: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:57:15: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:57:15: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:57:15: 
+2019-02-05 22:57:15: Could not find an open port at 13.209.65.66.
+2019-02-05 22:57:15: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:57:15: 
+2019-02-05 22:57:17: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:57:17: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:57:17: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:57:17: 
+2019-02-05 22:57:17: Could not find an open port at 13.209.65.66.
+2019-02-05 22:57:17: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:57:17: 
+2019-02-05 22:57:19: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:57:19: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:57:19: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:57:19: 
+2019-02-05 22:57:19: Could not find an open port at 13.209.65.66.
+2019-02-05 22:57:19: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:57:19: 
+2019-02-05 22:57:21: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:57:21: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:57:21: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:57:21: 
+2019-02-05 22:57:21: Could not find an open port at 13.209.65.66.
+2019-02-05 22:57:21: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:57:21: 
+2019-02-05 22:57:22: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:57:22: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:57:22: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:57:22: 
+2019-02-05 22:57:22: Could not find an open port at 13.209.65.66.
+2019-02-05 22:57:22: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:57:22: 
+2019-02-05 22:57:24: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:57:24: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:57:24: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:57:24: 
+2019-02-05 22:57:24: Could not find an open port at 13.209.65.66.
+2019-02-05 22:57:24: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:57:24: 
+2019-02-05 22:57:50: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:57:50: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:57:50: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:57:50: 
+2019-02-05 22:57:50: Could not find an open port at 13.209.65.66.
+2019-02-05 22:57:50: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:57:50: 
+2019-02-05 22:57:52: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:57:52: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:57:52: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:57:52: 
+2019-02-05 22:57:52: Could not find an open port at 13.209.65.66.
+2019-02-05 22:57:52: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:57:52: 
+2019-02-05 22:57:53: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:57:53: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:57:53: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:57:53: 
+2019-02-05 22:57:54: Could not find an open port at 13.209.65.66.
+2019-02-05 22:57:54: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:57:54: 
+2019-02-05 22:57:55: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:57:55: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:57:55: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:57:55: 
+2019-02-05 22:57:55: Could not find an open port at 13.209.65.66.
+2019-02-05 22:57:55: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:57:55: 
+2019-02-05 22:57:57: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:57:57: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:57:57: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:57:57: 
+2019-02-05 22:57:57: Could not find an open port at 13.209.65.66.
+2019-02-05 22:57:57: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:57:57: 
+2019-02-05 22:57:59: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:57:59: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:57:59: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:57:59: 
+2019-02-05 22:57:59: Could not find an open port at 13.209.65.66.
+2019-02-05 22:57:59: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:57:59: 
+2019-02-05 22:58:01: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:01: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:01: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:01: 
+2019-02-05 22:58:01: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:01: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:01: 
+2019-02-05 22:58:03: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:03: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:03: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:03: 
+2019-02-05 22:58:03: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:03: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:03: 
+2019-02-05 22:58:04: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:04: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:04: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:04: 
+2019-02-05 22:58:04: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:04: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:04: 
+2019-02-05 22:58:06: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:06: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:06: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:06: 
+2019-02-05 22:58:06: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:06: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:06: 
+2019-02-05 22:58:08: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:08: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:08: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:08: 
+2019-02-05 22:58:08: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:08: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:08: 
+2019-02-05 22:58:09: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:09: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:09: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:09: 
+2019-02-05 22:58:09: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:09: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:09: 
+2019-02-05 22:58:11: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:11: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:11: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:11: 
+2019-02-05 22:58:11: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:11: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:11: 
+2019-02-05 22:58:13: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:13: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:13: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:13: 
+2019-02-05 22:58:13: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:13: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:13: 
+2019-02-05 22:58:15: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:15: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:15: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:15: 
+2019-02-05 22:58:15: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:15: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:15: 
+2019-02-05 22:58:16: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:16: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:16: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:16: 
+2019-02-05 22:58:16: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:16: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:16: 
+2019-02-05 22:58:18: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:18: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:18: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:18: 
+2019-02-05 22:58:18: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:18: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:18: 
+2019-02-05 22:58:20: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:20: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:20: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:20: 
+2019-02-05 22:58:20: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:20: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:20: 
+2019-02-05 22:58:22: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:22: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:22: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:22: 
+2019-02-05 22:58:22: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:22: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:22: 
+2019-02-05 22:58:23: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:23: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:23: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:23: 
+2019-02-05 22:58:23: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:23: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:23: 
+2019-02-05 22:58:25: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:25: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:25: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:25: 
+2019-02-05 22:58:25: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:25: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:25: 
+2019-02-05 22:58:27: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:27: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:27: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:27: 
+2019-02-05 22:58:27: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:27: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:27: 
+2019-02-05 22:58:29: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:29: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:29: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:29: 
+2019-02-05 22:58:29: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:29: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:29: 
+2019-02-05 22:58:30: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:30: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:30: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:30: 
+2019-02-05 22:58:30: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:30: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:30: 
+2019-02-05 22:58:32: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:32: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:32: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:32: 
+2019-02-05 22:58:32: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:32: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:32: 
+2019-02-05 22:58:34: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:34: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:34: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:34: 
+2019-02-05 22:58:34: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:34: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:34: 
+2019-02-05 22:58:36: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:36: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:36: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:36: 
+2019-02-05 22:58:36: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:36: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:36: 
+2019-02-05 22:58:37: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:37: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:37: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:37: 
+2019-02-05 22:58:37: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:37: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:37: 
+2019-02-05 22:58:39: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:39: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:39: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:39: 
+2019-02-05 22:58:39: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:39: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:39: 
+2019-02-05 22:58:41: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:41: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:41: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:41: 
+2019-02-05 22:58:41: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:41: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:41: 
+2019-02-05 22:58:42: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:42: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:42: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:42: 
+2019-02-05 22:58:43: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:43: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:43: 
+2019-02-05 22:58:44: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:44: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:44: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:44: 
+2019-02-05 22:58:44: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:44: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:44: 
+2019-02-05 22:58:46: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:46: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:46: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:46: 
+2019-02-05 22:58:46: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:46: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:46: 
+2019-02-05 22:58:48: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:48: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:48: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:48: 
+2019-02-05 22:58:48: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:48: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:48: 
+2019-02-05 22:58:49: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:49: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:49: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:49: 
+2019-02-05 22:58:49: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:49: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:49: 
+2019-02-05 22:58:51: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:51: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:51: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:51: 
+2019-02-05 22:58:51: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:51: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:51: 
+2019-02-05 22:58:53: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:53: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:53: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:53: 
+2019-02-05 22:58:53: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:53: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:53: 
+2019-02-05 22:58:55: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:55: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:55: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:55: 
+2019-02-05 22:58:55: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:55: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:55: 
+2019-02-05 22:58:56: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:56: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:56: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:56: 
+2019-02-05 22:58:56: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:56: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:56: 
+2019-02-05 22:58:58: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:58:58: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:58:58: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:58:58: 
+2019-02-05 22:58:58: Could not find an open port at 13.209.65.66.
+2019-02-05 22:58:58: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:58:58: 
+2019-02-05 22:59:00: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:00: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:00: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:00: 
+2019-02-05 22:59:00: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:00: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:00: 
+2019-02-05 22:59:02: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:02: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:02: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:02: 
+2019-02-05 22:59:02: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:02: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:02: 
+2019-02-05 22:59:03: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:03: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:03: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:03: 
+2019-02-05 22:59:03: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:03: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:03: 
+2019-02-05 22:59:05: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:05: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:05: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:05: 
+2019-02-05 22:59:05: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:05: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:05: 
+2019-02-05 22:59:07: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:07: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:07: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:07: 
+2019-02-05 22:59:07: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:07: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:07: 
+2019-02-05 22:59:09: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:09: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:09: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:09: 
+2019-02-05 22:59:09: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:09: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:09: 
+2019-02-05 22:59:10: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:10: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:10: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:10: 
+2019-02-05 22:59:10: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:10: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:10: 
+2019-02-05 22:59:12: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:12: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:12: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:12: 
+2019-02-05 22:59:12: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:12: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:12: 
+2019-02-05 22:59:14: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:14: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:14: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:14: 
+2019-02-05 22:59:14: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:14: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:14: 
+2019-02-05 22:59:16: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:16: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:16: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:16: 
+2019-02-05 22:59:16: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:16: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:16: 
+2019-02-05 22:59:17: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:17: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:17: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:17: 
+2019-02-05 22:59:17: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:17: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:17: 
+2019-02-05 22:59:19: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:19: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:19: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:19: 
+2019-02-05 22:59:19: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:19: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:19: 
+2019-02-05 22:59:21: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:21: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:21: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:21: 
+2019-02-05 22:59:21: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:21: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:21: 
+2019-02-05 22:59:22: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:22: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:22: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:22: 
+2019-02-05 22:59:22: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:22: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:22: 
+2019-02-05 22:59:24: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:24: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:24: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:24: 
+2019-02-05 22:59:24: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:24: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:24: 
+2019-02-05 22:59:26: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:26: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:26: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:26: 
+2019-02-05 22:59:26: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:26: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:26: 
+2019-02-05 22:59:28: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:28: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:28: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:28: 
+2019-02-05 22:59:28: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:28: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:28: 
+2019-02-05 22:59:29: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:29: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:29: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:29: 
+2019-02-05 22:59:29: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:29: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:29: 
+2019-02-05 22:59:31: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:31: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:31: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:31: 
+2019-02-05 22:59:31: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:31: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:31: 
+2019-02-05 22:59:33: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:33: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:33: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:33: 
+2019-02-05 22:59:33: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:33: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:33: 
+2019-02-05 22:59:35: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:35: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:35: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:35: 
+2019-02-05 22:59:35: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:35: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:35: 
+2019-02-05 22:59:37: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:37: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:37: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:37: 
+2019-02-05 22:59:37: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:37: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:37: 
+2019-02-05 22:59:38: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:38: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:38: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:38: 
+2019-02-05 22:59:38: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:38: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:38: 
+2019-02-05 22:59:40: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:40: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:40: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:40: 
+2019-02-05 22:59:40: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:40: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:40: 
+2019-02-05 22:59:42: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:42: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:42: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:42: 
+2019-02-05 22:59:42: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:42: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:42: 
+2019-02-05 22:59:44: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:44: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:44: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:44: 
+2019-02-05 22:59:44: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:44: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:44: 
+2019-02-05 22:59:45: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:45: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:45: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:45: 
+2019-02-05 22:59:45: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:45: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:45: 
+2019-02-05 22:59:47: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:47: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:47: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:47: 
+2019-02-05 22:59:47: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:47: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:47: 
+2019-02-05 22:59:49: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:49: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:49: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:49: 
+2019-02-05 22:59:49: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:49: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:49: 
+2019-02-05 22:59:51: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:51: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:51: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:51: 
+2019-02-05 22:59:51: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:51: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:51: 
+2019-02-05 22:59:53: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:53: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:53: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:53: 
+2019-02-05 22:59:53: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:53: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:53: 
+2019-02-05 22:59:54: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:54: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:54: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:54: 
+2019-02-05 22:59:54: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:54: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:54: 
+2019-02-05 22:59:56: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:56: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:56: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:56: 
+2019-02-05 22:59:56: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:56: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:56: 
+2019-02-05 22:59:58: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 22:59:58: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 22:59:58: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 22:59:58: 
+2019-02-05 22:59:58: Could not find an open port at 13.209.65.66.
+2019-02-05 22:59:58: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 22:59:58: 
+2019-02-05 23:00:00: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 23:00:00: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 23:00:00: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 23:00:00: 
+2019-02-05 23:00:00: Could not find an open port at 13.209.65.66.
+2019-02-05 23:00:00: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 23:00:00: 
+2019-02-05 23:00:01: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 23:00:01: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 23:00:01: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 23:00:01: 
+2019-02-05 23:00:01: Could not find an open port at 13.209.65.66.
+2019-02-05 23:00:01: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 23:00:01: 
+2019-02-05 23:00:03: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 23:00:03: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 23:00:03: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 23:00:03: 
+2019-02-05 23:00:03: Could not find an open port at 13.209.65.66.
+2019-02-05 23:00:03: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 23:00:03: 
+2019-02-05 23:00:05: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 23:00:05: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 23:00:05: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 23:00:05: 
+2019-02-05 23:00:05: Could not find an open port at 13.209.65.66.
+2019-02-05 23:00:05: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 23:00:05: 
+2019-02-05 23:00:07: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 23:00:07: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 23:00:07: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 23:00:07: 
+2019-02-05 23:00:07: Could not find an open port at 13.209.65.66.
+2019-02-05 23:00:07: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 23:00:07: 
+2019-02-05 23:00:08: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 23:00:08: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 23:00:08: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 23:00:08: 
+2019-02-05 23:00:08: Could not find an open port at 13.209.65.66.
+2019-02-05 23:00:08: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 23:00:08: 
+2019-02-05 23:00:10: Attempting to bind to HOST environment variable: 13.209.65.66
+2019-02-05 23:00:10: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 23:00:10: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 23:00:10: 
+2019-02-05 23:00:10: Could not find an open port at 13.209.65.66.
+2019-02-05 23:00:10: Network error message: listen EADDRNOTAVAIL: address not available 13.209.65.66
+2019-02-05 23:00:10: 
+2019-02-05 23:00:12: Attempting to bind to HOST environment variable: 127.0.0.1
+2019-02-05 23:00:12: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 23:00:12: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 23:00:12: 
+2019-02-05 23:00:13: [HPM] Proxy created: /api  ->  http://localhost:3001
+2019-02-05 23:00:13: Starting the development server...
+2019-02-05 23:00:13: 
+2019-02-05 23:00:23: Attempting to bind to HOST environment variable: 127.0.0.1
+2019-02-05 23:00:23: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 23:00:23: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 23:00:23: 
+2019-02-05 23:00:23: [HPM] Proxy created: /api  ->  http://localhost:3001
+2019-02-05 23:00:23: Starting the development server...
+2019-02-05 23:00:23: 
+2019-02-05 23:00:40: Compiled with warnings.
+2019-02-05 23:00:40: 
+2019-02-05 23:00:40: ./src/views/domains/contents/question/containers/QuestionManageContainer.js
+2019-02-05 23:00:40:   Line 12:    '_' is defined but never used             no-unused-vars
+2019-02-05 23:00:40:   Line 169:  'res' is assigned a value but never used  no-unused-vars
+2019-02-05 23:00:40: 
+2019-02-05 23:00:40: ./src/views/domains/login/Login.js
+2019-02-05 23:00:40:   Line 131:  img elements must have an alt prop, either with meaningful text, or an empty string for decorative images  jsx-a11y/alt-text
+2019-02-05 23:00:40: 
+2019-02-05 23:00:40: ./src/views/contexts/table/pagination/Pagination.js
+2019-02-05 23:00:40:   Line 17:  Expected to return a value at the end of arrow function  array-callback-return
+2019-02-05 23:00:40: 
+2019-02-05 23:00:40: ./src/views/domains/contents/dashboard/DashBoard.js
+2019-02-05 23:00:40:   Line 2:  'Bar' is defined but never used           no-unused-vars
+2019-02-05 23:00:40:   Line 7:  'bar' is assigned a value but never used  no-unused-vars
+2019-02-05 23:00:40: 
+2019-02-05 23:00:40: ./src/views/domains/contents/recruit/informationCardPack/questionInfo/QuestionInfo.js
+2019-02-05 23:00:40:   Line 2:  'moment' is defined but never used  no-unused-vars
+2019-02-05 23:00:40: 
+2019-02-05 23:00:40: ./src/views/domains/contents/recruit/informationCardPack/applyInfo/ApplyInfo.js
+2019-02-05 23:00:40:   Line 3:  'Divider' is defined but never used  no-unused-vars
+2019-02-05 23:00:40: 
+2019-02-05 23:00:40: ./src/App.js
+2019-02-05 23:00:40:   Line 54:  'waitCheckFlag' is assigned a value but never used  no-unused-vars
+2019-02-05 23:00:40: 
+2019-02-05 23:00:40: ./src/views/domains/contents/question/questionModal/QuestionModal.js
+2019-02-05 23:00:40:   Line 8:  'team' is assigned a value but never used  no-unused-vars
+2019-02-05 23:00:40: 
+2019-02-05 23:00:40: Search for the keywords to learn more about each warning.
+2019-02-05 23:00:40: To ignore, add // eslint-disable-next-line to the line before.
+2019-02-05 23:00:40: 
+2019-02-05 23:10:01: Attempting to bind to HOST environment variable: 127.0.0.1
+2019-02-05 23:10:01: If this was unintentional, check that you haven't mistakenly set it in your shell.
+2019-02-05 23:10:01: Learn more here: http://bit.ly/CRA-advanced-config
+2019-02-05 23:10:01: 
+2019-02-05 23:10:02: [HPM] Proxy created: /api  ->  http://localhost:3001
+2019-02-05 23:10:02: Starting the development server...
+2019-02-05 23:10:02: 
+2019-02-05 23:10:21: Compiled with warnings.
+2019-02-05 23:10:21: 
+2019-02-05 23:10:21: ./src/views/domains/contents/question/containers/QuestionManageContainer.js
+2019-02-05 23:10:21:   Line 12:    '_' is defined but never used             no-unused-vars
+2019-02-05 23:10:21:   Line 169:  'res' is assigned a value but never used  no-unused-vars
+2019-02-05 23:10:21: 
+2019-02-05 23:10:21: ./src/views/domains/login/Login.js
+2019-02-05 23:10:21:   Line 131:  img elements must have an alt prop, either with meaningful text, or an empty string for decorative images  jsx-a11y/alt-text
+2019-02-05 23:10:21: 
+2019-02-05 23:10:21: ./src/views/contexts/table/pagination/Pagination.js
+2019-02-05 23:10:21:   Line 17:  Expected to return a value at the end of arrow function  array-callback-return
+2019-02-05 23:10:21: 
+2019-02-05 23:10:21: ./src/views/domains/contents/dashboard/DashBoard.js
+2019-02-05 23:10:21:   Line 2:  'Bar' is defined but never used           no-unused-vars
+2019-02-05 23:10:21:   Line 7:  'bar' is assigned a value but never used  no-unused-vars
+2019-02-05 23:10:21: 
+2019-02-05 23:10:21: ./src/views/domains/contents/recruit/informationCardPack/questionInfo/QuestionInfo.js
+2019-02-05 23:10:21:   Line 2:  'moment' is defined but never used  no-unused-vars
+2019-02-05 23:10:21: 
+2019-02-05 23:10:21: ./src/views/domains/contents/recruit/informationCardPack/applyInfo/ApplyInfo.js
+2019-02-05 23:10:21:   Line 3:  'Divider' is defined but never used  no-unused-vars
+2019-02-05 23:10:21: 
+2019-02-05 23:10:21: ./src/App.js
+2019-02-05 23:10:21:   Line 54:  'waitCheckFlag' is assigned a value but never used  no-unused-vars
+2019-02-05 23:10:21: 
+2019-02-05 23:10:21: ./src/views/domains/contents/question/questionModal/QuestionModal.js
+2019-02-05 23:10:21:   Line 8:  'team' is assigned a value but never used  no-unused-vars
+2019-02-05 23:10:21: 
+2019-02-05 23:10:21: Search for the keywords to learn more about each warning.
+2019-02-05 23:10:21: To ignore, add // eslint-disable-next-line to the line before.
+2019-02-05 23:10:21: 
