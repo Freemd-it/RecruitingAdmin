@@ -1,0 +1,408 @@
+2019-02-05 18:32:20: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:32:20:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:32:20:     at Pool.emit (events.js:182:13)
+2019-02-05 18:32:20:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:32:20:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:32:20:     at Connection.emit (events.js:182:13)
+2019-02-05 18:32:20:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:32:20:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:32:20:     at Socket.emit (events.js:182:13)
+2019-02-05 18:32:20:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:32:20:     at ontimeout (timers.js:436:11)
+2019-02-05 18:32:20:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:32:20:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:32:20:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:32:20:   name: 'MongoNetworkError',
+2019-02-05 18:32:20:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:32:20:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:32:52: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:32:52:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:32:52:     at Pool.emit (events.js:182:13)
+2019-02-05 18:32:52:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:32:52:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:32:52:     at Connection.emit (events.js:182:13)
+2019-02-05 18:32:52:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:32:52:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:32:52:     at Socket.emit (events.js:182:13)
+2019-02-05 18:32:52:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:32:52:     at ontimeout (timers.js:436:11)
+2019-02-05 18:32:52:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:32:52:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:32:52:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:32:52:   name: 'MongoNetworkError',
+2019-02-05 18:32:52:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:32:52:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:33:24: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:33:24:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:33:24:     at Pool.emit (events.js:182:13)
+2019-02-05 18:33:24:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:33:24:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:33:24:     at Connection.emit (events.js:182:13)
+2019-02-05 18:33:24:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:33:24:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:33:24:     at Socket.emit (events.js:182:13)
+2019-02-05 18:33:24:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:33:24:     at ontimeout (timers.js:436:11)
+2019-02-05 18:33:24:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:33:24:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:33:24:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:33:24:   name: 'MongoNetworkError',
+2019-02-05 18:33:24:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:33:24:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:33:56: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:33:56:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:33:56:     at Pool.emit (events.js:182:13)
+2019-02-05 18:33:56:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:33:56:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:33:56:     at Connection.emit (events.js:182:13)
+2019-02-05 18:33:56:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:33:56:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:33:56:     at Socket.emit (events.js:182:13)
+2019-02-05 18:33:56:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:33:56:     at ontimeout (timers.js:436:11)
+2019-02-05 18:33:56:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:33:56:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:33:56:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:33:56:   name: 'MongoNetworkError',
+2019-02-05 18:33:56:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:33:56:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:34:28: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:34:28:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:34:28:     at Pool.emit (events.js:182:13)
+2019-02-05 18:34:28:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:34:28:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:34:28:     at Connection.emit (events.js:182:13)
+2019-02-05 18:34:28:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:34:28:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:34:28:     at Socket.emit (events.js:182:13)
+2019-02-05 18:34:28:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:34:28:     at ontimeout (timers.js:436:11)
+2019-02-05 18:34:28:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:34:28:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:34:28:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:34:28:   name: 'MongoNetworkError',
+2019-02-05 18:34:28:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:34:28:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:35:00: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:35:00:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:35:00:     at Pool.emit (events.js:182:13)
+2019-02-05 18:35:00:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:35:00:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:35:00:     at Connection.emit (events.js:182:13)
+2019-02-05 18:35:00:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:35:00:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:35:00:     at Socket.emit (events.js:182:13)
+2019-02-05 18:35:00:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:35:00:     at ontimeout (timers.js:436:11)
+2019-02-05 18:35:00:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:35:00:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:35:00:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:35:00:   name: 'MongoNetworkError',
+2019-02-05 18:35:00:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:35:00:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:35:33: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:35:33:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:35:33:     at Pool.emit (events.js:182:13)
+2019-02-05 18:35:33:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:35:33:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:35:33:     at Connection.emit (events.js:182:13)
+2019-02-05 18:35:33:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:35:33:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:35:33:     at Socket.emit (events.js:182:13)
+2019-02-05 18:35:33:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:35:33:     at ontimeout (timers.js:436:11)
+2019-02-05 18:35:33:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:35:33:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:35:33:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:35:33:   name: 'MongoNetworkError',
+2019-02-05 18:35:33:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:35:33:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:36:05: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:36:05:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:36:05:     at Pool.emit (events.js:182:13)
+2019-02-05 18:36:05:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:36:05:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:36:05:     at Connection.emit (events.js:182:13)
+2019-02-05 18:36:05:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:36:05:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:36:05:     at Socket.emit (events.js:182:13)
+2019-02-05 18:36:05:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:36:05:     at ontimeout (timers.js:436:11)
+2019-02-05 18:36:05:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:36:05:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:36:05:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:36:05:   name: 'MongoNetworkError',
+2019-02-05 18:36:05:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:36:05:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:36:37: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:36:37:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:36:37:     at Pool.emit (events.js:182:13)
+2019-02-05 18:36:37:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:36:37:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:36:37:     at Connection.emit (events.js:182:13)
+2019-02-05 18:36:37:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:36:37:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:36:37:     at Socket.emit (events.js:182:13)
+2019-02-05 18:36:37:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:36:37:     at ontimeout (timers.js:436:11)
+2019-02-05 18:36:37:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:36:37:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:36:37:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:36:37:   name: 'MongoNetworkError',
+2019-02-05 18:36:37:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:36:37:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:37:09: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:37:09:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:37:09:     at Pool.emit (events.js:182:13)
+2019-02-05 18:37:09:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:37:09:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:37:09:     at Connection.emit (events.js:182:13)
+2019-02-05 18:37:09:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:37:09:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:37:09:     at Socket.emit (events.js:182:13)
+2019-02-05 18:37:09:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:37:09:     at ontimeout (timers.js:436:11)
+2019-02-05 18:37:09:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:37:09:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:37:09:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:37:09:   name: 'MongoNetworkError',
+2019-02-05 18:37:09:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:37:09:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:37:42: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:37:42:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:37:42:     at Pool.emit (events.js:182:13)
+2019-02-05 18:37:42:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:37:42:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:37:42:     at Connection.emit (events.js:182:13)
+2019-02-05 18:37:42:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:37:42:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:37:42:     at Socket.emit (events.js:182:13)
+2019-02-05 18:37:42:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:37:42:     at ontimeout (timers.js:436:11)
+2019-02-05 18:37:42:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:37:42:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:37:42:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:37:42:   name: 'MongoNetworkError',
+2019-02-05 18:37:42:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:37:42:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:38:14: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:38:14:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:38:14:     at Pool.emit (events.js:182:13)
+2019-02-05 18:38:14:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:38:14:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:38:14:     at Connection.emit (events.js:182:13)
+2019-02-05 18:38:14:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:38:14:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:38:14:     at Socket.emit (events.js:182:13)
+2019-02-05 18:38:14:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:38:14:     at ontimeout (timers.js:436:11)
+2019-02-05 18:38:14:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:38:14:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:38:14:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:38:14:   name: 'MongoNetworkError',
+2019-02-05 18:38:14:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:38:14:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:38:46: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:38:46:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:38:46:     at Pool.emit (events.js:182:13)
+2019-02-05 18:38:46:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:38:46:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:38:46:     at Connection.emit (events.js:182:13)
+2019-02-05 18:38:46:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:38:46:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:38:46:     at Socket.emit (events.js:182:13)
+2019-02-05 18:38:46:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:38:46:     at ontimeout (timers.js:436:11)
+2019-02-05 18:38:46:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:38:46:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:38:46:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:38:46:   name: 'MongoNetworkError',
+2019-02-05 18:38:46:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:38:46:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:39:18: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:39:18:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:39:18:     at Pool.emit (events.js:182:13)
+2019-02-05 18:39:18:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:39:18:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:39:18:     at Connection.emit (events.js:182:13)
+2019-02-05 18:39:18:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:39:18:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:39:18:     at Socket.emit (events.js:182:13)
+2019-02-05 18:39:18:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:39:18:     at ontimeout (timers.js:436:11)
+2019-02-05 18:39:18:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:39:18:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:39:18:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:39:18:   name: 'MongoNetworkError',
+2019-02-05 18:39:18:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:39:18:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:39:50: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:39:50:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:39:50:     at Pool.emit (events.js:182:13)
+2019-02-05 18:39:50:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:39:50:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:39:50:     at Connection.emit (events.js:182:13)
+2019-02-05 18:39:50:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:39:50:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:39:50:     at Socket.emit (events.js:182:13)
+2019-02-05 18:39:50:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:39:50:     at ontimeout (timers.js:436:11)
+2019-02-05 18:39:50:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:39:50:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:39:50:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:39:50:   name: 'MongoNetworkError',
+2019-02-05 18:39:50:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:39:50:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:40:23: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:40:23:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:40:23:     at Pool.emit (events.js:182:13)
+2019-02-05 18:40:23:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:40:23:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:40:23:     at Connection.emit (events.js:182:13)
+2019-02-05 18:40:23:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:40:23:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:40:23:     at Socket.emit (events.js:182:13)
+2019-02-05 18:40:23:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:40:23:     at ontimeout (timers.js:436:11)
+2019-02-05 18:40:23:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:40:23:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:40:23:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:40:23:   name: 'MongoNetworkError',
+2019-02-05 18:40:23:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:40:23:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:40:55: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:40:55:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:40:55:     at Pool.emit (events.js:182:13)
+2019-02-05 18:40:55:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:40:55:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:40:55:     at Connection.emit (events.js:182:13)
+2019-02-05 18:40:55:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:40:55:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:40:55:     at Socket.emit (events.js:182:13)
+2019-02-05 18:40:55:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:40:55:     at ontimeout (timers.js:436:11)
+2019-02-05 18:40:55:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:40:55:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:40:55:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:40:55:   name: 'MongoNetworkError',
+2019-02-05 18:40:55:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:40:55:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:41:27: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:41:27:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:41:27:     at Pool.emit (events.js:182:13)
+2019-02-05 18:41:27:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:41:27:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:41:27:     at Connection.emit (events.js:182:13)
+2019-02-05 18:41:27:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:41:27:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:41:27:     at Socket.emit (events.js:182:13)
+2019-02-05 18:41:27:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:41:27:     at ontimeout (timers.js:436:11)
+2019-02-05 18:41:27:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:41:27:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:41:27:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:41:27:   name: 'MongoNetworkError',
+2019-02-05 18:41:27:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:41:27:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:41:59: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:41:59:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:41:59:     at Pool.emit (events.js:182:13)
+2019-02-05 18:41:59:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:41:59:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:41:59:     at Connection.emit (events.js:182:13)
+2019-02-05 18:41:59:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:41:59:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:41:59:     at Socket.emit (events.js:182:13)
+2019-02-05 18:41:59:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:41:59:     at ontimeout (timers.js:436:11)
+2019-02-05 18:41:59:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:41:59:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:41:59:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:41:59:   name: 'MongoNetworkError',
+2019-02-05 18:41:59:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:41:59:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:42:31: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:42:31:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:42:31:     at Pool.emit (events.js:182:13)
+2019-02-05 18:42:31:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:42:31:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:42:31:     at Connection.emit (events.js:182:13)
+2019-02-05 18:42:31:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:42:31:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:42:31:     at Socket.emit (events.js:182:13)
+2019-02-05 18:42:31:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:42:31:     at ontimeout (timers.js:436:11)
+2019-02-05 18:42:31:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:42:31:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:42:31:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:42:31:   name: 'MongoNetworkError',
+2019-02-05 18:42:31:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:42:31:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:43:04: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:43:04:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:43:04:     at Pool.emit (events.js:182:13)
+2019-02-05 18:43:04:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:43:04:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:43:04:     at Connection.emit (events.js:182:13)
+2019-02-05 18:43:04:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:43:04:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:43:04:     at Socket.emit (events.js:182:13)
+2019-02-05 18:43:04:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:43:04:     at ontimeout (timers.js:436:11)
+2019-02-05 18:43:04:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:43:04:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:43:04:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:43:04:   name: 'MongoNetworkError',
+2019-02-05 18:43:04:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:43:04:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:43:36: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:43:36:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:43:36:     at Pool.emit (events.js:182:13)
+2019-02-05 18:43:36:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:43:36:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:43:36:     at Connection.emit (events.js:182:13)
+2019-02-05 18:43:36:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:43:36:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:43:36:     at Socket.emit (events.js:182:13)
+2019-02-05 18:43:36:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:43:36:     at ontimeout (timers.js:436:11)
+2019-02-05 18:43:36:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:43:36:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:43:36:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:43:36:   name: 'MongoNetworkError',
+2019-02-05 18:43:36:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:43:36:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:44:08: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:44:08:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:44:08:     at Pool.emit (events.js:182:13)
+2019-02-05 18:44:08:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:44:08:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:44:08:     at Connection.emit (events.js:182:13)
+2019-02-05 18:44:08:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:44:08:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:44:08:     at Socket.emit (events.js:182:13)
+2019-02-05 18:44:08:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:44:08:     at ontimeout (timers.js:436:11)
+2019-02-05 18:44:08:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:44:08:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:44:08:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:44:08:   name: 'MongoNetworkError',
+2019-02-05 18:44:08:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:44:08:   [Symbol(mongoErrorContextSymbol)]: {} }
+2019-02-05 18:44:40: { MongoNetworkError: failed to connect to server [13.209.65.66:27017] on first connect [MongoNetworkError: connection 0 to 13.209.65.66:27017 timed out]
+2019-02-05 18:44:40:     at Pool.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/topologies/server.js:564:11)
+2019-02-05 18:44:40:     at Pool.emit (events.js:182:13)
+2019-02-05 18:44:40:     at Connection.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/pool.js:317:12)
+2019-02-05 18:44:40:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:44:40:     at Connection.emit (events.js:182:13)
+2019-02-05 18:44:40:     at Socket.<anonymous> (/home/ec2-user/recruiting_admin/admin-backend/node_modules/mongodb-core/lib/connection/connection.js:257:10)
+2019-02-05 18:44:40:     at Object.onceWrapper (events.js:273:13)
+2019-02-05 18:44:40:     at Socket.emit (events.js:182:13)
+2019-02-05 18:44:40:     at Socket._onTimeout (net.js:453:8)
+2019-02-05 18:44:40:     at ontimeout (timers.js:436:11)
+2019-02-05 18:44:40:     at tryOnTimeout (timers.js:300:5)
+2019-02-05 18:44:40:     at listOnTimeout (timers.js:263:5)
+2019-02-05 18:44:40:     at Timer.processTimers (timers.js:223:10)
+2019-02-05 18:44:40:   name: 'MongoNetworkError',
+2019-02-05 18:44:40:   errorLabels: [ 'TransientTransactionError' ],
+2019-02-05 18:44:40:   [Symbol(mongoErrorContextSymbol)]: {} }
