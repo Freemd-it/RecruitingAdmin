@@ -17,12 +17,6 @@ export const information = [{
     key: 'email',
     value: 'email',
   },{
-    key: 'sns',
-    value: 'sns',
-  },{
-    key: 'address',
-    value:'주소',
-  },{
     key: 'first',
     value:  '1지망',
   },{

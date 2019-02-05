@@ -19,7 +19,8 @@ class TableRows extends Component {
             const value = item[column.key]
             if (value !== undefined) {
               if (typeof value === 'boolean') {
-                return <TableCell align="center" key={index}>{value ? 'O': ''}</TableCell>
+                if(column.key === 'is_male') return <TableCell align="center" key={index}>{value ? '남': '여'}</TableCell>
+                else return <TableCell align="center" key={index}>{value ? 'O': ''}</TableCell>
               }
               return <TableCell align="center" key={index}>{value}</TableCell>;
             } else {

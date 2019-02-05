@@ -16,7 +16,7 @@ class RecruitManageContainer extends Component {
 
   componentDidMount() {
     const { department } = JSON.parse(localStorage.getItem('user_session'))
-    axios.getRecruitList({type: department}, this)
+    axios.getRecruitList({type: department === '대표' ? '' : department }, this)
   }
 
   handleChangePage = (event, page) => {
