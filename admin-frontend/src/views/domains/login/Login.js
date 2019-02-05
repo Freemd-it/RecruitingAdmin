@@ -9,7 +9,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 import logo from 'static/images/logo_1@2x.png'
-import * as axios from 'lib/api/login'
+import * as axios from 'lib/admin/login'
 
 const data = {
   username: '이동수',

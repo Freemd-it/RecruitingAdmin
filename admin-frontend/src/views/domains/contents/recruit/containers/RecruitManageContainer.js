@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Table from 'views/contexts/table'
-import * as axios from 'lib/api/recruit'
+import * as axios from 'lib/admin/recruit'
 import Modal from 'views/contexts/modal'
 import { ModalRecruitFooter } from 'views/domains/contents/commons/ModalFooter'
 import InfoDetail from 'views/domains/contents/recruit/informationCardPack'

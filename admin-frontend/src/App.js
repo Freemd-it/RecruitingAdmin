@@ -3,7 +3,7 @@ import Sidebar from './views/domains/sidebar'
 import MainTemplate from './views/contexts/templates/mainTemplate'
 import Contents from './views/domains/contents'
 import Login from './views/domains/login'
-import * as axios from 'lib/api/context';
+import * as axios from 'lib/admin/context';
 
 import empty from 'is-empty'
 

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import DashBoard from '../DashBoard'
-import * as axios from 'lib/api/chart'
+import * as axios from 'lib/admin/chart'
 import chartDefaultData from 'lib/service/chart/chartData'
 import { barOption, pieOption, radarOption } from 'lib/service/chart/chartOptions'
 import { barLegend, pieLegend, radarLegend } from 'lib/service/chart/chartLegend'
