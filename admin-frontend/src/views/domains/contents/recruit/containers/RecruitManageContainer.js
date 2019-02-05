@@ -63,7 +63,6 @@ class RecruitManageContainer extends Component {
         selectedRow={this.state.selectedRow}
       />
     )
-    // LOL_ prefix지워서 이름 리플레이스 해서 쓰세용 > 3 < 
     const ModalFooter = (
       <ModalRecruitFooter
         LOL_합격버튼함수={() => {}}

@@ -72,7 +72,8 @@
   "scripts": {
     "start": "NODE_PATH=src node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "deploy:dev": "yarn install && pm2 start pm2/freemed.admin.front.dev.json && pm2 logs freemed.admin.front.dev.json"
   },
   "proxy": "http://locahost:3001",
   "eslintConfig": {
