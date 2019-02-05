@@ -5,9 +5,11 @@ import Modal from 'views/contexts/modal'
 import { Button } from 'reactstrap';
 import { addPermissionCheck, updatePermissionCheck} from 'modules/permission'
 import { ModalCommonFooter } from 'views/domains/contents/commons/ModalFooter'
+import { validation } from 'lib/service/validation'
 
 import * as axios from 'lib/api/question';
 import moment from 'moment'
+import _ from 'lodash'
 
 import './QuestionManageContainer.scss';
 
@@ -111,13 +113,18 @@ class QuestionRegistContainer extends Component {
         registedData['batch'] = 20
         registedData['registedDate'] = moment().format('YYYY-MM-DD HH:mm:ss')
         registedData['register'] = username
-        rowsData.push(registedData)
-        
-        const newData = {
-          rowsData,
-          isAddModal: !prevState.isAddModal,
-        }
-        return newData
+
+        const flag = validation(registedData)
+        if(flag) {
+          rowsData.push(registedData)
+          const newData = {
+            rowsData,
+            isAddModal: !prevState.isAddModal,
+          }
+          return newData
+        } else {
+          alert('누락된 항목이 있습니다.\n다시 확인해 주세요.')
+        } 
       })
     } else {
       alert('질문 추가하기 오류 났어욥')
