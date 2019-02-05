@@ -6,7 +6,7 @@
 // import { addPermissionCheck, updatePermissionCheck} from 'modules/permission'
 // import { ModalCommonFooter } from 'views/domains/contents/commons/ModalFooter'
 
-// import * as axios from 'lib/admin/question';
+// import * as axios from 'lib/api/question';
 // import './QuestionManageContainer.scss';
 
 // class DocumentManageContainer extends Component {

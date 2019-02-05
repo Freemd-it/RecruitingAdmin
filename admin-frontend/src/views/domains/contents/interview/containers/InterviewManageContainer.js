@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Table from 'views/contexts/table'
-import * as axios from 'lib/admin/interview'
+import * as axios from 'lib/api/interview'
 import _ from 'lodash'
 
 class InterviewManageContainer extends Component {
