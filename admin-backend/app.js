@@ -47,9 +47,9 @@ app.use((req, res, next) => {
 });
 app.use(cors(corsOptions))
 
-app.post('/api/signin', sign.signin);
-app.post('/api/signup', sign.signup);
-app.use('/api', indexRouter);
+app.post('/admin/signin', sign.signin);
+app.post('/admin/signup', sign.signup);
+app.use('/admin', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

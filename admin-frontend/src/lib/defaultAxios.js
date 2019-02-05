@@ -7,7 +7,7 @@ const {
 
 const baseURL = (() => {
   if (NODE_ENV === 'development') return 'http://localhost:3001';
-  return 'http://recruit.freemedials.org';
+  return 'http://recruiting.freemedials.org';
 })();
 
 const axiosCreate = () => {
