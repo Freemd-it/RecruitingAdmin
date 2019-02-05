@@ -27,8 +27,8 @@ class RecruitManageContainer extends Component {
     this.setState({ rowsPerPage: event.target.value })
   }
 
-  onClickRowToShowModal = async (id, e) => {
-    await axios.getRecruitDetail('5c57fd93eb3fd112914c1855', this)
+  onClickRowToShowModal = async (e, id) => {
+    await axios.getRecruitDetail(e.currentTarget.id, this)
   }
   
   onClickModalToClose = () => this.setState({ isDetailModal: false })

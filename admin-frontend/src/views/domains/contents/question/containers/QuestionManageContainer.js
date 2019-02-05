@@ -101,9 +101,10 @@ class QuestionRegistContainer extends Component {
 
   onClickModalToAddConfirm = async () => {
     const { registedData } = this.state
-    if(validation(registedData)) {
+    if (validation(registedData)) {
       const result = await axios.setQuestionInfomation(registedData, this)
-      if(result.status === 201) {
+
+      if (result.status === 201) {
         this.setState((prevState) => {
           const { username } = JSON.parse(localStorage.getItem('user_session'))
           const { registedData } = this.state

@@ -6,7 +6,6 @@ import InformationCard from 'views/contexts/modal/card';
 import AbillityContent from './abilityContent/AbilityContent'
 
 function componentByType(elements) {
-  console.log('요소', elements)
   switch(elements.special_type) {
     case '공인영어':
       return (

@@ -7,7 +7,6 @@ import BusinessIcon from '@material-ui/icons/BusinessCenter';
 import InformationCard from 'views/contexts/modal/card';
 
 const ExternalInfo = ({data}) => {
-
   return (
     <InformationCard
       title={(

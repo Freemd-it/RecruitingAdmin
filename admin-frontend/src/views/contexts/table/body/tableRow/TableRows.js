@@ -5,9 +5,9 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 class TableRows extends Component {
   render() {
-    const {item, index, columns, onClick } = this.props
+    const {item, columns, onClick, key} = this.props
     return (
-      <TableRow key={`${index}_${item.id}`} id={item.id} onClick={onClick} hover>
+      <TableRow key={`${key}_${item.id}`} id={item._id} onClick={event => onClick(event, key)} hover>
         {
           <TableCell padding="checkbox">
             <Checkbox
