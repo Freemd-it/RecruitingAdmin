@@ -20,6 +20,7 @@ class QuestionRegistContainer extends Component {
     isUpdateModal: false,
     keyword: '검색선택',
     query: '',
+    type: '',
     registedData: {
       id: '',
       department: 'IT',
@@ -154,23 +155,19 @@ class QuestionRegistContainer extends Component {
   
   onChangeKeyword = async (e) => {
     this.setState({
-      keyword: e.target.name
+      keyword: e.target.name,
+      type: e.target.value,
     })
   }
   
   onChangeFilterQuery = async (e) => {
+    const { type } = this.state
     if(e.key === 'Enter') {
-      const options = {
-        type: this.state.keyword,
-        q: e.target.value
+      if(!type) {
+        alert('검색 조건을 선택해 주세요.')
+      } else {
+        const res = axios.getQuestionList({ type, q: e.target.value}, this)
       }
-      const res = await axios.getQuestionList(options)
-      if(res.status === 200) {
-        this.setState({
-          rows: res.data,
-        })
-      }
-      
     } else {
       this.setState({
         query: e.target.value

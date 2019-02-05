@@ -29,6 +29,7 @@ class Filter extends Component {
               <DropdownItem value="team" name="팀" onClick={onChangeKeyword}>팀</DropdownItem>
               <DropdownItem value="age" name="나이" onClick={onChangeKeyword}>나이</DropdownItem>
               <DropdownItem value="unit" name="기수" onClick={onChangeKeyword}>기수</DropdownItem>
+              <DropdownItem value="name" name="이름" onClick={onChangeKeyword}>이름</DropdownItem>
             </DropdownMenu>
           </InputGroupButtonDropdown>
           <div>

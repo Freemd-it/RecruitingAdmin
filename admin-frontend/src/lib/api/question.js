@@ -4,7 +4,7 @@ import queryString from 'query-string'
 
 export const getQuestionList = ({type='', q='', ...rest}, ctx) => 
   axiosCreate().get(`/api/question?${queryString.stringify({...rest, type, q})}`)
-    .then(res => ctx.setState({ rows: res.data.result}))
+    .then(res => res.status === 200 && ctx.setState({ rows: res.data.result}))
     .catch(err => err)
 
 export const getQuestionDetail= (id, ctx) => 

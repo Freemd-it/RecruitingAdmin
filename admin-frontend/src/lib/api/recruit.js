@@ -3,7 +3,7 @@ import queryString from 'query-string'
 
 export const getRecruitList = ({ type='', q='', ...rest }, ctx) => {
   return axiosCreate().get(`/api/applicant?${queryString.stringify({...rest, type, q})}`)
-    .then(res => ctx.setState({ rows: res.data.result}))
+    .then(res => res.status === 200 && ctx.setState({ rows: res.data.result}))
     .catch(err => err)
 }
 
