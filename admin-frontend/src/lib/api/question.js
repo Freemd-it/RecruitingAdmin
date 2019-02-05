@@ -4,12 +4,12 @@ import queryString from 'query-string'
 
 export const getQuestionList = ({type='', q='', ...rest}, ctx) => 
   axiosCreate().get(`/api/question?${queryString.stringify({...rest, type, q})}`)
-    .then(res => ctx.setState({ rows: res.data.data}))
+    .then(res => ctx.setState({ rows: res.data.result}))
     .catch(err => err)
 
 export const getQuestionDetail= (id, ctx) => 
   axiosCreate().get(`/api/question/${id}`)
-    .then(res => ctx.setState({ rows: res.data.data}))
+    .then(res => ctx.setState({ rows: res.data.result}))
     .catch(err => err)
 
 export const setQuestionInfomation = (data, ctx) => {
@@ -20,5 +20,5 @@ export const setQuestionInfomation = (data, ctx) => {
 
 export const modifyQuestionInfomation = ({_id, ...rest}, ctx) => 
   axiosCreate().put(`/api/question/${_id}`, rest)
-    .then(res => ctx.setState({ rows: res.data.data}))
+    .then(res => ctx.setState({ rows: res.data.result}))
     .catch(err => err)

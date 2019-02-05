@@ -5,16 +5,16 @@ import StarIcon from '@material-ui/icons/Star';
 import InformationCard from 'views/contexts/modal/card';
 import AbillityContent from './abilityContent/AbilityContent'
 
-const gradeStringList = ['상', '중', '하'];
 function componentByType(elements) {
-  switch(elements.type) {
+  switch(elements.special_type) {
     case '공인영어':
       return (
         <AbillityContent
           elements={elements}
           title={'본인 평가'}
           subTitle={'세부 내용'}
-          contents={gradeStringList[elements.grade]}
+          ability={elements.self_evaluation_ability}
+          contents={elements.contents}
         />
       );
     case '자격증':
@@ -23,7 +23,8 @@ function componentByType(elements) {
           elements={elements}
           title={'취득일'}
           subTitle={'세부 내용'}
-          content={moment(elements.date).format("Y년 M월")}
+          ability={moment(elements.acquisition_date).format("Y년 M월")}
+          contents={elements.contents}
         />
       );
     case '어학능력':
@@ -32,16 +33,18 @@ function componentByType(elements) {
           elements={elements}
           title={'본인 평가'}
           subTitle={'세부 내용'}
-          content={gradeStringList[elements.grade]}
+          ability={elements.self_evaluation_ability}
+          contents={elements.contents}
         />
       );
-    case '기타내역':
+    case '기타능력':
       return (
         <AbillityContent
           elements={elements}
           title={'본인 평가'}
           subTitle={'세부 내용'}
-          content={''}
+          ability={elements.self_evaluation_ability}
+          contents={elements.contents}
         />
       );
     default:
@@ -49,8 +52,8 @@ function componentByType(elements) {
   }
 }
 
-const AbilityInfo = (props) => {
-  const abilityInfo = props.data;
+const AbilityInfo = ({data}) => {
+  const abilityInfo = data;
   
   const title = (
     <span className="Title">

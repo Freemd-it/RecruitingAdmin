@@ -15,9 +15,9 @@ const Body = ({rows, rowsPerPage, onClickRow, columns, cursor = false, type}) =>
       return (<TableRows
         columns={columns}
         className={cursor ? 'tableBodyRow__cursor' : ''}
-        key={index}
+        key={item._id}
         item={item}
-        onClick={() => { onClickRow(index) }}
+        onClick={onClickRow}
       />)
     })
   )

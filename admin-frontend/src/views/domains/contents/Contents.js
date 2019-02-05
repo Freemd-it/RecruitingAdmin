@@ -4,11 +4,12 @@ import DashBoardViewerContainer from './dashboard/containers/DashBoardContainer'
 import RecruitManageContainer from './recruit/containers/RecruitManageContainer'
 import QuestionRegistContainer from './question/containers/QuestionManageContainer'
 import InterviewManageContainer from './interview/containers/InterviewManageContainer'
+import DocumentManageContainer from './document/containers/DocumentManageContainer'
 import NotFoundPage from '../error/NotFoundPage'
 
 import * as Columns from 'lib/service/tableColumn';
 import * as routes from 'lib/service/routes'
-import './Contents.css'
+import './Contents.scss'
 
 class Contents extends Component {
   render() {
@@ -20,6 +21,7 @@ class Contents extends Component {
           <Route exact path={routes.MATCH_PATH_RECRUIT_TYPE} render={(props) => { return <RecruitManageContainer {...props} columns={Columns.information}/> }} />
           <Route exact path={routes.MATCH_PATH_INTERVIEW} render={(props) => { return <InterviewManageContainer {...props} columns={Columns.interview}/> }} />
           <Route exact path={routes.MATCH_PATH_QUESTION}  render={(props) => { return <QuestionRegistContainer {...props} columns={Columns.question} />}} />
+          <Route exact path={routes.MATCH_PATH_DOCUMENT}  render={(props) => { return <DocumentManageContainer {...props} columns={Columns.question} />}} />
           <Route component={ NotFoundPage } />
         </Switch>
       </div>

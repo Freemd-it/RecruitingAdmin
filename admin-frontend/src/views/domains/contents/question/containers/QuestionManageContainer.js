@@ -5,8 +5,12 @@ import Modal from 'views/contexts/modal'
 import { Button } from 'reactstrap';
 import { addPermissionCheck, updatePermissionCheck} from 'modules/permission'
 import { ModalCommonFooter } from 'views/domains/contents/commons/ModalFooter'
+import { validation } from 'lib/service/validation'
 
 import * as axios from 'lib/api/question';
+import moment from 'moment'
+import _ from 'lodash'
+
 import './QuestionManageContainer.scss';
 
 class QuestionRegistContainer extends Component {
@@ -22,12 +26,13 @@ class QuestionRegistContainer extends Component {
       team: '',
       question: '',
       used: false,
+      register: '',
     }
   };
 
   componentDidMount() {
     const { department } = JSON.parse(localStorage.getItem('user_session'))
-    axios.getQuestionList({type: department}, this)
+    axios.getQuestionList({type: department === '대표' ? '' : department }, this)
   }
 
   onCloseModal = () => {
@@ -85,7 +90,7 @@ class QuestionRegistContainer extends Component {
     const { department } = JSON.parse(localStorage.getItem('user_session'))
     const name = e.target.name;
     const value = (name !== 'used' ? e.target.value : e.target.value === 'true');
-    console.log(name, value)
+    
     this.setState(prevState => {
       const registedData = { ...prevState.registedData};
       registedData[name] = value;
@@ -96,21 +101,33 @@ class QuestionRegistContainer extends Component {
 
   onClickModalToAddConfirm = async () => {
     const { registedData } = this.state
-    const result = await axios.setQuestionInfomation(registedData, this)
-    
-    if(result.status === 201) {
-      this.setState((prevState) => {
-        const rowsData = prevState.rows
-        const { registedData } = this.state
-        rowsData.push(registedData)
-        const newData = {
-          rowsData,
-          isAddModal: !prevState.isAddModal,
-        }
-        return newData
-      })
-    } else {
-      alert('질문 추가하기 오류 났어욥')
+    if (validation(registedData)) {
+      const result = await axios.setQuestionInfomation(registedData, this)
+
+      if (result.status === 201) {
+        this.setState((prevState) => {
+          const { username } = JSON.parse(localStorage.getItem('user_session'))
+          const { registedData } = this.state
+          
+          const rowsData = prevState.rows
+          
+          registedData['batch'] = 20
+          registedData['registedDate'] = moment().format('YYYY-MM-DD HH:mm:ss')
+          registedData['register'] = username
+  
+          rowsData.push(registedData)
+          const newData = {
+            rowsData,
+            isAddModal: !prevState.isAddModal,
+          } 
+          return newData
+        })
+      } else {
+        alert('질문 추가하기 오류 났어욥')
+      }
+    }
+    else {
+      alert('누락된 항복이 있습니다.\n다시 확인해 주세요.')
     }
   }
 
