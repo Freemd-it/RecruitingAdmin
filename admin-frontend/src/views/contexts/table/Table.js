@@ -12,7 +12,7 @@ class Table extends Component {
   state = {
     currentPage: 1,
     totalPage: 0,
-    rowsPerPage: 25,
+    rowsPerPage: 1000,
   };
 
   onChangePage = (currentPage) => {

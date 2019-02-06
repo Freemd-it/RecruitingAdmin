@@ -12,6 +12,7 @@ import moment from 'moment'
 import _ from 'lodash'
 
 import './QuestionManageContainer.scss';
+import organization from 'lib/service/organization';
 
 class QuestionRegistContainer extends Component {
   state = {
@@ -23,8 +24,9 @@ class QuestionRegistContainer extends Component {
     type: '',
     registedData: {
       id: '',
-      department: 'IT',
-      team: '',
+      department_name: '본부 선택',
+      department_code: '',
+      team: '팀 선택',
       question: '',
       used: false,
       register: '',
@@ -53,8 +55,9 @@ class QuestionRegistContainer extends Component {
       this.setState(prevState => {
         const data = {
           registedData: {
-            department,
-            team,
+            department_name: organization[department].name,
+            department, 
+            team: team ? team : '팀 선택',
             question: '질문을 작성해주세요 :)',
             used: false,
             id: rows.length,
@@ -69,33 +72,26 @@ class QuestionRegistContainer extends Component {
     
   }
 
-  onClickToUpdateModal = (index) => {
+  onClickToUpdateModal = (e, index) => {
+    const { id } = e.currentTarget
     if(updatePermissionCheck()) {
-      const rowData = this.state.rows[index]
-      this.setState(prevState => {
-        const data = {
-          registedData: {
-            ...rowData,
-            id: index,
-          },
-          isUpdateModal: true,
-        }
-        return data
-      })
+      axios.getQuestionDetail(id, this)
     } else {
       alert('수정할 수 있는 권한이 없는 질문입니다 :(')
     }
   }
 
   onRegistedData = (e) => {
-    const { department } = JSON.parse(localStorage.getItem('user_session'))
+    // const { department } = JSON.parse(localStorage.getItem('user_session'))
+    console.log(e.target.name)
+    console.log(e.target.value)
     const name = e.target.name;
     const value = (name !== 'used' ? e.target.value : e.target.value === 'true');
     
     this.setState(prevState => {
       const registedData = { ...prevState.registedData};
       registedData[name] = value;
-      registedData['department'] = department
+      // registedData['department'] = department
       return { registedData };
     });
   }
@@ -104,7 +100,6 @@ class QuestionRegistContainer extends Component {
     const { registedData } = this.state
     if (validation(registedData)) {
       const result = await axios.setQuestionInfomation(registedData, this)
-
       if (result.status === 201) {
         this.setState((prevState) => {
           const { username } = JSON.parse(localStorage.getItem('user_session'))
@@ -166,7 +161,7 @@ class QuestionRegistContainer extends Component {
       if(!type) {
         alert('검색 조건을 선택해 주세요.')
       } else {
-        const res = axios.getQuestionList({ type, q: e.target.value}, this)
+        axios.getQuestionList({ type, q: e.target.value}, this)
       }
     } else {
       this.setState({

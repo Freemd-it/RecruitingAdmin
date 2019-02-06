@@ -4,23 +4,32 @@ import './QuestionModal.scss';
 import _ from 'lodash'
 import organization from 'lib/service/organization';
 
-const QuestionModal = props => {
-  const { department, team } = JSON.parse(localStorage.getItem('user_session'))
-  const { registedData, onRegistedData } = props;
-  const teamList = (
-    _.map(organization[department], (v, key) => {
-        return <option> {v} </option>
+function maketeamList(registedData, department) {
+  return (_.map(organization[department], (v, key) => {
+    const temp2 = []
+    if(key === 'team') {
+      _.forEach(v, (_v, _k) => {
+        _.forEach(_v, (__v, __k) => {
+          temp2.push((<option value={__k}> {__v} </option>))
+        })
       })
-    )
-    
+    }
+    return temp2
+  }))
+}
+const QuestionModal = props => {
+  const { department } = JSON.parse(localStorage.getItem('user_session'))
+  const { registedData, onRegistedData } = props;
+  console.log(department, registedData)
+  const teamList = maketeamList(registedData, department)
   return (
     <div className={'container QuestionDetail'} key={registedData._id}>
       <FormGroup row>
         <Label sm={2}>본부</Label>
         <Col sm={10}>
           <Input bsSize="sm" type="select" name="department" value={registedData.department} onChange={onRegistedData} readOnly disabled>
-            <option> 본부 선택 </option>
-            <option>{department}</option>
+            <option disabled> 본부 선택 </option>
+            <option>{ registedData.department_name || department}</option>
           </Input>
         </Col>
       </FormGroup>
@@ -29,7 +38,7 @@ const QuestionModal = props => {
         <Label sm={2}>팀</Label>
         <Col sm={10}>
           <Input type="select" name="team" id="exampleSelectMulti" value={registedData.team} onChange={onRegistedData}>
-            <option> 팀 선택 </option>
+            <option disabled> 팀 선택 </option>
             {teamList}
           </Input>
         </Col>

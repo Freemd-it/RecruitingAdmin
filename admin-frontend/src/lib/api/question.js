@@ -9,7 +9,21 @@ export const getQuestionList = ({type='', q='', ...rest}, ctx) =>
 
 export const getQuestionDetail= (id, ctx) => 
   axiosCreate().get(`/admin/question/${id}`)
-    .then(res => ctx.setState({ rows: res.data.result}))
+    .then(res => {
+      const { result } = res.data
+      res.status === 200 && ctx.setState({
+        registedData: {
+          id: result._id,
+          department: result.department,
+          team: result.team,
+          question: result.question,
+          used: result.used,
+          register: result.register,
+        },
+        isUpdateModal: true,
+        // id,
+      })
+    })
     .catch(err => err)
 
 export const setQuestionInfomation = (data, ctx) => {

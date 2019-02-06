@@ -6,12 +6,15 @@
 
 // Check permissions when modal is opened
 
+// 팀 구별
 export const addPermissionCheck = ({classify}) => {
   const { permission } = JSON.parse(localStorage.getItem('user_session'))
   if(permission === 301) {
     return true
   } else if (permission === 302) {
     if(classify !== 101) return true
+    return false
+  } else {
     return false
   }
 }

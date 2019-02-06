@@ -13,8 +13,8 @@ import * as axios from 'lib/api/login'
 
 const data = {
   username: '이동수',
-  department: '대표',
-  team: '',
+  department: '102',
+  team: '01',
   permission: 301,
 }
 
@@ -100,6 +100,7 @@ class Login extends Component {
     })
 
     if (res.status === 200) {
+      console.log(data)
       localStorage.setItem('user_session', JSON.stringify(data));
       localStorage.setItem('token', JSON.stringify(res.data.result));
       this.props.onhandleLogin()
