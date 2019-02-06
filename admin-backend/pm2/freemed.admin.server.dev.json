@@ -1,6 +1,6 @@
 {
   "apps" : [{
-    "name": "freemed.recruit.dev",
+    "name": "freemed.admin.server.dev",
     "script": "app.js",
     "ignore_watch" : ["node_modules", "logs"],
     "env": {
