@@ -31,9 +31,52 @@ const userDefulatInfo = (userObj) => {
         support_status: userObj.support_status,
     }
 }
+const birthDate_age_convert = (date) => {
+    const birthYear = moment(date).format('YYYY');
+    return Number(moment().format('YYYY')) - Number(birthYear) + 1;
+}
 
-const matchSearchIndexandSchemaKey = (searchIndex) => {
+const age_birthDate_convert = (age) => {
+    const currentYear = moment().format('YYYY');
+    return Number(age) + Number(currentYear) - 1;
+}
 
+const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
+    if(searchIndex === 'name'){
+        return {
+            "basic_info.user_name" : new RegExp(searchKeyword),
+        };
+    }
+    if(searchIndex === 'department'){
+        return {
+            $or : [
+                {
+                    "basic_info.department" : new RegExp(searchKeyword),
+                },
+                {
+                    "basic_info.secondary_department": new RegExp(searchKeyword),
+                }
+            ]
+        };
+    }
+    if(searchIndex === 'team'){
+        return {
+            $or : [
+                {
+                    "basic_info.team" : new RegExp(searchKeyword),
+                },
+                {
+                    "basic_info.secondary_team": new RegExp(searchKeyword),
+                }
+            ]
+        }; 
+    }
+    if(searchIndex === 'age') {
+        const birthYear = age_birthDate_convert(searchKeyword);
+        return {
+            "basic_info.birth_date": new RegExp(birthYear),
+        }
+    }
 }
 
 const getUserList = async(req, res) => {
@@ -85,27 +128,21 @@ const getTest = async(req, res) => {
 }
 
 const searchUserList = async(req, res) => {
-    const searchIndex = req.params.type;
-    const searchKeyword = new RegExp(req.params.q);
+    console.log("123123123123123123123");
+    console.log("type : ",req.query.type);
+    const searchIndex = req.query.type;
+    const searchKeyword = req.query.q;
 
-    console.log(req.params.type);
-    console.log(req.params.q);
-    console.log(decodeURIComponent(req.params.q));
-    console.log(iconv.decode(req.params.q, 'EUC-KR').toString());
-    console.log(searchKeyword);
-    const test = '김';
-    const test2 = new RegExp(test);
-    let searchKey;
-    if(searchIndex === 'name') searchKey = 'basic_info.user_name';
+    const findOption = matchSearchIndexandSchemaKey(searchIndex, searchKeyword);
     try {
         const userList = await User
-                            .find({"basic_info.user_name": test2})
+                            .find(findOption)
 //                            .find()
-                            .select("basic_info")
+                            .select("basic_info support_status")
                             .sort({_id: -1})
                             .exec();
-
-        res.status(200).json({result: userList});
+        const resUserList = userList.map(user => userDefulatInfo(user));
+        res.status(200).json({result: resUserList});
     } catch(e) {
         console.log(e);
         res.status(500).json({message : JSON.stringify(e), result: null});
