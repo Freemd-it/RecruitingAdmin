@@ -5,13 +5,13 @@ const iconv = require('iconv-lite');
 
 const userDefulatInfo = (userObj) => {
 
-    if(userObj.basic_info.team === '없음'){
+    if (userObj.basic_info.team === '없음') {
         userObj.basic_info.team = '';
     }
-    if(userObj.basic_info.secondary_department === '없음'){
+    if (userObj.basic_info.secondary_department === '없음') {
         userObj.basic_info.secondary_department = '';
     }
-    if(userObj.basic_info.secondary_team === '없음'){
+    if (userObj.basic_info.secondary_team === '없음') {
         userObj.basic_info.secondary_team = '';
     }
     return {
@@ -42,16 +42,16 @@ const age_birthDate_convert = (age) => {
 }
 
 const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
-    if(searchIndex === 'name'){
+    if (searchIndex === 'name') {
         return {
-            "basic_info.user_name" : new RegExp(searchKeyword),
+            "basic_info.user_name": new RegExp(searchKeyword),
         };
     }
-    if(searchIndex === 'department'){
+    if (searchIndex === 'department') {
         return {
-            $or : [
+            $or: [
                 {
-                    "basic_info.department" : new RegExp(searchKeyword),
+                    "basic_info.department": new RegExp(searchKeyword),
                 },
                 {
                     "basic_info.secondary_department": new RegExp(searchKeyword),
@@ -59,19 +59,19 @@ const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
             ]
         };
     }
-    if(searchIndex === 'team'){
+    if (searchIndex === 'team') {
         return {
-            $or : [
+            $or: [
                 {
-                    "basic_info.team" : new RegExp(searchKeyword),
+                    "basic_info.team": new RegExp(searchKeyword),
                 },
                 {
                     "basic_info.secondary_team": new RegExp(searchKeyword),
                 }
             ]
-        }; 
+        };
     }
-    if(searchIndex === 'age') {
+    if (searchIndex === 'age') {
         const birthYear = age_birthDate_convert(searchKeyword);
         return {
             "basic_info.birth_date": new RegExp(birthYear),
@@ -79,80 +79,86 @@ const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
     }
 }
 
-const getUserList = async(req, res) => {
+const getUserList = async (req, res) => {
+    let findOption = {};
+    if (req.query.type && req.query.q) {
+        const searchIndex = req.query.type;
+        const searchKeyword = req.query.q;
+        findOption = matchSearchIndexandSchemaKey(searchIndex, searchKeyword);
+    }
     try {
         const userList = await User
-//                                .find({"support_status": {$gt: 200}})
-                                .find()
-                                .select("basic_info support_status")
-                                .sort({_id: -1})
-                                .exec();
+            //                                .find({"support_status": {$gt: 200}})
+            .find(findOption)
+            .select("basic_info support_status")
+            .sort({ _id: -1 })
+            .exec();
         console.log(userList);
         const resUserList = userList.map(user => userDefulatInfo(user));
-        res.status(200).json({message: "Successful get user list", result: resUserList});
-    } catch(e) {
+        res.status(200).json({ message: "Successful get user list", result: resUserList });
+    } catch (e) {
         console.log(e);
-        res.status(500).json({message : JSON.stringify(e), result: null});
+        res.status(500).json({ message: JSON.stringify(e), result: null });
     }
 }
 
-const getUser = async(req, res) => {
+const getUser = async (req, res) => {
     const id = req.params.id;
     console.log(id);
     try {
         const user = await User
-                            .findById(id)
-                            .exec();
-        res.status(200).json({message: "Successful get user detail", result: user});
-    } catch(e) {
+            .findById(id)
+            .exec();
+        res.status(200).json({ message: "Successful get user detail", result: user });
+    } catch (e) {
         console.log(e);
-        res.status(500).json({message: JSON.stringify(e), result: null});
+        res.status(500).json({ message: JSON.stringify(e), result: null });
     }
 }
 
-const getTest = async(req, res) => {
+const getTest = async (req, res) => {
     const name = '김연태';
     const test = true;
     try {
         const userList = await User
-                            .find({"basic_info.user_name": name})
-//                            .find()
-                            .select("basic_info")
-                            .sort({_id: -1})
-                            .exec();
-        res.status(200).json({result: userList});
-    } catch(e) {
+            .find({ "basic_info.user_name": name })
+            //                            .find()
+            .select("basic_info")
+            .sort({ _id: -1 })
+            .exec();
+        res.status(200).json({ result: userList });
+    } catch (e) {
         console.log(e);
-        res.status(500).json({message : JSON.stringify(e), result: null});
+        res.status(500).json({ message: JSON.stringify(e), result: null });
     }
 }
 
-const searchUserList = async(req, res) => {
+const searchUserList = async (req, res) => {
     console.log("123123123123123123123");
-    console.log("type : ",req.query.type);
+    console.log("type : ", req.query.type);
     const searchIndex = req.query.type;
     const searchKeyword = req.query.q;
 
     const findOption = matchSearchIndexandSchemaKey(searchIndex, searchKeyword);
     try {
         const userList = await User
-                            .find(findOption)
-//                            .find()
-                            .select("basic_info support_status")
-                            .sort({_id: -1})
-                            .exec();
+            .find(findOption)
+            //                            .find()
+            .select("basic_info support_status")
+            .sort({ _id: -1 })
+            .exec();
         const resUserList = userList.map(user => userDefulatInfo(user));
-        res.status(200).json({result: resUserList});
-    } catch(e) {
+        res.status(200).json({ result: resUserList });
+    } catch (e) {
         console.log(e);
-        res.status(500).json({message : JSON.stringify(e), result: null});
+        res.status(500).json({ message: JSON.stringify(e), result: null });
     }
 }
 
 
 module.exports = {
-    getUserList : getUserList,
-    getUser : getUser,
+    getUserList: getUserList,
+    getUser: getUser,
     test: getTest,
-    searchUserList : searchUserList,
+    searchUserList: searchUserList,
 }
