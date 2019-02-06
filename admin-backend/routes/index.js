@@ -15,7 +15,7 @@ router.get('/health', contextCtrl.getHealthCheck);
 router.get('/applicant', userCtrl.getUserList);
 router.get('/applicant/:id', userCtrl.getUser);
 router.get('/test', userCtrl.test);
-router.get('/applicant/filters/:type/:q', userCtrl.searchUserList);
+router.get('/filters/applicant', userCtrl.searchUserList);
 
 router.get('/question', questionCtrl.getQuestionList);
 router.get('/question/:questionId', questionCtrl.getQuestion);
