@@ -42,7 +42,14 @@ const signin = async (req, res) => {
           } else {
               res.status(200).json({
                   message: "Successful sign in & Get JWT",
-                  result : token,
+                  result : {
+                      token: token,
+                      permission: admin.permission,
+                      department: admin.department,
+                      team: admin.team,
+                      name: admin.name,
+                      email: admin.email,
+                  },
               })
           }
       })
