@@ -18,9 +18,9 @@ const teamClassify = Map({
     FreeClinic_Operation: 20101,
     FreeClinic_MedicalRecord: 20102,
     FreeClinic_Medication: 20103,
-    HealthEducation_Operation: 30101,
-    HealthEducation_EducationResearch: 30102,
-    GlobalMedical_none: 40100,
+    HealthEducation_Operation: 20201,
+    HealthEducation_EducationResearch: 20202,
+    GlobalMedical_none: 20300,
 })
 
 const application = Map({

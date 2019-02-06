@@ -20,7 +20,7 @@ router.get('/filters/applicant', userCtrl.searchUserList);
 router.get('/question', questionCtrl.getQuestionList);
 router.get('/question/:questionId', questionCtrl.getQuestion);
 router.post('/question', questionCtrl.registQuestion);
-router.put('/question', questionCtrl.updateQuestion);
+router.put('/question/:questionId', questionCtrl.updateQuestion);
 
 router.get('/schedule', scheduleCtrl.getScheduleList);
 

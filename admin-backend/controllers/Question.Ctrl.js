@@ -103,7 +103,8 @@ const registQuestion = async(req, res) => {
 }
 
 const updateQuestion = async(req, res) => {
-    const {questionId, department, team, question, used} = req.body;
+    const questionId = req.params.questionId;
+    const {department, team, question, used} = req.body;
     const register = req.userdata;
     console.log(questionId);
     if(department) {

@@ -38,7 +38,8 @@ const birthDate_age_convert = (date) => {
 
 const age_birthDate_convert = (age) => {
     const currentYear = moment().format('YYYY');
-    return Number(age) + Number(currentYear) - 1;
+    console.log(currentYear);
+    return Number(currentYear) - Number(age) + 1;
 }
 
 const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
@@ -73,8 +74,9 @@ const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
     }
     if (searchIndex === 'age') {
         const birthYear = age_birthDate_convert(searchKeyword);
+        console.log(birthYear);
         return {
-            "basic_info.birth_date": new RegExp(birthYear),
+            "basic_info.birth_date": new RegExp(String(birthYear)),
         }
     }
 }
@@ -86,6 +88,7 @@ const getUserList = async (req, res) => {
         const searchKeyword = req.query.q;
         findOption = matchSearchIndexandSchemaKey(searchIndex, searchKeyword);
     }
+    console.log(JSON.stringify(findOption));
     try {
         const userList = await User
             //                                .find({"support_status": {$gt: 200}})
