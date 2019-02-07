@@ -12,10 +12,11 @@ import logo from 'static/images/logo_1@2x.png'
 import * as axios from 'lib/api/login'
 
 const data = {
-  username: '이동수',
-  department: '102',
-  team: '01',
-  permission: 301,
+  department: "101",
+  email: "president@freemed.or.kr",
+  name: "경영지원본부장",
+  permission: 302,
+  team: "00"
 }
 
 const styles = theme => ({
@@ -100,9 +101,8 @@ class Login extends Component {
     })
 
     if (res.status === 200) {
-      console.log(data)
       localStorage.setItem('user_session', JSON.stringify(data));
-      localStorage.setItem('token', JSON.stringify(res.data.result));
+      localStorage.setItem('token', JSON.stringify(res.data.result.token));
       this.props.onhandleLogin()
     } else {
       // 에러 모달 띄우기 존나 귀찮다.. alert으로 하자

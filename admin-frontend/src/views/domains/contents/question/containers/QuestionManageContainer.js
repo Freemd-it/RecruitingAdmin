@@ -74,7 +74,8 @@ class QuestionRegistContainer extends Component {
 
   onClickToUpdateModal = (e, index) => {
     const { id } = e.currentTarget
-    if(updatePermissionCheck()) {
+    const { rows } = this.state
+    if(updatePermissionCheck(rows, id)) {
       axios.getQuestionDetail(id, this)
     } else {
       alert('수정할 수 있는 권한이 없는 질문입니다 :(')
@@ -82,16 +83,13 @@ class QuestionRegistContainer extends Component {
   }
 
   onRegistedData = (e) => {
-    // const { department } = JSON.parse(localStorage.getItem('user_session'))
-    console.log(e.target.name)
-    console.log(e.target.value)
-    const name = e.target.name;
-    const value = (name !== 'used' ? e.target.value : e.target.value === 'true');
-    
+    const { name, value } = e.target
+    const mvalue = (name !== 'used' ? value : value === 'true');
+
     this.setState(prevState => {
       const registedData = { ...prevState.registedData};
-      registedData[name] = value;
-      // registedData['department'] = department
+      registedData[name] = mvalue;
+      console.log(registedData)
       return { registedData };
     });
   }
@@ -127,26 +125,21 @@ class QuestionRegistContainer extends Component {
     }
   }
 
-  onClickModalToUpdateConfirm = async () => {
+  onClickModalToUpdateConfirm = (event) => {
     const { registedData } = this.state
-    const result = {
-      status: 201,
-    }
-    // axios.modifyQuestionInfomation(registedData, this)
-    if(result.status === 201) {
-      this.setState((prevState) => {
-        const rowsData = this.state.rows
-        rowsData[registedData.id] = registedData
-        const newData = {
-          rowsData,
-          isUpdateModal: !prevState.isUpdateModal,
-        }
-        return newData
-      })
+    if(registedData.team === '팀 선택') {
+      alert('누락된 항목이 있습니다.')
+    } else {
+      axios.modifyQuestionInfomation(registedData, this)
     }
   }
 
-  onClickModalToClose = () => this.setState({isUpdateModal: false, isAddModal: false,})
+  onClickModalToClose = () => {
+    this.setState({
+      isUpdateModal: false,
+      isAddModal: false,
+    })
+  }
   
   onChangeKeyword = async (e) => {
     this.setState({

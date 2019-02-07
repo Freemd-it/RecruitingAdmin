@@ -1,6 +1,8 @@
 import axiosCreate from '../defaultAxios'
 import queryString from 'query-string'
-
+import organization from 'lib/service/organization'
+import _ from 'lodash'
+import moment from 'moment'
 
 export const getQuestionList = ({type='', q='', ...rest}, ctx) => 
   axiosCreate().get(`/admin/question?${queryString.stringify({...rest, type, q})}`)
@@ -14,6 +16,7 @@ export const getQuestionDetail= (id, ctx) =>
       res.status === 200 && ctx.setState({
         registedData: {
           id: result._id,
+          department_name: organization[result.department].name,
           department: result.department,
           team: result.team,
           question: result.question,
@@ -21,7 +24,6 @@ export const getQuestionDetail= (id, ctx) =>
           register: result.register,
         },
         isUpdateModal: true,
-        // id,
       })
     })
     .catch(err => err)
@@ -32,7 +34,29 @@ export const setQuestionInfomation = (data, ctx) => {
     .catch(err => err)
 }
 
-export const modifyQuestionInfomation = ({_id, ...rest}, ctx) => 
-  axiosCreate().put(`/admin/question/${_id}`, rest)
-    .then(res => ctx.setState({ rows: res.data.result}))
+export const modifyQuestionInfomation = (registedData, ctx) => 
+  axiosCreate().put(`/admin/question/${registedData.id}`, registedData)
+    .then(res => {
+      console.log('11', res.data.result)
+      if(res.status === 201) {
+        ctx.setState((prevState) => {
+          const { rows } = ctx.state
+          _.forEach(rows, (v, k) => {
+            if(v._id === registedData.id) {
+              console.log('tttt', registedData)
+              rows[k] = {
+                ...registedData,
+                _id: v._id,
+                batch: 20,
+                registedDate: moment().format('YYYY-MM-DD HH:mm:ss')
+              }
+            }
+          })
+          return {
+            rows,
+            isUpdateModal: false,
+          }
+        })
+      }
+    })
     .catch(err => err)

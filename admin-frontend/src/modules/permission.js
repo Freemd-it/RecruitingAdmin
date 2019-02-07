@@ -1,3 +1,4 @@
+import _ from 'lodash'
 /*
   classify = 101, 102, 103
   101 => 공통질문, 102 => 본부질문 103 => 팀질문
@@ -19,10 +20,16 @@ export const addPermissionCheck = ({classify}) => {
   }
 }
 
-export const updatePermissionCheck = () => {
-  const { permission } = JSON.parse(localStorage.getItem('user_session'))
+export const updatePermissionCheck = (rows, id) => {
+  let flag = true
+  const { department, permission } = JSON.parse(localStorage.getItem('user_session'))
+  _.forEach(rows, (v, k) => {
+    if(v._id === id) {
+      if(v.department !== department) flag = false
+    }
+  })
   if(permission > 302) {
-    return false
+    flag = false
   }
-  return true
+  return flag
 }

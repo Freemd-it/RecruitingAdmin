@@ -5,7 +5,7 @@ import _ from 'lodash'
 import organization from 'lib/service/organization';
 
 function maketeamList(registedData, department) {
-  return (_.map(organization[department], (v, key) => {
+  return (_.map(organization[registedData.department], (v, key) => {
     const temp2 = []
     if(key === 'team') {
       _.forEach(v, (_v, _k) => {
@@ -20,16 +20,15 @@ function maketeamList(registedData, department) {
 const QuestionModal = props => {
   const { department } = JSON.parse(localStorage.getItem('user_session'))
   const { registedData, onRegistedData } = props;
-  console.log(department, registedData)
   const teamList = maketeamList(registedData, department)
   return (
     <div className={'container QuestionDetail'} key={registedData._id}>
       <FormGroup row>
         <Label sm={2}>본부</Label>
         <Col sm={10}>
-          <Input bsSize="sm" type="select" name="department" value={registedData.department} onChange={onRegistedData} readOnly disabled>
+          <Input bsSize="sm" type="select" name="department" value={registedData.department} onChange={onRegistedData}>
             <option disabled> 본부 선택 </option>
-            <option>{ registedData.department_name || department}</option>
+            <option>{ registedData.department_name}</option>
           </Input>
         </Col>
       </FormGroup>
