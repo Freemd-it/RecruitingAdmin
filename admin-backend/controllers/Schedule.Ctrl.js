@@ -3,7 +3,8 @@ const moment = require('moment');
 
 
 const userScheduleInfo = (userObj) => {
-    if(!userObj.interview_info[0]) return;
+    console.log(!userObj.interview_info)
+    if(!userObj.interview_info) return;
     const interviewTime = ["10:00 - 12:00", "12:00 - 14:00", "14:00 - 16:00", "16:00 - 18:00"];
 
     if(userObj.basic_info.team === '없음'){
@@ -18,8 +19,8 @@ const userScheduleInfo = (userObj) => {
     const saturday = [];
     const sunday = [];
 
-    console.log(userObj.interview_info[0].interview_time);
-    console.log(userObj.interview_info[1].interview_time);
+    // console.log(userObj.interview_info[0].interview_time);
+    // console.log(userObj.interview_info[1].interview_time);
 
     for(let i = 2 ; i < 4 ; i++) {
         let interview_data = {
@@ -60,7 +61,7 @@ const getScheduleUserList = async(req, res) => {
                                 .select("basic_info interview_info")
                                 .sort({_id: -1})
                                 .exec();
-        console.log(userList);
+                                
         const resUserList = userList.map(user => userScheduleInfo(user));
         res.status(200).json({message: "Successful get schedule list", result: resUserList});
     } catch(e) {

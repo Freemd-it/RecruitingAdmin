@@ -105,8 +105,9 @@ const registQuestion = async(req, res) => {
 const updateQuestion = async(req, res) => {
     const questionId = req.params.questionId;
     const {department, team, question, used} = req.body;
+    console.log(req.body)
+
     const register = req.userdata;
-    console.log(questionId);
     if(department) {
         //본부, 팀 미지정 -> 공통질문
         if(register.permission > Code.Permission.get('FullAccess')){

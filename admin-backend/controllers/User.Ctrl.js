@@ -91,7 +91,7 @@ const getUserList = async (req, res) => {
     console.log(JSON.stringify(findOption));
     try {
         const userList = await User
-            //                                .find({"support_status": {$gt: 200}})
+            .find({"support_status": {$gt: 200}})
             .find(findOption)
             .select("basic_info support_status")
             .sort({ _id: -1 })
