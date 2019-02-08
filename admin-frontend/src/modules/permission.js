@@ -23,13 +23,14 @@ export const addPermissionCheck = ({classify}) => {
 export const updatePermissionCheck = (rows, id) => {
   let flag = true
   const { department, permission } = JSON.parse(localStorage.getItem('user_session'))
-  _.forEach(rows, (v, k) => {
-    if(v._id === id) {
-      if(v.department !== department) flag = false
-    }
-  })
-  if(permission > 302) {
-    flag = false
-  }
+  
+  if (permission === 301) flag = true
+  else if (permission === 302) {
+    _.forEach(rows, (v, k) => {
+      if(v._id === id) {
+        if(v.department !== department) flag = false
+      }
+    })
+  } else flag = false
   return flag
 }
