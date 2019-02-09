@@ -5,6 +5,7 @@ const QuestionsSchema = new Schema({
   classify: Number, //공통, 본부, 팀질문 및 어떤본부 팀인지 분류
   department: String, //본부
   team: String, //팀
+  stringDepartment: String,
   question : String, //질문내용,
   batch: Number, //기수
   register: String, //등록자

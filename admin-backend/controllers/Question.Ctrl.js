@@ -1,7 +1,51 @@
 const Question = require('../models/QuestionModel');
 const Code = require('../modules/Status.Code');
 
+const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
+    if (searchIndex === 'de') {
+        return {
+            "basic_info.user_named": new RegExp(searchKeyword),
+        };
+    }
+    if (searchIndex === 'department') {
+        return {
+            $or: [
+                {
+                    "basic_info.department": new RegExp(searchKeyword),
+                },
+                {
+                    "basic_info.secondary_department": new RegExp(searchKeyword),
+                }
+            ]
+        };
+    }
+    if (searchIndex === 'team') {
+        return {
+            $or: [
+                {
+                    "basic_info.team": new RegExp(searchKeyword),
+                },
+                {
+                    "basic_info.secondary_team": new RegExp(searchKeyword),
+                }
+            ]
+        };
+    }
+    if (searchIndex === 'age') {
+        const birthYear = age_birthDate_convert(searchKeyword);
+        return {
+            "basic_info.birth_date": new RegExp(String(birthYear)),
+        }
+    }
+}
+
 const getQuestionList = async(req, res) => {
+    let findOption = {};
+    if (req.query.type && req.query.q) {
+        const searchIndex = req.query.type;
+        const searchKeyword = req.query.q;
+        findOption = matchSearchIndexandSchemaKey(searchIndex, searchKeyword);
+    }
     try {
         const questionList = await Question
                                         .find()
@@ -88,6 +132,7 @@ const registQuestion = async(req, res) => {
     insertQuestion.classify = classify;
     insertQuestion.department = department;
     insertQuestion.team = team;
+    insertQuestion.stringDepartment = Code.getDepartmentName(Number(department + '00')) + ' ' + Code.getTeamName(Number(team));
     insertQuestion.batch = batch;
     insertQuestion.register = register.name;
     insertQuestion.used = used;
@@ -150,12 +195,21 @@ const updateQuestion = async(req, res) => {
     try {
         console.log("question: ",question);
         console.log("used: ",used)
+        const questionObj = await Question
+                                        .findById(req.params.questionId)
+                                        .exec();
+        const updateData = {
+            team: team, 
+            question: question, 
+            stringDepartment: Code.getDepartmentName(Number(questionObj.department + '00')) + ' ' + Code.getTeamName(Number(team)),
+            used: used
+        }
         const updatedQuestion = await new Promise( ( resolve, reject ) => {
-            Question.findByIdAndUpdate( questionId, { $set: {team: team, question: question, used: used}}, {new: true}, ( error, obj ) => {
+            Question.findByIdAndUpdate( questionId, { $set: updateData}, {new: true}, ( error, obj ) => {
                 if( error ) {
                     console.error( JSON.stringify( error ) );
                     return reject( error );
-                }
+                }f
                 resolve( obj );
             });
         });
@@ -169,6 +223,74 @@ const updateQuestion = async(req, res) => {
         res.status(500).json({message: JSON.stringify(e), result: null});
     }
 }
+
+const deleteQuestion = async(req, res) => {
+    const questionId = req.params.questionId;
+
+    const register = req.userdata;
+    if(Number(department) === 900) {
+        //본부, 팀 미지정 -> 공통질문
+        if(register.permission > Code.Permission.get('DepartmentAccess')){
+            res.status(401).json({
+                message: "Have not permission0",
+                result: null,
+            });
+        }
+        //본부 지정 안되어있으면 대표계정인지 체크
+    }
+    if(!Number(team)) {
+        //팀 미지정 -> 본부질문
+        if(register.permission > Code.Permission.get('DepartmentAccess')){
+            res.status(401).json({
+                message: "Have not permission",
+                result: null,
+            });
+        }
+        //팀 지정 안되어있으면 본부장계정 or 대표계정인지 체크
+        if((register.permission === Code.Permission.get('DepartmentAccess')) &&(department !== register.department)){
+            res.status(401).json({
+                message: "Have not permission. Not your department",
+                result: null,
+            });
+        }
+        //본부장 계정일시 자신의 본부인지 체크
+    }
+    if((register.permission === Code.Permission.get('DepartmentAccess')) &&(department !== register.department)){
+        res.status(401).json({
+            message: "Have not permission. Not your department",
+            result: null,
+        });
+    }
+    if(register.permission === Code.Permission.get('TeamAccess')){
+        res.status(401).json({
+            message: "Have not permission. Please Request for Department Manager",
+            result: null,
+        });
+    }
+
+    try {
+        console.log("question: ",question);
+        console.log("used: ",used)
+        const updatedQuestion = await new Promise( ( resolve, reject ) => {
+            Question.findByIdAndUpdate( questionId, { $set: {team: team, question: question, used: used}}, {new: true}, ( error, obj ) => {
+                if( error ) {
+                    console.error( JSON.stringify( error ) );
+                    return reject( error );
+                }f
+                resolve( obj );
+            });
+        });
+        if(!updatedQuestion){
+            res.status(400).json({message: "Can't find question", result: null,});
+            return;
+        }
+        res.status(201).json({message: "Successs", result: updatedQuestion});
+    } catch (e) {
+        console.log(e);
+        res.status(500).json({message: JSON.stringify(e), result: null});
+    }
+}
+
 
 module.exports = {
     getQuestionList: getQuestionList,

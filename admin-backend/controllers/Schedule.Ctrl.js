@@ -1,4 +1,5 @@
 const User = require('../models/UserModel');
+const Code = require('../modules/Status.Code');
 const moment = require('moment');
 
 
@@ -7,15 +8,9 @@ const userScheduleInfo = (userObj) => {
     if(!userObj.interview_info) return;
     const interviewTime = ["10:00 ~ 12:00", "12:00 ~ 14:00", "14:00 ~ 16:00", "16:00 ~ 18:00"];
 
-    if(userObj.basic_info.team === '없음'){
-        userObj.basic_info.team = '';
-    }
-    if(userObj.basic_info.secondary_department === '없음'){
-        userObj.basic_info.secondary_department = '';
-    }
-    if(userObj.basic_info.secondary_team === '없음'){
-        userObj.basic_info.secondary_team = '';
-    }
+    const first_department = Code.getDepartmentName(Number(userObj.basic_info.department + userObj.basic_info.team)) + ' ' + Code.getTeamName(Number(userObj.basic_info.department + userObj.basic_info.team));
+    const second_department = Code.getDepartmentName(Number(userObj.basic_info.second_department + userObj.basic_info.second_team)) + ' ' + Code.getTeamName(Number(userObj.basic_info.second_department + userObj.basic_info.second_team));
+
     const saturday = [];
     const sunday = [];
 
@@ -39,10 +34,10 @@ const userScheduleInfo = (userObj) => {
         _id: userObj._id,
         name: userObj.basic_info.user_name,
         phone_number: userObj.basic_info.phone_number,
-        first_department: userObj.basic_info.department,
-        first_team: userObj.basic_info.team,
-        second_department: userObj.basic_info.secondary_department,
-        second_team: userObj.basic_info.secondary_team,
+        first_department: first_department,
+        first_team: '',
+        second_department: second_department,
+        second_team: '',
         schedule: {
             saturday: saturday,
             sunday: sunday,
