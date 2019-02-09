@@ -24,16 +24,16 @@ const ExternalInfo = (props) => {
               {index !== 0 ? (<Divider className="Divider" />) : ''}
               <div className="SubTitle">
                 경력 {index + 1}.
-                </div>
+              </div>
               <div className="SubContent">
                 {organizer} {type}
               </div>
               <div className="SubContent">
                 {startDateString} {endDateString} ({time} 시간)
-                </div>
+              </div>
               <div className="SubTitle">
                 상세 내용
-                </div>
+              </div>
               <div className="SubContent">
                 {content}
               </div>

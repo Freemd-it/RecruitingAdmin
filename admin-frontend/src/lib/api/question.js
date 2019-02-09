@@ -22,6 +22,7 @@ export const getQuestionDetail= (id, ctx) =>
           question: result.question,
           used: result.used,
           register: result.register,
+          type: result.type,
         },
         isUpdateModal: true,
       })
@@ -37,13 +38,11 @@ export const setQuestionInfomation = (data, ctx) => {
 export const modifyQuestionInfomation = (registedData, ctx) => 
   axiosCreate().put(`/admin/question/${registedData.id}`, registedData)
     .then(res => {
-      console.log('11', res.data.result)
       if(res.status === 201) {
         ctx.setState((prevState) => {
           const { rows } = ctx.state
           _.forEach(rows, (v, k) => {
             if(v._id === registedData.id) {
-              console.log('tttt', registedData)
               rows[k] = {
                 ...registedData,
                 _id: v._id,

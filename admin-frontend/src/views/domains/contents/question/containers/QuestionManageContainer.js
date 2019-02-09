@@ -21,7 +21,6 @@ class QuestionRegistContainer extends Component {
     isUpdateModal: false,
     keyword: '검색선택',
     query: '',
-    type: '',
     registedData: {
       id: '',
       department_name: '본부 선택',
@@ -29,6 +28,7 @@ class QuestionRegistContainer extends Component {
       team: '팀 선택',
       question: '',
       used: false,
+      type: '유형 선택',
       register: '',
     }
   };
@@ -60,6 +60,7 @@ class QuestionRegistContainer extends Component {
             team: team ? team : '팀 선택',
             question: '질문을 작성해주세요 :)',
             used: false,
+            type: '타입 선택',
             id: rows.length,
           },
           isAddModal: true,
@@ -89,7 +90,6 @@ class QuestionRegistContainer extends Component {
     this.setState(prevState => {
       const registedData = { ...prevState.registedData};
       registedData[name] = mvalue;
-      console.log(registedData)
       return { registedData };
     });
   }
@@ -221,7 +221,7 @@ class QuestionRegistContainer extends Component {
         <Modal
           open={this.state.isAddModal}
           onClose={this.onCloseModal}
-          
+
           title={'본부질문 추가하기'}
           contents={questionDetail}
           footer={AddModalFooter}

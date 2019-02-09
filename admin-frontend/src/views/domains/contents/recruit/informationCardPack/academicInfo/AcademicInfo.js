@@ -6,7 +6,7 @@ import SchoolIcon from '@material-ui/icons/School';
 import InformationCard from 'views/contexts/modal/card';
 
 const AcademicInfo = ({data}) => {
-  console.log(data)
+  console.log('AcademicInfo', data)
   const { academic_name = '', degree = '', major = '', location = '', entrance_date = '', graduation_date = '' } = data;
   const entranceDateString = entrance_date != null ? moment(entrance_date).format("Y년 M월") + ' 부터' : '';
   const graduateDateString = graduation_date != null ? moment(graduation_date).format("Y년 M월") + ' 까지' : '';
@@ -20,11 +20,11 @@ const AcademicInfo = ({data}) => {
         </span>)}
       content={(
         <div className="Content">
-          <div>
-            {academic_name} {degree} ({major}, {location})
+          <div className="Content__wrapper">
+            <span className="SubTitle">학력사항 :  </span> {academic_name} {degree} ({major}, {location})
           </div>
           <div>
-            {entranceDateString} {graduateDateString} {graduation_date != null ? '졸업' : '재학 중'}
+          <span className="SubTitle">기간 :  </span> {entranceDateString} {graduateDateString} {graduation_date != null ? '졸업' : '재학 중'}
           </div>
         </div>
       )}>

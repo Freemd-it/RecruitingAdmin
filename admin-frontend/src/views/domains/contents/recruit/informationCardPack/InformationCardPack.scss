@@ -17,37 +17,6 @@
   font-size: 1.2em !important;
 }
 
-.Title {
-  color: rgba(0, 0, 0, 0.7);
-  display: inline-flex !important;
-  font-size: 1em;
-}
-
-.SubTitle {
-  color: rgba(0, 0, 0, 0.8);
-  font-size: 1em;
-  font-weight: 600;
-  margin-top: 10px;
-}
-
-span.SubTitle {
-  display: inline-block;
-  width: 140px;
-}
-
-
-.Content {
-  font-size: 0.9em;
-  line-height: 2em;
-  padding-left: 0.3em;
-}
-
-.SubContent {
-  padding-left: 0.3em;
-}
-
-
-
 .InterviewCell {
   display: inline-block;
   width: 150px;
@@ -65,4 +34,37 @@ span.SubTitle {
   border-color: #FF5858 !important;
   color: whitesmoke;
   font-weight: 600;
+}
+
+.Title {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.Content { 
+  &__wrapper {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .SubTitle {
+    font-size:17px;
+    font-weight: 700;
+
+    span {
+      margin: 5px;
+      font-size: 17px; 
+    }
+  }
+  
+  .Head-3 {
+    font-size: 16px;
+    margin: 5px;
+    font-weight: 700;
+  }
+  
+  .SubContent {
+    margin: 5px;
+    color: #797979;
+  }
 }

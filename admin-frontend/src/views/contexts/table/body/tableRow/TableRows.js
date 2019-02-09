@@ -4,6 +4,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Checkbox from '@material-ui/core/Checkbox';
 import organization from 'lib/service/organization'
 import moment from 'moment'
+import searchTeam from 'lib/sreachTeam'
 
 class TableRows extends Component {
   render() {
@@ -28,8 +29,8 @@ class TableRows extends Component {
               else if(column.key === 'department') {
                 return <TableCell align="center" key={index}>{ organization[value].name }</TableCell>
               }
-              // else if(column.key === 'team') return <TableCell align="center" key={index}>{ value}</TableCell>
-              return <TableCell align="center" key={index}>{value}</TableCell>;
+              else if(column.key === 'team') return <TableCell align="center" key={index}> { searchTeam(item.department, value) } </TableCell>
+              else return <TableCell align="center" key={index}>{value}</TableCell>;
             } else {
               return <TableCell align="center" key={index}>미기입</TableCell>;
             }

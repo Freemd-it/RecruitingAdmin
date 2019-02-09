@@ -3,37 +3,38 @@ import moment from 'moment';
 import { Divider } from '@material-ui/core';
 import StarIcon from '@material-ui/icons/Star';
 
-// import '../InfoDetail.scss';
+import './SpecialInfo.scss';
 import InformationCard from 'views/contexts/modal/card';
 
-const ExternalInfo = (props) => {
+const SpecialInfo = (props) => {
 
   return (
     <InformationCard
       title={(
         <span className="Title">
-          <StarIcon className="Icon" /> 특기사항
+          <StarIcon className="Icon" />특별사항
         </span>)}
       content={
         props.data.map((elem, index) => {
-          const { type, organizer, start_date, end_date, time, content } = elem;
-          const startDateString = moment(start_date).format("Y년 M월") + ' 부터';
-          const endDateString = moment(end_date).format("Y년 M월") + ' 까지';
+          const { content, self_evaluation_ability, special_type } = elem;
           return (
             <div key={index} className="Content">
               {index != 0 ? (<Divider className="Divider" />) : ''}
               <div className="SubTitle">
-                경력 {index}.
-                </div>
-              <div className="SubContent">
-                {organizer} {type}
+                <span> 구분 </span>
               </div>
-              <div className="SubContent">
-                {startDateString} {endDateString} ({time} 시간)
+                <div className="SubContent">
+                  {special_type}
                 </div>
               <div className="SubTitle">
-                상세 내용
-                </div>
+                <span> 본인 평가 </span>
+              </div>
+              <div className="SubContent">
+                {self_evaluation_ability}
+              </div>  
+              <div className="SubTitle">
+                <span> 상세 내용 </span>
+              </div>
               <div className="SubContent">
                 {content}
               </div>
@@ -45,4 +46,4 @@ const ExternalInfo = (props) => {
   )
 }
 
-export default ExternalInfo;
+export default SpecialInfo;

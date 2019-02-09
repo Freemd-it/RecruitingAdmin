@@ -3,7 +3,7 @@ import AcademicInfo from 'views/domains/contents/recruit/informationCardPack/aca
 import ExternalInfo from 'views/domains/contents/recruit/informationCardPack/externalInfo';
 import BasicInfo from 'views/domains/contents/recruit/informationCardPack/basicInfo';
 import InterviewInfo from 'views/domains/contents/recruit/informationCardPack/applyInfo';
-import AbilityInfo from 'views/domains/contents/recruit/informationCardPack/abilityInfo';
+import SpecialInfo from 'views/domains/contents/recruit/informationCardPack/specialInfo';
 import QuestionInfo from 'views/domains/contents/recruit/informationCardPack/questionInfo';
 
 import './InformationCardPack.scss'
@@ -51,7 +51,7 @@ const InfoDetail = ({ classes, selectedRow }) => {
               );
             case 'special_info':
               return (
-                <AbilityInfo
+                <SpecialInfo
                   key={`${key}__DetailBody`}
                   data={value}
                 />

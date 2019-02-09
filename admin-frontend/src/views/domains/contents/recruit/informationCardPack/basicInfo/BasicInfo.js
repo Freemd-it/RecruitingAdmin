@@ -48,8 +48,8 @@ const BasicInfo = (props) => {
       content={(
         <div className="Content">
           {inputData.map(input => (
-            <div key={input}>
-              <span className="SubTitle">{input[0]}</span> {input[1]}
+            <div className="Content__wrapper" key={input}>
+              <span className="Head-3">{input[0]} : </span> <span className="SubContent"> {input[1]} </span>
             </div>
           ))}
         </div>
