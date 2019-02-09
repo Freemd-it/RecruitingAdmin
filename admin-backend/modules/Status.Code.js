@@ -25,8 +25,17 @@ const codetoDepartment = Map({
     20201: '보건교육운영팀',
     20202: '교육연구팀',
     20300: '해외의료사업본부',
+    90000: '공통',
 });
 
+const getDepartmentCode = (string) => {
+    const keys = codetoDepartment.keySeq().toArray();
+    for(let i = 0 ; i < keys.length ; i++){
+        if(codetoDepartment.get(keys[i]).includes(string)){
+            return keys[i].split(0,2);
+        }
+    }
+}
 
 const getDepartmentName = (code) => {
     const departmentCode = parseInt(Number(code) / 100) * 100;
@@ -76,4 +85,5 @@ module.exports = {
     Application : application,
     getDepartmentName : getDepartmentName,
     getTeamName : getTeamName,
+    getDepartmentCode : getDepartmentCode,
 }

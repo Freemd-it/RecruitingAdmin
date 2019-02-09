@@ -1,7 +1,6 @@
 const User = require('../models/UserModel');
-const urlencode = require('urlencode');
+const Code = require('../modules/Status.Code');
 const moment = require('moment');
-const iconv = require('iconv-lite');
 
 const userDefulatInfo = (userObj) => {
 
@@ -44,43 +43,65 @@ const age_birthDate_convert = (age) => {
 const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
     if (searchIndex === 'name') {
         return {
-            "basic_info.user_name": new RegExp(searchKeyword),
+            $and: [
+                {
+                    "support_status": {$gte: 201}
+                },
+                {
+                    "basic_info.user_name": new RegExp(searchKeyword),
+                }
+            ]
         };
     }
     if (searchIndex === 'department') {
         return {
-            $or: [
+            $and: [
                 {
-                    "basic_info.department": new RegExp(searchKeyword),
+                    "support_status": {$gte: 201}
                 },
                 {
-                    "basic_info.secondary_department": new RegExp(searchKeyword),
+                    $or: [
+                        {
+                            "basic_info.department": Code.getDepartmentCode(searchKeyword),
+                        },
+                        {
+                            "basic_info.secondary_department": Code.getDepartmentCode(searchKeyword),
+                        }
+                    ]
                 }
             ]
+            
         };
     }
-    if (searchIndex === 'team') {
-        return {
-            $or: [
-                {
-                    "basic_info.team": new RegExp(searchKeyword),
-                },
-                {
-                    "basic_info.secondary_team": new RegExp(searchKeyword),
-                }
-            ]
-        };
-    }
+    // if (searchIndex === 'team') {
+    //     return {
+    //         $or: [
+    //             {
+    //                 "basic_info.team": new RegExp(searchKeyword),
+    //             },
+    //             {
+    //                 "basic_info.secondary_team": new RegExp(searchKeyword),
+    //             }
+    //         ]
+    //     };
+    // }
     if (searchIndex === 'age') {
         const birthYear = age_birthDate_convert(searchKeyword);
         return {
-            "basic_info.birth_date": new RegExp(String(birthYear)),
+            $and: [
+                {
+                    "support_status": {$gte: 201}
+                },
+                {
+                    "basic_info.birth_date": new RegExp(String(birthYear)),
+                }
+            ]
         }
     }
 }
 
 const getUserList = async (req, res) => {
-    let findOption = {};
+    let findOption = {"support_status": {$gte: 201}};
     if (req.query.type && req.query.q) {
         const searchIndex = req.query.type;
         const searchKeyword = req.query.q;
@@ -89,7 +110,6 @@ const getUserList = async (req, res) => {
     console.log('find Options', JSON.stringify(findOption));
     try {
         const userList = await User
-            .find({"support_status": {$gte: 201}})
             .find(findOption)
             .select("basic_info support_status")
             .sort({ _id: -1 })

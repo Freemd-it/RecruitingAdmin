@@ -4,12 +4,12 @@ const moment = require('moment');
 
 
 const userScheduleInfo = (userObj) => {
-    console.log(!userObj.interview_info)
+    console.log(userObj)
     if(!userObj.interview_info) return;
     const interviewTime = ["10:00 ~ 12:00", "12:00 ~ 14:00", "14:00 ~ 16:00", "16:00 ~ 18:00"];
 
-    const first_department = Code.getDepartmentName(Number(userObj.basic_info.department + userObj.basic_info.team)) + ' ' + Code.getTeamName(Number(userObj.basic_info.department + userObj.basic_info.team));
-    const second_department = Code.getDepartmentName(Number(userObj.basic_info.second_department + userObj.basic_info.second_team)) + ' ' + Code.getTeamName(Number(userObj.basic_info.second_department + userObj.basic_info.second_team));
+    const first_department = Code.getDepartmentName(Number(userObj.basic_info.department + '00')) + ' ' + Code.getTeamName(Number(userObj.basic_info.department + userObj.basic_info.team));
+    const second_department = Code.getDepartmentName(Number(userObj.basic_info.second_department + '00')) + ' ' + Code.getTeamName(Number(userObj.basic_info.second_department + userObj.basic_info.second_team));
 
     const saturday = [];
     const sunday = [];
@@ -49,7 +49,7 @@ const userScheduleInfo = (userObj) => {
 const getScheduleUserList = async(req, res) => {
     try {
         const userList = await User
-                                .find()
+                                .find({"support_status": {$gte: 201}})
                                 .select("basic_info interview_info")
                                 .sort({_id: -1})
                                 .exec();
