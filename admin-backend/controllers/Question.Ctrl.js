@@ -2,41 +2,9 @@ const Question = require('../models/QuestionModel');
 const Code = require('../modules/Status.Code');
 
 const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
-    if (searchIndex === 'de') {
-        return {
-            "basic_info.user_named": new RegExp(searchKeyword),
-        };
-    }
-    if (searchIndex === 'department') {
-        return {
-            $or: [
-                {
-                    "basic_info.department": new RegExp(searchKeyword),
-                },
-                {
-                    "basic_info.secondary_department": new RegExp(searchKeyword),
-                }
-            ]
-        };
-    }
-    if (searchIndex === 'team') {
-        return {
-            $or: [
-                {
-                    "basic_info.team": new RegExp(searchKeyword),
-                },
-                {
-                    "basic_info.secondary_team": new RegExp(searchKeyword),
-                }
-            ]
-        };
-    }
-    if (searchIndex === 'age') {
-        const birthYear = age_birthDate_convert(searchKeyword);
-        return {
-            "basic_info.birth_date": new RegExp(String(birthYear)),
-        }
-    }
+    return {
+        "stringDepartment": new RegExp(searchKeyword),
+    };
 }
 
 const getQuestionList = async(req, res) => {
