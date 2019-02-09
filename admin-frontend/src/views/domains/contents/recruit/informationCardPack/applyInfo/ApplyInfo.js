@@ -9,14 +9,14 @@ import InformationCard from 'views/contexts/modal/card';
 const InterviewInfo = ({data}) => {
   const interviewTable = [
     [
-      '14:00 - 16:00',
-      '16:00 - 18:00',
+      '14:00 ~ 16:00',
+      '16:00 ~ 18:00',
     ],
     [
-      '10:00 - 12:00',
-      '12:00 - 14:00',
-      '14:00 - 16:00',
-      '16:00 - 18:00',
+      '10:00 ~ 12:00',
+      '12:00 ~ 14:00',
+      '14:00 ~ 16:00',
+      '16:00 ~ 18:00',
     ],
   ]
   const title = (
@@ -25,11 +25,11 @@ const InterviewInfo = ({data}) => {
     </span>)
 
   const content = (
-    <div>
-      <div className="SubTitle">인터뷰 가능 시간</div>
+    <div className="Content">
+      <div className="Head-3">인터뷰 가능 시간</div>
       {
         data.map(({interview_week, interview_time, interview_date}, index) => (
-          <div>
+          <div className="SubContent">
             <div> {interview_week}요일 - {moment(`${interview_date}`).format("M월 D일")}</div>
               <div>
                 {

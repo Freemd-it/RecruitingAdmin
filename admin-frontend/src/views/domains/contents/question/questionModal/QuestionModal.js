@@ -51,6 +51,18 @@ const QuestionModal = props => {
       </FormGroup>
 
       <FormGroup row>
+        <Label sm={2}>질문</Label>
+        <Col sm={10}>
+          <Input type="select" name="type" onChange={onRegistedData} value={registedData.type} >
+            <option selected="true" value="type" disabled> 타입선택 </option>
+            <option value="text"> 텍스트 </option>
+            <option value="file"> 파일첨부 </option>
+            <option value="select"> 선택항목</option>
+          </Input>
+        </Col>
+      </FormGroup>
+
+      <FormGroup row>
         <Col sm={2}>질문 사용 유무</Col>
         <Col sm={10}>
           <Label className="QuestionDetail__radio">

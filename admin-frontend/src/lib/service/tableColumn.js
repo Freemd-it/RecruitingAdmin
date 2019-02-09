@@ -2,7 +2,7 @@ export const information = [{
     key: 'name',
     value: '이름',
   },{
-    key: 'english_name',
+    key: 'english',
     value: '영문이름',
   },{
     key: 'is_male',
@@ -93,7 +93,10 @@ export const question = [
 }, {
   key: 'registedDate',
   value: '등록일자', 
-}, {
+},{
   key: 'used',
   value: '질문사용여부'
+},{
+  key: 'type',
+  value: '유형'
 }]
