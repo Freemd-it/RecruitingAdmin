@@ -9,9 +9,10 @@ const QuestionsSchema = new Schema({
   batch: Number, //기수
   register: String, //등록자
   used: Boolean, // 사용여부
+  type: String,
   registedDate: {
     type: Date,
-   default: new Date() // 현재 날짜를 기본값으로 지정
+    default: new Date() // 현재 날짜를 기본값으로 지정
   }
 })
 

@@ -37,7 +37,7 @@ const getQuestion = async(req, res) => {
 }
 
 const registQuestion = async(req, res) => {
-    const {department, team, question, used} = req.body;
+    const {department, team, question, used, type} = req.body;
     const register = req.userdata;
     const batch = 20;
     let classify = 101;
@@ -46,9 +46,9 @@ const registQuestion = async(req, res) => {
 
     if(department) {
         //본부, 팀 미지정 -> 공통질문
-        if(register.permission > Code.Permission.get('FullAccess')){
+        if(register.permission > Code.Permission.get('DepartmentAccess')){
             res.status(401).json({
-                message: "Have not permission",
+                message: "Have not permission0",
                 result: null,
             });
         }
@@ -58,14 +58,14 @@ const registQuestion = async(req, res) => {
         //팀 미지정 -> 본부질문
         if(register.permission > Code.Permission.get('DepartmentAccess')){
             res.status(401).json({
-                message: "Have not permission",
+                message: "Have not permission1",
                 result: null,
             });
         }
         //팀 지정 안되어있으면 본부장계정 or 대표계정인지 체크
         if((register.permission === Code.Permission.get('DepartmentAccess')) &&(department !== register.department)){
             res.status(401).json({
-                message: "Have not permission",
+                message: "Have not permission2",
                 result: null,
             });
         }
@@ -73,13 +73,13 @@ const registQuestion = async(req, res) => {
     }
     if((register.permission === Code.Permission.get('DepartmentAccess')) &&(department !== register.department)){
         res.status(401).json({
-            message: "Have not permission",
+            message: "Have not permission3",
             result: null,
         });
     }
     if((register.permission === Code.Permission.get('TeamAccess')) &&(team !== register.team)){
         res.status(401).json({
-            message: "Have not permission",
+            message: "Have not permission4",
             result: null,
         });
     }
@@ -92,10 +92,10 @@ const registQuestion = async(req, res) => {
     insertQuestion.register = register.name;
     insertQuestion.used = used;
     insertQuestion.question = question;
-    
+    insertQuestion.type = type;
+
     try {
         await insertQuestion.save();
-        //TODO
         res.status(201).json({message : "Success", result: null,});
     } catch (e) {
         res.status(500).json({message: JSON.stringify(e), result: null});
@@ -110,7 +110,7 @@ const updateQuestion = async(req, res) => {
     const register = req.userdata;
     if(department) {
         //본부, 팀 미지정 -> 공통질문
-        if(register.permission > Code.Permission.get('FullAccess')){
+        if(register.permission > Code.Permission.get('DepartmentAccess')){
             res.status(401).json({
                 message: "Have not permission",
                 result: null,

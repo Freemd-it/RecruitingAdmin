@@ -5,7 +5,7 @@ const moment = require('moment');
 const userScheduleInfo = (userObj) => {
     console.log(!userObj.interview_info)
     if(!userObj.interview_info) return;
-    const interviewTime = ["10:00 - 12:00", "12:00 - 14:00", "14:00 - 16:00", "16:00 - 18:00"];
+    const interviewTime = ["10:00 ~ 12:00", "12:00 ~ 14:00", "14:00 ~ 16:00", "16:00 ~ 18:00"];
 
     if(userObj.basic_info.team === '없음'){
         userObj.basic_info.team = '';
@@ -18,9 +18,6 @@ const userScheduleInfo = (userObj) => {
     }
     const saturday = [];
     const sunday = [];
-
-    // console.log(userObj.interview_info[0].interview_time);
-    // console.log(userObj.interview_info[1].interview_time);
 
     for(let i = 2 ; i < 4 ; i++) {
         let interview_data = {

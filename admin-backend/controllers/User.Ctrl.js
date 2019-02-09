@@ -17,7 +17,7 @@ const userDefulatInfo = (userObj) => {
     return {
         _id: userObj._id,
         name: userObj.basic_info.user_name,
-        english: userObj.basic_info.english,
+        english: userObj.basic_info.english_name,
         is_male: userObj.basic_info.is_male,
         birth_date: moment(userObj.basic_info.birth_date).format('YYYY-MM-DD'),
         email: userObj.basic_info.email,
@@ -38,7 +38,6 @@ const birthDate_age_convert = (date) => {
 
 const age_birthDate_convert = (age) => {
     const currentYear = moment().format('YYYY');
-    console.log(currentYear);
     return Number(currentYear) - Number(age) + 1;
 }
 
@@ -74,7 +73,6 @@ const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
     }
     if (searchIndex === 'age') {
         const birthYear = age_birthDate_convert(searchKeyword);
-        console.log(birthYear);
         return {
             "basic_info.birth_date": new RegExp(String(birthYear)),
         }
@@ -88,10 +86,10 @@ const getUserList = async (req, res) => {
         const searchKeyword = req.query.q;
         findOption = matchSearchIndexandSchemaKey(searchIndex, searchKeyword);
     }
-    console.log(JSON.stringify(findOption));
+    console.log('find Options', JSON.stringify(findOption));
     try {
         const userList = await User
-            .find({"support_status": {$gt: 200}})
+            .find({"support_status": {$gte: 201}})
             .find(findOption)
             .select("basic_info support_status")
             .sort({ _id: -1 })
@@ -125,7 +123,6 @@ const getTest = async (req, res) => {
     try {
         const userList = await User
             .find({ "basic_info.user_name": name })
-            //                            .find()
             .select("basic_info")
             .sort({ _id: -1 })
             .exec();
@@ -137,8 +134,6 @@ const getTest = async (req, res) => {
 }
 
 const searchUserList = async (req, res) => {
-    console.log("123123123123123123123");
-    console.log("type : ", req.query.type);
     const searchIndex = req.query.type;
     const searchKeyword = req.query.q;
 

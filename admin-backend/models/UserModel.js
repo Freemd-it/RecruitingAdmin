@@ -47,7 +47,7 @@ const QuestionsSchema = new Schema({
   portfolios: [PortfoliosSchema],
   registedDate: {
     type: Date,
-   default: new Date() // 현재 날짜를 기본값으로 지정
+    default: new Date() // 현재 날짜를 기본값으로 지정
   }
 })
 

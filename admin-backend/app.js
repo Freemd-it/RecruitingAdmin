@@ -40,11 +40,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use((req, res, next) => {
-  console.log(res.header);
-  console.log(req.header);
-  next();
-});
 app.use(cors(corsOptions))
 
 app.post('/admin/signin', sign.signin);
