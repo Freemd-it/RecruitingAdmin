@@ -100,7 +100,7 @@ const registQuestion = async(req, res) => {
     insertQuestion.classify = classify;
     insertQuestion.department = department;
     insertQuestion.team = team;
-    insertQuestion.stringDepartment = Code.getDepartmentName(Number(department + '00')) + ' ' + Code.getTeamName(Number(department + team));
+    insertQuestion.stringDepartment = Code.getDepartmentName(Number(String(department) + '00')) + ' ' + Code.getTeamName(Number(String(department) + String(team)));
     insertQuestion.batch = batch;
     insertQuestion.register = register.name;
     insertQuestion.used = used;
@@ -170,7 +170,7 @@ const updateQuestion = async(req, res) => {
         const updateData = {
             team: team, 
             question: question, 
-            stringDepartment: Code.getDepartmentName(Number(questionObj.department + '00')) + ' ' + Code.getTeamName(Number(questionObj.department + team)),
+            stringDepartment: Code.getDepartmentName(Number(questionObj.department + '00')) + ' ' + Code.getTeamName(Number(questionObj.department + String(team))),
             used: used
         }
         const updatedQuestion = await new Promise( ( resolve, reject ) => {
