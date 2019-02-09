@@ -66,9 +66,9 @@ const signup = async (req, res) => {
     try {
         const hash = await bcrypter.hash(password);
         const admin = new Admin({ permission, department, team, name, email, hash });
-        await admin.save();
+        const savedAdmin = await admin.save();
         //TODO
-        res.status(201).json({ message : "Success", result: null});
+        res.status(201).json({ message : "Success", result: savedAdmin});
     } catch (e) {
         res.status(500).json({ message: JSON.stringify(e) , result: null,});
     }

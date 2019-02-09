@@ -108,8 +108,8 @@ const registQuestion = async(req, res) => {
     insertQuestion.type = type;
 
     try {
-        await insertQuestion.save();
-        res.status(201).json({message : "Success", result: null,});
+        const savedQuestion = await insertQuestion.save();
+        res.status(201).json({message : "Success", result: savedQuestion,});
     } catch (e) {
         res.status(500).json({message: JSON.stringify(e), result: null});
     }

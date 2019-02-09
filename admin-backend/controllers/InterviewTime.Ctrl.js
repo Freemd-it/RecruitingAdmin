@@ -10,8 +10,8 @@ const registInterviewSchedule = async(req, res) => {
     interviewSchedule.interviewTime = time;
 
     try {
-        await interviewSchedule.save();
-        res.status(201).json({message: "Success", result: null});
+        const savedSchedule = await interviewSchedule.save();
+        res.status(201).json({message: "Success", result: savedSchedule});
     } catch(e) {
         res.status(500).json({message: JSON.stringify(e), result: null});
     }
