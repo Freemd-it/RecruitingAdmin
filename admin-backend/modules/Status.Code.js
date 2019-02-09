@@ -6,6 +6,38 @@ const questionClassify = Map({
     team: 103,
 })
 
+const codetoDepartment = Map({
+    10100: '경영지원본부',
+    10101: '인사조직팀',
+    10102: '재무관리팀',
+    10103: '기획지원팀',
+    10200: '브랜딩마케팅본부',
+    10201: '대외협력팀',
+    10202: '후원전략팀',
+    10203: '홍보기획팀',
+    10300: '디자인본부',
+    10400: 'IT기획본부',
+    20100: '무료진료소사업본부',
+    20101: '진료소운영팀',
+    20102: '의무기록팀',
+    20103: '약무팀',
+    20200: '보건교육사업본부',
+    20201: '보건교육운영팀',
+    20202: '교육연구팀',
+    20300: '해외의료사업본부',
+});
+
+
+const getDepartmentName = (code) => {
+    const departmentCode = parseInt(Number(code) / 100) * 100;
+    return codetoDepartment.get(String(departmentCode));
+}
+
+const getTeamName = (code) => {
+    if(!(Number(code)%10)) return '';
+    return codetoDepartment.get(String(code));
+}
+
 const teamClassify = Map({
     ManagementSupport_HumanResources: 10101,
     ManagementSupport_financial: 10102,
@@ -42,4 +74,6 @@ const permission = Map({
 module.exports = {
     Permission : permission,
     Application : application,
+    getDepartmentName : getDepartmentName,
+    getTeamName : getTeamName,
 }

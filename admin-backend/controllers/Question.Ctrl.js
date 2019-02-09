@@ -41,10 +41,10 @@ const registQuestion = async(req, res) => {
     const register = req.userdata;
     const batch = 20;
     let classify = 101;
-    if(department) classify++; //본부가 있으면 일단 공통질문 아니니 102로 만듦
-    if(team) classify++; //팀이 있으면 본부질문도 아니니 103까지 만듦. 본부는 없고 팀은 있다는 상황은 배제
+    if(Number(department)<900) classify++; //본부가 있으면 일단 공통질문 아니니 102로 만듦
+    if(Number(team)) classify++; //팀이 있으면 본부질문도 아니니 103까지 만듦. 본부는 없고 팀은 있다는 상황은 배제
 
-    if(department) {
+    if(Number(department) === 900) {
         //본부, 팀 미지정 -> 공통질문
         if(register.permission > Code.Permission.get('DepartmentAccess')){
             res.status(401).json({
@@ -54,18 +54,18 @@ const registQuestion = async(req, res) => {
         }
         //본부 지정 안되어있으면 대표계정인지 체크
     }
-    if(team) {
+    if(!Number(team)) {
         //팀 미지정 -> 본부질문
         if(register.permission > Code.Permission.get('DepartmentAccess')){
             res.status(401).json({
-                message: "Have not permission1",
+                message: "Have not permission",
                 result: null,
             });
         }
         //팀 지정 안되어있으면 본부장계정 or 대표계정인지 체크
         if((register.permission === Code.Permission.get('DepartmentAccess')) &&(department !== register.department)){
             res.status(401).json({
-                message: "Have not permission2",
+                message: "Have not permission. Not your department",
                 result: null,
             });
         }
@@ -73,13 +73,13 @@ const registQuestion = async(req, res) => {
     }
     if((register.permission === Code.Permission.get('DepartmentAccess')) &&(department !== register.department)){
         res.status(401).json({
-            message: "Have not permission3",
+            message: "Have not permission. Not your department",
             result: null,
         });
     }
-    if((register.permission === Code.Permission.get('TeamAccess')) &&(team !== register.team)){
+    if(register.permission === Code.Permission.get('TeamAccess')){
         res.status(401).json({
-            message: "Have not permission4",
+            message: "Have not permission. Please Request for Department Manager",
             result: null,
         });
     }
@@ -105,20 +105,19 @@ const registQuestion = async(req, res) => {
 const updateQuestion = async(req, res) => {
     const questionId = req.params.questionId;
     const {department, team, question, used} = req.body;
-    console.log(req.body)
 
     const register = req.userdata;
-    if(department) {
+    if(Number(department) === 900) {
         //본부, 팀 미지정 -> 공통질문
         if(register.permission > Code.Permission.get('DepartmentAccess')){
             res.status(401).json({
-                message: "Have not permission",
+                message: "Have not permission0",
                 result: null,
             });
         }
         //본부 지정 안되어있으면 대표계정인지 체크
     }
-    if(team) {
+    if(!Number(team)) {
         //팀 미지정 -> 본부질문
         if(register.permission > Code.Permission.get('DepartmentAccess')){
             res.status(401).json({
@@ -129,7 +128,7 @@ const updateQuestion = async(req, res) => {
         //팀 지정 안되어있으면 본부장계정 or 대표계정인지 체크
         if((register.permission === Code.Permission.get('DepartmentAccess')) &&(department !== register.department)){
             res.status(401).json({
-                message: "Have not permission",
+                message: "Have not permission. Not your department",
                 result: null,
             });
         }
@@ -137,13 +136,13 @@ const updateQuestion = async(req, res) => {
     }
     if((register.permission === Code.Permission.get('DepartmentAccess')) &&(department !== register.department)){
         res.status(401).json({
-            message: "Have not permission",
+            message: "Have not permission. Not your department",
             result: null,
         });
     }
-    if((register.permission === Code.Permission.get('TeamAccess')) &&(team !== register.team)){
+    if(register.permission === Code.Permission.get('TeamAccess')){
         res.status(401).json({
-            message: "Have not permission",
+            message: "Have not permission. Please Request for Department Manager",
             result: null,
         });
     }
@@ -152,7 +151,7 @@ const updateQuestion = async(req, res) => {
         console.log("question: ",question);
         console.log("used: ",used)
         const updatedQuestion = await new Promise( ( resolve, reject ) => {
-            Question.findByIdAndUpdate( questionId, { $set: {question: question, used: used}}, {new: true}, ( error, obj ) => {
+            Question.findByIdAndUpdate( questionId, { $set: {team: team, question: question, used: used}}, {new: true}, ( error, obj ) => {
                 if( error ) {
                     console.error( JSON.stringify( error ) );
                     return reject( error );
