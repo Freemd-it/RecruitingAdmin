@@ -7,6 +7,7 @@ const questionCtrl = require('../controllers/Question.Ctrl');
 const stat = require('../cronjob/calStatistics');
 const statCtrl = require('../controllers/Statistics.Ctrl');
 const scheduleCtrl = require('../controllers/Schedule.Ctrl');
+const interviewTimeCtrl = require('../controllers/InterviewTime.Ctrl');
 
 router.use(Authorizer);
 
@@ -25,5 +26,8 @@ router.put('/question/:questionId', questionCtrl.updateQuestion);
 router.get('/schedule', scheduleCtrl.getScheduleList);
 
 router.get('/statistics', statCtrl.getStat);
+
+router.get('/interviewtime', interviewTimeCtrl.getInterviewSchedule);
+router.post('/interviewtime', interviewTimeCtrl.registInterviewSchedule);
 
 module.exports = router;
