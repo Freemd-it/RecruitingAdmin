@@ -16,7 +16,7 @@ const getQuestionList = async(req, res) => {
     }
     try {
         const questionList = await Question
-                                        .find()
+                                        .find(findOption)
                                         .exec();
         res.status(200).json({
             message: "Successful get question list",
