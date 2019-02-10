@@ -31,22 +31,19 @@ export const interview = [
   value: '이름',
 },{
   key: 'first_department',
-  value: '1지망 본부'
-}, {
-  key: 'first_team',
-  value: '팀명',
-}, {
+  value: '1지망'
+},{
   key: 'second_department',
-  value: '2지망 본부명',
-}, {
-  key: 'second_team',
-  value: '팀명',
-}, {
+  value: '2지망',
+},{
   key: 'phone_number',
-  value: '전화번호4자리',
+  value: '전화번호',
 }, {
-  key: 'can_multiple_interview',
-  value: '이중면접여부',
+  key: 'other_assign_medical',
+  value: '타사업활동 ',
+},{
+  key: 'other_assign_ngo',
+  value: '타운영본부',
 },{
   key: 'saturday',
   value: '토요일',

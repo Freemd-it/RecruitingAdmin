@@ -26,10 +26,10 @@ class TableRows extends Component {
                 else return <TableCell align="center" key={index}>{value ? 'O': ''}</TableCell>
               }
               if(column.key === 'registedDate') return <TableCell align="center" key={index}>{ moment(value).format('YYYY-MM-DD HH:mm:ss') }</TableCell>
-              else if(column.key === 'department') {
-                return <TableCell align="center" key={index}>{ organization[value].name }</TableCell>
-              }
+              else if(column.key === 'department') return <TableCell align="center" key={index}>{ organization[value].name }</TableCell>
               else if(column.key === 'team') return <TableCell align="center" key={index}> { searchTeam(item.department, value) } </TableCell>
+              else if(column.key === 'first') return <TableCell align="center" key={index}>{ organization[value.department].name} { searchTeam(value.department, value.team) }</TableCell>
+              else if(column.key === 'second') return <TableCell align="center" key={index}>{ organization[value.department].name} { searchTeam(value.department, value.team) }</TableCell>
               else return <TableCell align="center" key={index}>{value}</TableCell>;
             } else {
               return <TableCell align="center" key={index}>미기입</TableCell>;

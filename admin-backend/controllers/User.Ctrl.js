@@ -23,10 +23,16 @@ const userDefulatInfo = (userObj) => {
         phone_number: userObj.basic_info.phone_number,
         sns: userObj.basic_info.sns,
         address: userObj.basic_info.address,
-        first: userObj.basic_info.department + ' ' + userObj.basic_info.team,
-        second: userObj.basic_info.secondary_department + ' ' + userObj.basic_info.secondary_team,
-        can_moved: userObj.basic_info.can_moved,
-        can_multiple_interview: userObj.basic_info.can_multiple_interview,
+        first: {
+          department: userObj.basic_info.department,
+          team: userObj.basic_info.team,
+        },
+        second: {
+          department: userObj.basic_info.secondary_department,
+          team: userObj.basic_info.secondary_team
+        },
+        other_assign_ngo: userObj.basic_info.other_assign_ngo,
+        other_assign_medical: userObj.basic_info.other_assign_medical,
         support_status: userObj.support_status,
     }
 }

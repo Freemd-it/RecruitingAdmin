@@ -1,7 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 import AccountIcon from '@material-ui/icons/SupervisorAccount';
-
+import organization from 'lib/service/organization'
+import searchTeam from 'lib/sreachTeam'
 // import '../InfoDetail.scss';
 import InformationCard from 'views/contexts/modal/card';
 
@@ -35,8 +36,8 @@ const BasicInfo = (props) => {
     ['이메일', `${email}`],
     ['SNS 주소', `${sns}`],
     ['주소', `${address}`],
-    ['지원 부서 (1지망)', `${department} ${team === '없음' ? '' : team + '팀'}`],
-    ['지원 부서 (2지망)', `${secondary_department} ${secondary_team === '없음' ? '' : secondary_team +'팀'}`]
+    ['지원 부서 (1지망)', `${organization[department].name} ${searchTeam(department, team)}`],
+    ['지원 부서 (2지망)', `${organization[secondary_department].name} ${searchTeam(secondary_department, secondary_team)}`],
   ]
   return (
     <InformationCard

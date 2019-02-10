@@ -9,7 +9,7 @@ const userScheduleInfo = (userObj) => {
     const interviewTime = ["10:00 ~ 12:00", "12:00 ~ 14:00", "14:00 ~ 16:00", "16:00 ~ 18:00"];
 
     const first_department = Code.getDepartmentName(Number(userObj.basic_info.department + '00')) + ' ' + Code.getTeamName(Number(userObj.basic_info.department + userObj.basic_info.team));
-    const second_department = Code.getDepartmentName(Number(userObj.basic_info.second_department + '00')) + ' ' + Code.getTeamName(Number(userObj.basic_info.second_department + userObj.basic_info.second_team));
+    const second_department = Code.getDepartmentName(Number(userObj.basic_info.secondary_department + '00')) + ' ' + Code.getTeamName(Number(userObj.basic_info.secondary_department + userObj.basic_info.secondary_team));
 
     const saturday = [];
     const sunday = [];
@@ -28,16 +28,15 @@ const userScheduleInfo = (userObj) => {
         }
         sunday.push(interview_data);
     }
-    console.log("saturday: ", saturday);
-    console.log("sunday: ", sunday);
+
     return {
         _id: userObj._id,
         name: userObj.basic_info.user_name,
-        phone_number: userObj.basic_info.phone_number,
-        first_department: first_department,
-        first_team: '',
-        second_department: second_department,
-        second_team: '',
+        phone_number: userObj.basic_info.phone_number.slice(-4, userObj.basic_info.phone_number.length),
+        first_department,
+        second_department,
+        other_assign_ngo: userObj.basic_info.other_assign_ngo,
+        other_assign_medical: userObj.basic_info.other_assign_medical,
         schedule: {
             saturday: saturday,
             sunday: sunday,
@@ -47,19 +46,20 @@ const userScheduleInfo = (userObj) => {
 
 
 const getScheduleUserList = async(req, res) => {
-    try {
-        const userList = await User
-                                .find({"support_status": {$gte: 201}})
-                                .select("basic_info interview_info")
-                                .sort({_id: -1})
-                                .exec();
-                                
-        const resUserList = userList.map(user => userScheduleInfo(user));
-        res.status(200).json({message: "Successful get schedule list", result: resUserList});
-    } catch(e) {
-        console.log(e);
-        res.status(500).json({message : JSON.stringify(e), result: null,});
-    }
+  try {
+    const userList = await User
+      .find({"support_status": {$gte: 201}})
+      .select("basic_info interview_info")
+      .sort({_id: -1})
+      .exec();
+      
+    const resUserList = userList.map(user => userScheduleInfo(user));
+    res.status(200).json({message: "Successful get schedule list", result: resUserList});
+
+  } catch(e) {
+    console.log(e);
+    res.status(500).json({message : JSON.stringify(e), result: null,});
+  }
 }
 
 module.exports = {
