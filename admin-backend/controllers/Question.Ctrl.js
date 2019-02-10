@@ -161,12 +161,9 @@ const updateQuestion = async(req, res) => {
     }
 
     try {
-        console.log("question: ",question);
-        console.log("used: ",used)
         const questionObj = await Question
                                         .findById(req.params.questionId)
                                         .exec();
-        console.log(questionObj);
         const updateData = {
             team: team, 
             question: question, 

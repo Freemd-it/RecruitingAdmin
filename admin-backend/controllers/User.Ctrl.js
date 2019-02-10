@@ -179,10 +179,36 @@ const searchUserList = async (req, res) => {
     }
 }
 
+const updateUserSupportStatus = async(req, res) => {
+    const userId = req.params.userId;
+    const { status } = req.body;
+    const register = req.userdata;
+
+    try {
+        const updatedUser = await new Promise( (resolve, reject) => {
+            User.findByIdAndUpdate(userId, { $set: {support_status: Number(status)}}, {new: true}, (error, obj) => {
+                if( error ) {
+                    console.error( JSON.stringify( error ) );
+                    return reject( error );
+                }
+                resolve( obj );
+            });
+        })
+        if(!updatedUser){
+            res.status(400).json({message: "Can't find applicatant", result: null});
+            return;
+        }
+        res.status(201).json({message: "Success", result: updatedUser});
+        
+    } catch(e){
+        res.status(500).json({message: JSON.stringify(e), result: null});
+    }
+}
 
 module.exports = {
     getUserList: getUserList,
     getUser: getUser,
     test: getTest,
     searchUserList: searchUserList,
+    updateUserSupportStatus: updateUserSupportStatus,
 }
