@@ -20,24 +20,25 @@ const QuestionInfo = ({data}) => {
               <div className="Head-3"> { organization[department].name} - {searchTeam(department, team)} </div>
               <div className="SubContent"> Q. : { question ? question : '' } </div>
               <div className="SubContent"> A. : { content ? content : '' } </div>
-              <Divider className="Divider"/>
-                <div className="SubContent">
                 {
                   select && _.map(select, (v, k) => {
                     return(
-                      <div>
+                      <div className="SubContent">
                         <span> {k} : </span> <span> {v}점 </span>
                       </div>
                     )
                   })
                 }
-                </div>
-              <Divider className="Divider"/>
-              <div>
-                { portfolios && _.map(portfolios, (v, i) => {
-                  return <a href={portfolios.file_path}> 포트폴리오 </a>
-                })}
-              </div>
+                { 
+                  portfolios && _.map(portfolios, (v, i) => {
+                    return(
+                      <div className="SubContent"> 포트폴리오 :
+                        <a href={v.location}>  다운받기 </a>
+                      </div>
+                    ) 
+                  })
+                }
+            <Divider className="Divider"/>  
             </div>
           )
         })
