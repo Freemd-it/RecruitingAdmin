@@ -11,7 +11,7 @@ const codetoDepartment = Map({
     10101: '인사조직팀',
     10102: '재무관리팀',
     10103: '기획지원팀',
-    10200: '브랜딩마케팅본부',
+    10200: '브랜드마케팅본부',
     10201: '대외협력팀',
     10202: '후원전략팀',
     10203: '홍보기획팀',
@@ -32,7 +32,7 @@ const getDepartmentCode = (string) => {
     const keys = codetoDepartment.keySeq().toArray();
     for(let i = 0 ; i < keys.length ; i++){
         if(codetoDepartment.get(keys[i]).includes(string)){
-            return keys[i].split(0,2);
+            return String(keys[i]).substring(0,3);
         }
     }
 }

@@ -86,8 +86,8 @@ const UserSchema = new Schema({
     },
     team: String, 
     secondary_team: String, 
-    can_moved: Boolean, 
-    can_multiple_interview: Boolean,
+    other_assign_ngo: Boolean, 
+    other_assign_medical: Boolean,
   },
   academic_career: {
     academic_name : String,
