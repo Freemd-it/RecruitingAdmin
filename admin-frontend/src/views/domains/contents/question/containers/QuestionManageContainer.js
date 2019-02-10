@@ -35,7 +35,7 @@ class QuestionRegistContainer extends Component {
 
   componentDidMount() {
     const { department } = JSON.parse(localStorage.getItem('user_session'))
-    axios.getQuestionList({type: department === '대표' ? '' : department }, this)
+    axios.getQuestionList({q: department === '900' ? '' : organization[department].name, type: 'department' }, this)
   }
 
   onCloseModal = () => {

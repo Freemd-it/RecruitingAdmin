@@ -4,6 +4,7 @@ import * as axios from 'lib/api/recruit'
 import Modal from 'views/contexts/modal'
 import { ModalRecruitFooter } from 'views/domains/contents/commons/ModalFooter'
 import InfoDetail from 'views/domains/contents/recruit/informationCardPack'
+import organization from 'lib/service/organization'
 
 class RecruitManageContainer extends Component {
   state = {
@@ -17,7 +18,7 @@ class RecruitManageContainer extends Component {
 
   componentDidMount() {
     const { department } = JSON.parse(localStorage.getItem('user_session'))
-    axios.getRecruitList({type: department === '대표' ? '' : department }, this)
+    axios.getRecruitList({q: department === '900' ? '' : organization[department].name , type: 'department'}, this)
   }
 
   handleChangePage = (event, page) => {
