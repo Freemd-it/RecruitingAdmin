@@ -24,7 +24,7 @@ const userScheduleInfo = (userObj) => {
     for (let i = 0; i < 4; i++) {
         let interview_data = {
             interview_time: interviewTime[i],
-            interview_available: userObj.interview_info[0].interview_time.includes(interviewTime[i]),
+            interview_available: userObj.interview_info[1].interview_time.includes(interviewTime[i]),
         }
         sunday.push(interview_data);
     }
