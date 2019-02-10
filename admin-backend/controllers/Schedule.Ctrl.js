@@ -9,8 +9,10 @@ const userScheduleInfo = (userObj) => {
     const interviewTime = ["10:00 ~ 12:00", "12:00 ~ 14:00", "14:00 ~ 16:00", "16:00 ~ 18:00"];
 
     const first_department = Code.getDepartmentName(Number(userObj.basic_info.department + '00')) + ' ' + Code.getTeamName(Number(userObj.basic_info.department + userObj.basic_info.team));
-    const second_department = Code.getDepartmentName(Number(userObj.basic_info.secondary_department + '00')) + ' ' + Code.getTeamName(Number(userObj.basic_info.secondary_department + userObj.basic_info.secondary_team));
-
+    let second_department = Code.getDepartmentName(Number(userObj.basic_info.secondary_department + '00')) + ' ' + Code.getTeamName(Number(userObj.basic_info.secondary_department + userObj.basic_info.secondary_team));
+    if(!second_department){
+        second_department = '';
+    }
     const saturday = [];
     const sunday = [];
 
