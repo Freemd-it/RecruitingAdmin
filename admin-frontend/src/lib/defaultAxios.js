@@ -7,7 +7,7 @@ const {
 
 const baseURL = (() => {
   if (NODE_ENV === 'development') return 'http://localhost:3001';
-  return 'http://13.209.65.66:3001';
+  return 'http://api.freemedicals.org';
 })();
 
 const axiosCreate = () => {
