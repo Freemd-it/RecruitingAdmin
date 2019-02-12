@@ -53,7 +53,7 @@ const QuestionModal = props => {
       <FormGroup row>
         <Label sm={2}>질문</Label>
         <Col sm={10}>
-          <Input type="select" name="type" onChange={onRegistedData} value={registedData.type} >
+          <Input type="select" name="type" onChange={onRegistedData} value={registedData.type} disabled>
             <option selected="true" value="type" disabled> 타입선택 </option>
             <option value="text"> 텍스트 </option>
             <option value="file"> 파일첨부 </option>
