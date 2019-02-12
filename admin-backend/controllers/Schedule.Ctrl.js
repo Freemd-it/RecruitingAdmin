@@ -4,34 +4,24 @@ const moment = require('moment');
 
 
 const userScheduleInfo = (userObj) => {
-    console.log(userObj)
-    if (!userObj.interview_info) return;
-    const interviewTime = [
-      "10:00 ~ 12:00",
-      "11:00 ~ 13:00",
-      "13:00 ~ 15:00",
-      "14:00 ~ 16:00",
-      "15:00 ~ 17:00",
-      "16:00 ~ 18:00",
-      "17:00 ~ 19:00",
-    ];
+    const interviewTime = ["10:00 ~ 12:00", "11:00 ~ 13:00", "13:00 ~ 15:00", "14:00 ~ 16:00", "15:00 ~ 17:00", "16:00 ~ 18:00", "17:00 ~ 19:00"];
 
     const first_department = Code.getDepartmentName(Number(userObj.basic_info.department + '00')) + ' ' + Code.getTeamName(Number(userObj.basic_info.department + userObj.basic_info.team));
     let second_department = Code.getDepartmentName(Number(userObj.basic_info.secondary_department + '00')) + ' ' + Code.getTeamName(Number(userObj.basic_info.secondary_department + userObj.basic_info.secondary_team));
-    if(!second_department){
+    if (!second_department) {
         second_department = '';
     }
     const saturday = [];
     const sunday = [];
 
-    for (let i = 2; i < 4; i++) {
+    for (let i = 3; i < 7; i++) {
         let interview_data = {
             interview_time: interviewTime[i],
             interview_available: userObj.interview_info[0].interview_time.includes(interviewTime[i]),
         }
         saturday.push(interview_data);
     }
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 6; i++) {
         let interview_data = {
             interview_time: interviewTime[i],
             interview_available: userObj.interview_info[1].interview_time.includes(interviewTime[i]),
@@ -59,7 +49,7 @@ const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
         return {
             $and: [
                 {
-                    "support_status": {$gte: 201}
+                    "support_status": { $gte: 201 }
                 },
                 {
                     "basic_info.user_name": new RegExp(searchKeyword),
@@ -71,7 +61,7 @@ const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
         return {
             $and: [
                 {
-                    "support_status": {$gte: 201}
+                    "support_status": { $gte: 201 }
                 },
                 {
                     $or: [
@@ -84,7 +74,7 @@ const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
                     ]
                 }
             ]
-            
+
         };
     }
     if (searchIndex === 'age') {
@@ -92,7 +82,7 @@ const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
         return {
             $and: [
                 {
-                    "support_status": {$gte: 201}
+                    "support_status": { $gte: 201 }
                 },
                 {
                     "basic_info.birth_date": new RegExp(String(birthYear)),
