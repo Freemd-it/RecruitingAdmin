@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "NODE_ENV=development nodemon ./bin/www",
     "deploy:dev": "NODE_ENV=production && pm2 start pm2/freemed.admin.server.dev.json && pm2 logs freemed.admin.server.dev"
   },
   "dependencies": {
