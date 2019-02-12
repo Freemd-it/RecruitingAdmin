@@ -6,7 +6,15 @@ const moment = require('moment');
 const userScheduleInfo = (userObj) => {
     console.log(userObj)
     if (!userObj.interview_info) return;
-    const interviewTime = ["10:00 ~ 12:00", "12:00 ~ 14:00", "14:00 ~ 16:00", "16:00 ~ 18:00"];
+    const interviewTime = [
+      "10:00 ~ 12:00",
+      "11:00 ~ 13:00",
+      "13:00 ~ 15:00",
+      "14:00 ~ 16:00",
+      "15:00 ~ 17:00",
+      "16:00 ~ 18:00",
+      "17:00 ~ 19:00",
+    ];
 
     const first_department = Code.getDepartmentName(Number(userObj.basic_info.department + '00')) + ' ' + Code.getTeamName(Number(userObj.basic_info.department + userObj.basic_info.team));
     let second_department = Code.getDepartmentName(Number(userObj.basic_info.secondary_department + '00')) + ' ' + Code.getTeamName(Number(userObj.basic_info.secondary_department + userObj.basic_info.secondary_team));

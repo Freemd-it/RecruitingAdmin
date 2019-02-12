@@ -5,7 +5,6 @@ const bcrypter = require('../modules/Bcrypter');
 
 
 const signin = async (req, res) => {
-    console.log(req.body);
   const { email, password } = req.body;
   try {
       const admin = await Admin

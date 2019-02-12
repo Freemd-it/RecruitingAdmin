@@ -21,10 +21,10 @@ const BasicInfo = (props) => {
     email,
     sns, 
     address,
-    department,
-    secondary_department,
-    team,
-    secondary_team, 
+    department = '',
+    secondary_department = '',
+    team = '',
+    secondary_team = '', 
   } = props.data;
 
   const birthString = moment(birth_date).format("Y년 M월 D일");
@@ -37,7 +37,7 @@ const BasicInfo = (props) => {
     ['SNS 주소', `${sns}`],
     ['주소', `${address}`],
     ['지원 부서 (1지망)', `${organization[department].name} ${searchTeam(department, team)}`],
-    ['지원 부서 (2지망)', `${organization[secondary_department].name} ${searchTeam(secondary_department, secondary_team)}`],
+    ['지원 부서 (2지망)', `${secondary_team && organization[secondary_department].name} ${secondary_team && searchTeam(secondary_department, secondary_team)}`],
   ]
   return (
     <InformationCard

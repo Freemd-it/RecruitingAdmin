@@ -16,7 +16,7 @@ const axiosCreate = () => {
     baseURL,
     headers: {
       jwt: token || false,
-    },
+  },
   });
 }
 

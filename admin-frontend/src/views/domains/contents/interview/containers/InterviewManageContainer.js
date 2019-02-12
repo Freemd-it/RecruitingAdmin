@@ -56,6 +56,8 @@ class InterviewManageContainer extends Component {
                   v.saturday = '2019-03-02'
                   v.sta_first = __v[0].interview_available
                   v.sta_second = __v[1].interview_available
+                  v.sta_third = __v[2].interview_available
+                  v.sta_forth = __v[3].interview_available
     
                 } else if(__k === 'sunday') {
                   v.sunday = '2019-03-03'
@@ -63,6 +65,8 @@ class InterviewManageContainer extends Component {
                   v.sun_second = __v[1].interview_available
                   v.sun_third = __v[2].interview_available
                   v.sun_forth = __v[3].interview_available
+                  v.sun_fifth = __v[4].interview_available
+                  v.sun_sixth = __v[5].interview_available
                 }
               })
             }
