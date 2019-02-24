@@ -4,7 +4,9 @@ import Navigation from 'views/contexts/table/navigation'
 import Header from 'views/contexts/table/header'
 import Body from 'views/contexts/table/body'
 import Pagination from 'views/contexts/table/pagination'
+import { Button } from 'reactstrap';
 import * as Columns from 'lib/service/tableColumn'
+import logoutUrl from 'lib/service/redirect'
 
 import './Table.scss'
 
@@ -19,13 +21,22 @@ class Table extends Component {
     this.setState({ currentPage });
   };
 
+  logoutHandler = () => {
+    localStorage.removeItem('session')
+    localStorage.removeItem('token')
+    window.location.assign(logoutUrl());
+  }
+
   render() {
     const { onClickRow, questionAddBtn, title, rows, type, onSearchTag, onChangeKeyword, keyword, onChangeFilterQuery } = this.props;
     const { currentPage, rowsPerPage } = this.state;
     const columns = Columns[type]
     return (
       <>
+      <div className={'Table__header'}>
         <div className={'Table__titlebar'}>{title}</div>
+        <Button className="Table__logout" onClick={this.logoutHandler}>로그아웃</Button>
+      </div>
         <TableContentTemplate navigation={
           <Navigation
             questionAddBtn={questionAddBtn}

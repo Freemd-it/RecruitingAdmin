@@ -15,6 +15,18 @@
   &__pagination {
     bottom: 0;
   }
+
+  &__header {
+    display: flex;
+  }
+
+  &__logout {
+    position: absolute;
+    font-size: 10px !important;
+    right: 20px;
+    top: 20px;
+    font-weight: 700;
+  }
 }
 
 
