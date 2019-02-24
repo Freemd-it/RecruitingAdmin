@@ -20,6 +20,7 @@ class TableRows extends Component {
         {
           columns.map((column, index) => {
             const value = item[column.key]
+            console.log(typeof value, column.key, value)
             if (value !== undefined || value === null || value === 0) {
               if (typeof value === 'boolean') {
                 if(column.key === 'is_male') return <TableCell align="center" key={index}>{value ? '남': '여'}</TableCell>
@@ -30,7 +31,7 @@ class TableRows extends Component {
               else if(column.key === 'team') return <TableCell align="center" key={index}> { searchTeam(item.department, value) } </TableCell>
               else if(column.key === 'first') return <TableCell align="center" key={index}>{ organization[value.department].name} { searchTeam(value.department, value.team) }</TableCell>
               else if(column.key === 'second') return <TableCell align="center" key={index}>{ value.department ? organization[value.department].name: ''} { value.department ? searchTeam(value.department, value.team) : '' }</TableCell>
-              else if(column.key === 'second_department') return <TableCell align="center" key={index}>{ value.department ? organization[value.department].name: ''} { value.department ? searchTeam(value.department, value.team) : '' }</TableCell>
+              else if(column.key === 'second_department') return <TableCell align="center" key={index}>{value === 'undefined ' ? ' ' : value}</TableCell>
               else return <TableCell align="center" key={index}>{value}</TableCell>;
             } else return <TableCell align="center" key={index}>미기입</TableCell>;
           })
