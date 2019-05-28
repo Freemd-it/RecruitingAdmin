@@ -4,8 +4,9 @@ import ExcelExportButton from './excelExportButton'
 import './Navigation.scss'
 
 class Navigation extends Component {
+  
   render() {
-    const { questionAddBtn, onClickSearchTag, onChangeKeyword, keyword, onChangeFilterQuery } = this.props
+    const { questionAddBtn, onClickSearchTag, onChangeKeyword, keyword, onChangeFilterQuery, userSession } = this.props
     return (
       <div className="Navigation">
         <div className="Navigation__divide">
@@ -18,7 +19,7 @@ class Navigation extends Component {
         </div>
         <div className="Navigation__divide">
             {questionAddBtn}
-            <ExcelExportButton />
+            { userSession.department === 900 ? <ExcelExportButton /> : null}
         </div>
       </div>
     )

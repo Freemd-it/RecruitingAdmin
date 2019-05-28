@@ -28,6 +28,7 @@ class Table extends Component {
   }
 
   render() {
+    const userSession = JSON.parse(localStorage.getItem('user_session'))
     const { onClickRow, questionAddBtn, title, rows, type, onSearchTag, onChangeKeyword, keyword, onChangeFilterQuery } = this.props;
     const { currentPage, rowsPerPage } = this.state;
     const columns = Columns[type]
@@ -44,6 +45,7 @@ class Table extends Component {
             onChangeKeyword={onChangeKeyword}
             onChangeFilterQuery={onChangeFilterQuery}
             keyword={keyword}
+            userSession={userSession}
             />
           }>
           <Header columns={columns}/>

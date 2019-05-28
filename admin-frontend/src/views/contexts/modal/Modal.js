@@ -13,7 +13,6 @@ class CustomModal extends React.Component {
         centered
         size="lg"
         toggle={onClose}>
-        
         <ModalHeader toggle={onClose}>{title}</ModalHeader>
         <ModalBody className="CustomModal__body">
           {contents}

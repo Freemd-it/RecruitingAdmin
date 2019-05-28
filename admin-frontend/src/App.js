@@ -53,7 +53,7 @@ class App extends Component {
   render () {
     const { onLogin, waitCheckFlag } = this.state
     // if(waitCheckFlag) {
-      if (onLogin) {
+      if (true) {
         return (
           <MainTemplate sidebar={<Sidebar/>} contents={<Contents/>} />
         ) 
