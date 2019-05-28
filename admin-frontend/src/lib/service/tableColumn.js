@@ -22,7 +22,10 @@ export const information = [{
   },{
     key: 'second',
     value: '2지망',
-  },
+  },{
+    key: 'bussiness_activity',
+    value: '지원 사업'
+  }
 ]
 
 export const interview = [
@@ -35,6 +38,9 @@ export const interview = [
 },{
   key: 'second_department',
   value: '2지망',
+},{
+  key: 'bussiness_activity',
+  value: '지원 사업'
 },{
   key: 'phone_number',
   value: '전화번호',

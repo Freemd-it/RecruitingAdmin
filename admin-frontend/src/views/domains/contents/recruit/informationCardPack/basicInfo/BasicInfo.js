@@ -24,7 +24,8 @@ const BasicInfo = (props) => {
     department = '',
     secondary_department = '',
     team = '',
-    secondary_team = '', 
+    secondary_team = '',
+    business_activity = '',
   } = props.data;
 
   const birthString = moment(birth_date).format("Y년 M월 D일");
@@ -38,6 +39,8 @@ const BasicInfo = (props) => {
     ['주소', `${address}`],
     ['지원 부서 (1지망)', `${organization[department].name} ${searchTeam(department, team)}`],
     ['지원 부서 (2지망)', `${secondary_team && organization[secondary_department].name} ${secondary_team && searchTeam(secondary_department, secondary_team)}`],
+    // TODO => 지원 사업 종류 디비 스키마 수정해서 진행 필요
+    ['지원 사업', `${business_activity}`]
   ]
   return (
     <InformationCard
