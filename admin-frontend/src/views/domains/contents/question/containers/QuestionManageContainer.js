@@ -60,7 +60,7 @@ class QuestionRegistContainer extends Component {
             team: team ? team : '팀 선택',
             question: '질문을 작성해주세요 :)',
             used: false,
-            type: '타입 선택',
+            type: 'text',
             id: rows.length,
           },
           isAddModal: true,
@@ -215,6 +215,7 @@ class QuestionRegistContainer extends Component {
 
           title={'본부질문 수정하기'}
           contents={questionDetail}
+
           footer={UpdateModalFooter}
         />
 
@@ -224,6 +225,7 @@ class QuestionRegistContainer extends Component {
 
           title={'본부질문 추가하기'}
           contents={questionDetail}
+
           footer={AddModalFooter}
         />
       </div>

@@ -66,7 +66,7 @@ class RecruitManageContainer extends Component {
     )
     const ModalFooter = (
       <ModalRecruitFooter
-        onClickEvaluation = { async (body) => { await axios.getRecruitList(body, this) }}
+        onClickEvaluation = { async (body) => { await axios.setApplicantRank(body, this) }}
         onClickModalToClose = {this.onClose}
       />
     )

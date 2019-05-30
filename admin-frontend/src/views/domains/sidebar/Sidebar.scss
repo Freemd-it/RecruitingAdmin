@@ -41,46 +41,28 @@
         color: #FFF;
       }
     }
-    &__menu {
-      
-    }
     &__item {
       padding-left: 20px;
     }
   }
 }
-.main-img-footer {
 
-}
-.main-img {
+.main-img-footer {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   margin-bottom: 10px;
   margin-top: 10px;
-}
 
-.MainFooterConitainer{
-  position: relative;
-  width: 100%;
-  img {
-    position: absolute;
-    bottom: 0;
-
+  .slogan {
+    width: 100%;
+    height: 100%;
   }
 }
 
-.main-word {
-  height: 30px;
-  font-size: 10px;
-  padding: 5px;
-  display: table-cell;
-  vertical-align: middle;
+.Logout {
+  font-size: 20px !important;
+  width:100%;
+  max-width: 230px;
+  font-weight: 700;
 }
-
-img {
-  margin: 0 auto;
-  width: 100%;
-  height: 100%;
-}
-

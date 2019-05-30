@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -15,7 +16,7 @@ import StarBorder from '@material-ui/icons/StarBorder';
 import { withStyles } from '@material-ui/core';
 import logo from 'static/images/logo_1.png'
 import slogan from 'static/images/logo3@2x.png'
-
+import logoutUrl from 'lib/service/redirect'
 import * as routes from 'lib/service/routes'
 import './Sidebar.scss'
 
@@ -23,7 +24,7 @@ import './Sidebar.scss'
 
 const styles = theme => ({
   root: {
-    minWidth: '230px',
+    maxWidth: '230px',
     backgroundColor: '#FF5858',
   },
   nested: {
@@ -40,6 +41,12 @@ class Sidebar extends Component {
   handleClick = () => {
     this.setState(state => ({ open: !state.open }));
   };
+
+  logoutHandler = () => {
+    localStorage.removeItem('session')
+    localStorage.removeItem('token')
+    window.location.assign(logoutUrl());
+  }
 
   render() {
     const { classes } = this.props;
@@ -91,11 +98,12 @@ class Sidebar extends Component {
           </ListItem>
         </div>
       </div>
-        <div className='main-img-footer'>
-          <div className='MainFooterConitainer'>
-            <img src={slogan} />
-          </div>
+      <div className='main-img-footer'>
+        <div className='MainFooterConitainer'>
+          <img className='slogan' src={slogan} />
         </div>
+      </div>
+      <Button className="Logout" onClick={this.logoutHandler}>로그아웃</Button>
     </div>
     )
   }

@@ -53,7 +53,6 @@ class App extends Component {
 
   render () {
     const { onLogin, waitCheckFlag } = this.state
-    console.log(onLogin, waitCheckFlag)
     // if(waitCheckFlag) {
       if (onLogin) {
         return (

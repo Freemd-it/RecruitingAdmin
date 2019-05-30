@@ -20,7 +20,7 @@ class TableRows extends Component {
         {
           columns.map((column, index) => {
             const value = item[column.key]
-            console.log(typeof value, column.key, value)
+            
             if (value !== undefined || value === null || value === 0) {
               if (typeof value === 'boolean') {
                 if(column.key === 'is_male') return <TableCell align="center" key={index}>{value ? '남': '여'}</TableCell>
