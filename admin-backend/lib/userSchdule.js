@@ -1,5 +1,4 @@
 const Code = require('../modules/Status.Code');
-const interview_time = require('../config/interviewTime');
 const interviewTime = require('../config/interviewTime');
 
 const userScheduleInfo = ({basic_info, interview_info, _id}) => {

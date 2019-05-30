@@ -30,8 +30,8 @@ class TableRows extends Component {
               else if(column.key === 'department') return <TableCell align="center" key={index}>{ organization[value].name }</TableCell>
               else if(column.key === 'team') return <TableCell align="center" key={index}> { searchTeam(item.department, value) } </TableCell>
               else if(column.key === 'first') return <TableCell align="center" key={index}>{ organization[value.department].name} { searchTeam(value.department, value.team) }</TableCell>
-              else if(column.key === 'second') return <TableCell align="center" key={index}>{ value.department ? organization[value.department].name: ''} { value.department ? searchTeam(value.department, value.team) : '' }</TableCell>
-              else if(column.key === 'second_department') return <TableCell align="center" key={index}>{value === 'undefined ' ? ' ' : value}</TableCell>
+              else if(column.key === 'second') return <TableCell align="center" key={index}>{ value.department ? organization[value.department].name: ''} { value.department ? searchTeam(value.department, value.team) : '미기입' }</TableCell>
+              else if(column.key === 'second_department') return <TableCell align="center" key={index}>{value === 'undefined ' ? '미기입' : value}</TableCell>
               else return <TableCell align="center" key={index}>{value}</TableCell>;
             } else return <TableCell align="center" key={index}>미기입</TableCell>;
           })
