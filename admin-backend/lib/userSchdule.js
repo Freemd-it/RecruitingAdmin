@@ -1,6 +1,10 @@
+const Code = require('../modules/Status.Code');
+const interview_time = require('../config/interviewTime');
+const interviewTime = require('../config/interviewTime');
+
 const userScheduleInfo = ({basic_info, interview_info, _id}) => {
 
-  const first_department = Code.getDepartmentName(Number(basic_info.department + '00')) + ' ' + Code.getTeamName(Number(basic_info.department + userObj.basic_info.team));
+  const first_department = Code.getDepartmentName(Number(basic_info.department + '00')) + ' ' + Code.getTeamName(Number(basic_info.department + basic_info.team));
   let second_department = Code.getDepartmentName(Number(basic_info.secondary_department + '00')) + ' ' + Code.getTeamName(Number(basic_info.secondary_department + basic_info.secondary_team));
   
   if (!second_department) {
@@ -24,7 +28,7 @@ const userScheduleInfo = ({basic_info, interview_info, _id}) => {
   }
 
   return {
-      _id: userObj._id,
+      _id,
       name: basic_info.user_name,
       phone_number: basic_info.phone_number.slice(-4, basic_info.phone_number.length),
       first_department,

@@ -46,7 +46,7 @@ const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
 
 const getScheduleUserList = async (req, res) => {
     let findOption = { "support_status": { $gte: 201 } }
-    const { type, q } = req.type;
+    const { type, q } = req.query;
 
     if (type && q) findOption = matchSearchIndexandSchemaKey(type, q);
     
