@@ -17,7 +17,10 @@ export const getRecruitDetail = (id,ctx) => {
 }
 
 export const setApplicantRank = (data, ctx) => {
-  return axiosCreate().post('/admin/applicatn/rank', data)
-  .then(res => res)
+  return axiosCreate().put(`/admin/applicant/${data.userId}/rank`, data)
+  .then(res => ctx.setState({
+    isDetailModal: false,
+    selectedRow: res.data.result,
+  }))
   .catch(err => err)
 }

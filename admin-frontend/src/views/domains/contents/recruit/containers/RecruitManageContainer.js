@@ -29,7 +29,7 @@ class RecruitManageContainer extends Component {
     this.setState({ rowsPerPage: event.target.value })
   }
 
-  onClickRowToShowModal = async (e, id) => {
+  onClickRowToShowModal = async (e) => {
     await axios.getRecruitDetail(e.currentTarget.id, this)
   }
   
@@ -41,6 +41,14 @@ class RecruitManageContainer extends Component {
       type: e.target.value,
     })
   }
+
+  onClickEvaluation = async (row, rank) => {
+    await axios.setApplicantRank({
+      userId: row._id,
+      rank,
+    }, this)
+  }
+  
 
   onChangeFilterQuery = async (e) => {
     const { type } = this.state
@@ -66,7 +74,8 @@ class RecruitManageContainer extends Component {
     )
     const ModalFooter = (
       <ModalRecruitFooter
-        onClickEvaluation = { async (body) => { await axios.setApplicantRank(body, this) }}
+        selectedRow={this.state.selectedRow}
+        onClickEvaluation = { this.onClickEvaluation}
         onClickModalToClose = {this.onClose}
       />
     )
