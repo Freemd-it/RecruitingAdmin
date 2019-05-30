@@ -207,10 +207,33 @@ const updateUserSupportStatus = async(req, res) => {
     }
 }
 
+const updateApplicantRank = async(req, res) => {
+  const { rank, userId } = req.body;
+  try {
+      const updatedUser = await new Promise( (resolve, reject) => {
+          User.findByIdAndUpdate(userId, { $set: { evaluation: String(rank)}}, {new: true}, (error, obj) => {
+              if( error ) {
+                  console.error( JSON.stringify( error ) );
+                  return reject( error );
+              }
+              resolve( obj );
+          });
+      })
+      if(!updatedUser){
+          res.status(400).json({message: "Can't find applicatant", result: null});
+          return;
+      }
+      res.status(201).json({message: "Success", result: updatedUser});
+      
+  } catch(e){
+      res.status(500).json({message: JSON.stringify(e), result: null});
+  }
+}
+
 module.exports = {
-    getUserList: getUserList,
-    getUser: getUser,
-    test: getTest,
-    searchUserList: searchUserList,
-    updateUserSupportStatus: updateUserSupportStatus,
+    getUserList,
+    getUser,
+    searchUserList,
+    updateUserSupportStatus,
+    updateApplicantRank,
 }
