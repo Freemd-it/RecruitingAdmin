@@ -2,12 +2,14 @@ import React from 'react'
 
 import { Button } from 'reactstrap';
 
-const ModalRecruitFooter = ({ 합격버튼함수, 불합격버튼함수, 보류버튼함수, 취소버튼함수 }) => (
+// TODO => 1지망, 2지망, 3지망, 불합격
+const ModalRecruitFooter = ({ onClickEvaluation, onClickModalToClose }) => (
   <div className="footer-container">
-    <Button className="item__pass" outline onClick={합격버튼함수}>합격</Button>
-    <Button className="item__drop" color="danger" outline onClick={불합격버튼함수}>불합격</Button>
-    <Button className="item__postpone" color="warning" outline onClick={보류버튼함수}>보류</Button>
-    <Button className="item__cancel" color="secondary" outline onClick={취소버튼함수}>취소</Button>
+    <Button color="success" outline onClick={() => onClickEvaluation({ rank : '1지망' }, this)}>1지망</Button>
+    <Button color="warning" outline onClick={onClickEvaluation({ rank : '2지망' }, this)}>2지망</Button>
+    <Button color="info" outline onClick={onClickEvaluation({ rank : '3지망' }, this)}>3지망</Button>
+    <Button color="danger" outline onClick={onClickEvaluation({ rank : '불합격' }, this)}>불합격</Button>
+    <Button color="secondary" outline onClick={onClickModalToClose}>취소</Button>
   </div>
 )
 

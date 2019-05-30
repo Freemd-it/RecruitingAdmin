@@ -66,10 +66,8 @@ class RecruitManageContainer extends Component {
     )
     const ModalFooter = (
       <ModalRecruitFooter
-        LOL_합격버튼함수={() => {}}
-        LOL_불합격버튼함수={() => {}}
-        LOL_보류버튼함수={() => {}}
-        LOL_취소버튼함수={() => {}}
+        onClickEvaluation = { async (body) => { await axios.getRecruitList(body, this) }}
+        onClickModalToClose = {this.onClose}
       />
     )
 
@@ -79,7 +77,7 @@ class RecruitManageContainer extends Component {
           match.params.type === 'info' &&
           <Table
             type={'information'}
-            title={'개인정보 관리'}
+            title={'지원서관리'}
             rows={rows}
             onClickRow={this.onClickRowToShowModal}
             onSearchTag={this.onSearchTag}
@@ -89,15 +87,15 @@ class RecruitManageContainer extends Component {
             cursor
           />
         }
-        <Modal
-          modalType={'recruit'}
-          open={this.state.isDetailModal}
-          onClose={this.onClickModalToClose}
+          <Modal
+            modalType={'recruit'}
+            open={this.state.isDetailModal}
+            onClose={this.onClickModalToClose}
 
-          title={'지원서'}
-          contents={ModalContent}
-          footer={ModalFooter}
-        />
+            title={'지원서'}
+            contents={ModalContent}
+            footer={ModalFooter}
+          />
       </div>
     )
   }

@@ -15,3 +15,9 @@ export const getRecruitDetail = (id,ctx) => {
     }))
     .catch(err => err)
 }
+
+export const setApplicantRank = (data, ctx) => {
+  return axiosCreate().post('/admin/applicatn/rank', data)
+  .then(res => res)
+  .catch(err => err)
+}

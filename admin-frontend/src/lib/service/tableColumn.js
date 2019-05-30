@@ -25,6 +25,9 @@ export const information = [{
   },{
     key: 'bussiness_activity',
     value: '지원 사업'
+  },{
+    key: 'evaluation',
+    value: '평가 상태'
   }
 ]
 
