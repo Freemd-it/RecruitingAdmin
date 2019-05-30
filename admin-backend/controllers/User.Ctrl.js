@@ -31,6 +31,8 @@ const userDefulatInfo = (userObj) => {
           department: userObj.basic_info.secondary_department,
           team: userObj.basic_info.secondary_team
         },
+        bussiness_activity: userObj.basic_info.bussiness_activity,
+        evaluation: userObj.basic_info.evaluation,
         other_assign_ngo: userObj.basic_info.other_assign_ngo,
         other_assign_medical: userObj.basic_info.other_assign_medical,
         support_status: userObj.support_status,
@@ -108,11 +110,13 @@ const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
 
 const getUserList = async (req, res) => {
     let findOption = {"support_status": {$gte: 201}};
+
     if (req.query.type && req.query.q) {
         const searchIndex = req.query.type;
         const searchKeyword = req.query.q;
         findOption = matchSearchIndexandSchemaKey(searchIndex, searchKeyword);
     }
+
     console.log('find Options', JSON.stringify(findOption));
     try {
         const userList = await User
@@ -120,7 +124,7 @@ const getUserList = async (req, res) => {
             .select("basic_info support_status")
             .sort({ _id: -1 })
             .exec();
-        console.log(userList);
+
         const resUserList = userList.map(user => userDefulatInfo(user));
         res.status(200).json({ message: "Successful get user list", result: resUserList });
     } catch (e) {

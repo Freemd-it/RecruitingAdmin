@@ -55,7 +55,6 @@ const interviewSchema = new Schema({
   interview_date : Date,
   interview_week : String,
   interview_time : [String]
-  
 })
 
 const UserSchema = new Schema({
@@ -86,6 +85,8 @@ const UserSchema = new Schema({
     },
     team: String, 
     secondary_team: String, 
+    bussiness_activity: String,
+    evaluation: String,
     other_assign_ngo: Boolean, 
     other_assign_medical: Boolean,
   },
@@ -137,5 +138,3 @@ UserSchema.methods.verify = function(password) {
 }
 
 module.exports = mongoose.model('User', UserSchema);
-
-// module.exports = mongoose.model('External', ExternalActivitiesSchema);

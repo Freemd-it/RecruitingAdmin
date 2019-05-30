@@ -56,13 +56,12 @@ const interviewSchema = new Schema({
   interview_date : Date,
   interview_week : String,
   interview_time : [String]
-  
 })
 
 const UserSchema = new Schema({
   registedDate: {
     type: Date,
-   default: new Date() // 현재 날짜를 기본값으로 지정
+    default: new Date() // 현재 날짜를 기본값으로 지정
   },
   basic_info:{
     user_name : String,
