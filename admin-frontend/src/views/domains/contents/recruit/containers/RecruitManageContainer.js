@@ -33,7 +33,12 @@ class RecruitManageContainer extends Component {
     await axios.getRecruitDetail(e.currentTarget.id, this)
   }
   
-  onClickModalToClose = () => this.setState({ isDetailModal: false })
+  onClickModalToClose = async () => {
+    this.setState({ isDetailModal: false })
+    const { department } = JSON.parse(localStorage.getItem('user_session'))
+    await axios.getRecruitList({q: department === '900' ? '' : organization[department].name , type: 'department'}, this)
+  }
+  
 
   onChangeKeyword = async (e) => {
     this.setState({
@@ -42,11 +47,15 @@ class RecruitManageContainer extends Component {
     })
   }
 
-  onClickEvaluation = async (row, rank) => {
-    await axios.setApplicantRank({
-      userId: row._id,
-      rank,
-    }, this)
+  onClickEvaluation = async ({_id}, rank) => {
+    const { department } = JSON.parse(localStorage.getItem('user_session'))
+    const result = await axios.setApplicantRank({ userId: _id, rank, })
+    
+    this.setState({
+      isDetailModal: false,
+    })
+    
+    await axios.getRecruitList({q: department === '900' ? '' : organization[department].name , type: 'department'}, this)
   }
   
 
@@ -74,9 +83,10 @@ class RecruitManageContainer extends Component {
     )
     const ModalFooter = (
       <ModalRecruitFooter
-        selectedRow={this.state.selectedRow}
+        userSession = { JSON.parse(localStorage.getItem('user_session')) }
+        selectedRow={ this.state.selectedRow }
         onClickEvaluation = { this.onClickEvaluation}
-        onClickModalToClose = {this.onClose}
+        onClickModalToClose = {this.onClickModalToClose}
       />
     )
 

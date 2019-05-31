@@ -1,5 +1,6 @@
 import axiosCreate from '../defaultAxios'
 import queryString from 'query-string'
+import { RSA_NO_PADDING } from 'constants';
 
 export const getRecruitList = ({ type='', q='', ...rest }, ctx) => {
   return axiosCreate().get(`/admin/applicant?${queryString.stringify({...rest, type, q})}`)
@@ -18,9 +19,6 @@ export const getRecruitDetail = (id,ctx) => {
 
 export const setApplicantRank = (data, ctx) => {
   return axiosCreate().put(`/admin/applicant/${data.userId}/rank`, data)
-  .then(res => ctx.setState({
-    isDetailModal: false,
-    selectedRow: res.data.result,
-  }))
+  .then(res =>  this.setState({ isDetailModal: false, }))
   .catch(err => err)
 }
