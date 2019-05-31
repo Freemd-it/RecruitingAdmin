@@ -31,7 +31,6 @@ const makeScheduleForm = (scheduleObjList) => {
 
 const getInterviewSchedule = async(req, res) => {
     const searchingBatch = Number(req.params.batch);
-    console.log(searchingBatch);
     try {
         const interviewTimeList = await InterviewSchedule.find({batch: searchingBatch}).exec();
         res.status(200).json({message: "Success", result: makeScheduleForm(interviewTimeList)});

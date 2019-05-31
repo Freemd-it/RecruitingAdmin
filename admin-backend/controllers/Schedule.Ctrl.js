@@ -44,7 +44,7 @@ const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
   }
 }
 
-const getScheduleUserList = async (req, res) => {
+const getScheduleList = async (req, res) => {
     let findOption = { "support_status": { $gte: 201 } }
     const { type, q } = req.query;
 
@@ -66,5 +66,5 @@ const getScheduleUserList = async (req, res) => {
 }
 
 module.exports = {
-    getScheduleList: getScheduleUserList,
+    getScheduleList,
 }

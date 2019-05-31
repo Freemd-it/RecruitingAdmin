@@ -24,8 +24,8 @@ const userDefulatInfo = (userObj) => {
         sns: userObj.basic_info.sns,
         address: userObj.basic_info.address,
         first: {
-          department: userObj.basic_info.department,
-          team: userObj.basic_info.team,
+          department: userObj.basic_info.first_department,
+          team: userObj.basic_info.first_team,
         },
         second: {
           department: userObj.basic_info.secondary_department,
@@ -70,7 +70,7 @@ const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
                 {
                     $or: [
                         {
-                            "basic_info.department": Code.getDepartmentCode(searchKeyword),
+                            "basic_info.first_department": Code.getDepartmentCode(searchKeyword),
                         },
                         {
                             "basic_info.secondary_department": Code.getDepartmentCode(searchKeyword),
@@ -81,18 +81,18 @@ const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
             
         };
     }
-    // if (searchIndex === 'team') {
-    //     return {
-    //         $or: [
-    //             {
-    //                 "basic_info.team": new RegExp(searchKeyword),
-    //             },
-    //             {
-    //                 "basic_info.secondary_team": new RegExp(searchKeyword),
-    //             }
-    //         ]
-    //     };
-    // }
+    if (searchIndex === 'team') {
+        return {
+            $or: [
+                {
+                    "basic_info.firstteam": new RegExp(searchKeyword),
+                },
+                {
+                    "basic_info.secondary_team": new RegExp(searchKeyword),
+                }
+            ]
+        };
+    }
     if (searchIndex === 'age') {
         const birthYear = age_birthDate_convert(searchKeyword);
         return {

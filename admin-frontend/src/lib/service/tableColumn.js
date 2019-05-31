@@ -30,7 +30,6 @@ export const applyInfo = [{
     value: '평가 상태'
   }
 ]
-
 export const interview = [
 {
   key: 'name',

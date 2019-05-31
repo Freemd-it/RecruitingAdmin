@@ -3,7 +3,7 @@ const interviewTime = require('../config/interviewTime');
 
 const userScheduleInfo = ({basic_info, interview_info, _id}) => {
 
-  const first_department = Code.getDepartmentName(Number(basic_info.department + '00')) + ' ' + Code.getTeamName(Number(basic_info.department + basic_info.team));
+  const first_department = Code.getDepartmentName(Number(basic_info.first_department + '00')) + ' ' + Code.getTeamName(Number(basic_info.first_department + basic_info.team));
   let second_department = Code.getDepartmentName(Number(basic_info.secondary_department + '00')) + ' ' + Code.getTeamName(Number(basic_info.secondary_department + basic_info.secondary_team));
   
   if (!second_department) {

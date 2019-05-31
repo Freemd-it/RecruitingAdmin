@@ -167,6 +167,7 @@ const updateQuestion = async(req, res) => {
       stringDepartment: Code.getDepartmentName(Number(questionObj.department + '00')) + ' ' + Code.getTeamName(Number(questionObj.department + String(team))),
       used,
     }
+    
     const updatedQuestion = await new Promise( ( resolve, reject ) => {
       Question.findByIdAndUpdate( questionId, { $set: updateData}, {new: true}, ( error, obj ) => {
         if( error ) {
