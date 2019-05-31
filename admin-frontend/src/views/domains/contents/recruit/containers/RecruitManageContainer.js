@@ -49,12 +49,7 @@ class RecruitManageContainer extends Component {
 
   onClickEvaluation = async ({_id}, rank) => {
     const { department } = JSON.parse(localStorage.getItem('user_session'))
-    const result = await axios.setApplicantRank({ userId: _id, rank, })
-    
-    this.setState({
-      isDetailModal: false,
-    })
-    
+    await axios.setApplicantRank({ userId: _id, rank, }, this)
     await axios.getRecruitList({q: department === '900' ? '' : organization[department].name , type: 'department'}, this)
   }
   
