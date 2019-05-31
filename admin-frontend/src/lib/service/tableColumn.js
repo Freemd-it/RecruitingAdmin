@@ -1,4 +1,4 @@
-export const information = [{
+export const applyInfo = [{
     key: 'name',
     value: '이름',
   },{

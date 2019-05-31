@@ -13,6 +13,7 @@ const Body = ({rows, rowsPerPage, onClickRow, columns, cursor = false, type}) =>
   const bodyRows = (
     _.map(rows, (item, index) => {
       return (<TableRows
+        type = {type}
         columns={columns}
         className={cursor ? 'tableBodyRow__cursor' : ''}
         key={item._id}

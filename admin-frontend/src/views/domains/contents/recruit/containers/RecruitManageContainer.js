@@ -90,7 +90,7 @@ class RecruitManageContainer extends Component {
         {
           match.params.type === 'info' &&
           <Table
-            type={'information'}
+            type={this.props.type}
             title={'지원서관리'}
             rows={rows}
             onClickRow={this.onClickRowToShowModal}
