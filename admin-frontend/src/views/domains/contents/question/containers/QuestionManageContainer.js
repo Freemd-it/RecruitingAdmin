@@ -9,7 +9,6 @@ import { validation } from 'lib/service/validation'
 
 import * as axios from 'lib/api/question';
 import moment from 'moment'
-import _ from 'lodash'
 
 import './QuestionManageContainer.scss';
 import organization from 'lib/service/organization';
