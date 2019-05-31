@@ -86,7 +86,6 @@ const UserSchema = new Schema({
     team: String, 
     secondary_team: String, 
     bussiness_activity: String,
-    evaluation: String,
     other_assign_ngo: Boolean, 
     other_assign_medical: Boolean,
   },
@@ -103,6 +102,7 @@ const UserSchema = new Schema({
   question_info: [QuestionsSchema],
   interview_info : [interviewSchema],
   apply_status: Number,
+  evaluation: String,
   })
 
 // id 로 찾기

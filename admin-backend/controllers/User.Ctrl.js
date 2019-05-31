@@ -32,7 +32,7 @@ const userDefulatInfo = (userObj) => {
           team: userObj.basic_info.secondary_team
         },
         bussiness_activity: userObj.basic_info.bussiness_activity,
-        evaluation: userObj.basic_info.evaluation,
+        evaluation: userObj.evaluation,
         other_assign_ngo: userObj.basic_info.other_assign_ngo,
         other_assign_medical: userObj.basic_info.other_assign_medical,
         support_status: userObj.support_status,
@@ -121,7 +121,7 @@ const getUserList = async (req, res) => {
     try {
         const userList = await User
             .find(findOption)
-            .select("basic_info support_status")
+            .select("basic_info support_status evaluation")
             .sort({ _id: -1 })
             .exec();
 
@@ -211,12 +211,13 @@ const updateApplicantRank = async(req, res) => {
   const { rank, userId } = req.body;
   try {
       const updatedUser = await new Promise( (resolve, reject) => {
-          User.findByIdAndUpdate(userId, { $set: { evaluation: String(rank)}}, {new: true}, (error, obj) => {
+          User.findOneAndUpdate(userId, { $set: { evaluation : rank}}, {new: true, upsert: true }, (error, obj) => {
               if( error ) {
                   console.error( JSON.stringify( error ) );
                   return reject( error );
               }
-              resolve( obj );
+              console.log('erer', obj);
+              resolve(obj);
           });
       })
       if(!updatedUser){
