@@ -10,7 +10,7 @@ const cors = require('cors')
 
 const indexRouter = require('./routes/index');
 const sign = require('./controllers/Sign.Ctrl');
-const { schemeInit } = require('./service/schemeService');
+
 
 const app = express();
 
@@ -35,8 +35,6 @@ const corsOptions = {
   origin: '*',
   optionsSuccessStatus: 200 
 }
-
-// schemeInit();
 
 app.use(logger('dev'));
 app.use(express.json());

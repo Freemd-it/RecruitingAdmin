@@ -9,11 +9,11 @@ const dummy = require('../config/schmeInit')
 
 async function schemeInit () {
 
-  const adminModel = new AdminModel(dummy.admin).save();
-  const departmentModel = new DepartmentModel(dummy.department).save();
-  const interviewTimeModel = new InterviewTimeModel(dummy.interview).save();
-  const questionModel = new QuestionModel(dummy.question).save();
-  const statisticsModel = new StatisticsModel(dummy.statictics).save();
+  const adminModel = new AdminModel(dummy.admin);
+  const departmentModel = new DepartmentModel(dummy.department);
+  const interviewTimeModel = new InterviewTimeModel(dummy.interview);
+  const questionModel = new QuestionModel(dummy.question);
+  const statisticsModel = new StatisticsModel(dummy.statictics);
 
 
   await adminModel.save();
