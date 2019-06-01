@@ -1,4 +1,4 @@
-export const information = [{
+export const applyInfo = [{
     key: 'name',
     value: '이름',
   },{
@@ -22,9 +22,14 @@ export const information = [{
   },{
     key: 'second',
     value: '2지망',
-  },
+  },{
+    key: 'bussiness_activity',
+    value: '지원 사업'
+  },{
+    key: 'evaluation',
+    value: '평가 상태'
+  }
 ]
-
 export const interview = [
 {
   key: 'name',
@@ -35,6 +40,9 @@ export const interview = [
 },{
   key: 'second_department',
   value: '2지망',
+},{
+  key: 'bussiness_activity',
+  value: '지원 사업'
 },{
   key: 'phone_number',
   value: '전화번호',

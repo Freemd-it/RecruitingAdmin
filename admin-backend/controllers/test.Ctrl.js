@@ -44,9 +44,9 @@ const makeUser = async(req, res) => {
             graduation_date: new Date(),
         },
         apply_info: {
-            department: department,
+            first_department: department,
             secondary_department: secondary_department,
-            team: team,
+            first_team: team,
             secondary_team: secondary_team,
             can_moved: can_moved,
             can_multiple_interview: can_multiple_interview,

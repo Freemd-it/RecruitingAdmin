@@ -2,12 +2,35 @@ import React from 'react'
 
 import { Button } from 'reactstrap';
 
-const ModalRecruitFooter = ({ 합격버튼함수, 불합격버튼함수, 보류버튼함수, 취소버튼함수 }) => (
+// TODO => 1지망, 2지망, 3지망, 불합격
+const ModalRecruitFooter = ({ onClickEvaluation, onClickModalToClose, selectedRow, userSession }) => (
   <div className="footer-container">
-    <Button className="item__pass" outline onClick={합격버튼함수}>합격</Button>
-    <Button className="item__drop" color="danger" outline onClick={불합격버튼함수}>불합격</Button>
-    <Button className="item__postpone" color="warning" outline onClick={보류버튼함수}>보류</Button>
-    <Button className="item__cancel" color="secondary" outline onClick={취소버튼함수}>취소</Button>
+    <Button color="success" outline onClick={(e) => {
+      // console.log(Object.keys(selectedRow.basic_info));
+      userSession.department === selectedRow.basic_info.department
+      ? onClickEvaluation(selectedRow, "1순위")
+      : alert('평가 권한이 없습니다 :)')
+    }}>1지망</Button>
+
+    <Button color="warning" outline onClick={(e) => {
+      userSession.department === selectedRow.basic_info.department
+      ? onClickEvaluation(selectedRow, "2순위")
+      : alert('평가 권한이 없습니다 :)')
+    }}>2지망</Button>
+
+    <Button color="info" outline onClick={(e) => {
+      userSession.department === selectedRow.basic_info.department
+      ? onClickEvaluation(selectedRow, "3순위")
+      : alert('평가 권한이 없습니다 :)')
+    }}>3지망</Button>
+
+    <Button color="danger" outline onClick={(e) => {
+      userSession.department === selectedRow.basic_info.department
+      ? onClickEvaluation(selectedRow, "불합격")
+      : alert('평가 권한이 없습니다 :)')
+    }}>불합격</Button>
+
+    <Button color="secondary" outline onClick={onClickModalToClose}>취소</Button>
   </div>
 )
 

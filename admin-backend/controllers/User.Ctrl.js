@@ -24,13 +24,15 @@ const userDefulatInfo = (userObj) => {
         sns: userObj.basic_info.sns,
         address: userObj.basic_info.address,
         first: {
-          department: userObj.basic_info.department,
-          team: userObj.basic_info.team,
+          department: userObj.basic_info.first_department,
+          team: userObj.basic_info.first_team,
         },
         second: {
           department: userObj.basic_info.secondary_department,
           team: userObj.basic_info.secondary_team
         },
+        bussiness_activity: userObj.basic_info.bussiness_activity,
+        evaluation: userObj.evaluation,
         other_assign_ngo: userObj.basic_info.other_assign_ngo,
         other_assign_medical: userObj.basic_info.other_assign_medical,
         support_status: userObj.support_status,
@@ -68,7 +70,7 @@ const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
                 {
                     $or: [
                         {
-                            "basic_info.department": Code.getDepartmentCode(searchKeyword),
+                            "basic_info.first_department": Code.getDepartmentCode(searchKeyword),
                         },
                         {
                             "basic_info.secondary_department": Code.getDepartmentCode(searchKeyword),
@@ -79,18 +81,18 @@ const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
             
         };
     }
-    // if (searchIndex === 'team') {
-    //     return {
-    //         $or: [
-    //             {
-    //                 "basic_info.team": new RegExp(searchKeyword),
-    //             },
-    //             {
-    //                 "basic_info.secondary_team": new RegExp(searchKeyword),
-    //             }
-    //         ]
-    //     };
-    // }
+    if (searchIndex === 'team') {
+        return {
+            $or: [
+                {
+                    "basic_info.firstteam": new RegExp(searchKeyword),
+                },
+                {
+                    "basic_info.secondary_team": new RegExp(searchKeyword),
+                }
+            ]
+        };
+    }
     if (searchIndex === 'age') {
         const birthYear = age_birthDate_convert(searchKeyword);
         return {
@@ -108,19 +110,21 @@ const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
 
 const getUserList = async (req, res) => {
     let findOption = {"support_status": {$gte: 201}};
+
     if (req.query.type && req.query.q) {
         const searchIndex = req.query.type;
         const searchKeyword = req.query.q;
         findOption = matchSearchIndexandSchemaKey(searchIndex, searchKeyword);
     }
+
     console.log('find Options', JSON.stringify(findOption));
     try {
         const userList = await User
             .find(findOption)
-            .select("basic_info support_status")
+            .select("basic_info support_status evaluation")
             .sort({ _id: -1 })
             .exec();
-        console.log(userList);
+
         const resUserList = userList.map(user => userDefulatInfo(user));
         res.status(200).json({ message: "Successful get user list", result: resUserList });
     } catch (e) {
@@ -133,9 +137,7 @@ const getUser = async (req, res) => {
     const id = req.params.id;
     console.log(id);
     try {
-        const user = await User
-            .findById(id)
-            .exec();
+        const user = await User.findById(id).exec();
         res.status(200).json({ message: "Successful get user detail", result: user });
     } catch (e) {
         console.log(e);
@@ -205,10 +207,34 @@ const updateUserSupportStatus = async(req, res) => {
     }
 }
 
+const updateApplicantRank = async(req, res) => {
+  const { rank, userId } = req.body;
+  try {
+      const updatedUser = await new Promise( (resolve, reject) => {
+          User.findOneAndUpdate(userId, { $set: { evaluation : rank}}, {new: true, upsert: true }, (error, obj) => {
+              if( error ) {
+                  console.error( JSON.stringify( error ) );
+                  return reject( error );
+              }
+              console.log('erer', obj);
+              resolve(obj);
+          });
+      })
+      if(!updatedUser){
+          res.status(400).json({message: "Can't find applicatant", result: null});
+          return;
+      }
+      res.status(201).json({message: "Success", result: updatedUser});
+      
+  } catch(e){
+      res.status(500).json({message: JSON.stringify(e), result: null});
+  }
+}
+
 module.exports = {
-    getUserList: getUserList,
-    getUser: getUser,
-    test: getTest,
-    searchUserList: searchUserList,
-    updateUserSupportStatus: updateUserSupportStatus,
+    getUserList,
+    getUser,
+    searchUserList,
+    updateUserSupportStatus,
+    updateApplicantRank,
 }

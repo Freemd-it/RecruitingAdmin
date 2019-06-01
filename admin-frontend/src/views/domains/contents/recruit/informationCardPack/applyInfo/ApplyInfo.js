@@ -2,7 +2,6 @@ import React from 'react';
 import moment from 'moment';
 import InfoIcon from '@material-ui/icons/Info'
 
-// import '../InfoDetail.scss';
 import InformationCard from 'views/contexts/modal/card';
 
 const InterviewInfo = ({data}) => {

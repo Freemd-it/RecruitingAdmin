@@ -29,11 +29,16 @@ class RecruitManageContainer extends Component {
     this.setState({ rowsPerPage: event.target.value })
   }
 
-  onClickRowToShowModal = async (e, id) => {
+  onClickRowToShowModal = async (e) => {
     await axios.getRecruitDetail(e.currentTarget.id, this)
   }
   
-  onClickModalToClose = () => this.setState({ isDetailModal: false })
+  onClickModalToClose = async () => {
+    this.setState({ isDetailModal: false })
+    const { department } = JSON.parse(localStorage.getItem('user_session'))
+    await axios.getRecruitList({q: department === '900' ? '' : organization[department].name , type: 'department'}, this)
+  }
+  
 
   onChangeKeyword = async (e) => {
     this.setState({
@@ -41,6 +46,13 @@ class RecruitManageContainer extends Component {
       type: e.target.value,
     })
   }
+
+  onClickEvaluation = async ({_id}, rank) => {
+    const { department } = JSON.parse(localStorage.getItem('user_session'))
+    await axios.setApplicantRank({ userId: _id, rank, }, this)
+    await axios.getRecruitList({q: department === '900' ? '' : organization[department].name , type: 'department'}, this)
+  }
+  
 
   onChangeFilterQuery = async (e) => {
     const { type } = this.state
@@ -66,10 +78,10 @@ class RecruitManageContainer extends Component {
     )
     const ModalFooter = (
       <ModalRecruitFooter
-        LOL_합격버튼함수={() => {}}
-        LOL_불합격버튼함수={() => {}}
-        LOL_보류버튼함수={() => {}}
-        LOL_취소버튼함수={() => {}}
+        userSession = { JSON.parse(localStorage.getItem('user_session')) }
+        selectedRow={ this.state.selectedRow }
+        onClickEvaluation = { this.onClickEvaluation}
+        onClickModalToClose = {this.onClickModalToClose}
       />
     )
 
@@ -78,8 +90,8 @@ class RecruitManageContainer extends Component {
         {
           match.params.type === 'info' &&
           <Table
-            type={'information'}
-            title={'개인정보 관리'}
+            type={this.props.type}
+            title={'지원서관리'}
             rows={rows}
             onClickRow={this.onClickRowToShowModal}
             onSearchTag={this.onSearchTag}
@@ -89,15 +101,15 @@ class RecruitManageContainer extends Component {
             cursor
           />
         }
-        <Modal
-          modalType={'recruit'}
-          open={this.state.isDetailModal}
-          onClose={this.onClickModalToClose}
+          <Modal
+            modalType={'recruit'}
+            open={this.state.isDetailModal}
+            onClose={this.onClickModalToClose}
 
-          title={'지원서'}
-          contents={ModalContent}
-          footer={ModalFooter}
-        />
+            title={'지원서'}
+            contents={ModalContent}
+            footer={ModalFooter}
+          />
       </div>
     )
   }

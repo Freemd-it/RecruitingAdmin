@@ -18,10 +18,10 @@ class Contents extends Component {
         <Switch>
           <Route exact path='/' component={ DashBoardViewerContainer } />
           <Route exact path={routes.MATCH_PATH_DASHBOARD} component={ DashBoardViewerContainer } />
-          <Route exact path={routes.MATCH_PATH_RECRUIT_TYPE} render={(props) => { return <RecruitManageContainer {...props} columns={Columns.information}/> }} />
-          <Route exact path={routes.MATCH_PATH_INTERVIEW} render={(props) => { return <InterviewManageContainer {...props} columns={Columns.interview}/> }} />
-          <Route exact path={routes.MATCH_PATH_QUESTION}  render={(props) => { return <QuestionRegistContainer {...props} columns={Columns.question} />}} />
-          <Route exact path={routes.MATCH_PATH_DOCUMENT}  render={(props) => { return <DocumentManageContainer {...props} columns={Columns.question} />}} />
+          <Route exact path={routes.MATCH_PATH_RECRUIT_TYPE} render={(props) => { return <RecruitManageContainer {...props} type='applyInfo' columns={Columns.applyInfo}/>}} />
+          <Route exact path={routes.MATCH_PATH_INTERVIEW} render={(props) => { return <InterviewManageContainer {...props} type= 'interview' columns={Columns.interview}/> }} />
+          <Route exact path={routes.MATCH_PATH_QUESTION}  render={(props) => { return <QuestionRegistContainer {...props} type= 'question' columns={Columns.question} />}} />
+          <Route exact path={routes.MATCH_PATH_DOCUMENT}  render={(props) => { return <DocumentManageContainer {...props} type= 'manage'columns={Columns.question} />}} />
           <Route component={ NotFoundPage } />
         </Switch>
       </div>

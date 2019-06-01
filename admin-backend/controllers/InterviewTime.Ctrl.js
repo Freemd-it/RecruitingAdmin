@@ -3,11 +3,12 @@ const moment = require('moment');
 
 const registInterviewSchedule = async(req, res) => {
     const {batch, date, time} = req.body;
-    const interviewSchedule = new InterviewSchedule();
-    console.log(time);
-    interviewSchedule.batch = batch;
-    interviewSchedule.interviewDate = moment(date).format('YYYY-MM-DD');
-    interviewSchedule.interviewTime = time;
+    
+    const interviewSchedule = new InterviewSchedule({
+      batch,
+      interviewDate : moment(date).format('YYYY-MM-DD'),
+      interviewTime : time,
+    });
 
     try {
         const savedSchedule = await interviewSchedule.save();
@@ -30,20 +31,15 @@ const makeScheduleForm = (scheduleObjList) => {
 
 const getInterviewSchedule = async(req, res) => {
     const searchingBatch = Number(req.params.batch);
-    console.log(searchingBatch);
     try {
-        const interviewTimeList = await InterviewSchedule
-                                            .find({batch: searchingBatch})
-                                            .exec();
-        console.log(interviewTimeList);
-        const responseData = makeScheduleForm(interviewTimeList);
-        res.status(200).json({message: "Success", result: responseData});
+        const interviewTimeList = await InterviewSchedule.find({batch: searchingBatch}).exec();
+        res.status(200).json({message: "Success", result: makeScheduleForm(interviewTimeList)});
     } catch(e) {
         res.status(500).json({message: JSON.stringify(e), result: null});
     }
 }
 
 module.exports = {
-    getInterviewSchedule: getInterviewSchedule,
-    registInterviewSchedule: registInterviewSchedule,
+    getInterviewSchedule,
+    registInterviewSchedule,
 }

@@ -1,26 +1,23 @@
 import React from 'react'
 import { Col, FormGroup, Label, Input } from 'reactstrap';
 import './QuestionModal.scss';
-import _ from 'lodash'
 import organization from 'lib/service/organization';
+import _ from 'lodash'
 
-function maketeamList(registedData, department) {
-  return (_.map(organization[registedData.department], (v, key) => {
-    const temp2 = []
-    if(key === 'team') {
-      _.forEach(v, (_v, _k) => {
-        _.forEach(_v, (__v, __k) => {
-          temp2.push((<option value={__k}> {__v} </option>))
-        })
-      })
-    }
-    return temp2
-  }))
+function makeTeamList(registedData, department) {
+  const teamList=[];
+  _.forEach(organization[registedData.department]['team'], (value, key)  => {
+    _.forEach(value, (teamName, teamNum) => teamList.push((<option value={teamNum}>{teamName}</option>)))
+  })
+  return teamList;
 }
+
+
 const QuestionModal = props => {
   const { department } = JSON.parse(localStorage.getItem('user_session'))
   const { registedData, onRegistedData } = props;
-  const teamList = maketeamList(registedData, department)
+  const teamList = makeTeamList(registedData, department)
+
   return (
     <div className={'container QuestionDetail'} key={registedData._id}>
       <FormGroup row>
@@ -51,11 +48,11 @@ const QuestionModal = props => {
       </FormGroup>
 
       <FormGroup row>
-        <Label sm={2}>질문</Label>
+        <Label sm={2}>질문 유형</Label>
         <Col sm={10}>
           <Input type="select" name="type" onChange={onRegistedData} value={registedData.type} disabled>
-            <option selected="true" value="type" disabled> 타입선택 </option>
-            <option value="text"> 텍스트 </option>
+            <option value="type"> 타입선택 </option>
+            <option value="text" selected="true"> 텍스트 </option>
             <option value="file"> 파일첨부 </option>
             <option value="select"> 선택항목</option>
           </Input>

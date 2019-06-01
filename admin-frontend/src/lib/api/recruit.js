@@ -3,7 +3,7 @@ import queryString from 'query-string'
 
 export const getRecruitList = ({ type='', q='', ...rest }, ctx) => {
   return axiosCreate().get(`/admin/applicant?${queryString.stringify({...rest, type, q})}`)
-    .then(res => res.status === 200 && ctx.setState({ rows: res.data.result}))
+    .then(res => res.status === 200 && ctx.setState({ rows: res.data.result, isDetailModal: false}))
     .catch(err => err)
 }
 
@@ -14,4 +14,10 @@ export const getRecruitDetail = (id,ctx) => {
       isDetailModal: true,
     }))
     .catch(err => err)
+}
+
+export const setApplicantRank = (data, ctx) => {
+  return axiosCreate().put(`/admin/applicant/${data.userId}/rank`, data)
+  .then(res => alert('지원서 평가가 완료 되었습니다.'))
+  .catch(err => err)
 }

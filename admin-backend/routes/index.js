@@ -16,8 +16,8 @@ router.get('/health', contextCtrl.getHealthCheck);
 router.get('/applicant', userCtrl.getUserList);
 router.get('/applicant/:id', userCtrl.getUser);
 router.put('/applicant/:userId', userCtrl.updateUserSupportStatus);
+router.put('/applicant/:userId/rank', userCtrl.updateApplicantRank);
 
-router.get('/test', userCtrl.test);
 router.get('/filters/applicant', userCtrl.searchUserList);
 
 router.get('/question', questionCtrl.getQuestionList);

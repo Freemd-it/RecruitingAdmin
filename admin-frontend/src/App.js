@@ -30,6 +30,7 @@ const getHealthCheck = (ctx) => {
     resolve(true)
   })
 }
+
 class App extends Component {
   constructor (props) {
     super(props)
@@ -53,14 +54,15 @@ class App extends Component {
   render () {
     const { onLogin, waitCheckFlag } = this.state
     // if(waitCheckFlag) {
-      if (true) {
+      if (onLogin) {
         return (
           <MainTemplate sidebar={<Sidebar/>} contents={<Contents/>} />
         ) 
       }
       return <Login onhandleLogin={this.onhandleLogin}/>
-    // } else {
-      // return null
+    // }
+    // else {
+    //   return null
     // }
   }
 }

@@ -1,11 +1,12 @@
 import organization from 'lib/service/organization'
-import _ from 'lodash'
 
 const searchTeam = (department, team) => {
   let result;
-  if(department === undefined) return 0;
+  
+  if(department === undefined) return;
+
   organization[department]['team'].forEach(v => {
-    if(v[team] !== undefined) result = v[team]
+    result = v[team] !== undefined && v[team]
   })
   return result
 }
