@@ -28,6 +28,7 @@ const TablePagination = ({ totalPage, currentPage, onChangePage, className }) =>
         </PaginationItem>
       );
     }
+    return null;
   });
 
   return (

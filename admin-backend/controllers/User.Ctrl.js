@@ -24,8 +24,8 @@ const userDefulatInfo = (userObj) => {
         sns: userObj.basic_info.sns,
         address: userObj.basic_info.address,
         first: {
-          department: userObj.basic_info.first_department,
-          team: userObj.basic_info.first_team,
+          department: userObj.basic_info.department,
+          team: userObj.basic_info.team,
         },
         second: {
           department: userObj.basic_info.secondary_department,
@@ -70,7 +70,7 @@ const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
                 {
                     $or: [
                         {
-                            "basic_info.first_department": Code.getDepartmentCode(searchKeyword),
+                            "basic_info.department": Code.getDepartmentCode(searchKeyword),
                         },
                         {
                             "basic_info.secondary_department": Code.getDepartmentCode(searchKeyword),
@@ -85,7 +85,7 @@ const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
         return {
             $or: [
                 {
-                    "basic_info.firstteam": new RegExp(searchKeyword),
+                    "basic_info.team": new RegExp(searchKeyword),
                 },
                 {
                     "basic_info.secondary_team": new RegExp(searchKeyword),
@@ -117,14 +117,12 @@ const getUserList = async (req, res) => {
         findOption = matchSearchIndexandSchemaKey(searchIndex, searchKeyword);
     }
 
-    console.log('find Options', JSON.stringify(findOption));
     try {
         const userList = await User
             .find(findOption)
             .select("basic_info support_status evaluation")
             .sort({ _id: -1 })
             .exec();
-
         const resUserList = userList.map(user => userDefulatInfo(user));
         res.status(200).json({ message: "Successful get user list", result: resUserList });
     } catch (e) {
@@ -135,7 +133,6 @@ const getUserList = async (req, res) => {
 
 const getUser = async (req, res) => {
     const id = req.params.id;
-    console.log(id);
     try {
         const user = await User.findById(id).exec();
         res.status(200).json({ message: "Successful get user detail", result: user });
