@@ -24,7 +24,7 @@ class Table extends Component {
 
   render() {
     const userSession = JSON.parse(localStorage.getItem('user_session'))
-    const { onClickRow, questionAddBtn, title, rows, type, onSearchTag, onChangeKeyword, keyword, onChangeFilterQuery } = this.props;
+    const { onClickRow, questionAddBtn, title, rows, type, onSearchTag, onChangeKeyword, keyword, onChangeFilterQuery, onCheckRow = ()=>{} } = this.props;
     const { currentPage, rowsPerPage } = this.state;
     const columns = Columns[type]
     return (
@@ -40,14 +40,15 @@ class Table extends Component {
             onChangeFilterQuery={onChangeFilterQuery}
             keyword={keyword}
             userSession={userSession}
-            />
-          }>
+          />
+        }>
           <Header columns={columns}/>
           <Body
             type={type}
             columns={columns}
             rows={[ ...rows].splice((currentPage-1) * rowsPerPage , rowsPerPage) } 
             onClickRow={onClickRow}
+            onCheckRow={onCheckRow}
             rowsPerPage={rowsPerPage}
           />
         </TableContentTemplate>

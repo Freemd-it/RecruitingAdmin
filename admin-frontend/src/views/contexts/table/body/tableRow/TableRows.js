@@ -8,12 +8,15 @@ import searchTeam from 'lib/sreachTeam'
 
 class TableRows extends Component {
   render() {
-    const {item, columns, onClick, key, type} = this.props
+    const {item, columns, onClick, key, type, onCheckRow} = this.props
     return (
       <TableRow key={`${key}_${item.id}`} id={item._id} onClick={(event) => onClick(event)} hover> 
         {
-          <TableCell padding="checkbox">
-            <Checkbox/>
+          <TableCell 
+            padding="checkbox" 
+            onClick={e => e.stopPropagation()}
+          >
+            <Checkbox onChange={(e) => onCheckRow(e.target.checked, item._id)}/>
           </TableCell>
         }
         {

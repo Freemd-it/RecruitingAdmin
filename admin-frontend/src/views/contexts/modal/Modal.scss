@@ -1,6 +1,7 @@
 .CustomModal {
     display: flex;
     justify-content: space-around;
+    max-width: 50% !important;
 
     &__body {
         max-height: 500px;

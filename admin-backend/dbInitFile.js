@@ -6,6 +6,8 @@ const {
   MONGO_URI : mongoURI
 } = process.env;
 
+// const mongoURI = "MONGO_URI=mongodb://localhost/freemedRecruting"; // 환경변수 못읽어올경우 사용
+
 mongoose.Promise = global.Promise; 
 
 const close = async () => {
