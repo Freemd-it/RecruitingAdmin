@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Table from 'views/contexts/table'
 import * as axios from 'lib/api/recruit'
 import Modal from 'views/contexts/modal'
-import { Button } from 'reactstrap';
+import { Button, Input } from 'reactstrap';
 import { ModalRecruitFooter } from 'views/domains/contents/commons/ModalFooter'
 import InfoDetail from 'views/domains/contents/recruit/informationCardPack'
 import organization from 'lib/service/organization'
@@ -17,6 +17,8 @@ class RecruitManageContainer extends Component {
     query: '',
     type: '',
     applicationForm: {},
+    readOnlyMemo: true,
+    memo: '',
   };
 
   componentDidMount() {
@@ -82,12 +84,6 @@ class RecruitManageContainer extends Component {
     });
   }
 
-  onDownload = async () => {
-    const { applicationForm } = this.state;
-    if (Object.entries(applicationForm).length === 0 && applicationForm.constructor === Object) return alert('선택된 지원서가 없습니다.');
-    console.log(applicationForm);
-  }
-
   onDownloadCsv = async () => {
     const { applicationForm, rows } = this.state;
     if (Object.entries(applicationForm).length === 0 && applicationForm.constructor === Object) return alert('선택된 지원서가 없습니다.');
@@ -108,35 +104,53 @@ class RecruitManageContainer extends Component {
     csvDownload.remove();
   }
 
+  onChangeReadOnlyMemo = async (type) => {
+    this.setState(prevState => {
+      return { readOnlyMemo: !prevState.readOnlyMemo }
+    }, () => {
+      if (type === 'blur') {
+        const { _id: userId } = this.state.selectedRow;
+        return axios.setMemo({userId, memo: this.state.memo});
+      }
+    });
+  }
+
+  onChangeMemo = async (e) => {
+    this.setState({
+      memo: e.target.value
+    });
+  }
+
   render() {
     const { match } = this.props
     const { rows } = this.state
 
     const questionAddBtn = (
-      <>
-        <Button 
-          className={`btn mr-2`}
-          color="secondary"
-          outline
-          size={`sm`}
-          onClick={this.onDownload}> 
-          지원서 다운로드
-        </Button>
-        <Button 
-          className={`btn`}
-          color="secondary"
-          outline
-          size={`sm`}
-          onClick={this.onDownloadCsv}> 
-          CSV 다운로드
-        </Button>
-      </>
+      <Button 
+        className={`btn`}
+        color="secondary"
+        outline
+        size={`sm`}
+        onClick={this.onDownloadCsv}> 
+        CSV 다운로드
+      </Button>
     )
 
     const ModalContent = (
-      <InfoDetail
-        selectedRow={this.state.selectedRow}
-      />
+      <>
+        <InfoDetail
+          selectedRow={this.state.selectedRow}
+        />
+        <Input 
+          type="textarea" 
+          name="text" 
+          id="memo" 
+          readOnly={this.state.readOnlyMemo}
+          onFocus={this.onChangeReadOnlyMemo}
+          onBlur={() => this.onChangeReadOnlyMemo('blur')}
+          onChange={this.onChangeMemo}
+        />
+      </>
     )
     const ModalFooter = (
       <ModalRecruitFooter

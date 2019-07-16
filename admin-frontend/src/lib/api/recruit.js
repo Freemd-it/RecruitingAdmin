@@ -21,3 +21,9 @@ export const setApplicantRank = (data, ctx) => {
   .then(res => alert('지원서 평가가 완료 되었습니다.'))
   .catch(err => err)
 }
+
+export const setMemo = (data, ctx) => {
+  return axiosCreate().put(`/admin/applicant/${data.userId}/memo`, data)
+  .then(res => console.log('저장완료', res))
+  .catch(err => err);
+}

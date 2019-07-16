@@ -3,7 +3,6 @@ const Code = require('../modules/Status.Code');
 const moment = require('moment');
 
 const userDefulatInfo = (userObj) => {
-
     if (userObj.basic_info.team === '없음') {
         userObj.basic_info.team = '';
     }
@@ -36,6 +35,7 @@ const userDefulatInfo = (userObj) => {
         other_assign_ngo: userObj.basic_info.other_assign_ngo,
         other_assign_medical: userObj.basic_info.other_assign_medical,
         support_status: userObj.support_status,
+        memo: userObj.memo || '',
     }
 }
 const birthDate_age_convert = (date) => {
@@ -120,7 +120,7 @@ const getUserList = async (req, res) => {
     try {
         const userList = await User
             .find(findOption)
-            .select("basic_info support_status evaluation")
+            .select("basic_info support_status evaluation memo")
             .sort({ _id: -1 })
             .exec();
         const resUserList = userList.map(user => userDefulatInfo(user));
@@ -166,7 +166,6 @@ const searchUserList = async (req, res) => {
     try {
         const userList = await User
             .find(findOption)
-            //                            .find()
             .select("basic_info support_status")
             .sort({ _id: -1 })
             .exec();
@@ -208,12 +207,12 @@ const updateApplicantRank = async(req, res) => {
   const { rank, userId } = req.body;
   try {
       const updatedUser = await new Promise( (resolve, reject) => {
-          User.findOneAndUpdate(userId, { $set: { evaluation : rank}}, {new: true, upsert: true }, (error, obj) => {
+          User.findOneAndUpdate({_id: userId}, { $set: { evaluation : rank}}, {new: true, upsert: true }, (error, obj) => {
+              console.log(userId);
               if( error ) {
                   console.error( JSON.stringify( error ) );
                   return reject( error );
               }
-              console.log('erer', obj);
               resolve(obj);
           });
       })
@@ -228,10 +227,22 @@ const updateApplicantRank = async(req, res) => {
   }
 }
 
+const updateUserMemo = async (req, res) => {
+    const { userId, memo } = req.body;
+    try {
+        const updateUser = await User.findOneAndUpdate({_id: userId}, {$set: { memo }}, {upsert: true});
+    } catch(e) {
+        console.log('updateUserMemo error:', e);
+        return res.status(400).send({message: JSON.stringify(e)});
+    }
+    return res.sond(memo);
+}
+
 module.exports = {
     getUserList,
     getUser,
     searchUserList,
     updateUserSupportStatus,
     updateApplicantRank,
+    updateUserMemo,
 }

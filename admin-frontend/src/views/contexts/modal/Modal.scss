@@ -1,11 +1,12 @@
 .CustomModal {
     display: flex;
     justify-content: space-around;
-    max-width: 50% !important;
+    max-width: 80% !important;
 
     &__body {
-        max-height: 500px;
-        overflow-y: auto;
+        // max-height: 500px;
+        // overflow-y: auto;
+        display: flex;
         * {
             font-size: 14px;
         }
