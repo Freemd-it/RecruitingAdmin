@@ -52,18 +52,13 @@ class App extends Component {
   }
 
   render () {
-    const { onLogin, waitCheckFlag } = this.state
-    // if(waitCheckFlag) {
+    const { onLogin } = this.state
       if (onLogin) {
         return (
           <MainTemplate sidebar={<Sidebar/>} contents={<Contents/>} />
         ) 
       }
       return <Login onhandleLogin={this.onhandleLogin}/>
-    // }
-    // else {
-    //   return null
-    // }
   }
 }
 export default App;

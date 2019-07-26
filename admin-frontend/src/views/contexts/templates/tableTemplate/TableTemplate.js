@@ -5,8 +5,8 @@ import './TableTemplates.scss'
 const CustomTableTemplate = ({title, navigation, children, type, classes}) => {
   return (
     <div className={'CustomTable'}> 
+      {navigation}
       <div className={'CustomTable__wrapper'}>
-          {navigation}
           <TableTemplate className={'CustomTable__contents'} id='table'>
             {children}
           </TableTemplate>

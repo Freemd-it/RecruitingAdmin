@@ -169,7 +169,8 @@ class QuestionRegistContainer extends Component {
         color="secondary"
         outline
         size={`sm`}
-        onClick={this.onClickToAddModal}> 질문 추가
+        onClick={this.onClickToAddModal}> 
+        질문 추가하기
       </Button>
     )
 

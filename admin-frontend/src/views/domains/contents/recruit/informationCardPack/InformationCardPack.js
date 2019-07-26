@@ -57,7 +57,7 @@ const InfoDetail = ({ classes, selectedRow }) => {
                 />
               )
             default:
-              return '';
+              return null;
           }
         })
       }

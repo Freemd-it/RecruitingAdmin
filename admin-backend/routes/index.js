@@ -17,6 +17,7 @@ router.get('/applicant', userCtrl.getUserList);
 router.get('/applicant/:id', userCtrl.getUser);
 router.put('/applicant/:userId', userCtrl.updateUserSupportStatus);
 router.put('/applicant/:userId/rank', userCtrl.updateApplicantRank);
+router.put('/applicant/:userId/memo', userCtrl.updateUserMemo);
 
 router.get('/filters/applicant', userCtrl.searchUserList);
 

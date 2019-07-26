@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import Table from 'views/contexts/table'
 import * as axios from 'lib/api/recruit'
 import Modal from 'views/contexts/modal'
+import { Button, Input } from 'reactstrap';
 import { ModalRecruitFooter } from 'views/domains/contents/commons/ModalFooter'
 import InfoDetail from 'views/domains/contents/recruit/informationCardPack'
 import organization from 'lib/service/organization'
+import _ from 'lodash';
 
 class RecruitManageContainer extends Component {
   state = {
@@ -14,6 +16,9 @@ class RecruitManageContainer extends Component {
     keyword: '검색선택',
     query: '',
     type: '',
+    applicationForm: {},
+    readOnlyMemo: true,
+    memo: '',
   };
 
   componentDidMount() {
@@ -67,14 +72,85 @@ class RecruitManageContainer extends Component {
     }
   }
 
+  onCheckRow = async (checked, id) => {
+    this.setState(prevState => {
+      const { applicationForm } = prevState;
+      if (checked) { 
+        applicationForm[id] = true;
+      } else {
+        delete applicationForm[id]
+      }
+      return applicationForm;
+    });
+  }
+
+  onDownloadCsv = async () => {
+    const { applicationForm, rows } = this.state;
+    if (Object.entries(applicationForm).length === 0 && applicationForm.constructor === Object) return alert('선택된 지원서가 없습니다.');
+    const list = Object.keys(applicationForm).map(id => {
+      const index = _.findIndex(rows, o => {
+        return o._id === id;
+      });
+      const data = rows[index];
+      return `${data.name},${data.english},${data.is_male === true ? '남' : '여'},`+
+      `${data.birth_date},${data.phone_number},${data.email},${organization[data.first.department].name},${organization[data.second.department].name},${data.bussiness_activity || ''},${data.evaluation || ''}`;
+    });
+    const csvData = `이름,영문이름,성별,생년월일,전화번호,Email,1지망,2지망,지원사업,평가상태\n${list.join('\n')}`;
+    const csvDownload = document.createElement('a');
+    csvDownload.href = 'data:text/csv;utf-8,\uFEFF' + encodeURIComponent(csvData);
+    csvDownload.target = '_blank';
+    csvDownload.download = '지원자.csv';
+    csvDownload.click();
+    csvDownload.remove();
+  }
+
+  onChangeReadOnlyMemo = async (type) => {
+    this.setState(prevState => {
+      return { readOnlyMemo: !prevState.readOnlyMemo }
+    }, () => {
+      if (type === 'blur') {
+        const { _id: userId } = this.state.selectedRow;
+        return axios.setMemo({userId, memo: this.state.memo});
+      }
+    });
+  }
+
+  onChangeMemo = async (e) => {
+    this.setState({
+      memo: e.target.value
+    });
+  }
+
   render() {
     const { match } = this.props
     const { rows } = this.state
 
+    const questionAddBtn = (
+      <Button 
+        className={`btn`}
+        color="secondary"
+        outline
+        size={`sm`}
+        onClick={this.onDownloadCsv}> 
+        CSV 다운로드
+      </Button>
+    )
+
     const ModalContent = (
-      <InfoDetail
-        selectedRow={this.state.selectedRow}
-      />
+      <>
+        <InfoDetail
+          selectedRow={this.state.selectedRow}
+        />
+        <Input 
+          type="textarea" 
+          name="text" 
+          id="memo" 
+          readOnly={this.state.readOnlyMemo}
+          onFocus={this.onChangeReadOnlyMemo}
+          onBlur={() => this.onChangeReadOnlyMemo('blur')}
+          onChange={this.onChangeMemo}
+        />
+      </>
     )
     const ModalFooter = (
       <ModalRecruitFooter
@@ -93,7 +169,9 @@ class RecruitManageContainer extends Component {
             type={this.props.type}
             title={'지원서관리'}
             rows={rows}
+            questionAddBtn={questionAddBtn}
             onClickRow={this.onClickRowToShowModal}
+            onCheckRow={this.onCheckRow}
             onSearchTag={this.onSearchTag}
             onChangeKeyword={this.onChangeKeyword}
             onChangeFilterQuery={this.onChangeFilterQuery}

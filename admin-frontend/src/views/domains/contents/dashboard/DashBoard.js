@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Radar, Pie, Bar } from 'react-chartjs-2';
+import { Radar, Pie } from 'react-chartjs-2';
 import './DashBoard.scss'
 
 class DashBoard extends Component {
   render() {
-    const { pie, radar, bar } = this.props.chartData
+    const { pie, radar } = this.props.chartData
     
     const pieChart = (
       <div className="item" key={1}>

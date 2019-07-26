@@ -13,13 +13,12 @@ const QuestionsSchema = new Schema({
   type: String,
   registedDate: {
     type: Date,
-    default: new Date() // 현재 날짜를 기본값으로 지정
+    default: Date.now // 현재 날짜를 기본값으로 지정
   }
 })
 
 
 const scheduleSchema = new Schema({
-  
   time: {
     type: String,
     enum: ['10:00 ~ 12:00', ]
