@@ -17,7 +17,7 @@ const app = express();
 const {
   PORT : port = 27017,
   MONGO_URI : mongoURI
-} = process.env;
+} = process.env && require('./config/mongoConfig');
 
 // Node 의 Promise 를 사용 하도록 설정
 mongoose.Promise = global.Promise; 
