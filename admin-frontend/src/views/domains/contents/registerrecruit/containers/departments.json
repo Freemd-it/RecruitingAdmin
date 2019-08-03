@@ -1,0 +1,95 @@
+{
+  "departments" : [
+    {
+      "departmentName" : "경영 지원 본부",
+      "departmentDescription" : "경지본에 대한 설명입니다.",
+      "departmentImageUrl" : "s3 URL이 들어가지 않을까요",
+      "teams" : [
+        {
+          "teamName" : "재무 관리팀",
+          "medicalFieldOptions" : ["무료진료소", "보건교육"]
+        },
+        {
+          "teamName" : "인사 조직팀",
+          "medicalFieldOptions" : ["무료진료소", "보건교육"]
+        },
+        {
+          "teamName" : "인사팀",
+          "medicalFieldOptions" : ["무료진료소", "보건교육"]
+        },
+        {
+          "teamName" : "IT기획팀",
+          "medicalFieldOptions" : ["무료진료소"]
+        },
+        {
+          "teamName" : "디자인팀",
+          "medicalFieldOptions" : ["무료진료소", "보건교육"]
+        }
+      ]
+    },
+    {
+      "departmentName" : "브랜딩 마케팅 본부",
+      "departmentDescription" : "브마본에 대한 설명입니다.",
+      "departmentImageUrl" : "s3 URL이 들어가지 않을까요",
+      "teams" : [
+        {
+          "teamName" : "홍보 기획팀",
+          "medicalFieldOptions" : ["무료진료소", "보건교육"]
+        },
+        {
+          "teamName" : "대외 협력팀",
+          "medicalFieldOptions" : ["무료진료소", "보건교육"]
+        },
+        {
+          "teamName" : "후원 전략팀",
+          "medicalFieldOptions" : ["무료진료소", "보건교육"]
+        }
+      ]
+    },
+    {
+      "departmentName" : "무료진료소사업 본부",
+      "departmentDescription" : "브마본에 대한 설명입니다.",
+      "departmentImageUrl" : "s3 URL이 들어가지 않을까요",
+      "teams" : [
+        {
+          "teamName" : "진료소 운영팀",
+          "medicalFieldOptions" : ["무료진료소"]
+        },
+        {
+          "teamName" : "약무팀",
+          "medicalFieldOptions" : ["무료진료소"]
+        },
+        {
+          "teamName" : "의무기록팀",
+          "medicalFieldOptions" : ["무료진료소"]
+        }
+      ]
+    },
+    {
+      "departmentName" : "보건교육사업 본부",
+      "departmentDescription" : "브마본에 대한 설명입니다.",
+      "departmentImageUrl" : "s3 URL이 들어가지 않을까요",
+      "teams" : [
+        {
+          "teamName" : "보건교육 운영팀",
+          "medicalFieldOptions" : ["보건교육"]
+        },
+        {
+          "teamName" : "교육 연구팀",
+          "medicalFieldOptions" : ["보건교육"]
+        }
+      ]
+    },
+    {
+      "departmentName" : "해외의료사업 본부",
+      "departmentDescription" : "해본에 대한 설명입니다.",
+      "departmentImageUrl" : "s3 URL이 들어가지 않을까요",
+      "teams" : [
+        {
+          "teamName" : "공통팀",
+          "medicalFieldOptions" : ["해외의료"]
+        }
+      ]
+    }
+  ]
+}

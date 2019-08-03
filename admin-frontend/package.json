@@ -55,6 +55,7 @@
     "react": "^16.7.0",
     "react-app-polyfill": "^0.2.0",
     "react-chartjs-2": "^2.7.4",
+    "react-datepicker": "^2.8.0",
     "react-dev-utils": "^7.0.0",
     "react-dom": "^16.7.0",
     "react-html-table-to-excel": "^2.0.0",

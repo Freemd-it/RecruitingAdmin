@@ -14,3 +14,4 @@ export const MATCH_PATH_INTERVIEW = '/contents/interview'
 export const MATCH_PATH_QUESTION = '/contents/questions'
 export const MATCH_PATH_DOCUMENT = '/contents/documents'
 
+export const MATCH_PATH_REGISTER_RECRUIT = '/register/recruit'
