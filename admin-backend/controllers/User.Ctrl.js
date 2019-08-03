@@ -35,7 +35,6 @@ const userDefulatInfo = (userObj) => {
         other_assign_ngo: userObj.basic_info.other_assign_ngo,
         other_assign_medical: userObj.basic_info.other_assign_medical,
         support_status: userObj.support_status,
-        memo: userObj.memo || '',
     }
 }
 const birthDate_age_convert = (date) => {
@@ -227,22 +226,10 @@ const updateApplicantRank = async(req, res) => {
   }
 }
 
-const updateUserMemo = async (req, res) => {
-    const { userId, memo } = req.body;
-    try {
-        const updateUser = await User.findOneAndUpdate({_id: userId}, {$set: { memo }}, {upsert: true});
-    } catch(e) {
-        console.log('updateUserMemo error:', e);
-        return res.status(400).send({message: JSON.stringify(e)});
-    }
-    return res.sond(memo);
-}
-
 module.exports = {
     getUserList,
     getUser,
     searchUserList,
     updateUserSupportStatus,
     updateApplicantRank,
-    updateUserMemo,
 }

@@ -22,7 +22,7 @@ const radarData = {
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(255,99,132,1)',
-      data: [1,1,1,1,1,1],
+      data: [2,3,4,5,6,7], // 1학년, 2학년, 3학년, 4학년, 휴학생, 직장인 순서
     },
   ]
 }

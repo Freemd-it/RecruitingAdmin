@@ -28,9 +28,6 @@ export const applyInfo = [{
   },{
     key: 'evaluation',
     value: '평가 상태'
-  }, {
-    key: 'memo',
-    value: '메모'
   }
 ]
 export const interview = [

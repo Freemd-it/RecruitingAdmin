@@ -103,7 +103,6 @@ const UserSchema = new Schema({
   interview_info : [interviewSchema],
   apply_status: Number,
   evaluation: String,
-  memo: String,
 });
 
 // id 로 찾기
