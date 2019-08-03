@@ -23,7 +23,29 @@ export const setApplicantRank = (data, ctx) => {
 }
 
 export const setMemo = (data, ctx) => {
-  return axiosCreate().put(`/admin/applicant/${data.userId}/memo`, data)
-  .then(res => console.log('저장완료', res))
+  return axiosCreate().post(`/admin/memo/${data.userId}`, data)
+  .then(({ data }) => {
+    if (data && data.result) {
+      ctx.setState(prevState => {
+        const { memoList } = prevState;
+        memoList.push(data.result);
+        return memoList;
+      }, () => {
+        ctx.onChangeMemo();
+      });
+    } else {
+      alert('메모 작성에 실패하였습니다.');
+    }
+  })
+  .catch(err => err);
+}
+
+export const getMemoList = (id, ctx) => {
+  return axiosCreate().get(`/admin/memo/${id}`)
+  .then(({ data }) => {
+    if (data && data.result) {
+      ctx.setState({memoList: data.result})
+    }
+  })
   .catch(err => err);
 }
