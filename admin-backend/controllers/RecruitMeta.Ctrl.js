@@ -36,10 +36,10 @@ const registRecruitMeta = async (req, res) => {
 }
 
 const getRecruitMeta = async (req, res) => {
-  const { id } = req.params;
+  const { batch } = req.params;
   try {
     const recruitMetaData = await RecruitMeta
-      .find({_id: id})
+      .find({ batch })
       .select("batch period announceDate recruitStatus medicalFeilds departments interviewTimes")
       .exec();
     res.status(200).json({ message : "Success", result: recruitMetaData});
@@ -49,9 +49,8 @@ const getRecruitMeta = async (req, res) => {
 }
 
 const modifyRecruitMeta = async (req, res) => {
-  const { id } = req.params;
+  const { batch } = req.params;
   const { 
-    batch, 
     period, 
     announceDate, 
     recruitStatus,
@@ -59,15 +58,14 @@ const modifyRecruitMeta = async (req, res) => {
     departments,
     interviewTimes,
   } = req.body;
-  if (!id) 
+  if (!batch) 
     return res.status(500).json({
       message: 'invalied value',
       result: null,
     });
 
   try {
-    const update = await RecruitMeta.findByIdAndUpdate(id, {
-      batch, 
+    const update = await RecruitMeta.findOneAndUpdate(batch, {
       period, 
       announceDate, 
       recruitStatus,
