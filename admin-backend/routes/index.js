@@ -9,6 +9,8 @@ const statCtrl = require('../controllers/Statistics.Ctrl');
 const scheduleCtrl = require('../controllers/Schedule.Ctrl');
 const interviewTimeCtrl = require('../controllers/InterviewTime.Ctrl');
 const memoCtrl = require('../controllers/MemoCtrl.Ctrl');
+const recruitMetaCtrl = require('../controllers/RecruitMeta.Ctrl');
+const DepartmentMetaCtrl = require('../controllers/DepartmentMeta.Ctrl');
 
 // router.use(Authorizer);
 
@@ -20,6 +22,10 @@ router.put('/applicant/:batch/:userId', userCtrl.updateUserSupportStatus);
 router.put('/applicant/:batch/:userId/rank', userCtrl.updateApplicantRank);
 
 router.get('/filters/applicant', userCtrl.searchUserList);
+
+router.post('/question2', DepartmentMetaCtrl.registQuestion);
+router.get('/question2', DepartmentMetaCtrl.getDepartmemtMeta);
+
 
 router.get('/question', questionCtrl.getQuestionList);
 router.get('/question/:questionId', questionCtrl.getQuestion);

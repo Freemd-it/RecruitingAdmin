@@ -4,10 +4,23 @@ import organization from 'lib/service/organization'
 import _ from 'lodash'
 import moment from 'moment'
 
-export const getQuestionList = ({type='', q='', ...rest}, ctx) => 
-  axiosCreate().get(`/admin/question?${queryString.stringify({...rest, type, q})}`)
-    .then(res => res.status === 200 && ctx.setState({ rows: res.data.result}))
-    .catch(err => err)
+export const getQuestionList = (batch, ctx) => {
+  axiosCreate()
+    .get(`/admin/question2?batch=${batch}`)
+    .then(({ data }) => {
+      if (data && data.result) {
+        const { result } = data;
+        ctx.setState({
+          questions: result,
+        });
+      }
+    })
+    .catch(e => console.error(e));
+}
+// export const getQuestionList = ({type='', q='', ...rest}, ctx) => 
+//   axiosCreate().get(`/admin/question?${queryString.stringify({...rest, type, q})}`)
+//     .then(res => res.status === 200 && ctx.setState({ rows: res.data.result}))
+//     .catch(err => err)
 
 export const getQuestionDetail= (id, ctx) => 
   axiosCreate().get(`/admin/question/${id}`)
@@ -35,27 +48,27 @@ export const setQuestionInfomation = (data, ctx) => {
     .catch(err => err)
 }
 
-export const modifyQuestionInfomation = (registedData, ctx) => 
-  axiosCreate().put(`/admin/question/${registedData.id}`, registedData)
-    .then(res => {
-      if(res.status === 201) {
-        ctx.setState((prevState) => {
-          const { rows } = ctx.state
-          _.forEach(rows, (v, k) => {
-            if(v._id === registedData.id) {
-              rows[k] = {
-                ...registedData,
-                _id: v._id,
-                batch: 20,
-                registedDate: moment().format('YYYY-MM-DD HH:mm:ss')
-              }
-            }
-          })
-          return {
-            rows,
-            isUpdateModal: false,
-          }
-        })
-      }
-    })
-    .catch(err => err)
+// export const modifyQuestionInfomation = (registedData, ctx) => 
+//   axiosCreate().put(`/admin/question/${registedData.id}`, registedData)
+//     .then(res => {
+//       if(res.status === 201) {
+//         ctx.setState((prevState) => {
+//           const { rows } = ctx.state
+//           _.forEach(rows, (v, k) => {
+//             if(v._id === registedData.id) {
+//               rows[k] = {
+//                 ...registedData,
+//                 _id: v._id,
+//                 batch: 20,
+//                 registedDate: moment().format('YYYY-MM-DD HH:mm:ss')
+//               }
+//             }
+//           })
+//           return {
+//             rows,
+//             isUpdateModal: false,
+//           }
+//         })
+//       }
+//     })
+//     .catch(err => err)

@@ -6,7 +6,6 @@ import Body from 'views/contexts/table/body'
 import Pagination from 'views/contexts/table/pagination'
 import * as Columns from 'lib/service/tableColumn'
 
-
 import './Table.scss'
 
 class Table extends Component {
@@ -19,8 +18,6 @@ class Table extends Component {
   onChangePage = (currentPage) => {
     this.setState({ currentPage });
   };
-
-  
 
   render() {
     const userSession = JSON.parse(localStorage.getItem('user_session'))
@@ -43,14 +40,17 @@ class Table extends Component {
           />
         }>
           <Header columns={columns}/>
-          <Body
-            type={type}
-            columns={columns}
-            rows={[ ...rows].splice((currentPage-1) * rowsPerPage , rowsPerPage) } 
-            onClickRow={onClickRow}
-            onCheckRow={onCheckRow}
-            rowsPerPage={rowsPerPage}
-          />
+          {
+            this.props.body || 
+            <Body
+              type={type}
+              columns={columns}
+              rows={[ ...rows].splice((currentPage-1) * rowsPerPage , rowsPerPage) } 
+              onClickRow={onClickRow}
+              onCheckRow={onCheckRow}
+              rowsPerPage={rowsPerPage}
+            />
+          }
         </TableContentTemplate>
         <Pagination
           className={"Table__pagination"}
