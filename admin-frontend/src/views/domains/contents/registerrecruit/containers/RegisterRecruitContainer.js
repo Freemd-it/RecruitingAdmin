@@ -7,10 +7,11 @@ import DepartmentTitle from "../components/departmentTitle/departmentTitle";
 import StartEndDate from "../components/startEndDate/startEndDate";
 import Projects from '../components/projects/projects';
 import InterviewTimes from '../components/interviewTimes/interviewTimes';
-
+import { Button } from 'reactstrap';
 import "./RegisterRecruit.scss";
 import { Map, List } from "immutable";
-import { InitialDepartmentsList, InitialDepartment, InitialTeam, InitialInterviewTimes } from "../data";
+import { InitialDepartmentsList, InitialDepartment, InitialTeam, InitialInterviewTimeList, InitialInterviewTime } from "../data";
+import axios from 'axios';
 
 
 class RegisterRecruitContainer extends Component {
@@ -28,7 +29,7 @@ class RegisterRecruitContainer extends Component {
         recruitStatus: 1000,
         medicalFeilds: List(["무료진료소", "보건교육", "해외의료"]),
         departments: InitialDepartmentsList,
-        interviewTimes: InitialInterviewTimes,
+        interviewTimes: InitialInterviewTimeList,
       }),
     };
     this.handleStartDateChange = this.handleStartDateChange.bind(this);
@@ -78,7 +79,7 @@ class RegisterRecruitContainer extends Component {
     });
   }
 
-  handleAddTeamClick = (e, index) => {
+  handleTeamAdd = (e, index) => {
     const { data } = this.state;
     const teams = data.getIn(['departments', index, 'teams']);
     const modifiedTeams = teams.push(InitialTeam);
@@ -145,28 +146,54 @@ class RegisterRecruitContainer extends Component {
     });
   }
 
-  handleAddProjectClick = (e) => {
+  handleProjectAdd = (e) => {
     const { data } = this.state;
     this.setState({
       data: data.update('medicalFeilds', medicalFeilds => medicalFeilds.push("사업 명을 입력해주세요"))
     });
   }
 
-  handleDeleteProjectClick = (e, index) => {
+  handleProjectDelete = (e, index) => {
     const { data } = this.state;
     this.setState({
       data: data.update('medicalFeilds', medicalFeilds => medicalFeilds.delete(index))
     });
   }
 
-  handleChangeProjectName = (e, index) => {
-    const { data } = this.state;  
-    const { value } = e.target.value;
+  handleInterviewTimeAdd = (e) => {
+    const { data } = this.state;
+    const interviewTimes = data.get('interviewTimes').push(InitialInterviewTime);
     this.setState({
-      data: data.setIn(['medicalFeilds', index], value)
+      data: data.set('interviewTimes', interviewTimes)
     });
   }
 
+  handleInterviewTimeDelete = (e, index) => {
+    const { data } = this.state;
+    const interviewTimes = data.get('interviewTimes').delete(index);
+    this.setState({
+      data: data.set('interviewTimes', interviewTimes)
+    });
+  }
+
+  handleInterviewDateChange = (date, index) => {
+    const { data } = this.state;  
+    this.setState({
+      data: data.setIn(['interviewTimes', index, 'date'], date)
+    });
+  }
+
+  handleInterviewTimeChange = (e, index) => {
+    const { value } = e.target.value;
+    const { data } = this.state;
+    this.setState({
+      data: data.setIn(['interviewTimes', index, 'time'], value)
+    });
+  }
+
+  handleSubmit = (e) => {
+    console.log(this.state.data.toJS());
+  }
 
   render() {
     document.body.style.overflow = "";
@@ -183,27 +210,34 @@ class RegisterRecruitContainer extends Component {
           handleAnnounceDateChange={this.handleAnnounceDateChange}
         />
 
-        <Projects
+        {/* <Projects
           medicalFeilds={this.state.data.get('medicalFeilds')}
-          handleDeleteProjectClick={this.handleDeleteProjectClick}
-          handleAddProjectClick={this.handleAddProjectClick}
+          handleDeleteProjectClick={this.handleProjectDelete}
+          handleAddProjectClick={this.handleProjectAdd}
           handleChangeProjectName={this.handleChangeProjectName}
-        />
+        /> */}
 
         <DepartmentTitle handleDepartmentAddClick={this.handleDepartmentAddClick}/>
         
         <Departments 
           data={this.state.data}
           handleDeleteDepartmentClick={this.handleDeleteDepartmentClick}
-          handleAddTeamClick={this.handleAddTeamClick}
+          handleAddTeamClick={this.handleTeamAdd}
           handleDepartmentDescriptionChange={this.handleDepartmentDescriptionChange} 
           handleDepartmentNameChange={this.handleDepartmentNameChange}
           handleDeleteTeamClick={this.handleDeleteTeamClick}
           handleChangeTeamName={this.handleChangeTeamName}
           handleTeamMedicalOptionClick={this.handleTeamMedicalOptionClick}/>
+
        <InterviewTimes 
           interviewTimes={this.state.data.get('interviewTimes')}
+          handleInterviewDateChange={this.handleInterviewDateChange}
+          handleInterviewTimeChange={this.handleInterviewTimeChange}
+          handleInterviewTimeAdd={this.handleInterviewTimeAdd}
+          handleInterviewTimeDelete={this.handleInterviewTimeDelete}
        />
+
+       <Button color="success" size="lg" onClick={this.handleSubmit}> 제출하기 </Button>
         
       </div>
     );

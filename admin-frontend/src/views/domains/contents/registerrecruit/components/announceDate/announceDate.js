@@ -8,6 +8,7 @@ const announceDate = ({data, handleAnnounceDateChange}) => {
       <h4>서류 전형 발표 날짜</h4>
       <DatePicker
         selected={data.get('announceDate')}
+        dateFormat="yyyy-MM-dd"
         onChange={handleAnnounceDateChange}
       />
     </div>

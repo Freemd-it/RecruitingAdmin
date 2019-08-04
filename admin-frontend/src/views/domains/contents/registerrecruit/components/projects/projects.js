@@ -14,18 +14,30 @@ const Projects = ({handleAddProjectClick, handleDeleteProjectClick, handleChange
 
       { medicalFeilds.map((medicalFeild, index) => {
       return (
-        <div className="department_title_container">
-        <div className="title_container">
-          <input type="text" value={medicalFeild} onChange={(e) => handleChangeProjectName(e, index)}/>
-        </div>
-        <div className="button_container">
-          <Button color="danger" size="sm" onClick={(e)=> handleDeleteProjectClick(e, index)}>사업 삭제</Button>
-        </div>
-      </div>
+        <Project 
+          handleDeleteProjectClick={handleDeleteProjectClick}
+          medicalFeild={medicalFeild}
+          index={index}
+          key={index}
+        />
       );}
       )}
     </div>
   );
 };
+
+const Project = ({medicalFeild, handleChangeProjectName, handleDeleteProjectClick, index}) => {
+  return (
+    <div className="department_title_container">
+      <div className="title_container">
+        <input type="text" value={medicalFeild} onChange={(e) => handleChangeProjectName(e, index)}/>
+      </div>
+      <div className="button_container">
+        <Button color="danger" size="sm" onClick={(e)=> handleDeleteProjectClick(e, index)}>사업 삭제</Button>
+      </div>
+    </div>
+  );
+};
+
 
 export default Projects;

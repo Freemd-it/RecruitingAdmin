@@ -37,12 +37,16 @@ const Team = ({team, medicalFields, departmentIndex, teamIndex,
         </div>
       </div>
 
-      <p>지원 가능 사업 추가하기</p>
+      <p>지원 가능 사업 추가/삭제하기</p>
       <div className="medical_options_container">
         {medicalFields.map((medicalField, index) => {
           return (
-            <div>
-              <Button color="primary" onClick={(e)=> handleTeamMedicalOptionClick(e, departmentIndex, teamIndex, medicalField)}>{medicalField}</Button>
+            <div key={index}>
+              <Button 
+                color="primary"
+                onClick={(e)=> handleTeamMedicalOptionClick(e, departmentIndex, teamIndex, medicalField)}>
+                {medicalField}
+              </Button>
             </div>
           );
         })}
@@ -51,26 +55,19 @@ const Team = ({team, medicalFields, departmentIndex, teamIndex,
       <p>선택된 사업</p>
       <div className="medical_options_container">
         {team.medicalFieldOptions.map((medicalOption, i) => {
-          return (<MedicalOption 
-                  key={i} 
-                  team={team}
-                  departmentIndex={departmentIndex} 
-                  teamIndex={teamIndex}
-                  medicalOption={medicalOption} 
-                  handleTeamMedicalOptionClick={handleTeamMedicalOptionClick}/>);
+          return (
+            <MedicalOption 
+              key={i} 
+              team={team}
+              departmentIndex={departmentIndex} 
+              teamIndex={teamIndex}
+              medicalOption={medicalOption} 
+              handleTeamMedicalOptionClick={handleTeamMedicalOptionClick}/>);
         })}
       </div>
     </div>
   );
 };
-
-const MedicalOptionAdd = (medicalField, departmentIndex, teamIndex, handleTeamMedicalOptionClick) => {
-  return (
-    <div>
-    <Button color="primary" onClick={(e)=> handleTeamMedicalOptionClick(e, departmentIndex, teamIndex)}>{medicalField}</Button>
-  </div>
-  )
-}
 
 const MedicalOption = ({medicalOption}) => {
   return (

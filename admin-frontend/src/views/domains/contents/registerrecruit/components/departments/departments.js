@@ -8,7 +8,6 @@ const Departments = ({data, handleDeleteDepartmentClick, handleAddTeamClick,
   handleChangeTeamName, handleTeamMedicalOptionClick}) => {
   const departments = data.get('departments').toJS();
   const medicalFields = data.get('medicalFeilds').toJS();
-  console.log(medicalFields);
   return (
     <div>
       {departments.map((department, index) => {
