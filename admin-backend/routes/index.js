@@ -9,16 +9,15 @@ const statCtrl = require('../controllers/Statistics.Ctrl');
 const scheduleCtrl = require('../controllers/Schedule.Ctrl');
 const interviewTimeCtrl = require('../controllers/InterviewTime.Ctrl');
 const memoCtrl = require('../controllers/MemoCtrl.Ctrl');
-const recruitMetaCtrl = require('../controllers/RecruitMeta.Ctrl');
 
 // router.use(Authorizer);
 
 router.get('/health', contextCtrl.getHealthCheck);
 
-router.get('/applicant', userCtrl.getUserList);
-router.get('/applicant/:id', userCtrl.getUser);
-router.put('/applicant/:userId', userCtrl.updateUserSupportStatus);
-router.put('/applicant/:userId/rank', userCtrl.updateApplicantRank);
+router.get('/applicant/:batch', userCtrl.getUserList);
+router.get('/applicant/:batch/:id', userCtrl.getUser);
+router.put('/applicant/:batch/:userId', userCtrl.updateUserSupportStatus);
+router.put('/applicant/:batch/:userId/rank', userCtrl.updateApplicantRank);
 
 router.get('/filters/applicant', userCtrl.searchUserList);
 
@@ -36,9 +35,5 @@ router.post('/interviewtime', interviewTimeCtrl.registInterviewSchedule);
 
 router.post('/memo/:userId', memoCtrl.registMemo);
 router.get('/memo/:userId', memoCtrl.getMemo);
-
-router.post('/recruitMeta', recruitMetaCtrl.registRecruitMeta);
-router.get('/recruitMeta/:batch', recruitMetaCtrl.getRecruitMeta);
-router.put('/recruitMeta/:batch', recruitMetaCtrl.modifyRecruitMeta);
 
 module.exports = router;
