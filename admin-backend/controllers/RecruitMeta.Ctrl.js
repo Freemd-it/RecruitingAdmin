@@ -42,8 +42,41 @@ const getRecruitMeta = async (req, res) => {
       .find({ batch })
       .select("batch period announceDate recruitStatus medicalFeilds departments interviewTimes")
       .exec();
-    res.status(200).json({ message : "Success", result: recruitMetaData});
+      
+    const interviewTime = {}
+
+    recruitMetaData[0].interviewTimes.forEach((value) => {
+      const dateArr = Object.keys(interviewTime) || []
+    
+      let flag = false;
+
+      for(let i=0; i<dateArr.length; ++i) {
+        if(dateArr[i] === value.date.toISOString().substring(0,10)) {
+          interviewTime[value.date.toISOString().substring(0,10)].push(value.time);
+          flag = true;
+          break;
+        }
+      }
+
+      if(!flag) {
+        interviewTime[`${value.date.toISOString().substring(0,10)}`] = [value.time];
+      }
+    })
+    
+    
+    res.status(200).json({ message : "Success", result: {
+      _id: recruitMetaData[0]._id,
+      batch: recruitMetaData[0].batch,
+      period: recruitMetaData[0].period,
+      announceDate: recruitMetaData[0].announceDate,
+      recruitStatus: recruitMetaData[0].recruitStatus,
+      medicalFeilds: recruitMetaData[0].medicalFeilds,
+      departments: recruitMetaData[0].departments,
+      interviewTime,
+    }});
+    
   } catch(e) {
+    console.log(e)
     res.status(500).json({ message: JSON.stringify(e) , result: null,});
   }
 }
