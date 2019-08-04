@@ -14,15 +14,21 @@ import './QuestionManageContainer.scss';
 import organization from 'lib/service/organization';
 
 
-const QUESTION = [
-{
+// Table관련
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
+import Checkbox from '@material-ui/core/Checkbox';
+
+
+const QUESTION = [{
   key: 'departmentName',
   value: '본부',
 }, {
   key: 'teamName',
   value: '팀명',
 }, {
-  key: 'question',
+  key: 'contents',
   value: '질문내용',
   width: '300px',
 }, {
@@ -32,12 +38,53 @@ const QUESTION = [
   key: 'register',
   value: '등록자',
 }, {
-  key: 'registedDate',
+  key: 'registerDate',
   value: '등록일자', 
 }, {
   key: 'type',
   value: '유형'
-}];
+}]
+
+const Body = (props) => {
+  const { 
+    items, 
+    columns, 
+    attributeData,
+    onClick, 
+    onCheckRow 
+  } = props;
+
+  const rows = items.map((item, itemIndex) => {
+    const dataSet = {};
+    attributeData.forEach((attribute) => {
+      dataSet[attribute.key] = item[attribute.value];
+    });
+    return (
+      <TableRow 
+        key={`rows__${itemIndex}`}
+        {...dataSet}
+        hover
+      >
+        <TableCell key={`rows__${itemIndex}__checkBox`}>
+          <Checkbox/>
+        </TableCell>
+        {
+          columns.map((column, columnIndex) => {
+            return (
+              <TableCell 
+                key={`${itemIndex}__${columnIndex}`}
+              >
+                {item[column.key]}
+              </TableCell>
+              );
+            }
+          )
+        }
+      </TableRow>
+    );
+  });
+  return rows;
+}
 
 class QuestionRegistContainer extends Component {
   state = {
@@ -75,6 +122,25 @@ class QuestionRegistContainer extends Component {
       </Button>
     )
 
+    const body = (
+      <TableBody>
+        <Body 
+          items={this.state.questions}
+          attributeData={[{
+            key: "department-id",
+            value: "departmentId" 
+          }, {
+            key: "team-id",
+            value: "teamId"
+          }, {
+            key: "question-id",
+            value: "questionId"
+          }]}
+          columns={QUESTION}
+        />
+      </TableBody>
+    );
+
     return (
       <div className={`QuestionRegisContainer__addBox`}>
         <Table
@@ -87,6 +153,7 @@ class QuestionRegistContainer extends Component {
           onChangeKeyword={this.onChangeKeyword}
           onChangeFilterQuery={this.onChangeFilterQuery}
           keyword={this.state.keyword}
+          body={body}
           cursor
         />
       </div>
