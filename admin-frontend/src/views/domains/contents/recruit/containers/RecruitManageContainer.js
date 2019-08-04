@@ -47,7 +47,7 @@ class RecruitManageContainer extends Component {
     await axios.getRecruitDetail(id, this);
     await axios.getMemoList(id, this);
 
-    const scrollHeight = this.memoScroll.scrollHeight;
+    const scrollHeight =  this.memoScroll.scrollHeight;
     this.memoScroll.scroll(0, scrollHeight);
   }
   
@@ -124,7 +124,7 @@ class RecruitManageContainer extends Component {
       });
       const data = rows[index];
       return `${data.name},${data.english},${data.is_male === true ? '남' : '여'},`+
-      `${data.birth_date},${data.phone_number},${data.email},${organization[data.first.department].name},${organization[data.second.department].name},${data.bussiness_activity || ''},${data.evaluation || ''}`;
+      `${data.birth_date},${data.phone_number},${data.email},${organization[data.first.department].name},${organization[data.second.department].name},${data.medical_field || ''},${data.evaluation || ''}`;
     });
     const csvData = `이름,영문이름,성별,생년월일,전화번호,Email,1지망,2지망,지원사업,평가상태\n${list.join('\n')}`;
     const csvDownload = document.createElement('a');
