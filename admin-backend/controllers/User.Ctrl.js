@@ -3,6 +3,7 @@ const Code = require('../modules/Status.Code');
 const moment = require('moment');
 
 const userDefulatInfo = (userObj) => {
+    console.log(userObj)
     if (userObj.basic_info.team === '없음') {
         userObj.basic_info.team = '';
     }
@@ -30,7 +31,8 @@ const userDefulatInfo = (userObj) => {
           department: userObj.basic_info.secondary_department,
           team: userObj.basic_info.secondary_team
         },
-        bussiness_activity: userObj.basic_info.bussiness_activity,
+        medical_field: userObj.basic_info.medical_field,
+        secondary_medical_field: userObj.basic_info.secondary_medical_field,
         evaluation: userObj.evaluation,
         other_assign_ngo: userObj.basic_info.other_assign_ngo,
         other_assign_medical: userObj.basic_info.other_assign_medical,
@@ -135,6 +137,7 @@ const getUserList = async (req, res) => {
 
 const getUser = async (req, res) => {
     const id = req.params.id;
+
     try {
         const user = await User.findById(id).exec();
         res.status(200).json({ message: "Successful get user detail", result: user });

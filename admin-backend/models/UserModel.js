@@ -85,7 +85,6 @@ const UserSchema = new Schema({
     secondary_team: String,
     medical_field: String,
     secondary_medical_field: String, 
-    bussiness_activity: String,
     other_assign_ngo: Boolean, 
     other_assign_medical: Boolean,
   },
