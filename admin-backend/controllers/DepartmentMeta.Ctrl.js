@@ -1,13 +1,5 @@
 const DepartmemtMeta = require('../models/DepartmentMetaModel');
 
-const registDepartmemtMeta = async (req, res) => {
-  const { 
-    batch,
-    departmentName,
-    teams,
-  } = req.body;
-};
-
 const registQuestion = async (req, res) => {
   const result = {};
   const { 
@@ -68,6 +60,33 @@ const registQuestion = async (req, res) => {
 };
 
 const getDepartmemtMeta = async (req, res) => {
+  const { batch } = req.query;
+  if (!batch) return res.status(500).json({ message: 'Invalid query' , result: null});
+  const data = await DepartmemtMeta
+    .find({batch})
+    .select("_id departmentName teams")
+    .exec()
+  const result = [];
+  data.forEach((department, departmentIndex) => {
+    const { _id: departmentId, teams, departmentName } = department;
+    teams.forEach((team, teamIndex) => {
+      const { questions, teamName, _id: teamId } = team;
+      questions.forEach((question, questionIndex) => {
+        result.push({
+          departmentId: departmentId,
+          departmentName: departmentName,
+          teamId: teamId,
+          teamName: teamName,
+          questionId: question._id,
+          type: question.type,
+          contents: question.contents,
+          registerDate: question.registerDate,
+          register: question.register,
+        });
+      });
+    });
+  });
+  return res.status(201).json({ message : "Success", result });
 };
 
 const modifyDepartmemtMeta = async (req, res) => {
@@ -77,7 +96,6 @@ const departmemtMetaList = async (req, res) => {
 };
 
 module.exports = {
-  registDepartmemtMeta,
   getDepartmemtMeta,
   modifyDepartmemtMeta,
   departmemtMetaList,

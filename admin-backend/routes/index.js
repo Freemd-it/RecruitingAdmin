@@ -24,6 +24,8 @@ router.put('/applicant/:userId/rank', userCtrl.updateApplicantRank);
 router.get('/filters/applicant', userCtrl.searchUserList);
 
 router.post('/question2', DepartmentMetaCtrl.registQuestion);
+router.get('/question2', DepartmentMetaCtrl.getDepartmemtMeta);
+
 
 router.get('/question', questionCtrl.getQuestionList);
 router.get('/question/:questionId', questionCtrl.getQuestion);
