@@ -18,8 +18,8 @@ const expressSwagger = require('express-swagger-generator')(app);
 let options = {
   swaggerDefinition: {
       info: {
-          description: 'This is a sample server',
-          title: 'Swagger',
+          description: '프리메드 Recruiting Admin 서버 API',
+          title: 'Freemed Recruiting Admin',
           version: '1.0.0',
       },
       host: 'localhost:3001',
