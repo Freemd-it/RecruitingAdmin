@@ -77,14 +77,14 @@ const UserSchema = new Schema({
     
     department: {
       type: String,
-      enum: ['경영지원본부', '브랜드마케팅본부', '디자인본부','IT기획본부', '무료진료소사업본부', '보건교육산업본부', '해외의료사업본부']
     },
     secondary_department: {
       type: String,
-      enum: ['경영지원본부', '브랜드마케팅본부', '디자인본부','IT기획본부', '무료진료소사업본부', '보건교육산업본부', '해외의료사업본부']
     },
     team: String, 
-    secondary_team: String, 
+    secondary_team: String,
+    medical_field: String,
+    secondary_medical_field: String, 
     bussiness_activity: String,
     other_assign_ngo: Boolean, 
     other_assign_medical: Boolean,
@@ -101,8 +101,10 @@ const UserSchema = new Schema({
   special_info: [SpecialSchema],
   question_info: [QuestionsSchema],
   interview_info : [interviewSchema],
-  apply_status: Number,
+  support_status: Number,
+  batch: Number,
   evaluation: String,
+  memo: String,
 });
 
 // id 로 찾기

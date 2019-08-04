@@ -35,6 +35,7 @@ const userDefulatInfo = (userObj) => {
         other_assign_ngo: userObj.basic_info.other_assign_ngo,
         other_assign_medical: userObj.basic_info.other_assign_medical,
         support_status: userObj.support_status,
+        batch: userObj.batch,
     }
 }
 const birthDate_age_convert = (date) => {
@@ -108,18 +109,20 @@ const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
 }
 
 const getUserList = async (req, res) => {
-    let findOption = {"support_status": {$gte: 201}};
+    let findOption = {"support_status": {$gte: 201}, "batch": req.params.batch};
 
-    if (req.query.type && req.query.q) {
-        const searchIndex = req.query.type;
-        const searchKeyword = req.query.q;
-        findOption = matchSearchIndexandSchemaKey(searchIndex, searchKeyword);
-    }
+    console.log(req.query)
+    //검색용. 일단은 검색없이 가는걸로
+    // if (req.query.type && req.query.q) {
+    //     const searchIndex = req.query.type;
+    //     const searchKeyword = req.query.q;
+    //     findOption = matchSearchIndexandSchemaKey(searchIndex, searchKeyword);
+    // }
 
     try {
         const userList = await User
             .find(findOption)
-            .select("basic_info support_status evaluation memo")
+            .select("basic_info support_status evaluation batch")
             .sort({ _id: -1 })
             .exec();
         const resUserList = userList.map(user => userDefulatInfo(user));
