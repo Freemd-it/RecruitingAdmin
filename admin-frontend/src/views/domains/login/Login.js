@@ -96,11 +96,11 @@ class Login extends Component {
       localStorage.setItem('user_session', JSON.stringify(res.data.result));
       localStorage.setItem('token', JSON.stringify(res.data.result.token));
       
-      const recruitMeta = await axios.getInterviewColumn(res.data.batch, localStorage)
-      localStorage.setItem('recruitMeta', JSON.stringify(recruitMeta));
+      const recruitMeta = await axios.getInterviewColumn(21, localStorage)
+      localStorage.setItem('recruitMeta', JSON.stringify(recruitMeta.data.result));
       
       this.props.onhandleLogin()
-      
+
     } else {
       alert('아이디 혹은 비밀번호를 확인해 주세요.')
     }
