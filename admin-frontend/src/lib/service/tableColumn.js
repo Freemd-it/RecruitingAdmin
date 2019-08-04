@@ -18,13 +18,16 @@ export const applyInfo = [{
     value: 'email',
   },{
     key: 'first',
-    value:  '1지망',
+    value: '운영 1지망'
   },{
     key: 'second',
-    value: '2지망',
+    value: '운영 2지망',
   },{
-    key: 'bussiness_activity',
-    value: '지원 사업'
+    key: 'medical_field',
+    value: '사업 1지망'
+  },{
+    key: 'secondary_medical_field',
+    value: '사업 2지망'
   },{
     key: 'evaluation',
     value: '평가 상태'
@@ -36,13 +39,17 @@ export const interview = [
   value: '이름',
 },{
   key: 'first_department',
-  value: '1지망'
+  value: '운영 1지망'
 },{
   key: 'second_department',
-  value: '2지망',
+  value: '운영 2지망',
 },{
-  key: 'bussiness_activity',
-  value: '지원 사업'
+  key: 'medical_field',
+  value: '사업 1지망'
+},
+{
+  key: 'secondary_medical_field',
+  value: '사업 2지망'
 },{
   key: 'phone_number',
   value: '전화번호',

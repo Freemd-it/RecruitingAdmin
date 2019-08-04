@@ -6,7 +6,6 @@ import Body from 'views/contexts/table/body'
 import Pagination from 'views/contexts/table/pagination'
 import * as Columns from 'lib/service/tableColumn'
 
-
 import './Table.scss'
 
 class Table extends Component {
@@ -44,6 +43,8 @@ class Table extends Component {
             columns={columns}
             timeTable={timeTable}
           />
+        {
+          this.props.body || 
           <Body
             type={type}
             columns={columns}
@@ -52,6 +53,7 @@ class Table extends Component {
             onCheckRow={onCheckRow}
             rowsPerPage={rowsPerPage}
           />
+        }
         </TableContentTemplate>
         <Pagination
           className={"Table__pagination"}

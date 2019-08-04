@@ -2,13 +2,13 @@ import axiosCreate from '../defaultAxios'
 import queryString from 'query-string'
 
 export const getRecruitList = ({ type='', q='', ...rest }, ctx) => {
-  return axiosCreate().get(`/admin/applicant?${queryString.stringify({...rest, type, q})}`)
+  return axiosCreate().get(`/admin/applicant/21?${queryString.stringify({...rest, type, q})}`)
     .then(res => res.status === 200 && ctx.setState({ rows: res.data.result, isDetailModal: false}))
     .catch(err => err)
 }
 
 export const getRecruitDetail = (id,ctx) => {
-  return axiosCreate().get(`/admin/applicant/${id}`)
+  return axiosCreate().get(`/admin/applicant/21/${id}`)
     .then(res => ctx.setState({
       selectedRow: res.data.result,
       isDetailModal: true,
@@ -17,7 +17,7 @@ export const getRecruitDetail = (id,ctx) => {
 }
 
 export const setApplicantRank = (data, ctx) => {
-  return axiosCreate().put(`/admin/applicant/${data.userId}/rank`, data)
+  return axiosCreate().put(`/admin/applicant/21/${data.userId}/rank`, data)
   .then(res => alert('지원서 평가가 완료 되었습니다.'))
   .catch(err => err)
 }
