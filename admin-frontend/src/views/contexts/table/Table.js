@@ -20,11 +20,9 @@ class Table extends Component {
     this.setState({ currentPage });
   };
 
-  
-
   render() {
     const userSession = JSON.parse(localStorage.getItem('user_session'))
-    const { onClickRow, questionAddBtn, title, rows, type, onSearchTag, onChangeKeyword, keyword, onChangeFilterQuery, onCheckRow = ()=>{} } = this.props;
+    const { onClickRow, questionAddBtn, title, rows, type, onSearchTag, onChangeKeyword, keyword, onChangeFilterQuery, timeTable, onCheckRow = ()=>{} } = this.props;
     const { currentPage, rowsPerPage } = this.state;
     const columns = Columns[type]
     return (
@@ -42,7 +40,10 @@ class Table extends Component {
             userSession={userSession}
           />
         }>
-          <Header columns={columns}/>
+          <Header
+            columns={columns}
+            timeTable={timeTable}
+          />
           <Body
             type={type}
             columns={columns}

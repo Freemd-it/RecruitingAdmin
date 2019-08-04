@@ -9,7 +9,7 @@ import './Body.scss';
 
 const Body = ({rows, /* rowsPerPage, */ onClickRow, onCheckRow, columns, cursor = false, type}) => {
   // const emptyRows = rowsPerPage - rows.length;
-  
+  console.log('rows', rows)
   const bodyRows = (
     _.map(rows, (item/*, index */) => {
       return (<TableRows

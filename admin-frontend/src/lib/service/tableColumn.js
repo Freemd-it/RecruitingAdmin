@@ -52,42 +52,6 @@ export const interview = [
 },{
   key: 'other_assign_ngo',
   value: '타운영본부',
-},{
-  key: 'saturday',
-  value: '토요일',
-},{
-  key: 'sta_first',
-  value: '14:00 ~ 16:00',
-},{
-  key: 'sta_second',
-  value: '15:00 ~ 17:00',
-},{
-  key: 'sta_third',
-  value: '16:00 ~ 18:00',
-},{
-  key: 'sta_forth',
-  value: '17:00 ~ 19:00',
-},{
-  key: 'sunday',
-  value: '일요일',
-},{
-  key: 'sun_first',
-  value: '10:00 ~ 12:00',
-},{
-  key: 'sun_second',
-  value: '11:00 ~ 13:00',
-},{
-  key: 'sun_third',
-  value: '13:00 ~ 15:00',
-},{
-  key: 'sun_forth',
-  value: '14:00 ~ 16:00',
-},{
-  key: 'sun_fifth',
-  value: '15:00 ~ 17:00',
-},{
-  key: 'sun_sixth',
-  value: '16:00 ~ 18:00',
 }];
 
 export const question = [
