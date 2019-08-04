@@ -9,7 +9,10 @@ import searchTeam from 'lib/sreachTeam'
 class TableRows extends Component {
   render() {
     const {item, columns, onClick, key, type, onCheckRow} = this.props
-    const dateKeys = Object.keys(item.schedule || null);
+    let dateKeys = null;
+    if(type === 'interview') {
+      dateKeys = Object.keys(item.schedule || null);
+    }
     
     return (
       <TableRow key={item._id} id={item._id} onClick={(event) => onClick(event)} hover> 
