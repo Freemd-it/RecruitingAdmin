@@ -1,0 +1,38 @@
+.department_container {
+  border: 2px solid black;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+
+  input: {
+    border: 1px solid black;
+  }
+
+  .department_header {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+    align-items: center;
+
+    .title_container {
+      display: flex;
+      width: 50%;
+      
+    }
+    .button_container {
+      width: 50%;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+  .textarea_container {
+    width: 100%;
+    margin-bottom: 5px;
+    textarea {
+      border: 2px solid black;
+    }
+  }
+}
+
+

@@ -23,7 +23,7 @@ class Contents extends Component {
           <Route exact path={routes.MATCH_PATH_INTERVIEW} render={(props) => { return <InterviewManageContainer {...props} type= 'interview' columns={Columns.interview}/> }} />
           <Route exact path={routes.MATCH_PATH_QUESTION}  render={(props) => { return <QuestionRegistContainer {...props} type= 'question' columns={Columns.question} />}} />
           <Route exact path={routes.MATCH_PATH_DOCUMENT}  render={(props) => { return <DocumentManageContainer {...props} type= 'manage'columns={Columns.question} />}} />
-          <Route exact path={routes.MATCH_PATH_REGISTER_RECRUIT}  render={(props) => { return <RegisterRecruitContainer {...props} type= 'manage'columns={Columns.question} />}} />
+          <Route exact path={routes.MATCH_PATH_REGISTER_RECRUIT}  render={(props) => { return <RegisterRecruitContainer {...props} />}} />
           <Route component={ NotFoundPage } />
         </Switch>
       </div>

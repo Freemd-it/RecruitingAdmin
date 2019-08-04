@@ -1,121 +1,210 @@
 import React, { Component } from 'react';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import departmentData from "./departments.json";
 
-// {
-//   "departmentName" : "경영지원본부",
-//   "departmentDescription" : "경지본에 대한 설명입니다.",
-//   "departmentImageUrl" : "s3 URL이 들어가지 않을까요",
-//   "teams" : [
-//     {
-//       "teamName" : "인사팀",
-//       "medicalFieldOptions" : ["무료진료", "보건교육"]
-//     },
-//     {
-//       "teamName" : "IT기획팀",
-//       "medicalFieldOptions" : ["무료진료"]
-//     }
-//   ]
-// }
+import AnnounceDate from "../components/announceDate/announceDate";
+import Batch from '../components/batch/batch';
+import Departments from "../components/departments/departments";
+import DepartmentTitle from "../components/departmentTitle/departmentTitle";
+import StartEndDate from "../components/startEndDate/startEndDate";
+import Projects from '../components/projects/projects';
+import InterviewTimes from '../components/interviewTimes/interviewTimes';
+
+import "./RegisterRecruit.scss";
+import { Map, List } from "immutable";
+import { InitialDepartmentsList, InitialDepartment, InitialTeam, InitialInterviewTimes } from "../data";
+
+
 class RegisterRecruitContainer extends Component {
-  // state = {
-  //   batch: '',
-  //   period: {
-  //     startDate: '',
-  //     endDatae: '',
-  //   },
-  //   announceDate: '',
-  //   recruitStatus: 1000,
-  //   medicalFeilds: ["무료진료", "보건교육", "해외의료"],
-  //   departments: [],
-  //   interviewTimes: []
-  // };
   // Todo: initialState를 디비에서 읽어와서 가져오는 방식으로 변경해주어야 한다. 지금은 디비 저장 정보가 없으므로 하드 코딩
   constructor(props) {
-    console.log(departmentData.departments);
     super(props);
     this.state = {
-      period: {
-        startDate: new Date(),
-        endDate: new Date(),
-      },
-      announceDate: new Date(),
-      batch: '21',
-      recruitStatus: 1000,
-      medicalFeilds: ["무료진료소", "보건교육", "해외의료"],
-      department: departmentData.department
+      data: Map({
+        batch: '21',
+        period: Map({
+          startDate: new Date(),
+          endDate: new Date(),
+        }),
+        announceDate: new Date(),
+        recruitStatus: 1000,
+        medicalFeilds: List(["무료진료소", "보건교육", "해외의료"]),
+        departments: InitialDepartmentsList,
+        interviewTimes: InitialInterviewTimes,
+      }),
     };
     this.handleStartDateChange = this.handleStartDateChange.bind(this);
     this.handleEndDateChange = this.handleEndDateChange.bind(this);
   }
-
+ 
   handleStartDateChange = (date) => {
+    const { data } = this.state;
     this.setState({
-      period: {
-        startDate: date,
-        endDate: this.state.period.endDate,
-      }
+      data: data.setIn(['period', 'startDate'], date)
     });
   }
 
   handleEndDateChange = (date) => {
+    const { data } = this.state;
     this.setState({
-      period: {
-        startDate: this.state.period.startDate,
-        endDate: date,
-      }
+      data: data.setIn(['period', 'endDate'], date)
     });
   }
 
   handleAnnounceDateChange = (date) => {
+    const { data } = this.state;
     this.setState({
-      announceDate: date
+      data: data.set('announceDate', date)
     });
   }
 
   handleBatchChange = (e) => {
+    const { value } = e.target;
+    const { data } = this.state;  
     this.setState({
-      batch: e.target.value
+      data: data.set('batch', value)
     });
-    console.log(this.state);
   }
 
-  render() {
-    return (
-      <div>
-        <h1>리크루팅 일정 등록</h1>
-          <div>
-            <h3>모집 기수</h3>
-            <input type="text" 
-              value={this.state.batch}
-              onChange={this.handleBatchChange}/>
-          </div>
-          <div>
-            <h3>리크루팅 시작 날짜</h3>
-            <DatePicker
-              selected={this.state.period.startDate}
-              onChange={this.handleStartDateChange}
-            />
-            <h3>리크루팅 종료 날짜</h3>
-            <DatePicker
-              selected={this.state.period.endDate}
-              onChange={this.handleEndDateChange}
-            />
-          </div>
-          <div>
-            <h3>서류 전형 발표 날짜</h3>
-            <DatePicker
-              selected={this.state.announceDate}
-              onChange={this.handleAnnounceDateChange}
-            />
-          </div>
-          <div>
-            <h3>본부, 팀 구조</h3>
-            
+  handleDepartmentAddClick = () => {
+    const { data } = this.state;
+    this.setState({
+      data: data.update('departments', departments => departments.push(InitialDepartment))
+    });
+  }
 
-          </div>
-          
+  handleDeleteDepartmentClick = (e, index) => {
+    const { data } = this.state;
+    this.setState({
+      data: data.update('departments', departments => departments.delete(index))
+    });
+  }
+
+  handleAddTeamClick = (e, index) => {
+    const { data } = this.state;
+    const teams = data.getIn(['departments', index, 'teams']);
+    const modifiedTeams = teams.push(InitialTeam);
+    this.setState({
+      data: data.setIn(['departments', index, 'teams'], modifiedTeams)
+    });
+  }
+
+  handleDepartmentDescriptionChange = (e, index) => {
+    const { data } = this.state;  
+    const { value } = e.target.value;
+    this.setState({
+      data: data.setIn(['departments', index, 'departmentDescription'], value)
+    });
+  }
+
+  handleDepartmentNameChange = (e, index) => {
+    const { data } = this.state;  
+    const { value } = e.target.value;
+    this.setState({
+      data: data.setIn(['departments', index, 'departmentName'], value)
+    });
+  }
+
+  handleDeleteTeamClick = (e, departmentIndex, teamIndex) => {
+    const { data } = this.state;
+    const teams = data.getIn(['departments', departmentIndex, 'teams']);
+    const modifiedTeams = teams.delete(teamIndex);
+    this.setState({
+      data: data.setIn(['departments', departmentIndex, 'teams'], modifiedTeams)
+    });
+  }
+
+  handleChangeTeamName = (e, departmentIndex, teamIndex) => {
+    const { data } = this.state;
+    const { value } = e.target.value;
+    const teams = data.getIn(['departments', departmentIndex, 'teams']);
+    const modifiedTeams = teams.setIn([teamIndex, 'teamName'], value);
+    this.setState({
+      data: data.setIn(['departments', departmentIndex, 'teams'], modifiedTeams)
+    });
+  }
+
+  handleDeleteDepartmentClick = (e, index) => {
+    const { data } = this.state;
+    this.setState({
+      data: data.update('departments', departments => departments.delete(index))
+    });
+  }
+
+  handleTeamMedicalOptionClick = (e, departmentIndex, teamIndex, medicalOption) => {
+    const { data } = this.state;
+    const orgMedicalOptions = data.getIn(['departments', departmentIndex, 'teams', teamIndex, 'medicalFieldOptions']);
+    // 이미 선택되어 있는 사업이면 삭제를, 선택 안된 옵션이면 추가를 해준다.
+    let modifiedMedicalOptions = List();
+    if (orgMedicalOptions.toJS().includes(medicalOption)) {
+      modifiedMedicalOptions = orgMedicalOptions.filter(item => item !== medicalOption);
+    }
+    else {
+      modifiedMedicalOptions = orgMedicalOptions.push(medicalOption);
+    }
+    this.setState({
+      data: data.setIn(['departments', departmentIndex, 'teams', teamIndex, 'medicalFieldOptions'], modifiedMedicalOptions)
+    });
+  }
+
+  handleAddProjectClick = (e) => {
+    const { data } = this.state;
+    this.setState({
+      data: data.update('medicalFeilds', medicalFeilds => medicalFeilds.push("사업 명을 입력해주세요"))
+    });
+  }
+
+  handleDeleteProjectClick = (e, index) => {
+    const { data } = this.state;
+    this.setState({
+      data: data.update('medicalFeilds', medicalFeilds => medicalFeilds.delete(index))
+    });
+  }
+
+  handleChangeProjectName = (e, index) => {
+    const { data } = this.state;  
+    const { value } = e.target.value;
+    this.setState({
+      data: data.setIn(['medicalFeilds', index], value)
+    });
+  }
+
+
+  render() {
+    document.body.style.overflow = "";
+    return (
+      <div className="register_container">
+        <h2 className='title'>리크루팅 일정 등록</h2>
+        <Batch data={this.state.data} handleBatchChange={this.handleBatchChange}/>
+        <StartEndDate
+          data= {this.state.data}
+          handleStartDateChange={this.handleStartDateChange}
+          handleEndDateChange={this.handleEndDateChange}/>
+        <AnnounceDate 
+          data={this.state.data}
+          handleAnnounceDateChange={this.handleAnnounceDateChange}
+        />
+
+        <Projects
+          medicalFeilds={this.state.data.get('medicalFeilds')}
+          handleDeleteProjectClick={this.handleDeleteProjectClick}
+          handleAddProjectClick={this.handleAddProjectClick}
+          handleChangeProjectName={this.handleChangeProjectName}
+        />
+
+        <DepartmentTitle handleDepartmentAddClick={this.handleDepartmentAddClick}/>
+        
+        <Departments 
+          data={this.state.data}
+          handleDeleteDepartmentClick={this.handleDeleteDepartmentClick}
+          handleAddTeamClick={this.handleAddTeamClick}
+          handleDepartmentDescriptionChange={this.handleDepartmentDescriptionChange} 
+          handleDepartmentNameChange={this.handleDepartmentNameChange}
+          handleDeleteTeamClick={this.handleDeleteTeamClick}
+          handleChangeTeamName={this.handleChangeTeamName}
+          handleTeamMedicalOptionClick={this.handleTeamMedicalOptionClick}/>
+       <InterviewTimes 
+          interviewTimes={this.state.data.get('interviewTimes')}
+       />
+        
       </div>
     );
   }
