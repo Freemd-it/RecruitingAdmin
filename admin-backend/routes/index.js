@@ -9,6 +9,7 @@ const statCtrl = require('../controllers/Statistics.Ctrl');
 const scheduleCtrl = require('../controllers/Schedule.Ctrl');
 const interviewTimeCtrl = require('../controllers/InterviewTime.Ctrl');
 const memoCtrl = require('../controllers/MemoCtrl.Ctrl');
+const recruitMetaCtrl = require('../controllers/RecruitMeta.Ctrl');
 
 router.use(Authorizer);
 
@@ -35,5 +36,9 @@ router.post('/interviewtime', interviewTimeCtrl.registInterviewSchedule);
 
 router.post('/memo/:userId', memoCtrl.registMemo);
 router.get('/memo/:userId', memoCtrl.getMemo);
+
+router.post('/recruitMeta', recruitMetaCtrl.registRecruitMeta);
+router.get('/recruitMeta/:id', recruitMetaCtrl.getRecruitMeta);
+router.put('/recruitMeta/:id', recruitMetaCtrl.modifyRecruitMeta);
 
 module.exports = router;
