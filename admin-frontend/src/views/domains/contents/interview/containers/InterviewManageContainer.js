@@ -8,6 +8,7 @@ class InterviewManageContainer extends Component {
   state = {
     rows: [], 
     page: 0,
+    column: null,
     rowsPerPage: this.props.rowsPerPage,
     keyword: '검색선택',
     query: '',

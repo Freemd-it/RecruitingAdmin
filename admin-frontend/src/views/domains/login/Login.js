@@ -95,7 +95,12 @@ class Login extends Component {
     if (res.status === 200) {
       localStorage.setItem('user_session', JSON.stringify(res.data.result));
       localStorage.setItem('token', JSON.stringify(res.data.result.token));
+      
+      const recruitMeta = await axios.getInterviewColumn(res.data.batch, localStorage)
+      localStorage.setItem('recruitMeta', JSON.stringify(recruitMeta));
+      
       this.props.onhandleLogin()
+      
     } else {
       alert('아이디 혹은 비밀번호를 확인해 주세요.')
     }
