@@ -21,7 +21,7 @@ class Table extends Component {
 
   render() {
     const userSession = JSON.parse(localStorage.getItem('user_session'))
-    const { onClickRow, questionAddBtn, title, rows, type, onSearchTag, onChangeKeyword, keyword, onChangeFilterQuery, onCheckRow = ()=>{} } = this.props;
+    const { onClickRow, questionAddBtn, title, rows, type, onSearchTag, onChangeKeyword, keyword, onChangeFilterQuery, timeTable, onCheckRow = ()=>{} } = this.props;
     const { currentPage, rowsPerPage } = this.state;
     const columns = Columns[type]
     return (
@@ -39,18 +39,21 @@ class Table extends Component {
             userSession={userSession}
           />
         }>
-          <Header columns={columns}/>
-          {
-            this.props.body || 
-            <Body
-              type={type}
-              columns={columns}
-              rows={[ ...rows].splice((currentPage-1) * rowsPerPage , rowsPerPage) } 
-              onClickRow={onClickRow}
-              onCheckRow={onCheckRow}
-              rowsPerPage={rowsPerPage}
-            />
-          }
+          <Header
+            columns={columns}
+            timeTable={timeTable}
+          />
+        {
+          this.props.body || 
+          <Body
+            type={type}
+            columns={columns}
+            rows={[ ...rows].splice((currentPage-1) * rowsPerPage , rowsPerPage) } 
+            onClickRow={onClickRow}
+            onCheckRow={onCheckRow}
+            rowsPerPage={rowsPerPage}
+          />
+        }
         </TableContentTemplate>
         <Pagination
           className={"Table__pagination"}
