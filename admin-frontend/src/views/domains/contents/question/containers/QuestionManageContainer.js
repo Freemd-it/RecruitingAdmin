@@ -49,9 +49,9 @@ const Body = (props) => {
   const { 
     items, 
     columns, 
-    attributeData,
-    onClick, 
-    onCheckRow 
+    attributeData = [],
+    onClick = () => {}, 
+    onChangeCheck = () => {}, 
   } = props;
 
   const rows = items.map((item, itemIndex) => {
@@ -62,11 +62,12 @@ const Body = (props) => {
     return (
       <TableRow 
         key={`rows__${itemIndex}`}
+        onClick={onClick}
         {...dataSet}
         hover
       >
         <TableCell key={`rows__${itemIndex}__checkBox`}>
-          <Checkbox/>
+          <Checkbox onChange={onChangeCheck}/>
         </TableCell>
         {
           columns.map((column, columnIndex) => {

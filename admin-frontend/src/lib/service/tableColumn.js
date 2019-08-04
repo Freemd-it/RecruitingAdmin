@@ -97,15 +97,14 @@ export const interview = [
   value: '16:00 ~ 18:00',
 }];
 
-export const question = [
-{
-  key: 'department',
+export const question = [{
+  key: 'departmentName',
   value: '본부',
 }, {
-  key: 'team',
+  key: 'teamName',
   value: '팀명',
 }, {
-  key: 'question',
+  key: 'contents',
   value: '질문내용',
   width: '300px',
 }, {
@@ -115,12 +114,9 @@ export const question = [
   key: 'register',
   value: '등록자',
 }, {
-  key: 'registedDate',
+  key: 'registerDate',
   value: '등록일자', 
-},{
-  key: 'used',
-  value: '질문사용여부'
-},{
+}, {
   key: 'type',
   value: '유형'
 }]
