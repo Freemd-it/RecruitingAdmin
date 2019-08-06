@@ -1,0 +1,17 @@
+.editable_list_item_container {
+  display: flex;
+  min-width: 300px;
+  margin-bottom: 15px;
+}
+
+.item_title_container {
+  display: flex;
+  width: 50%;
+}
+
+.button_container {
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+}
+

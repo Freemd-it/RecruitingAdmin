@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import AnnounceDate from "../components/announceDate/announceDate";
 import Batch from '../components/batch/batch';
 import Departments from "../components/departments/departments";
-import DepartmentTitle from "../components/departmentTitle/departmentTitle";
+import DepartmentTitle from "../components/departmentTitle /departmentTitle";
 import StartEndDate from "../components/startEndDate/startEndDate";
 import Projects from '../components/projects/projects';
 import InterviewTimes from '../components/interviewTimes/interviewTimes';

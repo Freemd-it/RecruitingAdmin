@@ -14,4 +14,7 @@ export const MATCH_PATH_INTERVIEW = '/contents/interview'
 export const MATCH_PATH_QUESTION = '/contents/questions'
 export const MATCH_PATH_DOCUMENT = '/contents/documents'
 
-export const MATCH_PATH_REGISTER_RECRUIT = '/register/recruit'
+export const MATCH_PATH_RECRUITMETA = '/recruitmeta'
+export const MATCH_PATH_RECRUITMETA_EDIT = '/recruitmeta/edit:id'
+export const MATCH_PATH_RECRUITMETA_WRITE = '/recruitmeta/write'
+export const MATCH_PATH_RECRUITMETA_PROJECT_EDIT = '/recruitmeta/project/edit'
