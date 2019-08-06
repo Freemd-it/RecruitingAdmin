@@ -2,13 +2,13 @@ import axiosCreate from '../defaultAxios'
 import queryString from 'query-string'
 
 export const getRecruitList = ({ type='', q='', ...rest }, ctx) => {
-  return axiosCreate().get(`/admin/applicant?${queryString.stringify({...rest, type, q})}`)
+  return axiosCreate().get(`/admin/applicant/21?${queryString.stringify({...rest, type, q})}`)
     .then(res => res.status === 200 && ctx.setState({ rows: res.data.result, isDetailModal: false}))
     .catch(err => err)
 }
 
 export const getRecruitDetail = (id,ctx) => {
-  return axiosCreate().get(`/admin/applicant/${id}`)
+  return axiosCreate().get(`/admin/applicant/21/${id}`)
     .then(res => ctx.setState({
       selectedRow: res.data.result,
       isDetailModal: true,
@@ -17,13 +17,35 @@ export const getRecruitDetail = (id,ctx) => {
 }
 
 export const setApplicantRank = (data, ctx) => {
-  return axiosCreate().put(`/admin/applicant/${data.userId}/rank`, data)
+  return axiosCreate().put(`/admin/applicant/21/${data.userId}/rank`, data)
   .then(res => alert('지원서 평가가 완료 되었습니다.'))
   .catch(err => err)
 }
 
 export const setMemo = (data, ctx) => {
-  return axiosCreate().put(`/admin/applicant/${data.userId}/memo`, data)
-  .then(res => console.log('저장완료', res))
+  return axiosCreate().post(`/admin/memo/${data.userId}`, data)
+  .then(({ data }) => {
+    if (data && data.result) {
+      ctx.setState(prevState => {
+        const { memoList } = prevState;
+        memoList.push(data.result);
+        return memoList;
+      }, () => {
+        ctx.onChangeMemo();
+      });
+    } else {
+      alert('메모 작성에 실패하였습니다.');
+    }
+  })
+  .catch(err => err);
+}
+
+export const getMemoList = (id, ctx) => {
+  return axiosCreate().get(`/admin/memo/${id}`)
+  .then(({ data }) => {
+    if (data && data.result) {
+      ctx.setState({memoList: data.result})
+    }
+  })
   .catch(err => err);
 }

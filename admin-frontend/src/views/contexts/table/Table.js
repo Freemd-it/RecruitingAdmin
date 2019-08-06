@@ -6,7 +6,6 @@ import Body from 'views/contexts/table/body'
 import Pagination from 'views/contexts/table/pagination'
 import * as Columns from 'lib/service/tableColumn'
 
-
 import './Table.scss'
 
 class Table extends Component {
@@ -20,11 +19,9 @@ class Table extends Component {
     this.setState({ currentPage });
   };
 
-  
-
   render() {
     const userSession = JSON.parse(localStorage.getItem('user_session'))
-    const { onClickRow, questionAddBtn, title, rows, type, onSearchTag, onChangeKeyword, keyword, onChangeFilterQuery, onCheckRow = ()=>{} } = this.props;
+    const { onClickRow, questionAddBtn, title, rows, type, onSearchTag, onChangeKeyword, keyword, onChangeFilterQuery, timeTable, onCheckRow = ()=>{} } = this.props;
     const { currentPage, rowsPerPage } = this.state;
     const columns = Columns[type]
     return (
@@ -42,7 +39,12 @@ class Table extends Component {
             userSession={userSession}
           />
         }>
-          <Header columns={columns}/>
+          <Header
+            columns={columns}
+            timeTable={timeTable}
+          />
+        {
+          this.props.body || 
           <Body
             type={type}
             columns={columns}
@@ -51,6 +53,7 @@ class Table extends Component {
             onCheckRow={onCheckRow}
             rowsPerPage={rowsPerPage}
           />
+        }
         </TableContentTemplate>
         <Pagination
           className={"Table__pagination"}

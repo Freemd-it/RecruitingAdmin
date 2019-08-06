@@ -13,6 +13,34 @@ const sign = require('./controllers/Sign.Ctrl');
 
 
 const app = express();
+const expressSwagger = require('express-swagger-generator')(app);
+
+let options = {
+  swaggerDefinition: {
+      info: {
+          description: '프리메드 Recruiting Admin 서버 API',
+          title: 'Freemed Recruiting Admin',
+          version: '1.0.0',
+      },
+      host: 'localhost:3001',
+      basePath: '/admin',
+      produces: [
+          "application/json",
+          "application/xml"
+      ],
+      schemes: ['http', 'https'],
+  // securityDefinitions: {
+  //         JWT: {
+  //             type: 'apiKey',
+  //             in: 'header',
+  //             name: 'Authorization',
+  //             description: "",
+  //         }
+  //     }
+  },
+  basedir: __dirname, //app absolute path
+  files: ['./routes/*.js'] //Path to the API handle folder
+};
 
 const {
   PORT : port = 27017,
@@ -36,6 +64,7 @@ const corsOptions = {
   optionsSuccessStatus: 200 
 }
 
+expressSwagger(options)
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
