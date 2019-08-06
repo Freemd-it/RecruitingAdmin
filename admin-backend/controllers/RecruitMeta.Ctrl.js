@@ -81,6 +81,20 @@ const getRecruitMeta = async (req, res) => {
   }
 }
 
+const getRecruitMetaList = async (req, res) => {
+  try {
+    const recruitMetaData = await RecruitMeta
+    .find({})
+    .select("batch period")
+    .sort({"batch": 1})
+    .exec();
+    res.status(200).json({ message : "Success", result: recruitMetaData});
+  } catch(e) {
+    console.log(e)
+    res.status(500).json({ message: JSON.stringify(e) , result: null,});
+  }
+}
+
 const modifyRecruitMeta = async (req, res) => {
   const { batch } = req.params;
   const { 
@@ -117,5 +131,6 @@ const modifyRecruitMeta = async (req, res) => {
 module.exports = {
   registRecruitMeta,
   getRecruitMeta,
+  getRecruitMetaList,
   modifyRecruitMeta,
 }

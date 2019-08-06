@@ -39,9 +39,10 @@ router.get('/statistics', statCtrl.getStat);
 router.get('/interviewtime', interviewTimeCtrl.getInterviewSchedule);
 router.post('/interviewtime', interviewTimeCtrl.registInterviewSchedule);
 
+router.get('/recruitMeta', recruitMetaCtrl.getRecruitMetaList);
 router.post('/recruitMeta', recruitMetaCtrl.registRecruitMeta);
 router.get('/recruitMeta/:batch', recruitMetaCtrl.getRecruitMeta);
-router.put('/recruitMeta/:batch', recruitMetaCtrl.modifyRecruitMeta);
+router.get('/recruitMeta/:batch', recruitMetaCtrl.getRecruitMeta);
 
 router.post('/memo/:userId', memoCtrl.registMemo);
 router.get('/memo/:userId', memoCtrl.getMemo);
