@@ -91,15 +91,26 @@ class QuestionRegistContainer extends Component {
   state = {
     rows: [],
     batch: 0,
-    isAddModal: false,
-    isUpdateModal: false,
+    addModal: false,
+    updateModal: false,
     keyword: '검색선택',
     query: '',
     questions: [],
+    registedData: {
+      questionId: '',
+      department: '',
+      team: '',
+      departments: [], // '본부 선택'
+      teams: {}, // '팀 선택'
+      contents: '',
+      type: null,
+      types: [101, 102, 103], // [101, 102, 103]
+      register: '',
+    },
   };
 
   componentDidMount() {
-    const { batch } = JSON.parse(localStorage.getItem('recruitMeta'));
+    const { batch, departments } = JSON.parse(localStorage.getItem('recruitMeta'));
     axios.getQuestionList(batch, this);
   }
 
@@ -111,6 +122,96 @@ class QuestionRegistContainer extends Component {
     console.log('onChangeFilterQuery');
   }
 
+  onCloseModal = () => {
+    this.setState((prevState) => {
+      const { registedData } = prevState;
+      registedData.questionId = '';
+      registedData.department = '';
+      registedData.team = '';
+      registedData.contents = '';
+      registedData.type = '';
+
+      return {
+        registedData,
+        updateModal: false,
+        addModal: false,
+      }
+    });
+  }
+
+  onAddModal = (index) => {
+    const { departments } = JSON.parse(localStorage.getItem('recruitMeta'));
+    this.setState((prevState) => {
+      const { registedData } = prevState;
+      const departmentData = [];
+      const teamData = {};
+      departments.forEach(department => {
+        const {  departmentName, _id, teams } = department;
+        departmentData.push({
+          id: _id,
+          name: departmentName,
+        });
+        teamData[departmentName] = [{_id: '', name: '팀 선택'}];
+        teams.forEach(team => {
+          teamData[departmentName].push({
+            id: team._id,
+            name: team.teamName
+          });
+        });
+      });
+      registedData.departments = [ 
+        { id: 'null', name: '본부 선택' }, 
+        ...departmentData 
+      ];
+      registedData.teams = { 
+        default: [{ _id: "", name: '팀 선택' }],
+        ...teamData 
+      };
+      return { 
+        registedData,
+        addModal: true,
+      }
+    });
+  }
+
+  onRegistedData = (e) => {
+    const { target } = e;
+    const { value, name } = target;
+    this.setState((prevState) => {
+      const { registedData } = prevState;
+      registedData[name] = value;
+      return registedData;
+    })
+  }
+
+  onAddModalConfirm = async (e) => {
+    const { batch, registedData } = this.state;
+    const { 
+      department,
+      team,
+      contents,
+      type
+    } = registedData;
+    if (!department || !team || !contents || !type) alert('모든 항목을 작성해주세요.');
+
+    const result = await axios.setQuestionInfomation({ 
+      batch,
+      teamName: team,
+      departmentName: department,
+      questions: {
+        contents,
+        type,
+        teamName: team,
+        register: '안알랴줌',
+      }
+    }, this);
+    if (result.status === 201) {
+      console.log(result);
+    } else {
+      alert('질문 추가하기 실패');
+    }
+  }
+
   render() {  
     const questionAddBtn = (
       <Button 
@@ -118,7 +219,7 @@ class QuestionRegistContainer extends Component {
         color="secondary"
         outline
         size={`sm`}
-        onClick={() => console.log('질문 추가하기')}> 
+        onClick={this.onAddModal}> 
         질문 추가하기
       </Button>
     )
@@ -142,6 +243,20 @@ class QuestionRegistContainer extends Component {
       </TableBody>
     );
 
+    const questionDetail = (
+      <QuestionDetail
+        registedData={this.state.registedData}
+        onRegistedData={this.onRegistedData}
+      />
+    );
+
+    const AddModalFooter = (
+      <ModalCommonFooter
+        onConfirmModal={this.onAddModalConfirm}
+        onCancelModal={this.onCloseModal}
+      />
+    )
+
     return (
       <div className={`QuestionRegisContainer__addBox`}>
         <Table
@@ -156,6 +271,22 @@ class QuestionRegistContainer extends Component {
           keyword={this.state.keyword}
           body={body}
           cursor
+        />
+
+        <Modal
+          open={this.state.addModal}
+          onClose={this.onCloseModal}
+          title={'본부질문 추가하기'}
+          contents={questionDetail}
+          footer={AddModalFooter}
+        />
+
+        <Modal
+          open={this.state.updateModal}
+          onClose={this.onCloseModal}
+          title={'본부질문 수정하기'}
+          contents={''}
+          footer={''}
         />
       </div>
     )

@@ -44,10 +44,15 @@ DepartmentMetaSchema.statics.findIdAndTeamId = function(data) {
   return result;
 };
 
+DepartmentMetaSchema.statics.pushTeamAndQuestion = function(data) {
+
+};
+
 DepartmentMetaSchema.statics.pushTeamQuestion = function(data) {
   const { 
     _id,
     teamId, 
+    teamName,
     contents, 
     register,
     type,
@@ -59,19 +64,37 @@ DepartmentMetaSchema.statics.pushTeamQuestion = function(data) {
   };
 
   try {
-   result.data = this.updateOne({
-    _id,
-    'teams._id': teamId,
-  }, {
-    $push: {
-      'teams.$.questions': {
-        contents, 
-        register,
-        type,
-        registerDate
-      },
+    if (teamId) {
+      result.data = this.updateOne({
+          _id,
+          'teams._id': teamId,
+        }, {
+          $push: {
+            'teams.$.questions': {
+              contents, 
+              register,
+              type,
+              registerDate
+            },
+          }
+      }).exec();
+    } else {
+      result.data = this.updateOne({
+          _id,
+        }, {
+          $push: {
+            teams: {
+              teamName,
+              questions: [{
+                contents, 
+                register,
+                type,
+                registerDate
+              }]
+            }
+          }
+      }).exec();
     }
-  }).exec();
   } catch(e) {
     result.error = e;
   }

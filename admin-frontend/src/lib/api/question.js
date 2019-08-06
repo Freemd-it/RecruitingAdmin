@@ -11,7 +11,10 @@ export const getQuestionList = (batch, ctx) => {
       if (data && data.result) {
         const { result } = data;
         ctx.setState({
+          batch,
           questions: result,
+          addModal: false,
+          updateModal: false,
         });
       }
     })
@@ -43,10 +46,15 @@ export const getQuestionDetail= (id, ctx) =>
     .catch(err => err)
 
 export const setQuestionInfomation = (data, ctx) => {
-  return axiosCreate().post('/admin/question', data)
+  return axiosCreate().post('/admin/question2', data)
     .then(res => res) 
     .catch(err => err)
 }
+// export const setQuestionInfomation = (data, ctx) => {
+//   return axiosCreate().post('/admin/question', data)
+//     .then(res => res) 
+//     .catch(err => err)
+// }
 
 // export const modifyQuestionInfomation = (registedData, ctx) => 
 //   axiosCreate().put(`/admin/question/${registedData.id}`, registedData)

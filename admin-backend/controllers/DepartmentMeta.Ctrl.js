@@ -29,6 +29,7 @@ const registQuestion = async (req, res) => {
     const pushTeamQuestionData = DepartmemtMeta.pushTeamQuestion({
       _id,
       teamId, 
+      teamName,
       contents, 
       register,
       type,
