@@ -12,7 +12,7 @@ const memoCtrl = require('../controllers/MemoCtrl.Ctrl');
 const recruitMetaCtrl = require('../controllers/RecruitMeta.Ctrl');
 const DepartmentMetaCtrl = require('../controllers/DepartmentMeta.Ctrl');
 
-// router.use(Authorizer);
+router.use(Authorizer);
 
 router.get('/health', contextCtrl.getHealthCheck);
 
@@ -25,6 +25,8 @@ router.get('/filters/applicant', userCtrl.searchUserList);
 
 router.post('/question2', DepartmentMetaCtrl.registQuestion);
 router.get('/question2', DepartmentMetaCtrl.getDepartmemtMeta);
+router.get('/question2/:questionId', DepartmentMetaCtrl.getQuestion);
+router.put('/question2/:questionId', DepartmentMetaCtrl.updateQuestion);
 
 
 router.get('/question', questionCtrl.getQuestionList);

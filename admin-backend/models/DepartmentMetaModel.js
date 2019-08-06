@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const { Schema, Types } = mongoose;
 
 const QuestionSchema = new Schema({
-  contents: String, // 질문내용 
+  content: String, // 질문내용 
   register: String, // 작성자
   type: {
     type: Number,
@@ -44,16 +44,12 @@ DepartmentMetaSchema.statics.findIdAndTeamId = function(data) {
   return result;
 };
 
-DepartmentMetaSchema.statics.pushTeamAndQuestion = function(data) {
-
-};
-
 DepartmentMetaSchema.statics.pushTeamQuestion = function(data) {
   const { 
     _id,
     teamId, 
     teamName,
-    contents, 
+    content, 
     register,
     type,
     registerDate,
@@ -65,35 +61,35 @@ DepartmentMetaSchema.statics.pushTeamQuestion = function(data) {
 
   try {
     if (teamId) {
-      result.data = this.updateOne({
-          _id,
-          'teams._id': teamId,
-        }, {
-          $push: {
+      result.data = this.findOneAndUpdate(
+        { _id, 'teams._id': teamId, }, 
+        { $push: {
             'teams.$.questions': {
-              contents, 
+              content, 
               register,
               type,
               registerDate
-            },
+            }
           }
-      }).exec();
+        }, 
+        { new: true }
+      ).exec();
     } else {
-      result.data = this.updateOne({
-          _id,
-        }, {
-          $push: {
+      result.data = this.findOneAndUpdate(
+        { _id }, 
+        { $push: {
             teams: {
               teamName,
               questions: [{
-                contents, 
+                content, 
                 register,
                 type,
                 registerDate
               }]
             }
-          }
-      }).exec();
+        }},
+        { new: true }
+      ).exec();
     }
   } catch(e) {
     result.error = e;
@@ -111,7 +107,7 @@ DepartmentMetaSchema.statics.saveDepartmemtMeta = function(data) {
     batch,
     departmentName,
     teamName, 
-    contents, 
+    content, 
     register,
     type,
     registerDate,
@@ -122,7 +118,7 @@ DepartmentMetaSchema.statics.saveDepartmemtMeta = function(data) {
     teams: [{
       teamName, 
       questions: {
-        contents, 
+        content, 
         register,
         type,
         registerDate,
@@ -138,4 +134,5 @@ DepartmentMetaSchema.statics.saveDepartmemtMeta = function(data) {
   return result;
 }
 
+DepartmentMetaSchema.statics.ObjectId = Types.ObjectId
 module.exports = mongoose.model('DepartmentMeta', DepartmentMetaSchema);
