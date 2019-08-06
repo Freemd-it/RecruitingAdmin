@@ -1,6 +1,6 @@
 import { Map, List } from "immutable"
 
-const InitialInterviewTimes = List([
+const InitialInterviewTimeList = List([
     Map({
       date: new Date("2019-09-15"),
       time: "11:00 ~ 12:00"
@@ -19,4 +19,4 @@ const InitialInterviewTimes = List([
     })
   ]);
 
-export default InitialInterviewTimes;
+export default InitialInterviewTimeList;
