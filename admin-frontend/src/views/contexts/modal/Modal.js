@@ -5,14 +5,15 @@ import './Modal.scss'
 
 class CustomModal extends React.Component {
   render() {
-    const { open, onClose, title, contents, footer } = this.props;
+    const { open, onClose, onClosed = () => {}, title, contents, footer } = this.props;
     return (
       <Modal
         className="CustomModal"
         isOpen={open}
         centered
         size="lg"
-        toggle={onClose}>
+        toggle={onClose}
+        onClosed={onClosed}>
         <ModalHeader toggle={onClose}>{title}</ModalHeader>
         <ModalBody className="CustomModal__body">
           {contents}

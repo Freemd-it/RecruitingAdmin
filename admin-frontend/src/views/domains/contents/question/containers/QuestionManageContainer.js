@@ -14,6 +14,8 @@ import './QuestionManageContainer.scss';
 import organization from 'lib/service/organization';
 
 
+import _ from 'lodash';
+
 // Table관련
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -28,7 +30,7 @@ const QUESTION = [{
   key: 'teamName',
   value: '팀명',
 }, {
-  key: 'contents',
+  key: 'content',
   value: '질문내용',
   width: '300px',
 }, {
@@ -62,11 +64,10 @@ const Body = (props) => {
     return (
       <TableRow 
         key={`rows__${itemIndex}`}
-        onClick={onClick}
-        {...dataSet}
+        onClick={onClick} 
         hover
       >
-        <TableCell key={`rows__${itemIndex}__checkBox`}>
+        <TableCell key={`rows__${itemIndex}__checkBox`} {...dataSet}>
           <Checkbox onChange={onChangeCheck}/>
         </TableCell>
         {
@@ -74,6 +75,7 @@ const Body = (props) => {
             return (
               <TableCell 
                 key={`${itemIndex}__${columnIndex}`}
+                {...dataSet}
               >
                 {item[column.key]}
               </TableCell>
@@ -89,7 +91,6 @@ const Body = (props) => {
 
 class QuestionRegistContainer extends Component {
   state = {
-    rows: [],
     batch: 0,
     addModal: false,
     updateModal: false,
@@ -102,7 +103,7 @@ class QuestionRegistContainer extends Component {
       team: '',
       departments: [], // '본부 선택'
       teams: {}, // '팀 선택'
-      contents: '',
+      content: '',
       type: null,
       types: [101, 102, 103], // [101, 102, 103]
       register: '',
@@ -111,36 +112,7 @@ class QuestionRegistContainer extends Component {
 
   componentDidMount() {
     const { batch, departments } = JSON.parse(localStorage.getItem('recruitMeta'));
-    axios.getQuestionList(batch, this);
-  }
 
-  onChangeKeyword = async (e) => {
-    console.log('onChangeKeyword');
-  }
-  
-  onChangeFilterQuery = async (e) => {
-    console.log('onChangeFilterQuery');
-  }
-
-  onCloseModal = () => {
-    this.setState((prevState) => {
-      const { registedData } = prevState;
-      registedData.questionId = '';
-      registedData.department = '';
-      registedData.team = '';
-      registedData.contents = '';
-      registedData.type = '';
-
-      return {
-        registedData,
-        updateModal: false,
-        addModal: false,
-      }
-    });
-  }
-
-  onAddModal = (index) => {
-    const { departments } = JSON.parse(localStorage.getItem('recruitMeta'));
     this.setState((prevState) => {
       const { registedData } = prevState;
       const departmentData = [];
@@ -151,7 +123,10 @@ class QuestionRegistContainer extends Component {
           id: _id,
           name: departmentName,
         });
-        teamData[departmentName] = [{_id: '', name: '팀 선택'}];
+        teamData[departmentName] = [
+          { _id: '', name: '팀 선택' }, 
+          { _id: '', name: '공통' }
+        ];
         teams.forEach(team => {
           teamData[departmentName].push({
             id: team._id,
@@ -169,9 +144,56 @@ class QuestionRegistContainer extends Component {
       };
       return { 
         registedData,
-        addModal: true,
       }
     });
+    axios.getQuestionList(batch, this);
+  }
+
+  onChangeKeyword = async (e) => {
+    console.log('onChangeKeyword');
+  }
+  
+  onChangeFilterQuery = async (e) => {
+    console.log('onChangeFilterQuery');
+  }
+
+  onClosedModal = () => {
+    this.setState((prevState) => {
+      const { registedData } = prevState;
+      registedData.questionId = '';
+      registedData.department = '';
+      registedData.team = '';
+      registedData.content = '';
+      registedData.type = '';
+      return { registedData }
+    });
+  }
+
+  onAddModal = () => {
+    this.setState(prevState => {
+      const { addModal } = prevState;
+      return { addModal: !addModal };
+    });
+  }
+
+  onCloseModal = () => {
+    this.setState({
+      addModal: false,
+      updateModal: false,
+    });
+  }
+
+  onUpdateModal = async (e) => {
+    e.preventDefault();
+    const { target } = e;
+    const data = {
+      departmentId: target.getAttribute("department-id"),
+      teamId: target.getAttribute("team-id"),
+      questionId: target.getAttribute("question-id"),
+    };
+    if (data.departmentId && data.teamId && data.questionId) {
+      axios.getQuestionDetail(data, this);
+    }
   }
 
   onRegistedData = (e) => {
@@ -189,27 +211,58 @@ class QuestionRegistContainer extends Component {
     const { 
       department,
       team,
-      contents,
+      content,
       type
     } = registedData;
-    if (!department || !team || !contents || !type) alert('모든 항목을 작성해주세요.');
+    if (!department || !team || !content || !type) return alert('모든 항목을 작성해주세요.');
 
-    const result = await axios.setQuestionInfomation({ 
+    const { data, status } = await axios.setQuestionInfomation({ 
       batch,
       teamName: team,
       departmentName: department,
       questions: {
-        contents,
+        content,
         type,
         teamName: team,
-        register: '안알랴줌',
       }
     }, this);
-    if (result.status === 201) {
-      console.log(result);
+    if (status === 201) {
+      const { result } = data;
+      this.setState(prevState => {
+        const { questions } = prevState;
+        result.some((item, iIndex) => {
+          const isInclude = questions.some((question, qIndex) => {
+            const { questionId, departmentId, teamId } = question;
+            return item.questionId === questionId &&
+              item.departmentId === departmentId &&
+              item.teamId === teamId;
+          });
+          if (!isInclude) questions.push(item);
+        });
+        return { questions, addModal: false }
+      });
     } else {
       alert('질문 추가하기 실패');
     }
+  }
+
+  onUpdateModalConfirm = async (e) => {
+    const { batch, registedData } = this.state;
+    const { 
+      department,
+      team,
+      content,
+      type,
+      questionId,
+    } = registedData;
+    if (!department || !team || !content || !type) alert('모든 항목을 작성해주세요.');
+    axios.updateQuestion({
+      department,
+      team,
+      content,
+      type,
+      questionId,
+    }, this);
   }
 
   render() {  
@@ -239,6 +292,7 @@ class QuestionRegistContainer extends Component {
             value: "questionId"
           }]}
           columns={QUESTION}
+          onClick={this.onUpdateModal}
         />
       </TableBody>
     );
@@ -250,19 +304,26 @@ class QuestionRegistContainer extends Component {
       />
     );
 
-    const AddModalFooter = (
+    const addModalFooter = (
       <ModalCommonFooter
         onConfirmModal={this.onAddModalConfirm}
         onCancelModal={this.onCloseModal}
       />
-    )
+    );
+
+    const updateModalFooter = (
+      <ModalCommonFooter
+        onConfirmModal={this.onUpdateModalConfirm}
+        onCancelModal={this.onCloseModal}
+      />
+    );
 
     return (
       <div className={`QuestionRegisContainer__addBox`}>
         <Table
           type={'question'}
           title={'질문 관리'}
-          rows={this.state.rows}
+          rows={this.state.questions}
           questionAddBtn={questionAddBtn}
           onClickRow={() => console.log('onClickRow')}
           onSearchTag={this.onSearchTag}
@@ -278,15 +339,17 @@ class QuestionRegistContainer extends Component {
           onClose={this.onCloseModal}
           title={'본부질문 추가하기'}
           contents={questionDetail}
-          footer={AddModalFooter}
+          footer={addModalFooter}
+          onClosed={this.onClosedModal}
         />
 
         <Modal
           open={this.state.updateModal}
           onClose={this.onCloseModal}
           title={'본부질문 수정하기'}
-          contents={''}
-          footer={''}
+          contents={questionDetail}
+          footer={updateModalFooter}
+          onClosed={this.onClosedModal}
         />
       </div>
     )
@@ -294,239 +357,3 @@ class QuestionRegistContainer extends Component {
 }
 
 export default QuestionRegistContainer
-// import React, { Component } from 'react'
-// import Table from 'views/contexts/table'
-// import QuestionDetail from '../questionModal/QuestionModal'
-// import Modal from 'views/contexts/modal'
-// import { Button } from 'reactstrap';
-// import { addPermissionCheck, updatePermissionCheck} from 'modules/permission'
-// import { ModalCommonFooter } from 'views/domains/contents/commons/ModalFooter'
-// import { validation } from 'lib/service/validation'
-
-// import * as axios from 'lib/api/question';
-// import moment from 'moment'
-
-// import './QuestionManageContainer.scss';
-// import organization from 'lib/service/organization';
-
-// class QuestionRegistContainer extends Component {
-//   state = {
-//     rows: [],
-//     isAddModal: false,
-//     isUpdateModal: false,
-//     keyword: '검색선택',
-//     query: '',
-//     registedData: {
-//       id: '',
-//       department_name: '본부 선택',
-//       department_code: '',
-//       team: '팀 선택',
-//       question: '',
-//       used: false,
-//       type: '유형 선택',
-//       register: '',
-//     }
-//   };
-
-//   componentDidMount() {
-//     const { department } = JSON.parse(localStorage.getItem('user_session'))
-//     axios.getQuestionList({q: department === '900' ? '' : organization[department].name, type: 'department' }, this)
-//   }
-
-//   onCloseModal = () => {
-//     this.setState(prevState => {
-//       const data = {
-//         isUpdateModal: false,
-//         isAddModal: false,
-//       }
-//       return data;
-//     });
-//   }
-
-//   onClickToAddModal = (index) => {
-//     const { rows } = this.state
-//     if(addPermissionCheck(rows)) {
-//       const { department, team } = JSON.parse(localStorage.getItem('user_session'))
-//       this.setState(prevState => {
-//         const data = {
-//           registedData: {
-//             department_name: organization[department].name,
-//             department, 
-//             team: team ? team : '팀 선택',
-//             question: '질문을 작성해주세요 :)',
-//             used: false,
-//             type: 'text',
-//             id: rows.length,
-//           },
-//           isAddModal: true,
-//         }
-//         return data
-//       })
-//     } else {
-//       alert('당신은 권한이 없어요\n상관에게 문의하세요 :(')
-//     }
-    
-//   }
-
-//   onClickToUpdateModal = (e, index) => {
-//     const { id } = e.currentTarget
-//     const { rows } = this.state
-//     if(updatePermissionCheck(rows, id)) {
-//       axios.getQuestionDetail(id, this)
-//     } else {
-//       alert('수정할 수 있는 권한이 없는 질문입니다 :(')
-//     }
-//   }
-
-//   onRegistedData = (e) => {
-//     const { name, value } = e.target
-//     const mvalue = (name !== 'used' ? value : value === 'true');
-
-//     this.setState(prevState => {
-//       const registedData = { ...prevState.registedData};
-//       registedData[name] = mvalue;
-//       return { registedData };
-//     });
-//   }
-
-//   onClickModalToAddConfirm = async () => {
-//     const { registedData } = this.state
-//     if (validation(registedData)) {
-//       const result = await axios.setQuestionInfomation(registedData, this)
-//       if (result.status === 201) {
-//         this.setState((prevState) => {
-//           const { username } = JSON.parse(localStorage.getItem('user_session'))
-//           const { registedData } = this.state
-          
-//           const rowsData = prevState.rows
-          
-//           registedData['batch'] = 20
-//           registedData['registedDate'] = moment().format('YYYY-MM-DD HH:mm:ss')
-//           registedData['register'] = username
-  
-//           rowsData.push(registedData)
-//           const newData = {
-//             rowsData,
-//             isAddModal: !prevState.isAddModal,
-//           } 
-//           return newData
-//         })
-//       } else {
-//         alert('질문 추가하기 오류 났어욥')
-//       }
-//     }
-//     else {
-//       alert('누락된 항복이 있습니다.\n다시 확인해 주세요.')
-//     }
-//   }
-
-//   onClickModalToUpdateConfirm = (event) => {
-//     const { registedData } = this.state
-//     if(registedData.team === '팀 선택') {
-//       alert('누락된 항목이 있습니다.')
-//     } else {
-//       axios.modifyQuestionInfomation(registedData, this)
-//     }
-//   }
-
-//   onClickModalToClose = () => {
-//     this.setState({
-//       isUpdateModal: false,
-//       isAddModal: false,
-//     })
-//   }
-  
-//   onChangeKeyword = async (e) => {
-//     this.setState({
-//       keyword: e.target.name,
-//       type: e.target.value,
-//     })
-//   }
-  
-//   onChangeFilterQuery = async (e) => {
-//     const { type } = this.state
-//     if(e.key === 'Enter') {
-//       if(!type) {
-//         alert('검색 조건을 선택해 주세요.')
-//       } else {
-//         axios.getQuestionList({ type, q: e.target.value}, this)
-//       }
-//     } else {
-//       this.setState({
-//         query: e.target.value
-//       })
-//     }
-//   }
-
-//   render() {  
-//     const questionAddBtn = (
-//       <Button 
-//         className={`btn QuestionRegisContainer__addBtn`}
-//         color="secondary"
-//         outline
-//         size={`sm`}
-//         onClick={this.onClickToAddModal}> 
-//         질문 추가하기
-//       </Button>
-//     )
-
-//     const questionDetail = (
-//       <QuestionDetail
-//         registedData={this.state.registedData}
-//         onRegistedData={this.onRegistedData}
-//       />
-//     )
-
-//     const AddModalFooter = (
-//       <ModalCommonFooter
-//         onConfirmModal={this.onClickModalToAddConfirm}
-//         onCancelModal={this.onClickModalToClose}
-//       />
-//     )
-//     const UpdateModalFooter = (
-//       <ModalCommonFooter
-//         onConfirmModal={this.onClickModalToUpdateConfirm}
-//         onCancelModal={this.onClickModalToClose}
-//       />
-//     )
-
-//     return (
-//       <div className={`QuestionRegisContainer__addBox`}>
-//         <Table
-//           type={'question'}
-//           title={'질문 관리'}
-//           rows={this.state.rows}
-//           questionAddBtn={questionAddBtn}
-//           onClickRow={this.onClickToUpdateModal}
-//           onSearchTag={this.onSearchTag}
-//           onChangeKeyword={this.onChangeKeyword}
-//           onChangeFilterQuery={this.onChangeFilterQuery}
-//           keyword={this.state.keyword}
-//           cursor
-//         />
-
-//         <Modal
-//           open={this.state.isUpdateModal}
-//           onClose={this.onCloseModal}
-
-//           title={'본부질문 수정하기'}
-//           contents={questionDetail}
-
-//           footer={UpdateModalFooter}
-//         />
-
-//         <Modal
-//           open={this.state.isAddModal}
-//           onClose={this.onCloseModal}
-
-//           title={'본부질문 추가하기'}
-//           contents={questionDetail}
-
-//           footer={AddModalFooter}
-//         />
-//       </div>
-//     )
-//   }
-// }
-
-// export default QuestionRegistContainer

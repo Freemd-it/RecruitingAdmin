@@ -21,7 +21,7 @@ const QuestionModal = props => {
               registedData.departments.map((item, index) => {
                 return (
                   <option 
-                    key={item.id} 
+                    key={item.id || item.name} 
                     disabled={index === 0}
                   >
                     { item.name }
@@ -47,8 +47,8 @@ const QuestionModal = props => {
               registedData.teams[registedData.department].map((item, index) => {
                 return (
                   <option 
-                    disabled={ index===0 } 
-                    key={item.id || 'team-none'}
+                    disabled={ index === 0 } 
+                    key={item.id || item.name}
                   >
                     { item.name }
                   </option>
@@ -63,7 +63,12 @@ const QuestionModal = props => {
       <FormGroup row>
         <Label sm={2}>질문</Label>
         <Col sm={10}>
-          <Input type="textarea" name="contents" onChange={onRegistedData} value={registedData.question} />
+          <Input 
+            type="textarea" 
+            name="content" 
+            onChange={onRegistedData} 
+            value={registedData.content} 
+          />
         </Col>
       </FormGroup>
 

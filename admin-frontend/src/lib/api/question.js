@@ -13,70 +13,69 @@ export const getQuestionList = (batch, ctx) => {
         ctx.setState({
           batch,
           questions: result,
-          addModal: false,
-          updateModal: false,
+          modal: false,
         });
       }
     })
     .catch(e => console.error(e));
-}
-// export const getQuestionList = ({type='', q='', ...rest}, ctx) => 
-//   axiosCreate().get(`/admin/question?${queryString.stringify({...rest, type, q})}`)
-//     .then(res => res.status === 200 && ctx.setState({ rows: res.data.result}))
-//     .catch(err => err)
+};
 
-export const getQuestionDetail= (id, ctx) => 
-  axiosCreate().get(`/admin/question/${id}`)
-    .then(res => {
-      const { result } = res.data
-      res.status === 200 && ctx.setState({
-        registedData: {
-          id: result._id,
-          department_name: organization[result.department].name,
-          department: result.department,
-          team: result.team,
-          question: result.question,
-          used: result.used,
-          register: result.register,
-          type: result.type,
-        },
-        isUpdateModal: true,
-      })
-    })
-    .catch(err => err)
+export const getQuestionDetail = (data, ctx) => {
+  const { questionId, departmentId, teamId} = data;
+  axiosCreate()
+  .get(`/admin/question2/${questionId}?d=${departmentId}&t=${teamId}`)
+  .then(({status, data}) => {
+    const { result } = data;
+    status === 200 && ctx.setState(prevState => {
+      const { registedData } = prevState;
+      registedData.questionId = result.questionId;
+      registedData.department = result.departmentName;
+      registedData.team = result.teamName;
+      registedData.content = result.content;
+      registedData.register = result.register;
+      registedData.type = result.type;
+      return { registedData, updateModal: true };
+    });
+  })
+  .catch(e => {})
+};
 
 export const setQuestionInfomation = (data, ctx) => {
   return axiosCreate().post('/admin/question2', data)
     .then(res => res) 
     .catch(err => err)
-}
-// export const setQuestionInfomation = (data, ctx) => {
-//   return axiosCreate().post('/admin/question', data)
-//     .then(res => res) 
-//     .catch(err => err)
-// }
+};
 
-// export const modifyQuestionInfomation = (registedData, ctx) => 
-//   axiosCreate().put(`/admin/question/${registedData.id}`, registedData)
-//     .then(res => {
-//       if(res.status === 201) {
-//         ctx.setState((prevState) => {
-//           const { rows } = ctx.state
-//           _.forEach(rows, (v, k) => {
-//             if(v._id === registedData.id) {
-//               rows[k] = {
-//                 ...registedData,
-//                 _id: v._id,
-//                 batch: 20,
-//                 registedDate: moment().format('YYYY-MM-DD HH:mm:ss')
-//               }
-//             }
-//           })
-//           return {
-//             rows,
-//             isUpdateModal: false,
-//           }
-//         })
-//       }
-//     })
-//     .catch(err => err)
+export const updateQuestion = (data, ctx) => {
+  const { questionId } = data;
+  delete data.questionId;
+  return axiosCreate().put(`/admin/question2/${questionId}`, data)
+    .then(({ data, status }) => {
+      const { 
+        id, 
+        content, 
+        type, 
+        registedData, 
+        register,
+        departmentName,
+        teamName,
+      } = data.result || {};
+      status === 201 && ctx.setState((prevState) => {
+        const { questions } = prevState;
+        let index = null;
+        questions.some((question, questionIndex) => {
+          if ( question.questionId === id && question.departmentName === departmentName && question.teamName === teamName ) {
+            index = questionIndex;
+            return true;
+          }
+        });
+        questions[index].content = content;
+        questions[index].questionId = id;
+        questions[index].register = register;
+        questions[index].registedData = registedData;
+        questions[index].type = type;
+        return { questions, updateModal: false }
+      }, () => {console.log(ctx.state.updateModal)});
+    })
+    .catch(err => err)
+};
