@@ -3,18 +3,15 @@ import Table from 'views/contexts/table'
 import QuestionDetail from '../questionModal/QuestionModal'
 import Modal from 'views/contexts/modal'
 import { Button } from 'reactstrap';
-import { addPermissionCheck, updatePermissionCheck} from 'modules/permission'
+// import { addPermissionCheck, updatePermissionCheck} from 'modules/permission'
 import { ModalCommonFooter } from 'views/domains/contents/commons/ModalFooter'
-import { validation } from 'lib/service/validation'
+// import { validation } from 'lib/service/validation'
 
 import * as axios from 'lib/api/question';
-import moment from 'moment'
-
+// import moment from 'moment'
 import './QuestionManageContainer.scss';
-import organization from 'lib/service/organization';
-
-
-import _ from 'lodash';
+//import organization from 'lib/service/organization';
+// import _ from 'lodash';
 
 // Table관련
 import TableBody from '@material-ui/core/TableBody';
@@ -33,9 +30,6 @@ const QUESTION = [{
   key: 'content',
   value: '질문내용',
   width: '300px',
-}, {
-  key: 'batch',
-  value: '기수',
 }, {
   key: 'register',
   value: '등록자',
@@ -67,17 +61,37 @@ const Body = (props) => {
         onClick={onClick} 
         hover
       >
-        <TableCell key={`rows__${itemIndex}__checkBox`} {...dataSet}>
+        <TableCell 
+          key={`rows__${itemIndex}__checkBox`} 
+          onClick={e => e.stopPropagation()}
+          {...dataSet}
+        >
           <Checkbox onChange={onChangeCheck}/>
         </TableCell>
         {
           columns.map((column, columnIndex) => {
+            let text = item[column.key];
+            if (column.key === 'type') {
+              switch(item[column.key]) {
+                case 101:
+                  text = '텍스트';
+                break;
+                case 102:
+                  text = '파일';
+                break;
+                case 103:
+                  text = '선택';
+                break;
+                default:
+                  break;
+              }
+            }
             return (
               <TableCell 
                 key={`${itemIndex}__${columnIndex}`}
                 {...dataSet}
               >
-                {item[column.key]}
+                {text}
               </TableCell>
               );
             }
@@ -94,6 +108,7 @@ class QuestionRegistContainer extends Component {
     batch: 0,
     addModal: false,
     updateModal: false,
+    isAdd: true, // 추가모드
     keyword: '검색선택',
     query: '',
     questions: [],
@@ -180,6 +195,7 @@ class QuestionRegistContainer extends Component {
     this.setState({
       addModal: false,
       updateModal: false,
+      isAdd: true,
     });
   }
 
@@ -237,7 +253,11 @@ class QuestionRegistContainer extends Component {
               item.departmentId === departmentId &&
               item.teamId === teamId;
           });
-          if (!isInclude) questions.push(item);
+          if (!isInclude) {
+            questions.push(item);
+            return true;
+          }
+          return false;
         });
         return { questions, addModal: false }
       });
@@ -247,7 +267,7 @@ class QuestionRegistContainer extends Component {
   }
 
   onUpdateModalConfirm = async (e) => {
-    const { batch, registedData } = this.state;
+    const { registedData } = this.state;
     const { 
       department,
       team,
@@ -301,6 +321,7 @@ class QuestionRegistContainer extends Component {
       <QuestionDetail
         registedData={this.state.registedData}
         onRegistedData={this.onRegistedData}
+        isAdd={this.state.isAdd}
       />
     );
 

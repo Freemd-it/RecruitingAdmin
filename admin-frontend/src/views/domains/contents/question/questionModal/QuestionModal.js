@@ -1,10 +1,10 @@
 import React from 'react'
 import { Col, FormGroup, Label, Input } from 'reactstrap';
 import './QuestionModal.scss';
-import _ from 'lodash'
+// import _ from 'lodash';
 
 const QuestionModal = props => {
-  const { registedData, onRegistedData } = props;
+  const { registedData, onRegistedData, isAdd } = props;
   return (
     <div className={'container QuestionDetail'} key={registedData._id}>
       <FormGroup row>
@@ -16,6 +16,7 @@ const QuestionModal = props => {
             name="department" 
             value={registedData.department || registedData.departments[0].name} 
             onChange={onRegistedData}
+            disabled={!isAdd}
           >
             {
               registedData.departments.map((item, index) => {
@@ -41,6 +42,7 @@ const QuestionModal = props => {
             name="team" 
             value={registedData.team || '팀 선택'} 
             onChange={onRegistedData}
+            disabled={!isAdd}
           >
             {
               registedData.department ? 
@@ -68,6 +70,7 @@ const QuestionModal = props => {
             name="content" 
             onChange={onRegistedData} 
             value={registedData.content} 
+            rows={10}
           />
         </Col>
       </FormGroup>
@@ -94,6 +97,9 @@ const QuestionModal = props => {
                   break;
                   case 103:
                     text = '선택';
+                  break;
+                  default:
+                    text = '';
                   break;
                 }
                 return (

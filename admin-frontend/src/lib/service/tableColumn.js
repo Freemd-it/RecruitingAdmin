@@ -72,9 +72,6 @@ export const question = [{
   value: '질문내용',
   width: '300px',
 }, {
-  key: 'batch',
-  value: '기수',
-}, {
   key: 'register',
   value: '등록자',
 }, {
