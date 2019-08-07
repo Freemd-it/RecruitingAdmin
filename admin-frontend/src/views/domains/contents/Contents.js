@@ -26,6 +26,7 @@ class Contents extends Component {
           <Route exact path={routes.MATCH_PATH_QUESTION}  render={(props) => { return <QuestionRegistContainer {...props} type= 'question' columns={Columns.question} />}} />
           <Route exact path={routes.MATCH_PATH_DOCUMENT}  render={(props) => { return <DocumentManageContainer {...props} type= 'manage'columns={Columns.question} />}} />
           <Route exact path={routes.MATCH_PATH_RECRUITMETA}  render={(props) => { return <RecruitmetaContainer {...props} />}} />
+          <Route exact path={routes.MATCH_PATH_RECRUITMETA_EDIT}  render={(props) => { return <RegisterRecruitContainer {...props} />}} />
           <Route exact path={routes.MATCH_PATH_RECRUITMETA_WRITE}  render={(props) => { return <RegisterRecruitContainer {...props} />}} />
           <Route exact path={routes.MATCH_PATH_PROJECT}  render={(props) => { return <ProjectContainer {...props} />}} />
           <Route component={ NotFoundPage } />

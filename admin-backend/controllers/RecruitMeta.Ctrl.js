@@ -81,7 +81,22 @@ const getRecruitMeta = async (req, res) => {
   }
 }
 
-const getRecentRecruitMeta = async (req, res) => {
+const getRecruitMetaOrg = async (req, res) => {
+  const { batch } = req.params;
+  try {
+    const recruitMetaData = await RecruitMeta
+      .find({ batch })
+      .select("batch period announceDate recruitStatus medicalFeilds departments interviewTimes")
+      .exec();
+      
+    res.status(200).json({ message : "Success", result: recruitMetaData[0]});
+  } catch(e) {
+    console.log(e)
+    res.status(500).json({ message: JSON.stringify(e) , result: null,});
+  }
+}
+
+const getRecruitMetaRecent = async (req, res) => {
   try {
     const recruitMetaData = await RecruitMeta
       .find({})
@@ -89,26 +104,6 @@ const getRecentRecruitMeta = async (req, res) => {
       .sort({"batch": -1})
       .limit(1)
       .exec();
-
-    const interviewTime = {}
-
-    recruitMetaData[0].interviewTimes.forEach((value) => {
-      const dateArr = Object.keys(interviewTime) || []
-    
-      let flag = false;
-
-      for(let i=0; i<dateArr.length; ++i) {
-        if(dateArr[i] === value.date.toISOString().substring(0,10)) {
-          interviewTime[value.date.toISOString().substring(0,10)].push(value.time);
-          flag = true;
-          break;
-        }
-      }
-
-      if(!flag) {
-        interviewTime[`${value.date.toISOString().substring(0,10)}`] = [value.time];
-      }
-    })
 
     res.status(200).json({ message : "Success", result: recruitMetaData[0]});
   } catch(e) {
@@ -160,6 +155,24 @@ const modifyRecruitMeta = async (req, res) => {
     }).exec();
     res.status(200).json({ message : "Success", result: update});
   } catch(e) {
+    console.log(e),
+    res.status(500).json({ message: JSON.stringify(e) , result: null,});
+  }
+}
+
+const deleteRecruitMeta = async (req, res) => {
+  const { recruitMetaId } = req.body;
+  if (!recruitMetaId )
+    return res.status(500).json({
+      message: 'invalied value',
+      result: null,
+    });
+
+  try {
+    RecruitMeta.findByIdAndDelete(recruitMetaId).exec();
+    res.status(201).json({ message : "Success"});
+  } catch(e) {
+    console.log(e);
     res.status(500).json({ message: JSON.stringify(e) , result: null,});
   }
 }
@@ -167,7 +180,9 @@ const modifyRecruitMeta = async (req, res) => {
 module.exports = {
   registRecruitMeta,
   getRecruitMeta,
-  getRecentRecruitMeta,
+  getRecruitMetaOrg,
+  getRecruitMetaRecent,
   getRecruitMetaList,
   modifyRecruitMeta,
+  deleteRecruitMeta,
 }
