@@ -81,6 +81,56 @@ const getRecruitMeta = async (req, res) => {
   }
 }
 
+const getRecentRecruitMeta = async (req, res) => {
+  try {
+    const recruitMetaData = await RecruitMeta
+      .find({})
+      .select("batch period announceDate recruitStatus medicalFeilds departments interviewTimes")
+      .sort({"batch": -1})
+      .limit(1)
+      .exec();
+
+    const interviewTime = {}
+
+    recruitMetaData[0].interviewTimes.forEach((value) => {
+      const dateArr = Object.keys(interviewTime) || []
+    
+      let flag = false;
+
+      for(let i=0; i<dateArr.length; ++i) {
+        if(dateArr[i] === value.date.toISOString().substring(0,10)) {
+          interviewTime[value.date.toISOString().substring(0,10)].push(value.time);
+          flag = true;
+          break;
+        }
+      }
+
+      if(!flag) {
+        interviewTime[`${value.date.toISOString().substring(0,10)}`] = [value.time];
+      }
+    })
+
+    res.status(200).json({ message : "Success", result: recruitMetaData[0]});
+  } catch(e) {
+    console.log(e)
+    res.status(500).json({ message: JSON.stringify(e) , result: null,});
+  }
+}
+
+const getRecruitMetaList = async (req, res) => {
+  try {
+    const recruitMetaData = await RecruitMeta
+    .find({})
+    .select("batch period")
+    .sort({"batch": 1})
+    .exec();
+    res.status(200).json({ message : "Success", result: recruitMetaData});
+  } catch(e) {
+    console.log(e)
+    res.status(500).json({ message: JSON.stringify(e) , result: null,});
+  }
+}
+
 const modifyRecruitMeta = async (req, res) => {
   const { batch } = req.params;
   const { 
@@ -117,5 +167,7 @@ const modifyRecruitMeta = async (req, res) => {
 module.exports = {
   registRecruitMeta,
   getRecruitMeta,
+  getRecentRecruitMeta,
+  getRecruitMetaList,
   modifyRecruitMeta,
 }
