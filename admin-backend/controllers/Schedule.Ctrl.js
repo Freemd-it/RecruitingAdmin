@@ -61,7 +61,6 @@ const getScheduleList = async (req, res) => {
       .sort({ _id: -1 })
       .exec();
 
-    console.log(userList[0])
     const allInterviewTimes = await RecruitMeta
       .find({ "batch": req.params.batch })
       .select("interviewTimes")

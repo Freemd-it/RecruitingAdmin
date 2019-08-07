@@ -3,16 +3,13 @@ const interviewTime = require('../config/interviewTime');
 const moment = require('moment')
 
 const userScheduleInfo = ({basicInfo, interviewInfo, _id}, allInterviewTimes) => {
-  console.log("9080890809080")
-  console.log(basicInfo.userName)
-  const firstDate = [0,0,0,0,1,1];
-  const secondDate = [0,0,1,1];
-  
+  const firstDate = [];
+  const secondDate = [];
 
-  // for (let i = 0 ; i < allInterviewTimes[0].interviewTimes.length ; i++){
-  //   firstDate.push(checkInterviewTimeAvailable(allInterviewTimes.interviewTimes[i], interviewInfo[0].interviewTime, interviewInfo[0].interviewDate));
-  //   secondDate.push(checkInterviewTimeAvailable(allInterviewTimes.interviewTimes[i], interviewInfo[1].interviewTime, interviewInfo[1].interviewDate));
-  // }
+  for (let i = 0 ; i < allInterviewTimes[0].interviewTimes.length ; i++){
+    checkInterviewTimeAvailable(allInterviewTimes[0].interviewTimes[i], interviewInfo[0].interviewTime, interviewInfo[0].interviewDate, firstDate);
+    checkInterviewTimeAvailable(allInterviewTimes[0].interviewTimes[i], interviewInfo[1].interviewTime, interviewInfo[1].interviewDate, secondDate);
+  }
   return {
     _id,
     name: basicInfo.userName,
@@ -27,16 +24,15 @@ const userScheduleInfo = ({basicInfo, interviewInfo, _id}, allInterviewTimes) =>
   }
 }
 
-const checkInterviewTimeAvailable = (interviewTime , applicantInterviewTime, applicantInterviewDate) => {
-  console.log(interviewTime);
-  console.log(applicantInterviewTime)
-  console.log(applicantInterviewDate)
+const checkInterviewTimeAvailable = (interviewTime , applicantInterviewTime, applicantInterviewDate, arr) => {
   if(getDateOnly(interviewTime.date) === getDateOnly(applicantInterviewDate)){
     if(applicantInterviewTime.includes(interviewTime.time)){
-      return 1;
+      arr.push(1);
+    }
+    else{
+      arr.push(0);
     }
   }
-  return 0;
 }
 
 const getDateOnly = (dateFormat) => {
