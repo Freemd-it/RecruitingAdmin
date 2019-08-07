@@ -1,32 +1,41 @@
+// address: "서울특별시 노량진"
+// batch: 21
+// departments: [{_id: "5d4aad7f711c0d2fc4e2696b", departmentName: "경영지원본부", teamName: "IT기획팀", order: 1,…},…]
+// otherAssignNgo: true
+// other_assign_medical: true
+// phoneNumber: "010-0000-0000"
+// sns: "https://devpil.github.io/"
+// supportStatus: 201
+// _id: "5d4aad7f711c0d2fc4e26969 
 export const applyInfo = [{
     key: 'name',
     value: '이름',
   },{
-    key: 'english',
+    key: 'englishName',
     value: '영문이름',
   },{
-    key: 'is_male',
+    key: 'isMale',
     value: '성별',
   },{
-    key: 'birth_date',
+    key: 'birthDate',
     value: '생년월일',
   },{
-    key: 'phone_number',
+    key: 'phoneNumber',
     value: '전화번호',
   },{
     key: 'email',
     value: 'email',
   },{
-    key: 'first',
+    key: 'departmentName_1',
     value: '운영 1지망'
   },{
-    key: 'second',
+    key: 'departmentName_2',
     value: '운영 2지망',
   },{
-    key: 'medical_field',
+    key: 'medicalField_1',
     value: '사업 1지망'
   },{
-    key: 'secondary_medical_field',
+    key: 'medicalField_2',
     value: '사업 2지망'
   },{
     key: 'evaluation',
@@ -46,8 +55,7 @@ export const interview = [
 },{
   key: 'medical_field',
   value: '사업 1지망'
-},
-{
+},{
   key: 'secondary_medical_field',
   value: '사업 2지망'
 },{
@@ -68,12 +76,9 @@ export const question = [{
   key: 'teamName',
   value: '팀명',
 }, {
-  key: 'contents',
+  key: 'content',
   value: '질문내용',
   width: '300px',
-}, {
-  key: 'batch',
-  value: '기수',
 }, {
   key: 'register',
   value: '등록자',

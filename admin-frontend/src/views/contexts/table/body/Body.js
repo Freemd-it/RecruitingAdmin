@@ -7,33 +7,24 @@ import _ from 'lodash'
 
 import './Body.scss';
 
-const Body = ({rows, /* rowsPerPage, */ onClickRow, onCheckRow, columns, cursor = false, type}) => {
-  // const emptyRows = rowsPerPage - rows.length;
-  console.log('rows', rows)
+const Body = ({rows, attributeData, onClickRow, onCheckRow, columns, cursor = false, type}) => {
   const bodyRows = (
-    _.map(rows, (item/*, index */) => {
-      return (<TableRows
-        type = {type}
-        columns={columns}
-        className={cursor ? 'tableBodyRow__cursor' : ''}
-        key={item._id}
-        item={item}
-        onClick={onClickRow}
-        onCheckRow={onCheckRow}
-      />)
+    _.map(rows, (item, index) => {
+      return (
+        <TableRows
+          type = {type}
+          columns={columns}
+          className={cursor ? 'tableBodyRow__cursor' : ''}
+          key={item._id || `tableBodyRow__${index}`}
+          item={item}
+          onClick={onClickRow}
+          onCheckRow={onCheckRow}
+          attributeData={attributeData}
+        />
+      );
     })
   )
-  return (
-    <TableBody>
-      {bodyRows}
-      {/*
-        emptyRows > 0 && (
-        <EmptyRow style={{height: `${48 * emptyRows}px`}}>
-          <TableCell  align="center" colSpan={columns.length} />
-        </EmptyRow>)
-        */}
-    </TableBody>
-  )
+  return ( <TableBody>{ bodyRows }</TableBody> )
 }   
 
 export default Body

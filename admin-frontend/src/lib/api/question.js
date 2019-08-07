@@ -1,8 +1,8 @@
 import axiosCreate from '../defaultAxios'
-import queryString from 'query-string'
-import organization from 'lib/service/organization'
-import _ from 'lodash'
-import moment from 'moment'
+// import queryString from 'query-string'
+// import organization from 'lib/service/organization'
+// import _ from 'lodash'
+// import moment from 'moment'
 
 export const getQuestionList = (batch, ctx) => {
   axiosCreate()
@@ -34,7 +34,7 @@ export const getQuestionDetail = (data, ctx) => {
       registedData.content = result.content;
       registedData.register = result.register;
       registedData.type = result.type;
-      return { registedData, updateModal: true };
+      return { registedData, updateModal: true, isAdd: false };
     });
   })
   .catch(e => {})
@@ -68,6 +68,7 @@ export const updateQuestion = (data, ctx) => {
             index = questionIndex;
             return true;
           }
+          return false;
         });
         questions[index].content = content;
         questions[index].questionId = id;

@@ -138,4 +138,4 @@ UserSchema.methods.verify = function(password) {
   return this.basic_info.password === encrypted
 }
 
-module.exports = mongoose.model('User', UserSchema);
+// module.exports = mongoose.model('User', UserSchema);

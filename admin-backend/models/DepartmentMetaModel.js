@@ -18,10 +18,7 @@ const QuestionSchema = new Schema({
 const TeamSchema = new Schema({
   teamName: String, // 팀이름 
   questions: [QuestionSchema], // 질문
-  interviewAvailable : [{
-    interviewDate: Date, // 인터뷰 가능 날짜
-    interviewTime: String // 인터뷰 가능 시간
-  }],
+  interviewAvailable: Date,
 });
 
 const DepartmentMetaSchema = new Schema({

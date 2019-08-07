@@ -21,7 +21,20 @@ class Table extends Component {
 
   render() {
     const userSession = JSON.parse(localStorage.getItem('user_session'))
-    const { onClickRow, questionAddBtn, title, rows, type, onSearchTag, onChangeKeyword, keyword, onChangeFilterQuery, timeTable, onCheckRow = ()=>{} } = this.props;
+    const { 
+      onClickRow, 
+      questionAddBtn, 
+      title, 
+      rows, 
+      type, 
+      onSearchTag, 
+      onChangeKeyword, 
+      keyword, 
+      onChangeFilterQuery, 
+      timeTable, 
+      attributeData = [],
+      onCheckRow = ()=>{} 
+    } = this.props;
     const { currentPage, rowsPerPage } = this.state;
     const columns = Columns[type]
     return (
@@ -52,6 +65,7 @@ class Table extends Component {
             onClickRow={onClickRow}
             onCheckRow={onCheckRow}
             rowsPerPage={rowsPerPage}
+            attributeData={attributeData}
           />
         }
         </TableContentTemplate>
