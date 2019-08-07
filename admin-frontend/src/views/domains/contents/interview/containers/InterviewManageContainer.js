@@ -16,7 +16,7 @@ class InterviewManageContainer extends Component {
   componentDidMount() {
     const { batch } = JSON.parse(localStorage.getItem('recruitMeta'))
     this.setState({ batch });
-    axios.getInterviewListDummy(batch, this);
+    axios.getInterviewList(batch, this);
   }
 
   onClickToShowModal = (index) => {

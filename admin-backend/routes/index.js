@@ -13,7 +13,7 @@ const recruitMetaCtrl = require('../controllers/RecruitMeta.Ctrl');
 const projectCtrl = require('../controllers/Project.Ctrl');
 const DepartmentMetaCtrl = require('../controllers/DepartmentMeta.Ctrl');
 
-// router.use(Authorizer);
+router.use(Authorizer);
 
 router.get('/health', contextCtrl.getHealthCheck);
 

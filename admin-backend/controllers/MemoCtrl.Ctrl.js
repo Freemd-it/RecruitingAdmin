@@ -1,8 +1,10 @@
 const Memo = require('../models/MemoModel');
 
 const registMemo = async (req, res) => {
-  const { contents, writer } = req.body;
-  const { userId } = req.params;
+  const { userdata, body, params } = req;
+  const { contents } = body;
+  const { userId } = params;
+  const writer = userdata.name;
   
   try {
     const memo = new Memo({ userId, contents, writer });
