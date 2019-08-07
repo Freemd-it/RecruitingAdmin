@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Checkbox from '@material-ui/core/Checkbox';
-import organization from 'lib/service/organization'
 import moment from 'moment'
-import searchTeam from 'lib/sreachTeam'
 import { attribute } from 'postcss-selector-parser';
 
 class TableRows extends Component {
@@ -32,14 +30,27 @@ class TableRows extends Component {
           <TableCell align="center">토요일</TableCell>
           {
             item.schedule[dateKeys[0]].map((value, index) => {
-              return <TableCell align="center" key={item._id+dateKeys[0]+index}>{value.interview_available ? 'O' : ''}</TableCell>
+              return (
+                <TableCell 
+                  align="center" 
+                  key={item._id+dateKeys[0]+index}
+                >
+                {value === 0 ? '' : 'O'}
+              </TableCell>
+              )
             })
           }
           <TableCell align="center">일요일</TableCell>
           {
             item.schedule[dateKeys[1]].map((value, index) => {
               return (
-                <TableCell align="center" key={item._id+dateKeys[1]+index}>{value.interview_available ? 'O' : '' }</TableCell>)
+                <TableCell 
+                  align="center" 
+                  key={item._id+dateKeys[1]+index}
+                >
+                {value === 0 ? '' : 'O'}
+              </TableCell>
+              );
             })
           }
         </>
@@ -68,16 +79,17 @@ class TableRows extends Component {
           }
         } else if(type === 'interview') {
           switch(key) {
-            case 'second_department':
-              returnData = value === 'undefined ' ? '미기입' : value;
+            case 'department_1':
+              returnData = `${item['departmentName_1']} ${item['teamName_1']}`;
+              break;
+            case 'department_2':
+              returnData = `${item['departmentName_2']} ${item['teamName_2']}`;
             break;
-            case 'other_assign_medical':
-            case 'other_assign_ngo':
+            case 'otherAssignMedical':
+            case 'otherAssignNgo':
               returnData = value ? 'O' : '';
             break;
             default:
-              // 안나오는부분 수정해야함. 
-              // console.log(value, key, item);
               returnData = value;
             break;
           }

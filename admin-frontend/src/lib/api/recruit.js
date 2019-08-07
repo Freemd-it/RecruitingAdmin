@@ -8,12 +8,12 @@ export const getRecruitList = (batch, ctx) => {
 }
 
 export const getRecruitDetail = ({id, batch},ctx) => {
-  // return axiosCreate().get(`/admin/applicant2/${batch}/${id}`)
-  //   .then(res => ctx.setState({
-  //     selectedRow: res.data.result,
-  //     isDetailModal: true,
-  //   }))
-  //   .catch(err => err)
+  return axiosCreate().get(`/admin/applicant2/${batch}/${id}`)
+    .then(res => ctx.setState({
+      selectedRow: res.data.result,
+      isDetailModal: true,
+    }))
+    .catch(err => err)
 }
 
 export const setApplicantRank = (data, ctx) => {

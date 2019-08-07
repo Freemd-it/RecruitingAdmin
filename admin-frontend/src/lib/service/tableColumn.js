@@ -1,12 +1,3 @@
-// address: "서울특별시 노량진"
-// batch: 21
-// departments: [{_id: "5d4aad7f711c0d2fc4e2696b", departmentName: "경영지원본부", teamName: "IT기획팀", order: 1,…},…]
-// otherAssignNgo: true
-// other_assign_medical: true
-// phoneNumber: "010-0000-0000"
-// sns: "https://devpil.github.io/"
-// supportStatus: 201
-// _id: "5d4aad7f711c0d2fc4e26969 
 export const applyInfo = [{
     key: 'name',
     value: '이름',
@@ -47,25 +38,25 @@ export const interview = [
   key: 'name',
   value: '이름',
 },{
-  key: 'first_department',
+  key: 'department_1',
   value: '운영 1지망'
 },{
-  key: 'second_department',
+  key: 'department_2',
   value: '운영 2지망',
 },{
-  key: 'medical_field',
+  key: 'medicalField_1',
   value: '사업 1지망'
 },{
-  key: 'secondary_medical_field',
+  key: 'medicalField_2',
   value: '사업 2지망'
 },{
-  key: 'phone_number',
+  key: 'phoneNumber',
   value: '전화번호',
 }, {
-  key: 'other_assign_medical',
+  key: 'otherAssignMedical',
   value: '타사업활동 ',
 },{
-  key: 'other_assign_ngo',
+  key: 'otherAssignNgo',
   value: '타운영본부',
 }];
 

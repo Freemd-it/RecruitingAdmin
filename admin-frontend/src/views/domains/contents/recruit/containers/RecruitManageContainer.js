@@ -6,7 +6,6 @@ import './RecruitManageContainer.scss';
 import { Button, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 import { ModalRecruitFooter } from 'views/domains/contents/commons/ModalFooter';
 import InfoDetail from 'views/domains/contents/recruit/informationCardPack';
-import organization from 'lib/service/organization';
 import _ from 'lodash';
 
 class RecruitManageContainer extends Component {
@@ -165,7 +164,7 @@ class RecruitManageContainer extends Component {
       return (
         <div className={`RecruitManageContainer__MemoBox__contents`} key={item._id}>
           <div>
-            {item.writer && organization[item.writer].name}: {item.contents}
+            { item.writer }: {item.contents}
           </div>
           <div className={`time`}>
             { new Date(item.registedDate).toLocaleString() }

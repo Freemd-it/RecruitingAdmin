@@ -104,16 +104,9 @@ const mockup = (req, res) => {
         "schedule": {
           "first": [
             0,
-            0,
-            0,
-            0,
             1,
-            1
           ],
           "second": [
-            0,
-            0,
-            1,
             1
           ]
         }

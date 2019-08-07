@@ -1,8 +1,6 @@
 import React from 'react';
 import { Divider } from '@material-ui/core';
 import BusinessIcon from '@material-ui/icons/BusinessCenter';
-import organization from 'lib/service/organization'
-import searchTeam from 'lib/sreachTeam'
 import InformationCard from 'views/contexts/modal/card';
 import _ from 'lodash'
 
