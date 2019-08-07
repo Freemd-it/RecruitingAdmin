@@ -1,0 +1,133 @@
+{
+  "batch" : 21,
+  "period" : {
+    "startDate" : ISODate("2019-08-12"),
+    "endDate" : ISODate("2019-08-31")
+  },
+  "announceDate" : ISODate("2019-09-10"),
+  "recruitStatus" : 1001,
+  "medicalFeilds" : ["무료진료", "보건교육", "해외의료"],
+  "departments" : [
+    {
+      "departmentName" : "경영지원본부",
+      "departmentDescription" : "경지본에 대한 설명입니다.",
+      "departmentImageUrl" : "https://s3.ap-northeast-2.amazonaws.com/freemed.recruiting/department-logos/business.png",
+      "teams" : [
+        {
+          "teamName" : "인사팀",
+          "medicalFieldOptions" : ["무료진료", "보건교육"]
+        },
+        {
+          "teamName" : "IT기획팀",
+          "medicalFieldOptions" : ["무료진료"]
+        },
+        {
+          "teamName" : "재무관리팀",
+          "medicalFieldOptions" : ["무료진료", "보건교육"]
+        },
+				{
+          "teamName" : "기획지원팀",
+          "medicalFieldOptions" : ["무료진료", "보건교육"]
+        },
+				{
+          "teamName" : "재무관리팀",
+          "medicalFieldOptions" : ["무료진료", "보건교육"]
+        },
+				{
+          "teamName" : "통계팀",
+          "medicalFieldOptions" : ["무료진료", "보건교육"]
+        }
+      ]
+    },
+    {
+      "departmentName" : "브랜드마케팅본부",
+      "departmentDescription" : "브마본에 대한 설명입니다.",
+      "departmentImageUrl" : "https://s3.ap-northeast-2.amazonaws.com/freemed.recruiting/department-logos/marketing.png",
+      "teams" : [
+        {
+          "teamName" : "홍보기획팀",
+          "medicalFieldOptions" : ["무료진료", "보건교육"]
+        },
+        {
+          "teamName" : "대외협력팀",
+          "medicalFieldOptions" : ["무료진료", "보건교육"]
+        },
+				{
+          "teamName" : "후원전략팀",
+          "medicalFieldOptions" : ["무료진료", "보건교육"]
+        }
+      ]
+    },
+		{
+      "departmentName" : "진료소운영본부",
+      "departmentDescription" : "진료소운영본부에 대한 설명입니다.",
+      "departmentImageUrl" : "https://s3.ap-northeast-2.amazonaws.com/freemed.recruiting/department-logos/clinic.png",
+      "teams" : [
+        {
+          "teamName" : "약무팀",
+          "medicalFieldOptions" : ["무료진료"]
+        },
+        {
+          "teamName" : "진료소 운영팀",
+          "medicalFieldOptions" : ["무료진료"]
+        }
+      ]
+    },
+		{
+      "departmentName" : "보건교육사업본부",
+      "departmentDescription" : "보건교육사업본부에 대한 설명입니다.",
+      "departmentImageUrl" : "https://s3.ap-northeast-2.amazonaws.com/freemed.recruiting/department-logos/edu.png",
+      "teams" : [
+        {
+          "teamName" : "보건교육운영팀",
+          "medicalFieldOptions" : ["보건교육"]
+        },
+        {
+          "teamName" : "교육연구팀",
+          "medicalFieldOptions" : ["보건교육"]
+        }
+      ]
+    },
+		{
+      "departmentName" : "해외의료사업본부",
+      "departmentDescription" : "해외의료사업본부에 대한 설명입니다.",
+      "departmentImageUrl" : "https://s3.ap-northeast-2.amazonaws.com/freemed.recruiting/department-logos/Overseas.png",
+      "teams" : [
+        {
+          "teamName" : "공통팀",
+          "medicalFieldOptions" : ["해외의료"]
+        }
+      ]
+    }
+  ],
+  "interviewTimes" : [
+    {
+      "date" : ISODate("2019-09-15"), 
+      "time" : "11:00 ~ 12:00"
+    },
+    {
+      "date" : ISODate("2019-09-15"),
+      "time" : "12:00 ~ 13:00"
+    },
+    {
+      "date" : ISODate("2019-09-15"),
+      "time" : "13:00 ~ 14:00"
+    },
+    {
+      "date" : ISODate("2019-09-15"),
+      "time" : "15:00 ~ 16:00"
+    },
+    {
+      "date" : ISODate("2019-09-16"),
+      "time" : "11:00 ~ 12:00"
+    },
+    {
+      "date" : ISODate("2019-09-16"),
+      "time" : "12:00 ~ 12:00"
+    },
+    {
+      "date" : ISODate("2019-09-15"),
+      "time" : "11:00 ~ 12:00"
+    }
+  ]
+}

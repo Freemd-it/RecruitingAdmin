@@ -1,0 +1,33 @@
+.team_container {
+  border: 2px solid grey;
+  margin: 5px;
+  padding-top: 5px;
+  padding-left: 5px;
+  .title_button_container {
+    display: flex;
+    width: 100%;
+
+    .title_container {
+      width: 50%;
+    }
+    .button_container {
+      padding-right: 5px;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+  
+  .medical_options_container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 10px;
+    p {
+      background-color: skyblue;
+      margin-right: 15px;
+    }
+    Button {
+      margin-right: 10px;
+    }
+  }
+}
