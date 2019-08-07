@@ -3,7 +3,6 @@ import { TitleAndMoveButton } from '../common';
 import "./projects.scss";
 
 const Projects = ({projects}) => {
-  console.log('프로젝트 목록', projects);
   return (
     <div>
       <h2>사업 및 리크루팅 등록</h2>
