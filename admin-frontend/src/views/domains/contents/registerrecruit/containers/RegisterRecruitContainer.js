@@ -11,8 +11,8 @@ import { Button } from 'reactstrap';
 import "./RegisterRecruit.scss";
 import { Map, List } from "immutable";
 import { InitialDepartmentsList, InitialDepartment, InitialTeam, InitialInterviewTimeList, InitialInterviewTime } from "../data";
-import axios from 'axios';
-
+import { getRecentRecruitMeta, postRecruitMeta } from 'lib/api/recruitmeta';
+import { Redirect } from 'react-router-dom';
 
 class RegisterRecruitContainer extends Component {
   // Todo: initialState를 디비에서 읽어와서 가져오는 방식으로 변경해주어야 한다. 지금은 디비 저장 정보가 없으므로 하드 코딩
@@ -29,11 +29,25 @@ class RegisterRecruitContainer extends Component {
         recruitStatus: 1000,
         medicalFeilds: List(["무료진료소", "보건교육", "해외의료"]),
         departments: InitialDepartmentsList,
-        interviewTimes: InitialInterviewTimeList,
+        interviewTimes: InitialInterviewTimeList
       }),
+      redirect: false
     };
     this.handleStartDateChange = this.handleStartDateChange.bind(this);
     this.handleEndDateChange = this.handleEndDateChange.bind(this);
+  }
+
+  componentDidMount() {
+    console.log('did mount');
+    getRecentRecruitMeta(this);
+  }
+
+  handleBatchChange = (e) => {
+    const { value } = e.target;
+    const { data } = this.state;  
+    this.setState({
+      data: data.set('batch', value)
+    });
   }
  
   handleStartDateChange = (date) => {
@@ -57,13 +71,7 @@ class RegisterRecruitContainer extends Component {
     });
   }
 
-  handleBatchChange = (e) => {
-    const { value } = e.target;
-    const { data } = this.state;  
-    this.setState({
-      data: data.set('batch', value)
-    });
-  }
+  
 
   handleDepartmentAddClick = () => {
     const { data } = this.state;
@@ -183,8 +191,7 @@ class RegisterRecruitContainer extends Component {
     });
   }
 
-  handleInterviewTimeChange = (e, index) => {
-    const { value } = e.target.value;
+  handleInterviewTimeChange = (value, index) => {
     const { data } = this.state;
     this.setState({
       data: data.setIn(['interviewTimes', index, 'time'], value)
@@ -192,30 +199,31 @@ class RegisterRecruitContainer extends Component {
   }
 
   handleSubmit = (e) => {
-    console.log(this.state.data.toJS());
+    console.log("submit!");
+    postRecruitMeta(this.state.data.toJS(), this);
   }
 
   render() {
     document.body.style.overflow = "";
+    console.log(this.state.data.toJS());
+    if (this.state.redirect) {
+      return <Redirect to="/recruitmeta"></Redirect>
+    }
+
     return (
       <div className="register_container">
         <h2 className='title'>리크루팅 일정 등록</h2>
-        <Batch data={this.state.data} handleBatchChange={this.handleBatchChange}/>
+        <Batch batch={this.state.data.get('batch')} handleBatchChange={this.handleBatchChange}/>
+        
         <StartEndDate
-          data= {this.state.data}
+          period= {this.state.data.get('period')}
           handleStartDateChange={this.handleStartDateChange}
           handleEndDateChange={this.handleEndDateChange}/>
+        
         <AnnounceDate 
-          data={this.state.data}
+          announceDate={this.state.data.get('announceDate')}
           handleAnnounceDateChange={this.handleAnnounceDateChange}
         />
-
-        {/* <Projects
-          medicalFeilds={this.state.data.get('medicalFeilds')}
-          handleDeleteProjectClick={this.handleProjectDelete}
-          handleAddProjectClick={this.handleProjectAdd}
-          handleChangeProjectName={this.handleChangeProjectName}
-        /> */}
 
         <DepartmentTitle handleDepartmentAddClick={this.handleDepartmentAddClick}/>
         

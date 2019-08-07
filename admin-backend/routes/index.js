@@ -45,6 +45,7 @@ router.post('/interviewtime', interviewTimeCtrl.registInterviewSchedule);
 router.get('/recruitMeta', recruitMetaCtrl.getRecruitMetaList);
 router.post('/recruitMeta', recruitMetaCtrl.registRecruitMeta);
 router.get('/recruitMeta/:batch', recruitMetaCtrl.getRecruitMeta);
+router.get('/recentrecruitMeta', recruitMetaCtrl.getRecentRecruitMeta);
 router.get('/recruitMeta/:batch', recruitMetaCtrl.getRecruitMeta);
 
 router.get('/project', projectCtrl.getProjectList);
