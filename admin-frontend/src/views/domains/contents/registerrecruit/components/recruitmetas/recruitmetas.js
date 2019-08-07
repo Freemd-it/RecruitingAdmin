@@ -24,7 +24,7 @@ const Recruitmeta = ({recruitmeta}) => {
     <div className='recruitmeta_container'>
       <span>기수: {recruitmeta.batch}</span>
       <span>모집 시작일: {recruitmeta.period.startDate.substring(0,10)}</span>
-      <span>모집 마감일: {recruitmeta.period.startDate.substring(0,10)}</span>
+      <span>모집 마감일: {recruitmeta.period.endDate.substring(0,10)}</span>
       <Button size='sm' color='info'>수정하기</Button>
     </div>
   );

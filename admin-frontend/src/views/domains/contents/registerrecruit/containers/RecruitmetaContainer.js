@@ -3,7 +3,7 @@ import { TitleAndAddButton } from '../components/common';
 import RecruitmetaList from '../components/recruitmetaList/recruitmetaList';
 import { Map, List } from 'immutable';
 import './RecruitmetaContainer.scss';
-import { getRecruitmeta } from 'lib/api/recruitmeta';
+import { getRecruitMeta } from 'lib/api/recruitmeta';
 import { getProject } from 'lib/api/project';
 import Projects from  '../components/projects/projects';
 import Recruitmetas from '../components/recruitmetas/recruitmetas';
@@ -18,7 +18,7 @@ class RecruitmetaContainer extends Component {
   }
 
   componentDidMount() {
-    getRecruitmeta(this);
+    getRecruitMeta(this);
     getProject(this);
   }
 
@@ -53,12 +53,6 @@ class RecruitmetaContainer extends Component {
         <Projects 
           projects={this.state.projects} />
         <Recruitmetas recruitmetas={this.state.recruitmetas}/>
-        {/* <div className="recruitmeta_container">
-          <TitleAndAddButton title="리크루팅 목록" 
-            projects={this.state.projects}
-            handleAdd={this.handleAddRecruiting} />
-          <RecruitmetaList recruitmetas={this.state.recruitmetas}/>
-        </div> */}
       </div>
     );
   }

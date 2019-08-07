@@ -4,7 +4,7 @@ import './startEndDate.scss';
 import "react-datepicker/dist/react-datepicker.css";
 
 
-const startEndDate = ({data, handleStartDateChange, handleEndDateChange}) => {
+const startEndDate = ({period, handleStartDateChange, handleEndDateChange}) => {
   return (
     <div className='start_end_container'>
       <div className='date_container'>
@@ -12,7 +12,7 @@ const startEndDate = ({data, handleStartDateChange, handleEndDateChange}) => {
         <DatePicker 
           className='datepicker'
           dateFormat="yyyy-MM-dd"
-          selected={data.get('period').get('startDate')}
+          selected={new Date(period.get('startDate'))}
           onChange={handleStartDateChange}
         />
       </div>
@@ -21,7 +21,7 @@ const startEndDate = ({data, handleStartDateChange, handleEndDateChange}) => {
         <DatePicker 
           className='datepicker'
           dateFormat="yyyy-MM-dd"
-          selected={data.get('period').get('endDate')}
+          selected={new Date(period.get('endDate'))}
           onChange={handleEndDateChange}
         />
       </div>
