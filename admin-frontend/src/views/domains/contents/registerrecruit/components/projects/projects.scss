@@ -5,9 +5,36 @@
   margin-bottom: 30px;
 }
 
-.projectTitle {
-  background-color: white;
+.project_container {
+  background-color: #e8f7ff;
   border-radius: 10px;
   padding: 10px;
   margin-top: 10px;
 }
+
+.projectitem_container {
+  display: flex;
+  min-width: 300px;
+  margin-bottom: 15px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+
+  .title_container {
+    display: flex;
+    width: 50%;
+    align-items: center;
+  }
+  
+  .button_container {
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+    Button {
+      margin-left: 10px;
+    }
+  }
+}
+
+
+

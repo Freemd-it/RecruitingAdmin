@@ -8,7 +8,7 @@ const Projects = ({projects}) => {
     <div>
       <h2>사업 및 리크루팅 등록</h2>
       <div className="project_container">
-        <TitleAndMoveButton title="사업 목록" moveText="추가 / 삭제" moveTo="/projecst"/>
+        <TitleAndMoveButton title="사업 목록" moveText="추가 / 삭제" moveTo="/recruitmeta/project"/>
         { projects.map((project, index) => {
         return (
           <Project 
@@ -26,7 +26,7 @@ const Projects = ({projects}) => {
 
 const Project = ({project}) => {
   return (
-    <div className='projectTitle'> {project.projectName} </div>
+    <div className='projectTitle'> {project.get('projectName')} </div>
   )
 };
 

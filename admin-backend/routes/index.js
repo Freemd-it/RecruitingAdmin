@@ -51,6 +51,7 @@ router.get('/recruitMeta/:batch', recruitMetaCtrl.getRecruitMeta);
 router.get('/project', projectCtrl.getProjectList);
 router.post('/project', projectCtrl.postProject);
 router.delete('/project', projectCtrl.deleteProject);
+router.put('/project', projectCtrl.putProject);
 
 router.post('/memo/:userId', memoCtrl.registMemo);
 router.get('/memo/:userId', memoCtrl.getMemo);

@@ -198,13 +198,11 @@ class RegisterRecruitContainer extends Component {
   }
 
   handleSubmit = (e) => {
-    console.log("submit!");
     postRecruitMeta(this.state.data.toJS(), this);
   }
 
   render() {
     document.body.style.overflow = "";
-    console.log(this.state.data.toJS());
     if (this.state.redirect) {
       return <Redirect to="/recruitmeta"></Redirect>
     }

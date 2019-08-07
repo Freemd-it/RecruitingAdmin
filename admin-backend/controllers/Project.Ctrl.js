@@ -1,8 +1,6 @@
 const Project = require('../models/ProjectModel');
-const mongoose = require('mongoose');
 
 const getProjectList = async (req, res) => {
-  console.log('get project');
   try {
     const projectData = await Project
     .find({})
@@ -49,16 +47,32 @@ const deleteProject = async (req, res) => {
     });
 
   try {
-    const result = Project.findByIdAndDelete(projectid).exec();
+    Project.findByIdAndDelete(projectid).exec();
     res.status(201).json({ message : "Success"});
   } catch(e) {
     res.status(500).json({ message: JSON.stringify(e) , result: null,});
   }
 }
 
+const putProject = async (req, res) => {
+  const { project } = req.body;
+  if (!project )
+    return res.status(500).json({
+      message: 'invalied value',
+      result: null,
+    });
+
+  try {
+    Project.findByIdAndUpdate(project._id, project).exec();
+    res.status(201).json({ message : "Success"});
+  } catch(e) {
+    res.status(500).json({ message: JSON.stringify(e) , result: null,});
+  }
+}
 
 module.exports = {
   getProjectList,
   postProject,
-  deleteProject
+  deleteProject,
+  putProject
 }
