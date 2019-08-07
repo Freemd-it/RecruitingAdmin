@@ -39,7 +39,8 @@ router.get('/question/:questionId', questionCtrl.getQuestion);
 router.post('/question', questionCtrl.registQuestion);
 router.put('/question/:questionId', questionCtrl.updateQuestion);
 
-router.get('/schedule', scheduleCtrl.getScheduleList);
+router.get('/schedule/:batch', scheduleCtrl.getScheduleList);
+router.get('/schedule/:batch/mockup', scheduleCtrl.mockup);
 
 router.get('/statistics', statCtrl.getStat);
 
