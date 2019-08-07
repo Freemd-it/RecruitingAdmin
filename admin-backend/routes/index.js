@@ -39,7 +39,8 @@ router.get('/question/:questionId', questionCtrl.getQuestion);
 router.post('/question', questionCtrl.registQuestion);
 router.put('/question/:questionId', questionCtrl.updateQuestion);
 
-router.get('/schedule', scheduleCtrl.getScheduleList);
+router.get('/schedule/:batch', scheduleCtrl.getScheduleList);
+router.get('/schedule/:batch/mockup', scheduleCtrl.mockup);
 
 router.get('/statistics', statCtrl.getStat);
 
@@ -48,10 +49,19 @@ router.post('/interviewtime', interviewTimeCtrl.registInterviewSchedule);
 
 router.get('/recruitMeta', recruitMetaCtrl.getRecruitMetaList);
 router.post('/recruitMeta', recruitMetaCtrl.registRecruitMeta);
+router.put('/recruitMeta/:batch', recruitMetaCtrl.modifyRecruitMeta);
 router.get('/recruitMeta/:batch', recruitMetaCtrl.getRecruitMeta);
-router.get('/recentrecruitMeta', recruitMetaCtrl.getRecentRecruitMeta);
+
+router.get('/recruitMetaOrg/:batch', recruitMetaCtrl.getRecruitMetaOrg);
+router.get('/recruitMetaRecent', recruitMetaCtrl.getRecruitMetaRecent);
+router.get('/recruitMeta/:batch', recruitMetaCtrl.getRecruitMeta);
+router.delete('/recruitMeta', recruitMetaCtrl.deleteRecruitMeta);
 
 router.get('/project', projectCtrl.getProjectList);
+router.get('/projectNames', projectCtrl.getProjectNames);
+router.post('/project', projectCtrl.postProject);
+router.delete('/project', projectCtrl.deleteProject);
+router.put('/project', projectCtrl.putProject);
 
 router.post('/memo/:userId', memoCtrl.registMemo);
 router.get('/memo/:userId', memoCtrl.getMemo);

@@ -1,11 +1,46 @@
 import axiosCreate from '../defaultAxios'
+import { fromJS } from 'immutable';
 
 export const getProject = (ctx) => 
   axiosCreate().get('/admin/project')
     .then(res => {
-      ctx.setState({
-        projects: res.data.result
-      });
-      console.log('api!!',res.data.result);
+      const recruitmeta = fromJS(res.data.result);
+      const modifiedData = ctx.state.data.set('projects', recruitmeta)
+      ctx.setState({data: modifiedData});
     })
     .catch(err => err)
+
+export const getProjectNames = (ctx) => 
+  axiosCreate().get('/admin/projectNames')
+    .then(res => {
+      const projectNames = fromJS(res.data.result);
+      const modifiedData = ctx.state.data.set('medicalFeilds', projectNames)
+      console.log('api!!', modifiedData.toJS());
+      ctx.setState({data: modifiedData});
+    })
+    .catch(err => err)
+
+export const postProject = (ctx, data) => 
+  axiosCreate().post('/admin/project', data)
+    .then(res => {
+      alert('프로젝트가 추가되었습니다.');
+    })
+    .catch(err => err)
+
+export const deleteProject = (ctx, projectid) => {
+  axiosCreate().delete('/admin/project', {data: {"projectid": projectid}})
+  .then(res => {
+    alert('프로젝트가 삭제되었습니다.');
+  })
+  .catch(err => err)
+}
+
+export const putProject = (ctx, project) => {
+  axiosCreate().put('/admin/project', {"project": project})
+  .then(res => {
+    alert('프로젝트 정보가 저장되었습니다.');
+  })
+  .catch(err => err)
+}
+  
+
