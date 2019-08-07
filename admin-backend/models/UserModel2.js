@@ -93,7 +93,7 @@ const UserSchema = new Schema({
   interviewInfo: [{
     interviewDate: Date,
     interview_week: String,
-    interview_time: [String]
+    interviewTime: [String]
   }],
   registedDate: {
     type: Date,
