@@ -56,8 +56,6 @@ class Table extends Component {
             columns={columns}
             timeTable={timeTable}
           />
-        {
-          this.props.body || 
           <Body
             type={type}
             columns={columns}
@@ -67,7 +65,6 @@ class Table extends Component {
             rowsPerPage={rowsPerPage}
             attributeData={attributeData}
           />
-        }
         </TableContentTemplate>
         <Pagination
           className={"Table__pagination"}

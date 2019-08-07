@@ -68,16 +68,15 @@ class TableRows extends Component {
           }
         } else if(type === 'interview') {
           switch(key) {
-            case 'second_department':
-              returnData = value === 'undefined ' ? '미기입' : value;
+            case 'department_1':
+            case 'department_2':
+              console.log(value);
             break;
-            case 'other_assign_medical':
-            case 'other_assign_ngo':
+            case 'otherAssignMedical':
+            case 'otherAssignNgo':
               returnData = value ? 'O' : '';
             break;
             default:
-              // 안나오는부분 수정해야함. 
-              // console.log(value, key, item);
               returnData = value;
             break;
           }

@@ -31,7 +31,7 @@ const BasicInfo = (props) => {
     ['생년월일', `${birthString}`],
     ['전화번호', `${phoneNumber}`],
     ['이메일', `${email}`],
-    ['SNS 주소', `${sns}`],
+    ['SNS 주소', <a href={sns}>{sns}</a>],
     ['주소', `${address}`],
   ];
   departments.forEach((department, index) => {
