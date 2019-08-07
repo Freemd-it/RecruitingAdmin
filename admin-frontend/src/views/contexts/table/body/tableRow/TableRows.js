@@ -53,16 +53,16 @@ class TableRows extends Component {
       if (value !== undefined || value !== null || value !== 0) {
         if(type === 'applyInfo') {
           switch(key) {
-            case 'first': 
-              returnData = `${value.department} ${value.team}`;
+            case 'departmentName_1': 
+              returnData = `${value} ${item['teamName_1']}`;
             break;
-            case 'second': 
-              returnData = value.department ? value.department + value.team : '미기입';
+            case 'departmentName_2': 
+              returnData = value ? `${value} ${item['teamName_2']}` : '미기입';
             break;
-            case 'is_male': 
+            case 'isMale': 
               returnData = value ? '남': '여';
             break;
-            default: // memo, medical_field, secondary_medical_field
+            default:
               returnData = value;
             break;
           }

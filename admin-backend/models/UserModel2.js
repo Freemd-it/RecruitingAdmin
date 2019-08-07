@@ -3,6 +3,15 @@ const { Schema } = mongoose;
 
 const UserSchema = new Schema({
   batch: Number,
+  supportStatus: {
+    type: Number,
+    enum: [200, 201], // 200임시저장(미제출), 201(제출)
+  },
+  clientStoreData: { },
+  evaluation: {
+    type: String,
+    default: '미평가',
+  },
   basicInfo: {
     email: {
       type: String,
