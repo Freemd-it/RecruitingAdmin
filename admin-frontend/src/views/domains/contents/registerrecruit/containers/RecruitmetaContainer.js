@@ -4,13 +4,16 @@ import React, { Component } from 'react';
 import Projects from '../components/projects/projects';
 import Recruitmetas from '../components/recruitmetas/recruitmetas';
 import './RecruitmetaContainer.scss';
+import { Map, List } from 'immutable';
 
 class RecruitmetaContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      data: Map({
+        projects: List([])
+      }),
       recruitmetas: [],
-      projects: [],
     };
   }
 
@@ -19,36 +22,12 @@ class RecruitmetaContainer extends Component {
     getProject(this);
   }
 
-  handleAddProject = () => {
-    console.log('프로젝트 수정 페이지 이동');
-  }
-
-  handleAddRecruitmeta = () => {
-    console.log('리크루트 메타 추가 페이지 이동');
-  }
-
-  handleEditRecruitmeta = () => {
-    console.log('리크루트 메타 수정 페이지 이동');
-  }
-
-  handleAddProject = () => {
-    const newProject = {
-      projectName: "프로젝트 명",
-      projectDesc: "프로젝트 설명",
-      projectStatus: "ADD"
-    }
-
-    this.setState({
-      projects: this.state.projects.concat(newProject)
-    })
-  }
-
   render() {
-    console.log(this.state);
+    document.body.style.overflow = "";
     return (
       <div className="root_container">
         <Projects 
-          projects={this.state.projects} />
+          projects={this.state.data.get('projects')} />
         <Recruitmetas recruitmetas={this.state.recruitmetas}/>
       </div>
     );

@@ -7,6 +7,7 @@ import InterviewManageContainer from './interview/containers/InterviewManageCont
 import DocumentManageContainer from './document/containers/DocumentManageContainer'
 import RecruitmetaContainer from './registerrecruit/containers/RecruitmetaContainer'
 import RegisterRecruitContainer from './registerrecruit/containers/RegisterRecruitContainer'
+import ProjectContainer from './registerrecruit/containers/ProjectContainer'
 import NotFoundPage from '../error/NotFoundPage'
 
 import * as Columns from 'lib/service/tableColumn';
@@ -26,6 +27,7 @@ class Contents extends Component {
           <Route exact path={routes.MATCH_PATH_DOCUMENT}  render={(props) => { return <DocumentManageContainer {...props} type= 'manage'columns={Columns.question} />}} />
           <Route exact path={routes.MATCH_PATH_RECRUITMETA}  render={(props) => { return <RecruitmetaContainer {...props} />}} />
           <Route exact path={routes.MATCH_PATH_RECRUITMETA_WRITE}  render={(props) => { return <RegisterRecruitContainer {...props} />}} />
+          <Route exact path={routes.MATCH_PATH_PROJECT}  render={(props) => { return <ProjectContainer {...props} />}} />
           <Route component={ NotFoundPage } />
         </Switch>
       </div>

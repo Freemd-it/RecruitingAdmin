@@ -2,6 +2,9 @@
   display: flex;
   min-width: 300px;
   margin-bottom: 15px;
+  Button {
+    margin-left: 20px;
+  }
 }
 
 .title_container {
@@ -14,4 +17,3 @@
   justify-content: flex-end;
   width: 50%;
 }
-
