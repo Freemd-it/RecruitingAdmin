@@ -1,0 +1,24 @@
+.RecruitManageContainer__MemoBox {
+    width: 50%; 
+    position: relative;
+    margin: 15px 0;
+    &__list {
+        max-height: calc(500px - 38px);
+        overflow-y: auto;
+    }
+    &__input {
+        position: absolute;
+        bottom: 0;
+    }
+    &__contents {
+        margin: 0 12.4px;
+        border-bottom: 1px solid;
+        &:last-child {
+            border: none;
+        }
+        .time {
+            display: flex;
+            flex-direction: row-reverse;
+        }
+    }
+}

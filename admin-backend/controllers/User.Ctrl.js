@@ -3,6 +3,7 @@ const Code = require('../modules/Status.Code');
 const moment = require('moment');
 
 const userDefulatInfo = (userObj) => {
+    console.log(userObj)
     if (userObj.basic_info.team === '없음') {
         userObj.basic_info.team = '';
     }
@@ -30,12 +31,13 @@ const userDefulatInfo = (userObj) => {
           department: userObj.basic_info.secondary_department,
           team: userObj.basic_info.secondary_team
         },
-        bussiness_activity: userObj.basic_info.bussiness_activity,
+        medical_field: userObj.basic_info.medical_field,
+        secondary_medical_field: userObj.basic_info.secondary_medical_field,
         evaluation: userObj.evaluation,
         other_assign_ngo: userObj.basic_info.other_assign_ngo,
         other_assign_medical: userObj.basic_info.other_assign_medical,
         support_status: userObj.support_status,
-        memo: userObj.memo || '',
+        batch: userObj.batch,
     }
 }
 const birthDate_age_convert = (date) => {
@@ -109,18 +111,20 @@ const matchSearchIndexandSchemaKey = (searchIndex, searchKeyword) => {
 }
 
 const getUserList = async (req, res) => {
-    let findOption = {"support_status": {$gte: 201}};
+    let findOption = {"support_status": {$gte: 201}, "batch": req.params.batch};
 
-    if (req.query.type && req.query.q) {
-        const searchIndex = req.query.type;
-        const searchKeyword = req.query.q;
-        findOption = matchSearchIndexandSchemaKey(searchIndex, searchKeyword);
-    }
+    console.log(req.query)
+    //검색용. 일단은 검색없이 가는걸로
+    // if (req.query.type && req.query.q) {
+    //     const searchIndex = req.query.type;
+    //     const searchKeyword = req.query.q;
+    //     findOption = matchSearchIndexandSchemaKey(searchIndex, searchKeyword);
+    // }
 
     try {
         const userList = await User
             .find(findOption)
-            .select("basic_info support_status evaluation memo")
+            .select("basic_info support_status evaluation batch")
             .sort({ _id: -1 })
             .exec();
         const resUserList = userList.map(user => userDefulatInfo(user));
@@ -133,6 +137,7 @@ const getUserList = async (req, res) => {
 
 const getUser = async (req, res) => {
     const id = req.params.id;
+
     try {
         const user = await User.findById(id).exec();
         res.status(200).json({ message: "Successful get user detail", result: user });
@@ -227,22 +232,10 @@ const updateApplicantRank = async(req, res) => {
   }
 }
 
-const updateUserMemo = async (req, res) => {
-    const { userId, memo } = req.body;
-    try {
-        const updateUser = await User.findOneAndUpdate({_id: userId}, {$set: { memo }}, {upsert: true});
-    } catch(e) {
-        console.log('updateUserMemo error:', e);
-        return res.status(400).send({message: JSON.stringify(e)});
-    }
-    return res.sond(memo);
-}
-
 module.exports = {
     getUserList,
     getUser,
     searchUserList,
     updateUserSupportStatus,
     updateApplicantRank,
-    updateUserMemo,
 }

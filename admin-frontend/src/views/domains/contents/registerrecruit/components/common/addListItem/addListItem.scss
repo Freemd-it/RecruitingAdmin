@@ -1,0 +1,26 @@
+.editable_list_item_container {
+  display: flex;
+  min-width: 300px;
+  margin-bottom: 15px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  input {
+    border: 2px solid black;
+  }
+  .title_container {
+    display: flex;
+    width: 50%;
+    align-items: center;
+
+  }
+  
+  .button_container {
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+    Button {
+      margin-left: 10px;
+    }
+  }
+}

@@ -13,13 +13,13 @@ const data = {
   "AgeMaleStats": [
       {
           "_id": "5c4e278f225e81d8508f3fa9",
-          "age": 1,
+          "age": 23,
           "is_male": true,
           "count": 2
       },
       {
           "_id": "5c4e278f225e81d8508f3fa8",
-          "age": 1,
+          "age": 40,
           "is_male": false,
           "count": 4
       }
@@ -79,8 +79,8 @@ class DashBoardViewerContainer extends Component {
 
     const setChartData = {
       lastUpdated: chartData.lastUpdated, 
-      pie: { data: pieData, options: pieOption, legend: pieLegend  },
-      bar: { data: barData, options: barOption, legend: barLegend},
+      pie: { data: pieData, options: pieOption, legend: pieLegend },
+      bar: { data: barData, options: barOption, legend: barLegend },
       radar: { data: radarData, options: radarOption, legend: radarLegend },
     } 
     

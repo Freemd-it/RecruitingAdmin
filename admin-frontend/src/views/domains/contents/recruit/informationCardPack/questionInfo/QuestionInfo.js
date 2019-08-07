@@ -17,7 +17,7 @@ const QuestionInfo = ({data}) => {
         data.map(({ department, team, question, content, portfolios, select }, index) => {
           return (
             <div key={index} className="Content">
-              <div className="Head-3"> { organization[department].name} - {searchTeam(department, team)} </div>
+              <div className="Head-3"> { department} - {team} </div>
               <div className="SubContent"> Q. : { question ? question : '' } </div>
               <div className="SubContent"> A. : { content ? content : '' } </div>
                 {

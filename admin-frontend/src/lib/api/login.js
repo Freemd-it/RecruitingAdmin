@@ -6,3 +6,9 @@ export const getSignin = (body) =>
     .catch(err => err)
 
 
+export const getInterviewColumn = (batch_id, localStorage) => 
+  axiosCreate().get(`admin/recruitMeta/${batch_id}`)
+    .then(res => res)
+    .catch(err => err)
+
+

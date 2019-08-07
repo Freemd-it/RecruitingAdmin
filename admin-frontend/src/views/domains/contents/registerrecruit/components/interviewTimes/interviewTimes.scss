@@ -1,0 +1,10 @@
+.interviewtime_container {
+  display: flex;
+  min-width: 300px;
+  margin-bottom: 15px;
+
+  select {
+    border: 2px solid black;
+    margin-left: 20px;
+  }
+}

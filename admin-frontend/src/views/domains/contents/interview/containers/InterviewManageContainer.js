@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import Table from 'views/contexts/table'
 import * as axios from 'lib/api/interview'
-import { SATURDAY, SUNDAY } from 'lib/service/interviewDate'
-import _ from 'lodash'
 
 class InterviewManageContainer extends Component {
   state = {
     rows: [], 
     page: 0,
+    timeTable: JSON.parse(localStorage.getItem('recruitMeta')).interviewTime,
     rowsPerPage: this.props.rowsPerPage,
     keyword: '검색선택',
     query: '',
@@ -45,43 +44,13 @@ class InterviewManageContainer extends Component {
   }
 
   render() {
-    const tableData = []
-    _.forEach(this.state.rows, (v,k) => {
-        if(v === null) {
-          return 0;
-        } else {
-          _.forEach(v, (_v, _k) => {
-            if (_k === 'schedule') {
-              _.forEach(_v, (__v, __k) => {
-                if(__k === 'saturday') {
-                  v.saturday = SATURDAY
-                  v.sta_first = __v[0].interview_available
-                  v.sta_second = __v[1].interview_available
-                  v.sta_third = __v[2].interview_available
-                  v.sta_forth = __v[3].interview_available
-    
-                } else if(__k === 'sunday') {
-                  v.sunday = SUNDAY
-                  v.sun_first = __v[0].interview_available
-                  v.sun_second = __v[1].interview_available
-                  v.sun_third = __v[2].interview_available
-                  v.sun_forth = __v[3].interview_available
-                  v.sun_fifth = __v[4].interview_available
-                  v.sun_sixth = __v[5].interview_available
-                }
-              })
-            }
-          }) 
-          delete v.schedule
-        }
-        tableData.push(v)
-      })
-      
+
     return (
       <Table
         type={'interview'}
         title={'면접시간관리'}
-        rows={tableData}
+        timeTable={this.state.timeTable}
+        rows={this.state.rows}
         onClickRow={this.onClickToShowModal}
         onSearchTag={this.onSearchTag}
         onChangeKeyword={this.onChangeKeyword}

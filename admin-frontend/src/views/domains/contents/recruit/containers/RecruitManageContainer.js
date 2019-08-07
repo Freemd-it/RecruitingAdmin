@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
-import Table from 'views/contexts/table'
-import * as axios from 'lib/api/recruit'
-import Modal from 'views/contexts/modal'
-import { Button, Input } from 'reactstrap';
-import { ModalRecruitFooter } from 'views/domains/contents/commons/ModalFooter'
-import InfoDetail from 'views/domains/contents/recruit/informationCardPack'
-import organization from 'lib/service/organization'
+import React, { Component } from 'react';
+import Table from 'views/contexts/table';
+import * as axios from 'lib/api/recruit';
+import Modal from 'views/contexts/modal';
+import './RecruitManageContainer.scss';
+import { Button, Input, InputGroup, InputGroupAddon } from 'reactstrap';
+import { ModalRecruitFooter } from 'views/domains/contents/commons/ModalFooter';
+import InfoDetail from 'views/domains/contents/recruit/informationCardPack';
+import organization from 'lib/service/organization';
 import _ from 'lodash';
 
 class RecruitManageContainer extends Component {
@@ -17,13 +18,20 @@ class RecruitManageContainer extends Component {
     query: '',
     type: '',
     applicationForm: {},
-    readOnlyMemo: true,
+    department: '',
     memo: '',
+    memoList: [],
   };
 
+  memoScroll = null;
+
   componentDidMount() {
-    const { department } = JSON.parse(localStorage.getItem('user_session'))
-    axios.getRecruitList({q: department === '900' ? '' : organization[department].name , type: 'department'}, this)
+    this.setState({
+      department: JSON.parse(localStorage.getItem('user_session')).department
+    }, () => {
+      const { department } = this.state;
+      axios.getRecruitList({q: department === '900' ? '' : organization[department].name , type: 'department'}, this)
+    });
   }
 
   handleChangePage = (event, page) => {
@@ -35,12 +43,17 @@ class RecruitManageContainer extends Component {
   }
 
   onClickRowToShowModal = async (e) => {
-    await axios.getRecruitDetail(e.currentTarget.id, this)
+    const id = e.currentTarget.id;
+    await axios.getRecruitDetail(id, this);
+    await axios.getMemoList(id, this);
+
+    const scrollHeight =  this.memoScroll.scrollHeight;
+    this.memoScroll.scroll(0, scrollHeight);
   }
   
   onClickModalToClose = async () => {
     this.setState({ isDetailModal: false })
-    const { department } = JSON.parse(localStorage.getItem('user_session'))
+    const { department } = this.state;
     await axios.getRecruitList({q: department === '900' ? '' : organization[department].name , type: 'department'}, this)
   }
   
@@ -53,7 +66,7 @@ class RecruitManageContainer extends Component {
   }
 
   onClickEvaluation = async ({_id}, rank) => {
-    const { department } = JSON.parse(localStorage.getItem('user_session'))
+    const { department } = this.state;
     await axios.setApplicantRank({ userId: _id, rank, }, this)
     await axios.getRecruitList({q: department === '900' ? '' : organization[department].name , type: 'department'}, this)
   }
@@ -84,6 +97,24 @@ class RecruitManageContainer extends Component {
     });
   }
 
+  onChangeMemo = async (e) => {
+    if (e && e.target) {
+      this.setState({ memo: e.target.value });
+    } else {
+      this.setState({ memo: ''});
+    }
+  }
+
+  onSubmitMemo = async (e) => {
+    const { memo, department } = this.state;
+    const { _id: userId } = this.state.selectedRow;
+    await axios.setMemo({contents: memo, writer: department, userId}, this);
+  }
+
+  onEnterKeyDown = async (e) => {
+    if (e && e.key === 'Enter') this.onSubmitMemo();
+  }
+
   onDownloadCsv = async () => {
     const { applicationForm, rows } = this.state;
     if (Object.entries(applicationForm).length === 0 && applicationForm.constructor === Object) return alert('선택된 지원서가 없습니다.');
@@ -93,7 +124,7 @@ class RecruitManageContainer extends Component {
       });
       const data = rows[index];
       return `${data.name},${data.english},${data.is_male === true ? '남' : '여'},`+
-      `${data.birth_date},${data.phone_number},${data.email},${organization[data.first.department].name},${organization[data.second.department].name},${data.bussiness_activity || ''},${data.evaluation || ''}`;
+      `${data.birth_date},${data.phone_number},${data.email},${organization[data.first.department].name},${organization[data.second.department].name},${data.medical_field || ''},${data.evaluation || ''}`;
     });
     const csvData = `이름,영문이름,성별,생년월일,전화번호,Email,1지망,2지망,지원사업,평가상태\n${list.join('\n')}`;
     const csvDownload = document.createElement('a');
@@ -104,26 +135,9 @@ class RecruitManageContainer extends Component {
     csvDownload.remove();
   }
 
-  onChangeReadOnlyMemo = async (type) => {
-    this.setState(prevState => {
-      return { readOnlyMemo: !prevState.readOnlyMemo }
-    }, () => {
-      if (type === 'blur') {
-        const { _id: userId } = this.state.selectedRow;
-        return axios.setMemo({userId, memo: this.state.memo});
-      }
-    });
-  }
-
-  onChangeMemo = async (e) => {
-    this.setState({
-      memo: e.target.value
-    });
-  }
-
   render() {
     const { match } = this.props
-    const { rows } = this.state
+    const { rows, selectedRow, memoList } = this.state
 
     const questionAddBtn = (
       <Button 
@@ -136,22 +150,48 @@ class RecruitManageContainer extends Component {
       </Button>
     )
 
+    const ModelMemoList = memoList.map(item => {
+      return (
+        <div className={`RecruitManageContainer__MemoBox__contents`} key={item._id}>
+          <div>
+            {item.writer && organization[item.writer].name}: {item.contents}
+          </div>
+          <div className={`time`}>
+            { new Date(item.registedDate).toLocaleString() }
+          </div>
+        </div>
+      );
+    });
+
     const ModalContent = (
       <>
-        <InfoDetail
-          selectedRow={this.state.selectedRow}
-        />
-        <Input 
-          type="textarea" 
-          name="text" 
-          id="memo" 
-          readOnly={this.state.readOnlyMemo}
-          onFocus={this.onChangeReadOnlyMemo}
-          onBlur={() => this.onChangeReadOnlyMemo('blur')}
-          onChange={this.onChangeMemo}
-        />
+        <InfoDetail selectedRow={selectedRow}/>
+
+        <div className={`RecruitManageContainer__MemoBox`}>
+          <div 
+            className={`RecruitManageContainer__MemoBox__list`}
+            ref={ref => this.memoScroll = ref}
+          >
+            { ModelMemoList }
+          </div>
+
+          <InputGroup className={`RecruitManageContainer__MemoBox__input`}>
+            <Input 
+              onKeyDown={this.onEnterKeyDown}
+              onChange={this.onChangeMemo} 
+              value={this.state.memo}
+            />
+            <InputGroupAddon addonType="prepend">
+              <Button onClick={this.onSubmitMemo}>
+                등록
+              </Button>
+            </InputGroupAddon>
+          </InputGroup>
+
+        </div>
       </>
-    )
+    );
+
     const ModalFooter = (
       <ModalRecruitFooter
         userSession = { JSON.parse(localStorage.getItem('user_session')) }
