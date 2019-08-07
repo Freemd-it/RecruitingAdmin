@@ -46,8 +46,7 @@ export const interview = [
 },{
   key: 'medical_field',
   value: '사업 1지망'
-},
-{
+},{
   key: 'secondary_medical_field',
   value: '사업 2지망'
 },{
@@ -68,7 +67,7 @@ export const question = [{
   key: 'teamName',
   value: '팀명',
 }, {
-  key: 'contents',
+  key: 'content',
   value: '질문내용',
   width: '300px',
 }, {

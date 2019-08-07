@@ -8,100 +8,9 @@ import { ModalCommonFooter } from 'views/domains/contents/commons/ModalFooter'
 // import { validation } from 'lib/service/validation'
 
 import * as axios from 'lib/api/question';
-// import moment from 'moment'
 import './QuestionManageContainer.scss';
 //import organization from 'lib/service/organization';
 // import _ from 'lodash';
-
-// Table관련
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
-import Checkbox from '@material-ui/core/Checkbox';
-
-
-const QUESTION = [{
-  key: 'departmentName',
-  value: '본부',
-}, {
-  key: 'teamName',
-  value: '팀명',
-}, {
-  key: 'content',
-  value: '질문내용',
-  width: '300px',
-}, {
-  key: 'register',
-  value: '등록자',
-}, {
-  key: 'registerDate',
-  value: '등록일자', 
-}, {
-  key: 'type',
-  value: '유형'
-}]
-
-const Body = (props) => {
-  const { 
-    items, 
-    columns, 
-    attributeData = [],
-    onClick = () => {}, 
-    onChangeCheck = () => {}, 
-  } = props;
-
-  const rows = items.map((item, itemIndex) => {
-    const dataSet = {};
-    attributeData.forEach((attribute) => {
-      dataSet[attribute.key] = item[attribute.value];
-    });
-    return (
-      <TableRow 
-        key={`rows__${itemIndex}`}
-        onClick={onClick} 
-        hover
-      >
-        <TableCell 
-          key={`rows__${itemIndex}__checkBox`} 
-          onClick={e => e.stopPropagation()}
-          {...dataSet}
-        >
-          <Checkbox onChange={onChangeCheck}/>
-        </TableCell>
-        {
-          columns.map((column, columnIndex) => {
-            let text = item[column.key];
-            if (column.key === 'type') {
-              switch(item[column.key]) {
-                case 101:
-                  text = '텍스트';
-                break;
-                case 102:
-                  text = '파일';
-                break;
-                case 103:
-                  text = '선택';
-                break;
-                default:
-                  break;
-              }
-            }
-            return (
-              <TableCell 
-                key={`${itemIndex}__${columnIndex}`}
-                {...dataSet}
-              >
-                {text}
-              </TableCell>
-              );
-            }
-          )
-        }
-      </TableRow>
-    );
-  });
-  return rows;
-}
 
 class QuestionRegistContainer extends Component {
   state = {
@@ -140,7 +49,6 @@ class QuestionRegistContainer extends Component {
         });
         teamData[departmentName] = [
           { _id: '', name: '팀 선택' }, 
-          { _id: '', name: '공통' }
         ];
         teams.forEach(team => {
           teamData[departmentName].push({
@@ -200,12 +108,11 @@ class QuestionRegistContainer extends Component {
   }
 
   onUpdateModal = async (e) => {
-    e.preventDefault();
-    const { target } = e;
+    const { currentTarget } = e;
     const data = {
-      departmentId: target.getAttribute("department-id"),
-      teamId: target.getAttribute("team-id"),
-      questionId: target.getAttribute("question-id"),
+      departmentId: currentTarget.getAttribute("department-id"),
+      teamId: currentTarget.getAttribute("team-id"),
+      questionId: currentTarget.getAttribute("question-id"),
     };
     if (data.departmentId && data.teamId && data.questionId) {
       axios.getQuestionDetail(data, this);
@@ -297,26 +204,6 @@ class QuestionRegistContainer extends Component {
       </Button>
     )
 
-    const body = (
-      <TableBody>
-        <Body 
-          items={this.state.questions}
-          attributeData={[{
-            key: "department-id",
-            value: "departmentId" 
-          }, {
-            key: "team-id",
-            value: "teamId"
-          }, {
-            key: "question-id",
-            value: "questionId"
-          }]}
-          columns={QUESTION}
-          onClick={this.onUpdateModal}
-        />
-      </TableBody>
-    );
-
     const questionDetail = (
       <QuestionDetail
         registedData={this.state.registedData}
@@ -346,12 +233,21 @@ class QuestionRegistContainer extends Component {
           title={'질문 관리'}
           rows={this.state.questions}
           questionAddBtn={questionAddBtn}
-          onClickRow={() => console.log('onClickRow')}
+          onClickRow={this.onUpdateModal}
           onSearchTag={this.onSearchTag}
           onChangeKeyword={this.onChangeKeyword}
           onChangeFilterQuery={this.onChangeFilterQuery}
           keyword={this.state.keyword}
-          body={body}
+          attributeData={[{
+            key: "department-id",
+            value: "departmentId" 
+          }, {
+            key: "team-id",
+            value: "teamId"
+          }, {
+            key: "question-id",
+            value: "questionId"
+          }]}
           cursor
         />
 
