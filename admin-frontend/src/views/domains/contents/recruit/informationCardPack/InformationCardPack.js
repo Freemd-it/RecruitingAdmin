@@ -17,7 +17,7 @@ const InfoDetail = ({ classes, selectedRow }) => {
       <AcademicInfo data={selectedRow.academicCareer}/>
       <SpecialInfo data={selectedRow.specialInfo}/>
       <ExternalInfo data={selectedRow.externalActivities || []}/>
-      <InterviewInfo data={selectedRow.InterviewInfo || []}/>
+      <InterviewInfo data={selectedRow.interviewInfo || []}/>
       <QuestionInfo data={selectedRow.questionInfo || []}/>
     </div>
   )
