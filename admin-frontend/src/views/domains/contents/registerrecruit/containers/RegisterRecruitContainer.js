@@ -1,5 +1,6 @@
 import { List, Map } from "immutable";
 import { getRecentRecruitMeta, postRecruitMeta } from 'lib/api/recruitmeta';
+import { getProjectNames } from 'lib/api/project';
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Button } from 'reactstrap';
@@ -37,8 +38,8 @@ class RegisterRecruitContainer extends Component {
   }
 
   componentDidMount() {
-    console.log('did mount');
     getRecentRecruitMeta(this);
+    getProjectNames(this);
   }
 
   handleBatchChange = (e) => {

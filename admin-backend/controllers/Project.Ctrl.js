@@ -6,7 +6,27 @@ const getProjectList = async (req, res) => {
     .find({})
     .select("projectName projectDesc projectStatus")
     .exec();
+    const projectNames = []
+    projectData.forEach
     res.status(200).json({ message : "Success", result: projectData});
+  } catch(e) {
+    console.log(e)
+    res.status(500).json({ message: JSON.stringify(e) , result: null,});
+  }
+}
+
+const getProjectNames = async (req, res) => {
+  try {
+    const projectData = await Project
+    .find({})
+    .select("projectName")
+    .exec();
+    
+    projectNames = []
+    for (i=0;i<projectData.length; i++) {
+      projectNames[i] = projectData[i].projectName
+    }
+    res.status(200).json({ message : "Success", result: projectNames});
   } catch(e) {
     console.log(e)
     res.status(500).json({ message: JSON.stringify(e) , result: null,});
@@ -72,6 +92,7 @@ const putProject = async (req, res) => {
 
 module.exports = {
   getProjectList,
+  getProjectNames,
   postProject,
   deleteProject,
   putProject

@@ -10,6 +10,15 @@ export const getProject = (ctx) =>
     })
     .catch(err => err)
 
+export const getProjectNames = (ctx) => 
+  axiosCreate().get('/admin/projectNames')
+    .then(res => {
+      const projectNames = fromJS(res.data.result);
+      const modifiedData = ctx.state.data.set('medicalFeilds', projectNames)
+      ctx.setState({data: modifiedData});
+    })
+    .catch(err => err)
+
 export const postProject = (ctx, data) => 
   axiosCreate().post('/admin/project', data)
     .then(res => {
@@ -26,7 +35,6 @@ export const deleteProject = (ctx, projectid) => {
 }
 
 export const putProject = (ctx, project) => {
-  console.log('put project', project);
   axiosCreate().put('/admin/project', {"project": project})
   .then(res => {
     alert('프로젝트 정보가 저장되었습니다.');
