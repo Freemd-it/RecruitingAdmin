@@ -9,7 +9,6 @@ import { ModalCommonFooter } from 'views/domains/contents/commons/ModalFooter'
 
 import * as axios from 'lib/api/question';
 import './QuestionManageContainer.scss';
-//import organization from 'lib/service/organization';
 // import _ from 'lodash';
 
 class QuestionRegistContainer extends Component {

@@ -1,8 +1,6 @@
 import React from 'react';
 import moment from 'moment';
 import AccountIcon from '@material-ui/icons/SupervisorAccount';
-import organization from 'lib/service/organization'
-import searchTeam from 'lib/sreachTeam'
 // import '../InfoDetail.scss';
 import InformationCard from 'views/contexts/modal/card';
 
