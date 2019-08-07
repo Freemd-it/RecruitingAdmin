@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
-import { TitleAndAddButton } from '../components/common';
-import RecruitmetaList from '../components/recruitmetaList/recruitmetaList';
-import { Map, List } from 'immutable';
-import './RecruitmetaContainer.scss';
-import { getRecruitMeta } from 'lib/api/recruitmeta';
 import { getProject } from 'lib/api/project';
-import Projects from  '../components/projects/projects';
+import { getRecruitMeta } from 'lib/api/recruitmeta';
+import React, { Component } from 'react';
+import Projects from '../components/projects/projects';
 import Recruitmetas from '../components/recruitmetas/recruitmetas';
+import './RecruitmetaContainer.scss';
 
 class RecruitmetaContainer extends Component {
   constructor(props) {

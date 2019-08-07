@@ -1,18 +1,17 @@
+import { List, Map } from "immutable";
+import { getRecentRecruitMeta, postRecruitMeta } from 'lib/api/recruitmeta';
 import React, { Component } from 'react';
-
+import { Redirect } from 'react-router-dom';
+import { Button } from 'reactstrap';
 import AnnounceDate from "../components/announceDate/announceDate";
 import Batch from '../components/batch/batch';
 import Departments from "../components/departments/departments";
-import DepartmentTitle from "../components/departmentTitle /departmentTitle";
-import StartEndDate from "../components/startEndDate/startEndDate";
-import Projects from '../components/projects/projects';
+import DepartmentTitle from "../components/departmentTitle/departmentTitle";
 import InterviewTimes from '../components/interviewTimes/interviewTimes';
-import { Button } from 'reactstrap';
+import StartEndDate from "../components/startEndDate/startEndDate";
+import { InitialDepartment, InitialDepartmentsList, InitialInterviewTime, InitialInterviewTimeList, InitialTeam } from "../data";
 import "./RegisterRecruit.scss";
-import { Map, List } from "immutable";
-import { InitialDepartmentsList, InitialDepartment, InitialTeam, InitialInterviewTimeList, InitialInterviewTime } from "../data";
-import { getRecentRecruitMeta, postRecruitMeta } from 'lib/api/recruitmeta';
-import { Redirect } from 'react-router-dom';
+
 
 class RegisterRecruitContainer extends Component {
   // Todo: initialState를 디비에서 읽어와서 가져오는 방식으로 변경해주어야 한다. 지금은 디비 저장 정보가 없으므로 하드 코딩
