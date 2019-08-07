@@ -41,7 +41,6 @@ class RegisterRecruitContainer extends Component {
 
   componentDidMount() {
     if (this.state.batch) {
-      console.log('현재 배치!', this.state.batch);
       getRecruitMetaOrg(this, this.state.batch);
     } else {
       getRecruitMetaRecent(this);
@@ -103,7 +102,7 @@ class RegisterRecruitContainer extends Component {
 
   handleDepartmentDescriptionChange = (e, index) => {
     const { data } = this.state;  
-    const { value } = e.target.value;
+    const { value } = e.target;
     this.setState({
       data: data.setIn(['departments', index, 'departmentDescription'], value)
     });
@@ -111,7 +110,7 @@ class RegisterRecruitContainer extends Component {
 
   handleDepartmentNameChange = (e, index) => {
     const { data } = this.state;  
-    const { value } = e.target.value;
+    const { value } = e.target;
     this.setState({
       data: data.setIn(['departments', index, 'departmentName'], value)
     });
@@ -207,6 +206,8 @@ class RegisterRecruitContainer extends Component {
   }
 
   handleSubmitEdit = (e) => {
+    // console.log(this.state.data.toJS());
+    // return;
     modifyRecruitMeta(this.state.data.toJS(), this.state.batch, this);
   }
 
@@ -221,14 +222,13 @@ class RegisterRecruitContainer extends Component {
     if (this.state.redirect) {
       return <Redirect to="/recruitmeta"></Redirect>
     }
-    console.log(this.state.batch, '현재 배치');
     return (
       <div className="register_container">
         <h2 className='title'>  {this.state.batch ? "기존 리크루팅 수정" : "신규 리크루팅 등록" } </h2> 
         {this.state.batch && <Button color="danger" onClick={this.handleRecruitMetaDelete}> 삭제하기 </Button>}
 
         <Batch 
-          batch={ this.state.data.get('batch') } 
+          batch={ this.state.batch } 
           handleBatchChange={this.handleBatchChange}/>
         
         <StartEndDate

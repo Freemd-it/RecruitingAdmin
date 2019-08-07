@@ -37,7 +37,8 @@ const Department = ({department, medicalFields, handleDeleteDepartmentClick, han
       <div className="department_header">
         <div className="title_container">
           <label htmlFor="department_name">본부명</label>
-          <input id="department_name" type="text" value={department.departmentName} onChange={(e) => handleDepartmentNameChange(e, index)}/>
+          <input id="department_name" type="text" value={department.departmentName} defaultValue='본부 가제'
+                 onChange={(e) => handleDepartmentNameChange(e, index)}/>
         </div>
         <div className="button_container">
           <Button color="danger" onClick={(e) => handleDeleteDepartmentClick(e, index)}>본부 삭제</Button>
