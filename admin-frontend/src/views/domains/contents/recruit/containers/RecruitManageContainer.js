@@ -11,6 +11,7 @@ import _ from 'lodash';
 
 class RecruitManageContainer extends Component {
   state = {
+    batch: 0,
     rows: [],
     isDetailModal: false,
     selectedRow: [],
@@ -26,11 +27,15 @@ class RecruitManageContainer extends Component {
   memoScroll = null;
 
   componentDidMount() {
+    const recruitMeta = JSON.parse(localStorage.getItem('recruitMeta'));
+    const { batch } = recruitMeta;
     this.setState({
+      batch,
       department: JSON.parse(localStorage.getItem('user_session')).department
     }, () => {
       const { department } = this.state;
-      axios.getRecruitList({q: department === '900' ? '' : organization[department].name , type: 'department'}, this)
+      axios.getRecruitList(batch, this);
+      // axios.getRecruitList({q: department === '900' ? '' : organization[department].name , type: 'department'}, this)
     });
   }
 
@@ -44,7 +49,7 @@ class RecruitManageContainer extends Component {
 
   onClickRowToShowModal = async (e) => {
     const id = e.currentTarget.id;
-    await axios.getRecruitDetail(id, this);
+    await axios.getRecruitDetail({ id, batch: this.state.batch }, this);
     await axios.getMemoList(id, this);
 
     const scrollHeight =  this.memoScroll.scrollHeight;
@@ -53,8 +58,8 @@ class RecruitManageContainer extends Component {
   
   onClickModalToClose = async () => {
     this.setState({ isDetailModal: false })
-    const { department } = this.state;
-    await axios.getRecruitList({q: department === '900' ? '' : organization[department].name , type: 'department'}, this)
+    const { batch } = this.state;
+    axios.getRecruitList(batch, this);
   }
   
 
@@ -66,23 +71,25 @@ class RecruitManageContainer extends Component {
   }
 
   onClickEvaluation = async ({_id}, rank) => {
-    const { department } = this.state;
-    await axios.setApplicantRank({ userId: _id, rank, }, this)
-    await axios.getRecruitList({q: department === '900' ? '' : organization[department].name , type: 'department'}, this)
+    console.log('onClickEvaluation');
+    // const { department } = this.state;
+    // await axios.setApplicantRank({ userId: _id, rank, }, this)
+    // await axios.getRecruitList({q: department === '900' ? '' : organization[department].name , type: 'department'}, this)
   }
   
 
   onChangeFilterQuery = async (e) => {
-    const { type } = this.state
-    if(e.key === 'Enter') {
-      if(!type) {
-        alert('검색 조건을 선택해 주세요.')
-      } else {
-        await axios.getRecruitList({ type, q: e.target.value }, this)
-      }
-    } else {
-      this.setState({ query: e.target.value })
-    }
+    console.log("검색 조건을검색해주세요.");
+    // const { type } = this.state
+    // if(e.key === 'Enter') {
+    //   if(!type) {
+    //     alert('검색 조건을 선택해 주세요.')
+    //   } else {
+    //     await axios.getRecruitList({ type, q: e.target.value }, this)
+    //   }
+    // } else {
+    //   this.setState({ query: e.target.value })
+    // }
   }
 
   onCheckRow = async (checked, id) => {
@@ -123,10 +130,14 @@ class RecruitManageContainer extends Component {
         return o._id === id;
       });
       const data = rows[index];
-      return `${data.name},${data.english},${data.is_male === true ? '남' : '여'},`+
-      `${data.birth_date},${data.phone_number},${data.email},${organization[data.first.department].name},${organization[data.second.department].name},${data.medical_field || ''},${data.evaluation || ''}`;
+      return `${data.name},${data.englishName},${data.isMale === true ? '남' : '여'},`+
+      `${data.birthDate},${data.phoneNumber},${data.email},`+
+      `${data.departmentName_1} ${data.teamName_1},`+
+      `${data.departmentName_2} ${data.teamName_2},`+
+      `${data.medicalField_1 || ''}, ${data.medicalField_2},`+
+      `${data.evaluation || ''}`;
     });
-    const csvData = `이름,영문이름,성별,생년월일,전화번호,Email,1지망,2지망,지원사업,평가상태\n${list.join('\n')}`;
+    const csvData = `이름,영문이름,성별,생년월일,전화번호,Email,1지망,2지망,지원사업(1지망),지원사업(2지망),평가상태\n${list.join('\n')}`;
     const csvDownload = document.createElement('a');
     csvDownload.href = 'data:text/csv;utf-8,\uFEFF' + encodeURIComponent(csvData);
     csvDownload.target = '_blank';
@@ -223,7 +234,6 @@ class RecruitManageContainer extends Component {
             modalType={'recruit'}
             open={this.state.isDetailModal}
             onClose={this.onClickModalToClose}
-
             title={'지원서'}
             contents={ModalContent}
             footer={ModalFooter}

@@ -15,7 +15,7 @@ const SpecialInfo = (props) => {
         </span>)}
       content={
         props.data.map((elem, index) => {
-          const { content, self_evaluation_ability, special_type } = elem;
+          const { content, selfEvaluationAbility, specialType } = elem;
           return (
             <div key={index} className="Content">
               {index !== 0 ? (<Divider className="Divider" />) : ''}
@@ -23,13 +23,13 @@ const SpecialInfo = (props) => {
                 <span> 구분 </span>
               </div>
                 <div className="SubContent">
-                  {special_type}
+                  {specialType}
                 </div>
               <div className="SubTitle">
                 <span> 본인 평가 </span>
               </div>
               <div className="SubContent">
-                {self_evaluation_ability}
+                {selfEvaluationAbility}
               </div>  
               <div className="SubTitle">
                 <span> 상세 내용 </span>

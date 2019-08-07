@@ -17,10 +17,14 @@ const DepartmentMetaCtrl = require('../controllers/DepartmentMeta.Ctrl');
 
 router.get('/health', contextCtrl.getHealthCheck);
 
-router.get('/applicant/:batch', userCtrl.getUserList);
-router.get('/applicant/:batch/:id', userCtrl.getUser);
-router.put('/applicant/:batch/:userId', userCtrl.updateUserSupportStatus);
-router.put('/applicant/:batch/:userId/rank', userCtrl.updateApplicantRank);
+
+router.get('/applicant2/:batch', userCtrl.getUserList);
+router.get('/applicant2/:batch/:id', userCtrl.getUser);
+
+// router.get('/applicant/:batch', userCtrl.getUserList);
+// router.get('/applicant/:batch/:id', userCtrl.getUser);
+// router.put('/applicant/:batch/:userId', userCtrl.updateUserSupportStatus);
+// router.put('/applicant/:batch/:userId/rank', userCtrl.updateApplicantRank);
 
 router.get('/filters/applicant', userCtrl.searchUserList);
 
@@ -46,6 +50,7 @@ router.get('/recruitMeta', recruitMetaCtrl.getRecruitMetaList);
 router.post('/recruitMeta', recruitMetaCtrl.registRecruitMeta);
 router.put('/recruitMeta/:batch', recruitMetaCtrl.modifyRecruitMeta);
 router.get('/recruitMeta/:batch', recruitMetaCtrl.getRecruitMeta);
+
 router.get('/recruitMetaOrg/:batch', recruitMetaCtrl.getRecruitMetaOrg);
 router.get('/recruitMetaRecent', recruitMetaCtrl.getRecruitMetaRecent);
 router.get('/recruitMeta/:batch', recruitMetaCtrl.getRecruitMeta);
