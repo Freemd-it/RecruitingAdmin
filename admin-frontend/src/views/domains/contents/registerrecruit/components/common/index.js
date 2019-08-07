@@ -1,5 +1,9 @@
-import TitleAndAddButton from './titleAndAddButton/titleAndAddButton';
+import TitleAndMoveButton from './titleAndMoveButton/titleAndMoveButton';
+import EditableListItem from './editableListItem/editableListItem';
+import AddListItem from './addListItem/addListItem';
 
 export {
-  TitleAndAddButton
+  TitleAndMoveButton,
+  EditableListItem,
+  AddListItem,
 }

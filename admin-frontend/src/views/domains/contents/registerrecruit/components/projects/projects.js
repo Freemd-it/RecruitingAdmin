@@ -1,43 +1,33 @@
 import React from 'react';
-import { Button } from 'reactstrap';
+import { TitleAndMoveButton } from '../common';
 import "./projects.scss";
 
-const Projects = ({handleAddProjectClick, handleDeleteProjectClick, handleChangeProjectName, medicalFeilds}) => {
+const Projects = ({projects}) => {
+  console.log('프로젝트 목록', projects);
   return (
     <div>
-      <div className="department_title_container">
-        <div className="title_container"><h3>진행 중인 사업</h3></div>
-        <div className="button_container">
-          <Button color="primary" onClick={handleAddProjectClick}>사업 추가</Button>
-        </div>
+      <h2>사업 및 리크루팅 등록</h2>
+      <div className="project_container">
+        <TitleAndMoveButton title="사업 목록" moveText="추가 / 삭제" moveTo="/projecst"/>
+        { projects.map((project, index) => {
+        return (
+          <Project 
+            project={project}
+            index={index}
+            key={index}
+          />);
+        })
+        }
       </div>
-
-      { medicalFeilds.map((medicalFeild, index) => {
-      return (
-        <Project 
-          handleDeleteProjectClick={handleDeleteProjectClick}
-          medicalFeild={medicalFeild}
-          index={index}
-          key={index}
-        />
-      );}
-      )}
     </div>
   );
-};
+}
 
-const Project = ({medicalFeild, handleChangeProjectName, handleDeleteProjectClick, index}) => {
+
+const Project = ({project}) => {
   return (
-    <div className="department_title_container">
-      <div className="title_container">
-        <input type="text" value={medicalFeild} onChange={(e) => handleChangeProjectName(e, index)}/>
-      </div>
-      <div className="button_container">
-        <Button color="danger" size="sm" onClick={(e)=> handleDeleteProjectClick(e, index)}>사업 삭제</Button>
-      </div>
-    </div>
-  );
+    <div className='projectTitle'> {project.projectName} </div>
+  )
 };
-
 
 export default Projects;

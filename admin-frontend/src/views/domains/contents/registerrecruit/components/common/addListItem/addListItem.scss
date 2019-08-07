@@ -5,11 +5,14 @@
   background-color: white;
   border-radius: 5px;
   padding: 10px;
-
+  input {
+    border: 2px solid black;
+  }
   .title_container {
     display: flex;
     width: 50%;
     align-items: center;
+
   }
   
   .button_container {
@@ -21,5 +24,3 @@
     }
   }
 }
-
-

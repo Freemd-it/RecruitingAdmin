@@ -3,19 +3,23 @@ import { TitleAndAddButton } from '../components/common';
 import RecruitmetaList from '../components/recruitmetaList/recruitmetaList';
 import { Map, List } from 'immutable';
 import './RecruitmetaContainer.scss';
-import { getRecruitmeta } from 'lib/api/recruitmeta'
+import { getRecruitmeta } from 'lib/api/recruitmeta';
+import { getProject } from 'lib/api/project';
+import Projects from  '../components/projects/projects';
+import Recruitmetas from '../components/recruitmetas/recruitmetas';
 
 class RecruitmetaContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       recruitmetas: [],
+      projects: [],
     };
   }
 
   componentDidMount() {
-    console.log('did mount')
     getRecruitmeta(this);
+    getProject(this);
   }
 
   handleAddProject = () => {
@@ -30,18 +34,31 @@ class RecruitmetaContainer extends Component {
     console.log('리크루트 메타 수정 페이지 이동');
   }
 
+  handleAddProject = () => {
+    const newProject = {
+      projectName: "프로젝트 명",
+      projectDesc: "프로젝트 설명",
+      projectStatus: "ADD"
+    }
+
+    this.setState({
+      projects: this.state.projects.concat(newProject)
+    })
+  }
+
   render() {
     console.log(this.state);
     return (
       <div className="root_container">
-        <h2>사업 및 리크루팅 등록</h2>
-        <div className="project_container">
-          <TitleAndAddButton title="사업 목록" handleAdd={this.handleAddProject} />
-        </div>
-        <div className="recruitmeta_container">
-          <TitleAndAddButton title="리크루팅 목록" handleAdd={this.handleAddRecruiting} />
+        <Projects 
+          projects={this.state.projects} />
+        <Recruitmetas recruitmetas={this.state.recruitmetas}/>
+        {/* <div className="recruitmeta_container">
+          <TitleAndAddButton title="리크루팅 목록" 
+            projects={this.state.projects}
+            handleAdd={this.handleAddRecruiting} />
           <RecruitmetaList recruitmetas={this.state.recruitmetas}/>
-        </div>
+        </div> */}
       </div>
     );
   }

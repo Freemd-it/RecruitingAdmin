@@ -10,9 +10,10 @@ const scheduleCtrl = require('../controllers/Schedule.Ctrl');
 const interviewTimeCtrl = require('../controllers/InterviewTime.Ctrl');
 const memoCtrl = require('../controllers/MemoCtrl.Ctrl');
 const recruitMetaCtrl = require('../controllers/RecruitMeta.Ctrl');
+const projectCtrl = require('../controllers/Project.Ctrl');
 const DepartmentMetaCtrl = require('../controllers/DepartmentMeta.Ctrl');
 
-router.use(Authorizer);
+// router.use(Authorizer);
 
 router.get('/health', contextCtrl.getHealthCheck);
 
@@ -45,6 +46,8 @@ router.get('/recruitMeta', recruitMetaCtrl.getRecruitMetaList);
 router.post('/recruitMeta', recruitMetaCtrl.registRecruitMeta);
 router.get('/recruitMeta/:batch', recruitMetaCtrl.getRecruitMeta);
 router.get('/recruitMeta/:batch', recruitMetaCtrl.getRecruitMeta);
+
+router.get('/project', projectCtrl.getProjectList);
 
 router.post('/memo/:userId', memoCtrl.registMemo);
 router.get('/memo/:userId', memoCtrl.getMemo);
