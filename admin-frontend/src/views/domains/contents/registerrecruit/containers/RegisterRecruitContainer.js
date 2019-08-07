@@ -1,5 +1,5 @@
 import { List, Map } from "immutable";
-import { getRecentRecruitMeta, postRecruitMeta } from 'lib/api/recruitmeta';
+import { getRecruitMetaRecent, postRecruitMeta, getRecruitMetaOrg, modifyRecruitMeta } from 'lib/api/recruitmeta';
 import { getProjectNames } from 'lib/api/project';
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
@@ -12,12 +12,13 @@ import InterviewTimes from '../components/interviewTimes/interviewTimes';
 import StartEndDate from "../components/startEndDate/startEndDate";
 import { InitialDepartment, InitialDepartmentsList, InitialInterviewTime, InitialInterviewTimeList, InitialTeam } from "../data";
 import "./RegisterRecruit.scss";
+import { getRecruitMeta, deleteRecruitMeta } from 'lib/api/recruitmeta';
 
 
 class RegisterRecruitContainer extends Component {
-  // Todo: initialState를 디비에서 읽어와서 가져오는 방식으로 변경해주어야 한다. 지금은 디비 저장 정보가 없으므로 하드 코딩
   constructor(props) {
     super(props);
+    const { batch } = this.props.match.params;
     this.state = {
       data: Map({
         batch: '21',
@@ -31,14 +32,19 @@ class RegisterRecruitContainer extends Component {
         departments: InitialDepartmentsList,
         interviewTimes: InitialInterviewTimeList
       }),
-      redirect: false
+      redirect: false,
+      batch: batch
     };
     this.handleStartDateChange = this.handleStartDateChange.bind(this);
     this.handleEndDateChange = this.handleEndDateChange.bind(this);
   }
 
   componentDidMount() {
-    getRecentRecruitMeta(this);
+    if (this.state.batch) {
+      getRecruitMetaOrg(this, this.state.batch);
+    } else {
+      getRecruitMetaRecent(this);
+    }
     getProjectNames(this);
   }
 
@@ -71,8 +77,6 @@ class RegisterRecruitContainer extends Component {
     });
   }
 
-  
-
   handleDepartmentAddClick = () => {
     const { data } = this.state;
     this.setState({
@@ -98,7 +102,7 @@ class RegisterRecruitContainer extends Component {
 
   handleDepartmentDescriptionChange = (e, index) => {
     const { data } = this.state;  
-    const { value } = e.target.value;
+    const { value } = e.target;
     this.setState({
       data: data.setIn(['departments', index, 'departmentDescription'], value)
     });
@@ -106,7 +110,7 @@ class RegisterRecruitContainer extends Component {
 
   handleDepartmentNameChange = (e, index) => {
     const { data } = this.state;  
-    const { value } = e.target.value;
+    const { value } = e.target;
     this.setState({
       data: data.setIn(['departments', index, 'departmentName'], value)
     });
@@ -141,7 +145,6 @@ class RegisterRecruitContainer extends Component {
   handleTeamMedicalOptionClick = (e, departmentIndex, teamIndex, medicalOption) => {
     const { data } = this.state;
     const orgMedicalOptions = data.getIn(['departments', departmentIndex, 'teams', teamIndex, 'medicalFieldOptions']);
-    // 이미 선택되어 있는 사업이면 삭제를, 선택 안된 옵션이면 추가를 해준다.
     let modifiedMedicalOptions = List();
     if (orgMedicalOptions.toJS().includes(medicalOption)) {
       modifiedMedicalOptions = orgMedicalOptions.filter(item => item !== medicalOption);
@@ -198,8 +201,20 @@ class RegisterRecruitContainer extends Component {
     });
   }
 
-  handleSubmit = (e) => {
+  handleSubmitAdd = (e) => {
     postRecruitMeta(this.state.data.toJS(), this);
+  }
+
+  handleSubmitEdit = (e) => {
+    // console.log(this.state.data.toJS());
+    // return;
+    modifyRecruitMeta(this.state.data.toJS(), this.state.batch, this);
+  }
+
+  handleRecruitMetaDelete = () => {
+    const recruitMetaId = this.state.data.get('_id');
+    deleteRecruitMeta(this, recruitMetaId);
+    getRecruitMeta(this);
   }
 
   render() {
@@ -207,11 +222,14 @@ class RegisterRecruitContainer extends Component {
     if (this.state.redirect) {
       return <Redirect to="/recruitmeta"></Redirect>
     }
-
     return (
       <div className="register_container">
-        <h2 className='title'>리크루팅 일정 등록</h2>
-        <Batch batch={this.state.data.get('batch')} handleBatchChange={this.handleBatchChange}/>
+        <h2 className='title'>  {this.state.batch ? "기존 리크루팅 수정" : "신규 리크루팅 등록" } </h2> 
+        {this.state.batch && <Button color="danger" onClick={this.handleRecruitMetaDelete}> 삭제하기 </Button>}
+
+        <Batch 
+          batch={ this.state.batch } 
+          handleBatchChange={this.handleBatchChange}/>
         
         <StartEndDate
           period= {this.state.data.get('period')}
@@ -243,7 +261,10 @@ class RegisterRecruitContainer extends Component {
           handleInterviewTimeDelete={this.handleInterviewTimeDelete}
        />
 
-       <Button color="success" size="lg" onClick={this.handleSubmit}> 제출하기 </Button>
+       <Button color="success" size="lg" 
+          onClick={this.state.batch ? this.handleSubmitEdit :this.handleSubmitAdd}>
+          {this.state.batch ? "수정하기" : "제출하기" } 
+       </Button>
         
       </div>
     );

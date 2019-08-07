@@ -15,6 +15,7 @@ export const getProjectNames = (ctx) =>
     .then(res => {
       const projectNames = fromJS(res.data.result);
       const modifiedData = ctx.state.data.set('medicalFeilds', projectNames)
+      console.log('api!!', modifiedData.toJS());
       ctx.setState({data: modifiedData});
     })
     .catch(err => err)

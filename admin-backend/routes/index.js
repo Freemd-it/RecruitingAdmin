@@ -48,8 +48,13 @@ router.post('/interviewtime', interviewTimeCtrl.registInterviewSchedule);
 
 router.get('/recruitMeta', recruitMetaCtrl.getRecruitMetaList);
 router.post('/recruitMeta', recruitMetaCtrl.registRecruitMeta);
+router.put('/recruitMeta/:batch', recruitMetaCtrl.modifyRecruitMeta);
 router.get('/recruitMeta/:batch', recruitMetaCtrl.getRecruitMeta);
-router.get('/recentrecruitMeta', recruitMetaCtrl.getRecentRecruitMeta);
+
+router.get('/recruitMetaOrg/:batch', recruitMetaCtrl.getRecruitMetaOrg);
+router.get('/recruitMetaRecent', recruitMetaCtrl.getRecruitMetaRecent);
+router.get('/recruitMeta/:batch', recruitMetaCtrl.getRecruitMeta);
+router.delete('/recruitMeta', recruitMetaCtrl.deleteRecruitMeta);
 
 router.get('/project', projectCtrl.getProjectList);
 router.get('/projectNames', projectCtrl.getProjectNames);
