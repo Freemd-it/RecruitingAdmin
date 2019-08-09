@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const mongoConfig = require('./config/mongoConfig');
+const mongoConfig = require('./config/develop/mongoConfig');
 const { schemeInit } = require('./service/schemeService');
 
 const {
