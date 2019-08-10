@@ -10,6 +10,7 @@ const signin = async (req, res) => {
     const admin = await Admin.findOne({ email: email }).exec();
     
     if (!admin) {
+        console.log('no admin');
         res.status(400).json({
             message: "Signin fail",
             result: null,
@@ -17,6 +18,7 @@ const signin = async (req, res) => {
         return;
     }
     if (!(await bcrypter.compare(password, admin.hash))) {
+        console.log('pw not match');
         res.status(400).json({
             message: "Signin fail",
             result: null,
