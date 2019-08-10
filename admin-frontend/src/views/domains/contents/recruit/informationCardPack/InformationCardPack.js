@@ -7,8 +7,6 @@ import AcademicInfo from 'views/domains/contents/recruit/informationCardPack/aca
 import SpecialInfo from 'views/domains/contents/recruit/informationCardPack/specialInfo';
 
 import './InformationCardPack.scss'
-import _ from 'lodash'
-
 
 const InfoDetail = ({ classes, selectedRow }) => {
   return (

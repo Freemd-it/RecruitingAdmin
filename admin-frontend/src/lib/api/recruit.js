@@ -1,5 +1,4 @@
 import axiosCreate from '../defaultAxios'
-import queryString from 'query-string'
 
 export const getRecruitList = (batch, ctx) => {
   return axiosCreate().get(`/admin/applicant2/${batch}?`)
