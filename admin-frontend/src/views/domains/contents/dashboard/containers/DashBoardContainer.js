@@ -51,14 +51,13 @@ class DashBoardViewerContainer extends Component {
   }
 
   componentDidMount () {
-    axios.getChartData(this)
+    axios.getChartData(this);
   }
 
-  
-
   render() {
-    const { pieData, radarData, barData } = chartDefaultData
-    const { chartData } = this.state
+    const { pieData, radarData, barData } = chartDefaultData;
+    const { chartData } = this.state;
+    console.log('api get data: ', chartData);
 
     _.map(chartData, (value,key) => {
       if (key === 'AgeMaleStats') {

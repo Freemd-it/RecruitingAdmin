@@ -125,7 +125,7 @@ class Login extends Component {
         <CssBaseline />
         <Paper className={classes.paper}>
           <div className={classes.avatar}>
-              <img src={logo} />
+              <img src={logo} alt='freemed-admin' />
           </div>
           <div className={`${classes.form} FormContainer`}>
             <form>

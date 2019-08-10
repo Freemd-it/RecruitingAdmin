@@ -1,5 +1,4 @@
 import axiosCreate from '../defaultAxios'
-import queryString from 'query-string'
 
 export const getInterviewList = (batch, ctx) => 
   axiosCreate().get(`/admin/schedule/${batch}`)

@@ -32,7 +32,6 @@ class RecruitManageContainer extends Component {
       batch,
       department: JSON.parse(localStorage.getItem('user_session')).department
     }, () => {
-      const { department } = this.state;
       axios.getRecruitList(batch, this);
       // axios.getRecruitList({q: department === '900' ? '' : organization[department].name , type: 'department'}, this)
     });

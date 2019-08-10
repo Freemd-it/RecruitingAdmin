@@ -5,7 +5,6 @@ import Projects from '../components/projects/projects';
 import Recruitmetas from '../components/recruitmetas/recruitmetas';
 import './RecruitmetaContainer.scss';
 import { Map, List } from 'immutable';
-import { ListSubheader } from '@material-ui/core';
 
 class RecruitmetaContainer extends Component {
   constructor(props) {
