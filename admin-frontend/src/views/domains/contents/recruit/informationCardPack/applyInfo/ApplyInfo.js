@@ -7,7 +7,6 @@ import InformationCard from 'views/contexts/modal/card';
 const InterviewInfo = ({data}) => {
   const { interviewTime } = JSON.parse(localStorage.getItem('recruitMeta'));
   const interviewTable = [];
-  const dateList = [];
   for(const key in interviewTime) {
     interviewTable.push(interviewTime[key]);
   }

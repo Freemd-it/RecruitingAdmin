@@ -2,7 +2,6 @@ import React from 'react';
 import { Divider } from '@material-ui/core';
 import BusinessIcon from '@material-ui/icons/BusinessCenter';
 import InformationCard from 'views/contexts/modal/card';
-import _ from 'lodash'
 
 const QuestionInfo = ({data}) => {
   const content = data.map((item, index) => {
@@ -12,7 +11,6 @@ const QuestionInfo = ({data}) => {
       question, 
       text, 
       file, 
-      select,
     } = item;
     let answerData = text;
     if (file) {
