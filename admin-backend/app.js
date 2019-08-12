@@ -45,7 +45,7 @@ let options = {
 const {
   PORT : port = 27017,
   MONGO_URI : mongoURI
-} = process.env && require('./config/mongoConfig');
+} = process.env && require('./lib/envChecker').getConfig(process.env.NODE_ENV);
 
 // Node 의 Promise 를 사용 하도록 설정
 mongoose.Promise = global.Promise; 

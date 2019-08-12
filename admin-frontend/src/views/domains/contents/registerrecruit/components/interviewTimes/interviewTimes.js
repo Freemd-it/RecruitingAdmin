@@ -37,11 +37,11 @@ const InterviewTime = ({intervieTime, handleInterviewDateChange, handleInterview
           <DatePicker
             className='datepicker'
             dateFormat='yyyy-MM-dd'
-            selected={intervieTime.get('date')}
+            selected={new Date(intervieTime.get('date'))}
             onChange={(date) => handleInterviewDateChange(date, index)}
             >
           </DatePicker>
-          <select value={intervieTime.get('time')} onChange={(e) => handleInterviewTimeChange(e, index)}>
+          <select value={intervieTime.get('time')} onChange={(e) => handleInterviewTimeChange(e.target.value, index)}>
             <option value="10:00 ~ 11:00">10:00 ~ 11:00</option>
             <option value="11:00 ~ 12:00">11:00 ~ 12:00</option>
             <option value="12:00 ~ 13:00">12:00 ~ 13:00</option>

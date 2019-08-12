@@ -1,15 +1,14 @@
 import React from 'react';
 import "./batch.scss";
 
-const batch = ({data, handleBatchChange}) => {
+const batch = ({batch, handleBatchChange}) => {
   return (
     <div className='batch_container'>
       <h4>모집 기수</h4>
-      <input
-        className='batch_input'
-        type="text" 
-        value={data.get('batch')}
-        onChange={handleBatchChange}/>
+      {batch ? 
+      <p>{batch}</p> : 
+      <input className='batch_input' type="text" value={batch} defaultValue='20' onChange={handleBatchChange}/>
+      }
     </div>
   );
 };

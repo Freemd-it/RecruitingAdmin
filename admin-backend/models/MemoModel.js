@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const MemoSchema = new Schema({
     userId: mongoose.Schema.Types.ObjectId,
     contents: String,
-    writer: Number,
+    writer: String,
     registedDate: { type: Date, default: Date.now },
 });
 

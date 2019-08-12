@@ -137,45 +137,49 @@ const getQuestion = async (req, res) => {
 };
 
 const updateQuestion = async (req, res) => {
-  const { userdata, params, body } = req;
-  const { questionId } = params;
-  const {
-    department,
-    team,
-    content,
-    type,
-    registedDate = new Date(),
-  } = body;
-  try {
-    const updateData = await DepartmemtMeta.update(
-      { departmentName: department, 'teams.teamName': team },
-      { $set: {
-        'teams.$[team].questions.$[question].content': content,
-        'teams.$[team].questions.$[question].type': type,
-        'teams.$[team].questions.$[question].registedDate': registedDate,
-        'teams.$[team].questions.$[question].register': userdata.name,
-      }},
-      { 
-        arrayFilters: [
-          { 'team.teamName': team },
-          { 'question._id': questionId }
-        ], 
-        new: true
-      }
-    );
-    return res.status(201).json({ message : "Success", result: {
-      content,
-      type,
-      registedDate,
-      id: questionId,
-      register: userdata.name,
-      teamName: team,
-      departmentName: department,
-    }});
-  } catch(e) {
-    console.log(e);
-    return res.status(500).json({ message: JSON.stringify(e) , result: null});
-  }
+  return res.status(403).json({
+    message: "Have not permission. Not your department",
+    result: null,
+  });
+  // const { userdata, params, body } = req;
+  // const { questionId } = params;
+  // const {
+  //   department,
+  //   team,
+  //   content,
+  //   type,
+  //   registedDate = new Date(),
+  // } = body;
+  // try {
+  //   const updateData = await DepartmemtMeta.update(
+  //     { departmentName: department, 'teams.teamName': team },
+  //     { $set: {
+  //       'teams.$[team].questions.$[question].content': content,
+  //       'teams.$[team].questions.$[question].type': type,
+  //       'teams.$[team].questions.$[question].registedDate': registedDate,
+  //       'teams.$[team].questions.$[question].register': userdata.name,
+  //     }},
+  //     { 
+  //       arrayFilters: [
+  //         { 'team.teamName': team },
+  //         { 'question._id': questionId }
+  //       ], 
+  //       new: true
+  //     }
+  //   );
+  //   return res.status(201).json({ message : "Success", result: {
+  //     content,
+  //     type,
+  //     registedDate,
+  //     id: questionId,
+  //     register: userdata.name,
+  //     teamName: team,
+  //     departmentName: department,
+  //   }});
+  // } catch(e) {
+  //   console.log(e);
+  //   return res.status(500).json({ message: JSON.stringify(e) , result: null});
+  // }
 
 };
 

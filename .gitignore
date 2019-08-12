@@ -25,4 +25,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # logs
-/logs
+/admin-frontend/logs
+/admin-backend/logs

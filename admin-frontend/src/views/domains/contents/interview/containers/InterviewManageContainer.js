@@ -14,8 +14,9 @@ class InterviewManageContainer extends Component {
   };
 
   componentDidMount() {
-    const { department } = JSON.parse(localStorage.getItem('user_session'))
-    axios.getInterviewList({type: department === '대표' ? '' : department }, this)
+    const { batch } = JSON.parse(localStorage.getItem('recruitMeta'))
+    this.setState({ batch });
+    axios.getInterviewList(batch, this);
   }
 
   onClickToShowModal = (index) => {
@@ -30,17 +31,18 @@ class InterviewManageContainer extends Component {
   }
   
   onChangeFilterQuery = async (e) => {
-    const { type } = this.state
+    console.log('onChangeFilterQuery');
+    // const { type } = this.state
     
-    if(e.key === 'Enter') {
-      if(!type) {
-        alert('검색 조건을 선택해 주세요.')
-      } else {
-        await axios.getInterviewList({ type, q: e.target.value }, this)
-      }
-    } else {
-      this.setState({ query: e.target.value })
-    }
+    // if(e.key === 'Enter') {
+    //   if(!type) {
+    //     alert('검색 조건을 선택해 주세요.')
+    //   } else {
+    //     await axios.getInterviewList({ type, q: e.target.value }, this)
+    //   }
+    // } else {
+    //   this.setState({ query: e.target.value })
+    // }
   }
 
   render() {

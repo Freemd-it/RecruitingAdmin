@@ -7,9 +7,9 @@ import InformationCard from 'views/contexts/modal/card';
 
 const AcademicInfo = ({data}) => {
     
-  const { academic_name = '', degree = '', major = '', location = '', entrance_date = '', graduation_date = '' } = data;
-  const entranceDateString = entrance_date != null ? moment(entrance_date).format("Y년 M월") + ' 부터' : '';
-  const graduateDateString = graduation_date != null ? moment(graduation_date).format("Y년 M월") + ' 까지' : '';
+  const { academicName = '', degree = '', major = '', location = '', entranceDate = '', graduationDate = '' } = data;
+  const entranceDateString = entranceDate != null ? moment(entranceDate).format("Y년 M월") + ' ~ ' : '';
+  const graduateDateString = graduationDate != null ? moment(graduationDate).format("Y년 M월") : '';
 
   return (
     <InformationCard
@@ -21,10 +21,10 @@ const AcademicInfo = ({data}) => {
       content={(
         <div className="Content">
           <div className="Content__wrapper">
-            <span className="SubTitle">학력사항 :  </span> {academic_name} {degree} ({major}, {location})
+            <span className="SubTitle">학력사항 :  </span> {academicName} {degree} ({major}, {location})
           </div>
           <div>
-          <span className="SubTitle">기간 :  </span> {entranceDateString} {graduateDateString} {graduation_date != null ? '졸업' : '재학 중'}
+          <span className="SubTitle">기간 :  </span> {entranceDateString} {graduateDateString} {graduationDate != null ? '졸업' : '재학 중'}
           </div>
         </div>
       )}>

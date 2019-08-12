@@ -16,9 +16,10 @@ const ExternalInfo = (props) => {
         </span>)}
       content={
         props.data.map((elem, index) => {
-          const { type, organizer, start_date, end_date, time, content } = elem;
-          const startDateString = moment(start_date).format("Y년 M월") + ' 부터';
-          const endDateString = moment(end_date).format("Y년 M월") + ' 까지';
+          const { organizer, startDate, endDate, turnaroundTime, content } = elem;
+          const startDateString = moment(startDate).format("Y년 M월");
+          let endDateString = ' ';
+          if(endDate) endDateString = moment(endDate).format("Y년 M월");
           return (
             <div key={index} className="Content">
               {index !== 0 ? (<Divider className="Divider" />) : ''}
@@ -26,10 +27,10 @@ const ExternalInfo = (props) => {
                 경력 {index + 1}.
               </div>
               <div className="SubContent">
-                {organizer} {type}
+                {organizer}
               </div>
               <div className="SubContent">
-                {startDateString} {endDateString} ({time} 시간)
+                {startDateString} ~ {endDateString} ({turnaroundTime} 시간)
               </div>
               <div className="SubTitle">
                 상세 내용

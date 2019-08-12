@@ -2,31 +2,31 @@ export const applyInfo = [{
     key: 'name',
     value: '이름',
   },{
-    key: 'english',
+    key: 'englishName',
     value: '영문이름',
   },{
-    key: 'is_male',
+    key: 'isMale',
     value: '성별',
   },{
-    key: 'birth_date',
+    key: 'birthDate',
     value: '생년월일',
   },{
-    key: 'phone_number',
+    key: 'phoneNumber',
     value: '전화번호',
   },{
     key: 'email',
     value: 'email',
   },{
-    key: 'first',
+    key: 'departmentName_1',
     value: '운영 1지망'
   },{
-    key: 'second',
+    key: 'departmentName_2',
     value: '운영 2지망',
   },{
-    key: 'medical_field',
+    key: 'medicalField_1',
     value: '사업 1지망'
   },{
-    key: 'secondary_medical_field',
+    key: 'medicalField_2',
     value: '사업 2지망'
   },{
     key: 'evaluation',
@@ -38,26 +38,25 @@ export const interview = [
   key: 'name',
   value: '이름',
 },{
-  key: 'first_department',
+  key: 'department_1',
   value: '운영 1지망'
 },{
-  key: 'second_department',
+  key: 'department_2',
   value: '운영 2지망',
 },{
-  key: 'medical_field',
+  key: 'medicalField_1',
   value: '사업 1지망'
-},
-{
-  key: 'secondary_medical_field',
+},{
+  key: 'medicalField_2',
   value: '사업 2지망'
 },{
-  key: 'phone_number',
+  key: 'phoneNumber',
   value: '전화번호',
 }, {
-  key: 'other_assign_medical',
+  key: 'otherAssignMedical',
   value: '타사업활동 ',
 },{
-  key: 'other_assign_ngo',
+  key: 'otherAssignNgo',
   value: '타운영본부',
 }];
 
@@ -68,12 +67,9 @@ export const question = [{
   key: 'teamName',
   value: '팀명',
 }, {
-  key: 'contents',
+  key: 'content',
   value: '질문내용',
   width: '300px',
-}, {
-  key: 'batch',
-  value: '기수',
 }, {
   key: 'register',
   value: '등록자',
