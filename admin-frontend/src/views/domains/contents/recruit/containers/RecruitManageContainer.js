@@ -102,6 +102,22 @@ class RecruitManageContainer extends Component {
     });
   }
 
+  onCheckAllRows = async (checked) => {
+    this.setState(prevState => {
+      const { applicationForm } = prevState;
+      if (checked) {
+        this.state.rows.forEach((row) => {
+          applicationForm[row._id] = true;
+        })
+      } else {
+        this.state.rows.forEach((row) => {
+          delete applicationForm[row._id];
+        })
+      }
+      return applicationForm;
+    });
+  }
+
   onChangeMemo = async (e) => {
     if (e && e.target) {
       this.setState({ memo: e.target.value });
@@ -215,12 +231,14 @@ class RecruitManageContainer extends Component {
         {
           match.params.type === 'info' &&
           <Table
+            applicationForm={this.state.applicationForm}
             type={this.props.type}
             title={'지원서관리'}
             rows={rows}
             questionAddBtn={questionAddBtn}
             onClickRow={this.onClickRowToShowModal}
             onCheckRow={this.onCheckRow}
+            onCheckAllRows={this.onCheckAllRows}
             onSearchTag={this.onSearchTag}
             onChangeKeyword={this.onChangeKeyword}
             onChangeFilterQuery={this.onChangeFilterQuery}

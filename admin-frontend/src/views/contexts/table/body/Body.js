@@ -7,11 +7,12 @@ import _ from 'lodash'
 
 import './Body.scss';
 
-const Body = ({rows, attributeData, onClickRow, onCheckRow, columns, cursor = false, type}) => {
+const Body = ({applicationForm, rows, attributeData, onClickRow, onCheckRow, columns, cursor = false, type}) => {
   const bodyRows = (
     _.map(rows, (item, index) => {
       return (
         <TableRows
+          isChecked={applicationForm ? applicationForm[item._id] : false}
           type = {type}
           columns={columns}
           className={cursor ? 'tableBodyRow__cursor' : ''}
