@@ -22,6 +22,7 @@ class Table extends Component {
   render() {
     const userSession = JSON.parse(localStorage.getItem('user_session'))
     const { 
+      applicationForm,
       onClickRow, 
       questionAddBtn, 
       title, 
@@ -33,7 +34,8 @@ class Table extends Component {
       onChangeFilterQuery, 
       timeTable, 
       attributeData = [],
-      onCheckRow = ()=>{} 
+      onCheckRow = ()=>{} ,
+      onCheckAllRows,
     } = this.props;
     const { currentPage, rowsPerPage } = this.state;
     const columns = Columns[type]
@@ -53,10 +55,12 @@ class Table extends Component {
           />
         }>
           <Header
+            onCheckAllRows={onCheckAllRows}
             columns={columns}
             timeTable={timeTable}
           />
           <Body
+            applicationForm={applicationForm}
             type={type}
             columns={columns}
             rows={[ ...rows].splice((currentPage-1) * rowsPerPage , rowsPerPage) } 

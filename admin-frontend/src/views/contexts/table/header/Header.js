@@ -6,7 +6,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import _ from 'lodash'
 import './Header.scss'
 
-const Header = ({ columns, timeTable = null}) => {
+const Header = ({ columns, onCheckAllRows, timeTable = null}) => {
   const timeTableKey = Object.keys(timeTable || []);
   
   return (
@@ -14,8 +14,7 @@ const Header = ({ columns, timeTable = null}) => {
      
       <TableRow className="Header__contents">
         <TableCell padding="checkbox">
-          <Checkbox
-          />
+          <Checkbox onChange={(e) => onCheckAllRows(e.target.checked)}/>
         </TableCell>
         { 
           columns.map(column => {

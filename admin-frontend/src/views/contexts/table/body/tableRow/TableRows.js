@@ -7,13 +7,14 @@ import moment from 'moment'
 class TableRows extends Component {
   render() {
     const {
+      isChecked,
       item, 
       columns, 
       onClick, 
       type, 
       onCheckRow,
       attributeData
-    } = this.props
+    } = this.props;
     let dateKeys = null;
     let interviewData = null;
     const dataSet = {};
@@ -129,9 +130,7 @@ class TableRows extends Component {
           padding="checkbox" 
           onClick={e => e.stopPropagation()}
         >
-          <Checkbox 
-            onChange={(e) => onCheckRow(e.target.checked, item._id)}
-          />
+          <Checkbox checked={isChecked?true:false} onChange={(e) => onCheckRow(e.target.checked, item._id)} />
         </TableCell>
         { cellData }
         { interviewData }
