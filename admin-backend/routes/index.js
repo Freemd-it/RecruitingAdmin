@@ -43,6 +43,7 @@ router.get('/schedule/:batch', scheduleCtrl.getScheduleList);
 router.get('/schedule/:batch/mockup', scheduleCtrl.mockup);
 
 router.get('/statistics', statCtrl.getStat);
+router.get('/statistics/applier/:batch', statCtrl.getApplierStat);
 
 router.get('/interviewtime', interviewTimeCtrl.getInterviewSchedule);
 router.post('/interviewtime', interviewTimeCtrl.registInterviewSchedule);

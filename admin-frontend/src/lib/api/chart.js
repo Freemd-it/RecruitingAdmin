@@ -8,3 +8,9 @@ export const getChartData= (ctx) =>
     })
     .catch(err => err)
 
+export const getApplierStat= (ctx) => 
+axiosCreate().get(`/admin/statistics/applier/21`)
+  .then(res => {
+    ctx.setState({ applierStat: res.data.result});
+  })
+  .catch(err => err)
