@@ -37,26 +37,18 @@ class InterviewManageContainer extends Component {
   
   onChangeFilterQuery = async (e) => {
     const { value } = e.target;
-    const { type } = this.state
-    if(e.key === 'Enter') {
-      if(!type) {
-        return alert('검색 조건을 선택해 주세요.');
-      } else {
-        this.setState((prevState) => {
-          const rows = [...prevState.rows];
-          const tempRows = rows.filter(item => {
-            if (type === "departmentName") {
-              return item.departmentName_1.includes(value) || item.departmentName_2.includes(value);
-            } else {
-              return item.teamName_1.includes(value) || item.teamName_2.includes(value);
-            }
-          });
-          return { tempRows, query: value };
-        });
-      }
-    } else {
-      this.setState({ query: value });
-    }
+    const { type } = this.state;
+    this.setState((prevState) => {
+      const rows = [...prevState.rows];
+      const tempRows = rows.filter(item => {
+        if (type === "departmentName") {
+          return item.departmentName_1.includes(value) || item.departmentName_2.includes(value);
+        } else {
+          return item.teamName_1.includes(value) || item.teamName_2.includes(value);
+        }
+      });
+      return { tempRows, query: value };
+    });
   }
 
   onCheckRow = async (checked, id) => {

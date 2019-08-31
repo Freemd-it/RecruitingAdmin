@@ -30,7 +30,11 @@ class Filter extends Component {
             </DropdownMenu>
           </InputGroupButtonDropdown>
           <div>
-            <Input className="Filter__searchWord" onKeyPress={onChangeFilterQuery}/>
+            <Input 
+              className="Filter__searchWord" 
+              onChange={onChangeFilterQuery} 
+              disabled={keyword === "검색선택"}
+            />
           </div>
         </InputGroup>
     )
