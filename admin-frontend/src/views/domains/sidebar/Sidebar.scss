@@ -25,7 +25,14 @@
       width: 70%;
       margin: 0 auto;
     }
+    &__active {
+      background-color: white;
+      span, svg {
+        color: #FF5858 !important;
+      }
+    }
   }
+
   .Sidebar {
     display: flex;
     flex-flow: wrap column;
