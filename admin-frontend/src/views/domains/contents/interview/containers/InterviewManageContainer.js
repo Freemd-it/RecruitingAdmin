@@ -8,7 +8,8 @@ import * as Columns from 'lib/service/tableColumn'
 class InterviewManageContainer extends Component {
   state = {
     applicationForm: {},
-    rows: [], 
+    rows: [],
+    tempRows: [],
     page: 0,
     timeTable: JSON.parse(localStorage.getItem('recruitMeta')).interviewTime,
     rowsPerPage: this.props.rowsPerPage,
@@ -35,17 +36,27 @@ class InterviewManageContainer extends Component {
   }
   
   onChangeFilterQuery = async (e) => {
-    console.log('onChangeFilterQuery');
-    // const { type } = this.state
-    // if(e.key === 'Enter') {
-    //   if(!type) {
-    //     alert('검색 조건을 선택해 주세요.')
-    //   } else {
-    //     await axios.getInterviewList({ type, q: e.target.value }, this)
-    //   }
-    // } else {
-    //   this.setState({ query: e.target.value })
-    // }
+    const { value } = e.target;
+    const { type } = this.state
+    if(e.key === 'Enter') {
+      if(!type) {
+        return alert('검색 조건을 선택해 주세요.');
+      } else {
+        this.setState((prevState) => {
+          const rows = [...prevState.rows];
+          const tempRows = rows.filter(item => {
+            if (type === "departmentName") {
+              return item.departmentName_1.includes(value) || item.departmentName_2.includes(value);
+            } else {
+              return item.teamName_1.includes(value) || item.teamName_2.includes(value);
+            }
+          });
+          return { tempRows, query: value };
+        });
+      }
+    } else {
+      this.setState({ query: value });
+    }
   }
 
   onCheckRow = async (checked, id) => {
@@ -86,7 +97,6 @@ class InterviewManageContainer extends Component {
         return o._id === id;
       });
       const data = rows[index];
-      console.log(data);
       let csvRow = `${data.name},${data.departmentName_1} ${data.teamName_1}, ${data.departmentName_2} ${data.teamName_2},`+
       `${data.medicalField_1 || ''}, ${data.medicalField_2 || ''}, ${data.phoneNumber},`+
       `${data.otherAssignMedical?'O':'X'},${data.otherAssignNgo?'O':'X'}, 토요일,`;
@@ -146,7 +156,7 @@ class InterviewManageContainer extends Component {
         title={'면접시간관리'}
         questionAddBtn={questionAddBtn}
         timeTable={this.state.timeTable}
-        rows={this.state.rows}
+        rows={this.state.query ? this.state.tempRows : this.state.rows}
         onClickRow={this.onClickToShowModal}
         onSearchTag={this.onSearchTag}
         onChangeKeyword={this.onChangeKeyword}
