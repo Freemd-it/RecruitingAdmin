@@ -48,14 +48,16 @@ class Sidebar extends Component {
     window.location.assign(logoutUrl());
   }
 
+
   render() {
     const { classes } = this.props;
+    const pathname = window.location.pathname;
     return (
       <div className={`${classes.root} Container`}>
         <div className='main-img'>
           <img src={logo} />
         </div>
-      <div className="ItemContainer"> 
+      <div className={`ItemContainer ${pathname === routes.MATCH_PATH_DASHBOARD ? "ItemContainer__active": ""}`}> 
         <div className="ItemWrapper">
           <ListItem className={'Sidebar__item'}
             component={props => <Link to={routes.MATCH_PATH_DASHBOARD} {...props} />}>
@@ -66,7 +68,7 @@ class Sidebar extends Component {
           </ListItem>
         </div>
       </div>
-      <div className="ItemContainer"> 
+      <div className={`ItemContainer ${pathname === routes.MATCH_PATH_RECRUIT_INFORMATION ? "ItemContainer__active": ""}`}>  
         <div className="ItemWrapper">
           <ListItem className={'Sidebar__item'} focused="false" component={props => <Link to={routes.MATCH_PATH_RECRUIT_INFORMATION} {...props} />}>
             <ListItemIcon className={'Sidebar__icon'}>
@@ -76,7 +78,7 @@ class Sidebar extends Component {
           </ListItem>
         </div>
       </div>
-      <div className="ItemContainer"> 
+      <div className={`ItemContainer ${pathname === routes.MATCH_PATH_INTERVIEW ? "ItemContainer__active": ""}`}>
         <div className="ItemWrapper">
           <ListItem className={'Sidebar__item'}
             component={props => <Link to={routes.MATCH_PATH_INTERVIEW} {...props} />}>
@@ -87,7 +89,7 @@ class Sidebar extends Component {
           </ListItem>
         </div>
       </div>
-      <div className="ItemContainer">
+      <div className={`ItemContainer ${pathname === routes.MATCH_PATH_QUESTION ? "ItemContainer__active": ""}`}>
         <div className="ItemWrapper">
           <ListItem className={'Sidebar__item'}
             component={props => <Link to={routes.MATCH_PATH_QUESTION} {...props} />}>
