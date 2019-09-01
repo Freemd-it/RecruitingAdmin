@@ -12,6 +12,7 @@ class RecruitManageContainer extends Component {
   state = {
     batch: 0,
     rows: [],
+    tempRows: [],
     isDetailModal: false,
     selectedRow: [],
     keyword: '검색선택',
@@ -75,21 +76,6 @@ class RecruitManageContainer extends Component {
     // await axios.getRecruitList({q: department === '900' ? '' : organization[department].name , type: 'department'}, this)
   }
   
-
-  onChangeFilterQuery = async (e) => {
-    console.log("검색 조건을검색해주세요.");
-    // const { type } = this.state
-    // if(e.key === 'Enter') {
-    //   if(!type) {
-    //     alert('검색 조건을 선택해 주세요.')
-    //   } else {
-    //     await axios.getRecruitList({ type, q: e.target.value }, this)
-    //   }
-    // } else {
-    //   this.setState({ query: e.target.value })
-    // }
-  }
-
   onCheckRow = async (checked, id) => {
     this.setState(prevState => {
       const { applicationForm } = prevState;
@@ -134,6 +120,24 @@ class RecruitManageContainer extends Component {
 
   onEnterKeyDown = async (e) => {
     if (e && e.key === 'Enter') this.onSubmitMemo();
+  }
+
+  onChangeFilterQuery = async (e) => {
+    const { value } = e.target;
+    const { type } = this.state;
+    console.log(value, type);
+    this.setState((prevState) => {
+      const rows = [...prevState.rows];
+      console.log(rows);
+      const tempRows = rows.filter(item => {
+        if (type === "departmentName") {
+          return item.departmentName_1.includes(value) || item.departmentName_2.includes(value);
+        } else {
+          return item.teamName_1.includes(value) || item.teamName_2.includes(value);
+        }
+      });
+      return { tempRows, query: value };
+    });
   }
 
   onDownloadCsv = async () => {
@@ -234,14 +238,14 @@ class RecruitManageContainer extends Component {
             applicationForm={this.state.applicationForm}
             type={this.props.type}
             title={'지원서관리'}
-            rows={rows}
+            rows={this.state.query ? this.state.tempRows : this.state.rows}
             questionAddBtn={questionAddBtn}
             onClickRow={this.onClickRowToShowModal}
             onCheckRow={this.onCheckRow}
+            onChangeFilterQuery={this.onChangeFilterQuery}
             onCheckAllRows={this.onCheckAllRows}
             onSearchTag={this.onSearchTag}
             onChangeKeyword={this.onChangeKeyword}
-            onChangeFilterQuery={this.onChangeFilterQuery}
             keyword={this.state.keyword}
             cursor
           />
