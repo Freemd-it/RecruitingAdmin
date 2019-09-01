@@ -64,14 +64,15 @@ class InterviewManageContainer extends Component {
   }
 
   onCheckAllRows = async (checked) => {
+    const curRows = this.state.query ? this.state.tempRows : this.state.rows
     this.setState(prevState => {
       const { applicationForm } = prevState;
       if (checked) {
-        this.state.rows.forEach((row) => {
+        curRows.forEach((row) => {
           applicationForm[row._id] = true;
         })
       } else {
-        this.state.rows.forEach((row) => {
+        curRows.forEach((row) => {
           delete applicationForm[row._id];
         })
       }
